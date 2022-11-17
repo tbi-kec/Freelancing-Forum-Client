@@ -1,0 +1,45 @@
+.register-container{
+        height: 100vh;
+        width: 100%;
+        background: var(--main-blue);
+        background: linear-gradient(90deg, var(--main-blue) 0%, var(--main-blue) 50%, var(--main-lightwhite) 50%, var(--main-lightwhite) 100%);
+}
+
+.card-container{
+    height: 90vh;
+    background-color: var(--main-white);
+    margin: 0;
+    border-radius: 20px;
+    z-index: 10;
+}
+
+.card-container>.header-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 20px;
+}
+
+.card-container>.header-container>.header {
+    color: var(--main-navyblue);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.card-container>form {
+    width: 70%;
+    margin: 30px auto;
+}
+
+.card-container>form>.form-group>input {
+    background-color: #EFEFEF;
+    height: 40px;
+}
+
+.card-container>form>.form-group>input::placeholder {
+    color: var(--main-navyblue);
+    padding: 10px;
+    font-size: 18px;
+}
