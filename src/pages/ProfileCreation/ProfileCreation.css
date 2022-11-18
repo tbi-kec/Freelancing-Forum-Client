@@ -1,0 +1,67 @@
+.profile-creation-container{
+    height: 100vh;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.profile-creation-container > .row > .image-container{
+    width: 100%;
+    height: 200px;
+}
+.profile-creation-container>.row>.image-container >img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.profile-creation-container > .profile-form-container > .row > .image-container{
+    height: 141px;
+    width: 138px;
+    border-radius: 50%;
+}
+.profile-creation-container>.profile-form-container>.row>.image-container >img {
+    height: 100%;
+    width: 100%;
+    /* object-fit: contain; */
+}
+
+.profile-creation-container > .profile-form-container > .row >.profile-form{
+    width: 70%;
+    margin: 20px auto;
+}
+
+.profile-creation-container>.profile-form-container>.row>.profile-form>form>.form-group>select {
+    background-color: #EFEFEF;
+    height: 40px;
+    margin: 10px 0;
+    font-size: 18px !important;
+    color: var(--main-navyblue) !important;
+    padding-left: 10px !important;
+
+}
+.profile-creation-container>.profile-form-container>.row>.profile-form>form>.form-group>input {
+    background-color: #EFEFEF;
+    height: 40px;
+    margin: 10px 0;
+}
+.profile-creation-container>.profile-form-container>.row>.profile-form>form>.form-group>textarea {
+    background-color: #EFEFEF;
+   
+}
+
+.profile-creation-container>.profile-form-container>.row>.profile-form>form>.form-group>input::placeholder {
+    color: var(--main-navyblue);
+
+    font-size: 18px;
+}
+
+.profile-creation-container>.profile-form-container>.row>.profile-form>form>.form-group>textarea::placeholder {
+    color: var(--main-navyblue);
+   
+    font-size: 18px;
+}
+
+.profile-creation-container>.profile-form-container>.profile-form >form>.card {
+    background-color: #EFEFEF;
+    
+}

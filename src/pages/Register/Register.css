@@ -3,14 +3,16 @@
         width: 100%;
         background: var(--main-blue);
         background: linear-gradient(90deg, var(--main-blue) 0%, var(--main-blue) 50%, var(--main-lightwhite) 50%, var(--main-lightwhite) 100%);
+        overflow-y: hidden;
 }
 
 .card-container{
     height: 90vh;
     background-color: var(--main-white);
-    margin: 0;
+    margin: 0 auto;
     border-radius: 20px;
     z-index: 10;
+    width: 80%;
 }
 
 .card-container>.header-container {
@@ -36,10 +38,24 @@
 .card-container>form>.form-group>input {
     background-color: #EFEFEF;
     height: 40px;
+    margin:4px 0;
 }
 
 .card-container>form>.form-group>input::placeholder {
     color: var(--main-navyblue);
     padding: 10px;
     font-size: 18px;
+}
+
+.card-container> form >.d-grid>.btn{
+    margin: 20px 0;
+    background-color: var(--main-navyblue);
+    color: var(--main-white);
+}
+
+.register-container > .image-container{
+    position: absolute;
+    bottom:0;
+    right: 0;
+    z-index:20;
 }

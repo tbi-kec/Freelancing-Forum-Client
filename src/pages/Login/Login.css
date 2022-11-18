@@ -1,7 +1,9 @@
 .login-container{
     height: 100vh;
     width: 100%;
+    overflow-x: hidden;
     background:var(--main-blue) ;
+    margin: auto;
     background: linear-gradient(90deg,var(--main-blue) 0%, var(--main-blue) 50%, var(--main-lightwhite) 50%, var(--main-lightwhite) 100%);
 }
 
