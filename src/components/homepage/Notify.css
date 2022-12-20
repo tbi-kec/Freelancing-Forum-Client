@@ -1,0 +1,23 @@
+
+.notification-container{
+    background-color: var(--main-blue);
+    border-radius:12px;
+}
+
+.notification-container >.row>.col>.d-flex>.btn{
+    border-radius:10px;
+    font-size: 10px;
+    font-weight:600;
+
+}
+.notification-container >.row>.col>.d-flex>.success{
+  background-color: var(--main-green);
+}
+.notification-container >.row>.col>.d-flex>.danger{
+    background-color: var(--main-red);
+  }
+.notification-container >.row>.col-8>h6{
+    font-size: medium;
+    font-weight:600;
+
+}

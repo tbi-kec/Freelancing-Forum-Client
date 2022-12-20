@@ -1,3 +1,82 @@
+.all-dept-container {
+    border-radius: 20px;
+    box-shadow: rgba(16, 147, 208, 0.50) 0px 0px 15px;
+    height:525px;
+    overflow-y: scroll;
+}
+
+
+.p-card {
+    background-color: rgba(83, 120, 248, 13%);
+    border-radius: 12px;
+}
+
+.p-card > .row > .p-name > p {
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: start;
+}
+
+.p-card > .row > .p-name > h3 {
+    font-weight: bold;
+    padding: 0%;
+    margin: 0%;
+}
+
+.skill>.skillset{
+    font-weight: bold;
+    width: min-content;
+    border-radius: 15px;
+    margin: 0%;
+}
+.skill>.skillset>p{
+    margin: 0%;
+}
+.skill{
+    flex-wrap: wrap;
+}
+
+.current-project{
+    background-color: rgba(83, 120, 248, 13%);
+    border-radius: 12px;
+    height: 154px;
+    overflow-y: scroll;
+}
+.current-project>.current-project-header{
+    color: var(--main-green);
+}
+
+.current-project>.current-project-header>hr{
+    border-top: 3px solid var(--main-green);
+    width: 90%;
+
+}
+.current-project>.current-project-title>p{
+    color: black;
+    text-align: start;
+
+}
+
+.notification{
+    background-color: rgba(83, 120, 248, 13%);
+    border-radius: 12px;
+    height: 126px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+@media (min-width: 0px) and (max-width: 992px) {
+    .container>.dashboard-content{
+        flex-direction: column-reverse;
+    }
+    .all-dept-container{
+        height: 450px;
+        margin-top: 20px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+  }
 .project-title{
     color: var(--main-blue);
     font-weight: bolder;
