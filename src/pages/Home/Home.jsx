@@ -29,7 +29,7 @@ function Home() {
         <div className="card shadow my-4">
           <div className="card-body">
             <div className="d-flex fs-6 fw-bold">
-              <div className="mx-4" id="project" onClick={handleToggle}>Projects</div>
+              <div className="mx-4 active-toggle" id="project" onClick={handleToggle}>Projects</div>
               <div className="mx-4" id="talent" onClick={handleToggle}>Talents</div>
             </div>
           </div>
