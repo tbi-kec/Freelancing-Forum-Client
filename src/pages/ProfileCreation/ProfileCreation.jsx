@@ -63,17 +63,20 @@ const ProfileCreation = () => {
                                     </div>
                                     <div className="col-4">
                                          <div className="form-group">
-                                                <select name="domain"   className="form-select">
-                                                    <option value="" diabled hidden selected>Level</option>
-                                                </select>
-                                            </div>
+                                            <select name="domain"   className="form-select">
+                                                <option value="" diabled hidden selected>Level</option>
+                                                <option value="beginner" className='bg-success form-option' >Beginner</option>
+                                                <option value="intermediate" className='bg-warning py-3 form-option' >Intermediate</option>
+                                                <option value="expert" className='bg-primary py-3 form-option' >Expert</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="form-group">
                             <select name="domain"   className="form-select">
-                                <option value="" diabled hidden selected>Domain</option>
+                                <option value="" diabled hidden selected>Domain Name</option>
                             </select>
                         </div>
                         <div className="form-group">

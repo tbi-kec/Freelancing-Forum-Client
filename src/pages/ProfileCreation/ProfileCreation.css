@@ -57,11 +57,10 @@
 
 .profile-creation-container>.profile-form-container>.row>.profile-form>form>.form-group>textarea::placeholder {
     color: var(--main-navyblue);
-   
     font-size: 18px;
 }
 
 .profile-creation-container>.profile-form-container>.profile-form >form>.card {
     background-color: #EFEFEF;
-    
 }
+
