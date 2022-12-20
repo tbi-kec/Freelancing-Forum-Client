@@ -1,0 +1,72 @@
+.Container{
+    filter:blur(0) !important;
+    position: absolute;
+width: 80%;
+margin-top: 5rem;
+margin-left: 12%;
+z-index: 99;
+background: #FFFFFF;
+box-shadow: 12px 9px 18px rgba(0, 0, 0, 0.5);
+border-radius: 20px;
+transition-duration: 1s;
+transform: translateY(-100vh);
+}   
+.Title{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+line-height: 48px;
+color: #007FED;
+}
+.From{
+    height: 100%;
+    width: 100%;
+}
+.form-group>input {
+    background: rgba(129, 129, 129, 0.13);
+    border-radius: 6px;
+    height: 59px;
+    margin:4px 0;
+    padding: 10px;
+}
+.form-group>input::placeholder {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: rgba(22, 51, 109, 0.88);
+}
+.d-grid>.btn{
+    margin-left: auto;
+    width: 154px;
+height: 51px;
+background: #189C00;
+border-radius: 12px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 25px;
+line-height: 39px;
+/* identical to box height */
+
+text-align: center;
+
+color: #FFFFFF;
+}
+.form-group>textarea {
+    background: rgba(129, 129, 129, 0.13);
+    border-radius: 6px;
+    height: 150px;
+    margin:4px 0;
+    padding: 10px;
+}
+.form-group>textarea::placeholder {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: rgba(22, 51, 109, 0.88);
+}

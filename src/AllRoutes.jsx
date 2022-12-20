@@ -5,8 +5,7 @@ import Register from './pages/Register/Register'
 import ProfileCreation from './pages/ProfileCreation/ProfileCreation'
 import ProfileEdit from './pages/ProfileEdit/ProfileEdit'
 import Home from './pages/Home/Home'
-import Profile from './pages/Profile/Profile'
-import ViewProject from './pages/ViewProject/ViewProject'
+import ProfileView from './pages/ProfileView/ProfileView'
 import DepartmentUsers from './pages/DepartmentUsers/DepartmentUsers'
 const AllRoutes = () => {
   return (
@@ -15,9 +14,9 @@ const AllRoutes = () => {
       <Route path='/register' element={<Register/>} />
       <Route path='/profile/create' element={<ProfileCreation/>} />
       <Route path='/' element={<Home />} />
-      <Route path='/profile' element={<Profile/>} />
+      <Route path='/profile/view' element={<ProfileView/>} />
       <Route path='/profile/edit' element={<ProfileEdit/>} />
-      <Route path='/projects' element={<ViewProject/>} />
+      {/* <Route path='/projects' element={<ProjectView/>} /> */}
       <Route path='/user/:id' element={<DepartmentUsers/>} />
     </Routes>
   )
