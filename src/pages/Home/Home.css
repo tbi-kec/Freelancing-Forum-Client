@@ -1,0 +1,13 @@
+.project-title{
+    color: var(--main-blue);
+    font-weight: bolder;
+}
+
+.project-post-time{
+    font-size: small;
+}
+
+.active-toggle{
+    border-bottom: solid var(--main-blue) 5px;
+    color: var(--main-blue);
+}
