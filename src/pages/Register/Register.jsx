@@ -14,7 +14,8 @@ const Register = () => {
     const [kongu_email,setEmail]=useState("")
     const [password,setPassword]=useState("")
     const [confirm,setConfirm]=useState("")
-    const handleSubmit = ()=>{
+    const handleSubmit = (e)=>{
+        e.preventDefault()
         if(confirm!=password){
             alert("Password doesn't match")
             return
