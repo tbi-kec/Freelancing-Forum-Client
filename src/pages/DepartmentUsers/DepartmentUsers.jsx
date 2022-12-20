@@ -1,9 +1,37 @@
-import React from 'react'
+import React from "react";
+import './DepartmentUsers.css'
+import ProfileCard from "../../components/ProfileCard/ProfileCard";
 
 function DepartmentUsers() {
   return (
-    <div>DepartmentUsers</div>
-  )
+    <div>
+      <div className="banner m-2" >
+        <div className="row">
+          <div className="col-2">
+            <div className=" d-flex m-3">
+              <i class="fa-solid fa-arrow-left back-btn"></i>
+            </div>
+          </div>
+          <div className="col-10">
+            <div className="fs-1">AI AND ML</div>
+            <div className="d-flex justify-content-between mt-4 me-5">
+            <div>
+              Total:60
+            </div>
+            <div>II Year:20</div>
+            <div>III Year:20</div>
+            <div>IV Year:20</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="m-3 pb-5">
+        <ProfileCard />
+        <ProfileCard />
+        <ProfileCard />
+      </div>
+    </div>
+  );
 }
 
-export default DepartmentUsers
+export default DepartmentUsers;

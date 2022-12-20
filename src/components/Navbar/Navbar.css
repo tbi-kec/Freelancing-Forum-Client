@@ -1,0 +1,25 @@
+.navbar{
+    border-radius: 0 0 15px 15px;
+    background-color: var(--main-blue);
+}
+
+.search-btn{
+    background-color: var(--main-navyblue);
+}
+
+.nav-btn-1{
+    background-color: var(--main-yellow);
+    font-weight: 700;
+    border-radius: 20px;
+}
+
+.nav-btn-2{
+    background-color: var(--main-green);
+    color: var(--main-white);
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.search-bar{
+    border-radius: 15px;
+}
