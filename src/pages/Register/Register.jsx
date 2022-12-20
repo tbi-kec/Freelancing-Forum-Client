@@ -15,7 +15,7 @@ const Register = () => {
     const [password,setPassword]=useState("")
     const [confirm,setConfirm]=useState("")
     const handleSubmit = (e)=>{
-        e.preventfault()
+        e.preventDefault()
         if(confirm!=password){
             alert("Password doesn't match")
             return

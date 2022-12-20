@@ -10,6 +10,7 @@ export const login  = (authData,navigate) => async(dispatch) =>{
 
 export const signup = (authData,navigate) => async(dispatch) =>{
     try {
+        console.log("in login",authData)
         const {data}=await api.signup(authData)
         dispatch({type:"AUTH",payload:data})
         navigate("/profile/create")
