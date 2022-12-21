@@ -23,3 +23,16 @@
 .search-bar{
     border-radius: 15px;
 }
+
+.search-btn:hover{
+    background-color: #16226da3;
+}
+
+.nav-btn-2:hover{
+    background-color: #03a000ae;
+    color: white;
+}
+
+.nav-btn-1:hover{
+    background-color: #f5e978d7;
+}

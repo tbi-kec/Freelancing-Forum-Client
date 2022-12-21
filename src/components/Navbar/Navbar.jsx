@@ -2,6 +2,8 @@ import React from "react";
 import "./Navbar.css";
 import logo from "../../assets/logo.png";
 import profile from "../../assets/profileicon2.png";
+import {Link} from 'react-router-dom';
+
 const Navbar = () => {
   return (
     <nav class="navbar navbar-expand-lg">
@@ -44,19 +46,19 @@ const Navbar = () => {
               </span>
             </li>
             <li class="nav-item mx-4">
-              <a class="nav-link">
+              <Link to="/project/view" class="nav-link">
                 <button className="btn nav-btn-1">All Project</button>
-              </a>
+              </Link>
             </li>
             <li class="nav-item mx-4">
-              <a class="nav-link">
+              <Link to="/project/add" class="nav-link">
                 <button className="btn nav-btn-2">Add Project</button>
-              </a>
+              </Link>
             </li>
             <li class="nav-item mx-4">
-              <a class="nav-link">
+              <Link to="/profile/view" class="nav-link">
                 <img src={profile} height="40px" alt="" />
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

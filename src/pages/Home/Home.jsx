@@ -6,6 +6,7 @@ import DeptTitleCard from '../../components/homepage/DeptTitleCard'
 import Notification from '../../components/homepage/Notification'
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
+import {Link} from 'react-router-dom'
 
 
 
@@ -33,7 +34,9 @@ function Home() {
           <div className="col-lg-8 all-dept-container pt-4 pb-4 px-4">
             <div className="row">
               <div className="col-sm-6 mt-2 ">
+              <Link to="user/1">
                 <DeptTitleCard title='AI And ML' />
+              </Link>
               </div>
               <div className="col-sm-6 mt-2">
                 <DeptTitleCard title='Mechanical' />
@@ -45,8 +48,6 @@ function Home() {
               <div className="col-sm-6  mt-2">
                 <DeptTitleCard title='IT' />
               </div>
-
-
               <div className="col-sm-6  mt-2">
                 <DeptTitleCard title='CSE' />
               </div>
@@ -72,7 +73,7 @@ function Home() {
           <div className="col-lg-4 profile-right ">
             <div className="">
               <div className="col p-card p-3">
-                <div className="row">
+                <Link to="/profile/view" className="row">
                   <div className="col-4 px-0 p-img">
                     <img src={profile} className='p-2' alt="img" height='100%' width='100%' />
                   </div>
@@ -80,7 +81,7 @@ function Home() {
                     <h3>SANJAY S</h3>
                     <p>Web Developer</p>
                   </div>
-                </div>
+                </Link>
                 <div className="row">
                   <div className="skill d-flex justify-content-around">
                     <div className="bg-success skillset px-2 mt-2" >

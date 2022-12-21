@@ -1,6 +1,7 @@
 import React from "react";
 import './DepartmentUsers.css'
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
+import {Link} from 'react-router-dom'
 
 function DepartmentUsers() {
   return (
@@ -8,9 +9,9 @@ function DepartmentUsers() {
       <div className="banner m-2" >
         <div className="row">
           <div className="col-2">
-            <div className=" d-flex m-3">
+            <Link to='/' className=" d-flex m-3">
               <i class="fa-solid fa-arrow-left back-btn"></i>
-            </div>
+            </Link>
           </div>
           <div className="col-10">
             <div className="fs-1 fw-bold">AI AND ML</div>
