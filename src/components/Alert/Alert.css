@@ -1,0 +1,20 @@
+.alert-dark {
+    background: var(--dark-color);
+    color: #fff;
+}
+
+.alert-danger {
+    background: var(--danger-color);
+    color: #fff;
+}
+
+.alert-success {
+    background: var(--success-color);
+    color: #fff;
+}
+
+.alert-white {
+    background: #fff;
+    color: #333;
+    border: #ccc solid 1px;
+}
