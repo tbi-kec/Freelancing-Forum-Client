@@ -4,18 +4,16 @@ import { useDispatch } from 'react-redux'
 import './Login.css'
 import { login } from '../../actions/auth'
 import logo from '../../assets/logo.png'
-
+import { setAlert } from '../../actions/alert'
 const Login = () => {
     const navigate =  useNavigate()
     const dispatch = useDispatch()
-    const [email,setEmail]=useState("")
-    const [password,setPassword]=useState("")
-    const handleSubmit = () =>{
-        if(password.length <6){
-            alert("Password length must be greater than 6")
-            return
-        }
-        dispatch(login({email,password},navigate))
+    const [email,setEmail]=useState("karthikeyanr.20it@kongu.edu")
+    const [password,setPassword]=useState("123456")
+    const handleSubmit = (e) =>{
+        e.preventDefault()
+        dispatch(setAlert("Logging In","info"))
+        dispatch(login({kongu_email:email,password},navigate))
     }
   return (
     <div className='login-container'>

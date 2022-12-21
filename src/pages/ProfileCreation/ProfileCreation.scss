@@ -1,6 +1,6 @@
 .profile-creation-container{
     height: 100vh;
-    overflow-y: hidden;
+  
     overflow-x: hidden;
     width: 100%;
 }
@@ -66,15 +66,24 @@
 
 .profile-creation-container {
     .skills-list{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+       
         .skill-container{
             display:flex;
             justify-content:space-around;
             align-items:center;
             align-content: center;
             background: #81F664;
-            height: 30px;
+            width: fit-content;
+            flex-wrap: wrap;
+            padding:4px 10px ;
+            // height: 30px;
             border-radius: 14px;
             color: #FFF;
+            gap:6px
             //     p{
             // border-radius: 20px;
          
@@ -89,6 +98,25 @@
             background-color:#64CAF6;
         }
     }
+    .domain-list{
+             display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            .domain-card{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                flex-wrap: wrap;
+                width: fit-content;
+                padding: 10px 10px;
+                gap:10px;
+                background-color: var(--main-navyblue);
+                color: var(--main-white);
+                border-radius: 14px;
+                padding: 6px;
+            }
+        }
     form{
         .create-button-container{
             display: flex;

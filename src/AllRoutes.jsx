@@ -14,7 +14,7 @@ const AllRoutes = () => {
       <Route path='/login' element={<Login/>} />
       <Route path='/register' element={<Register/>} />
       <Route path='/profile/create' element={<ProfileCreation/>} />
-      {/* <Route path='/' element={<Home />} /> */}
+      <Route path='/' element={<Home />} />
       <Route path='/profile/view' element={<ProfileView/>} />
       <Route path='/profile/edit' element={<ProfileEdit/>} />
       <Route path='/project/view' element={<ProjectView/>} />

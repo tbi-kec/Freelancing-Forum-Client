@@ -7,7 +7,7 @@ import Notification from '../../components/homepage/Notification'
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
 
-import ProfileCard from "../../components/ProfileCard/ProfileCard";
+
 
 
 function Home() {
