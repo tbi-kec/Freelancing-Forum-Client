@@ -3,8 +3,14 @@ import './ProfileCreation.css'
 import human from '../../assets/human.png'
 import profileTop from '../../assets/profile.png'
 import profile from '../../assets/profileicon.png'
+import { setAlert } from '../../actions/alert'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { updateProfile } from '../../actions/auth'
 
 const ProfileCreation = () => {
+    const navigate=useNavigate()
+    const dispatch=useDispatch()
       const dept = [
       "Civil Engineering",
       "Mechanical Engineering",
@@ -33,21 +39,57 @@ const ProfileCreation = () => {
         "App Developer",
         "Full Stack Developer"
     ]
-    const [skills,setskills]=useState([{name:"js",level:"expert"}])
+    const paymentTypes=[
+        "Free",
+        "Per Month",
+        "Per Project",
+        "Per Day",
+        "Per Hour",
+    ]
+    const [department,setDepartment]=useState("")
+    const [personal_email,setPersonalMail]=useState("")
+    const [skills,setskills]=useState([])
     const [name,setName]=useState("")
     const [level,setLevel]=useState("")
+    const [domain,setDomain]=useState([])
+    const [currentDomain,setCurrentDomain]=useState("")
+    const [description,setDescription]=useState("")
+    const [payment_type,setPaymentType]=useState("")
     const handleSkill = ()=>{
             setskills([...skills,{"name":name,"level":level}])
             setName("")
             setLevel("")
     }   
     const handleDelete =(id)=>{
-        console.log(id);
-        console.log(skills[id]);
         const newSkills = skills.filter((s,idx)=>idx!=id)
-        console.log(newSkills)
         setskills([...newSkills])
     }
+    const handleDomain = ()=>{
+        setDomain([...domain,currentDomain])
+        setCurrentDomain("")
+    }
+
+    const handleDeleteDomain =(id)=>{
+        const newDomain = domain.filter((d,idx)=>idx!=id)
+        setDomain([...newDomain])
+    }
+    const handleSubmit =async(e)=>{
+        const user =await JSON.parse( localStorage.getItem('freelance'))
+        console.log(user)
+        e.preventDefault()
+        if(!skills.length){
+            dispatch(setAlert("Skills can't be empty","warning"))
+            return
+        }
+        if(!domain.length){
+            dispatch(setAlert("Domain's can't be empty","warning"))
+            return
+        }
+        dispatch(setAlert("Creating Profile","info"))
+        dispatch(updateProfile({id:user.user._id,department,personal_email,skills,domain,description,payment_type},navigate))
+
+    }
+
   return (
     <div className='profile-creation-container'>
         <div className="row">
@@ -61,9 +103,9 @@ const ProfileCreation = () => {
                     <img src={profile} alt="profile-image" />
                 </div>
                 <div className="col-6 profile-form">
-                    <form >
+                    <form onSubmit={handleSubmit} >
                         <div className="form-group">
-                            <select name="Department"  placeholder='Department' className="form-select">
+                            <select name="Department" defaultValue={department} onChange={e=>setDepartment(e.target.value)}  placeholder='Department' className="form-select" required>
                                 <option value="" diabled hidden selected>Department</option>
                                 {dept.map(d=>(
                                     <option value={d} key={d}>{d}</option>
@@ -71,14 +113,14 @@ const ProfileCreation = () => {
                             </select>
                         </div>
                         <div className="form-group ">
-                            <input type="email" placeholder='Perosnal Email Id' className='form-control' />
+                            <input type="email" value={personal_email} onChange={e=>setPersonalMail(e.target.value)} placeholder='Perosnal Email Id' className='form-control' required />
                         </div>
                         <div className="card">
                             <div className="card-body">
                                 <hr />
                                 <div className="row skills-list mb-3">
                                     {skills.map((s,idx)=>(
-                                        <div className={` skill-${s.level} col-2 skill-container m-2`} key={idx}>
+                                        <div className={` skill-${s.level}  skill-container m-2`} key={idx}>
                                         <div>
                                             {s.name}
                                         </div>
@@ -105,22 +147,65 @@ const ProfileCreation = () => {
                                         </div>
                                     </div>
                                     <div className="col-1">
-                                        <i className="text-success fa-solid fa-plus" onClick={handleSkill} />
+                                        <i className="text-success fa-solid  fa-plus" onClick={handleSkill} />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="form-group">
-                            <select name="domain"   className="form-select">
+                        {/* <div className="form-group">
+                            <select name="domain" value={domain} onChange={e=>setDomain(e.target.value)} className="form-select">
                                 <option value="" diabled hidden selected>Domain Name</option>
                                 {domains.map((d,idx)=>(
                                     <option key={idx} value={d}>{d}</option>
                                 ))}
                             </select>
+                        </div> */}
+
+                         <div className="card my-3">
+                            <div className="card-body">
+                                <hr />
+                                <div className="row domain-list mb-3">
+                                    {domain.map((d,idx)=>(
+                                       <div key={idx} className=" domain-card m-3">
+                                            <div>
+                                                {d}
+                                            </div>
+                                            <div>
+                                                 <i onClick={()=>handleDeleteDomain(idx)} className="text-danger fa-solid fa-xmark"></i>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="row" style={{display:"flex",alignItems:"center"}}>
+                                    
+                                    <div className="col-10">
+                                            <div className="form-group">
+                                                <select name="domain" value={currentDomain} onChange={e=>setCurrentDomain(e.target.value)} className="form-select">
+                                                    <option value="" diabled hidden selected>Domain Name</option>
+                                                    {domains.map((d,idx)=>(
+                                                        <option key={idx} value={d}>{d}</option>
+                                                    ))}
+                                                </select>
+                                            </div>
+                                    </div>
+                                    <div className="col-2">
+                                        <i className="text-success fa-solid fa-plus " onClick={handleDomain} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div className="form-group">
+                            <select name="payment-types" defaultValue={payment_type} onChange={e=>setPaymentType(e.target.value)}   className="form-select" required>
+                                <option value="" diabled hidden selected>Paymen Type</option>
+                                {paymentTypes.map((d,idx)=>(
+                                    <option key={idx} value={d}>{d}</option>
+                                ))}
+                            </select>
                         </div>
                         <div className="form-group">
-                            <textarea className='form-control' placeholder='Description' cols="10" rows="3">
-                               
+                            <textarea onChange={e=>setDescription(e.target.value)} className='form-control' placeholder='Description' cols="10" rows="3" required>
+                               {description}
                             </textarea>
                         </div>
                         <div className='create-button-container'>
