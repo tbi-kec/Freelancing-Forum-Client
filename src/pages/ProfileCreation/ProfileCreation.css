@@ -63,16 +63,24 @@
     background-color: #EFEFEF;
 }
 
-<<<<<<< HEAD:src/pages/ProfileCreation/ProfileCreation.css
+.profile-creation-container .skills-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
 .profile-creation-container .skills-list .skill-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
     align-content: center;
     background: #81f664;
-    height: 30px;
+    width: fit-content;
+    flex-wrap: wrap;
+    padding: 4px 10px;
     border-radius: 14px;
     color: #fff;
+    gap: 6px;
 }
 .profile-creation-container .skills-list .skill-beginner {
     background: #81f664;
@@ -83,6 +91,25 @@
 .profile-creation-container .skills-list .skill-expert {
     background-color: #64caf6;
 }
+.profile-creation-container .domain-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.profile-creation-container .domain-list .domain-card {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: fit-content;
+    padding: 10px 10px;
+    gap: 10px;
+    background-color: var(--main-navyblue);
+    color: var(--main-white);
+    border-radius: 14px;
+    padding: 6px;
+}
 .profile-creation-container form .create-button-container {
     display: flex;
     justify-content: flex-end;
@@ -92,71 +119,3 @@
     color: var(--main-white);
     width: 120px;
 }
-=======
-.profile-creation-container {
-    .skills-list{
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-       
-        .skill-container{
-            display:flex;
-            justify-content:space-around;
-            align-items:center;
-            align-content: center;
-            background: #81F664;
-            width: fit-content;
-            flex-wrap: wrap;
-            padding:4px 10px ;
-            // height: 30px;
-            border-radius: 14px;
-            color: #FFF;
-            gap:6px
-            //     p{
-            // border-radius: 20px;
-         
-            //     }
-        }
-        .skill-beginner{
-            background: #81F664;
-        }
-        .skill-intermediate{
-            background: #F5E878;
-        }.skill-expert{
-            background-color:#64CAF6;
-        }
-    }
-    .domain-list{
-             display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            align-items: center;
-            .domain-card{
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                flex-wrap: wrap;
-                width: fit-content;
-                padding: 10px 10px;
-                gap:10px;
-                background-color: var(--main-navyblue);
-                color: var(--main-white);
-                border-radius: 14px;
-                padding: 6px;
-            }
-        }
-    form{
-        .create-button-container{
-            display: flex;
-                justify-content: flex-end;
-        .create-button{
-            background-color:var(--main-navyblue);
-            color:var(--main-white);
-        
-            width: 120px;
-        }
-    }
-    }
-}
->>>>>>> 90b117e1fa8b49a8c2674d3faa185f5198305377:src/pages/ProfileCreation/ProfileCreation.scss
