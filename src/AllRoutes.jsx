@@ -8,6 +8,8 @@ import Home from './pages/Home/Home'
 import ProfileView from './pages/ProfileView/ProfileView'
 import ProjectView from './pages/ProjectView/ProjectView'
 import DepartmentUsers from './pages/DepartmentUsers/DepartmentUsers'
+import ProjectAdd from './pages/ProjectAdd/ProjectAdd'
+
 const AllRoutes = () => {
   return (
     <Routes>
@@ -19,7 +21,7 @@ const AllRoutes = () => {
       <Route path='/profile/edit' element={<ProfileEdit/>} />
       <Route path='/project/view' element={<ProjectView/>} />
       <Route path='/user/:id' element={<DepartmentUsers/>} />
-      <Route path='/project/add' element={<DepartmentUsers/>} />
+      <Route path='/project/add' element={<ProjectAdd /> } />
     </Routes>
   )
 }
