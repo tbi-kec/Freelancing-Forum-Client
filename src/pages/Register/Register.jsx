@@ -46,11 +46,13 @@ const Register = () => {
     const handleSubmit = (e)=>{
         
         e.preventDefault()
+        const modal=document.getElementById('modal_button');
         if(otp!=gotp){
             dispatch(setAlert("Otp Not Match","danger",4000))
             return;
         }
         dispatch((setAlert("Otp verified","success",3500)))
+        modal.click();
         dispatch(signup({first_name,last_name,mobile,kongu_email,password},navigate))
     }
     return (
@@ -66,7 +68,8 @@ const Register = () => {
                             </div>
                             <div className="d-grid d-flex gap-2 w-25 mx-auto">
                                 <button  className="btn shadow" data-bs-dismiss="modal" aria-label="Close">Back</button>
-                                <button className="btn shadow  ">SignUp</button>
+                                <button className="btn shadow  " >SignUp</button>
+                                <input id='modal_button' type="button" data-bs-dismiss="modal" aria-label="Close" hidden />
                             </div>
                         </form>
                         <input type='button' id='toggle_model_button' hidden  data-bs-toggle="modal" data-bs-target="#toggle_model" />
