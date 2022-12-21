@@ -4,7 +4,7 @@ import logo from '../../assets/logo.png'
 import human from '../../assets/human.png'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { signup } from '../../actions/auth'
+import { signup,sendOtp } from '../../actions/auth'
 import { Link } from 'react-router-dom'
 import { setAlert } from '../../actions/alert'
 
@@ -17,16 +17,31 @@ const Register = () => {
     const [kongu_email,setEmail]=useState("")
     const [password,setPassword]=useState("")
     const [confirm,setConfirm]=useState("")
-    const handleSubmit = (e)=>{
-        
-        e.preventDefault()
-        if(confirm!=password){
+    const [otp,setOtp]=useState()
+    const [gotp,setGotp]=useState()
+    const handleOtp = (e)=>{
+        e.preventDefault();
+         if(confirm!=password){
             dispatch(setAlert("Password dont match","warning",3000))
             return
         }
         const model = document.getElementById('toggle_model_button')
         model.click();
-        // dispatch(signup({first_name,last_name,mobile,kongu_email,password},navigate))
+        var generated_otp = Math.floor(1000 + Math.random() * 9000);
+        setGotp(generated_otp)
+        dispatch(setAlert("Sending Otp","info",3000))
+        dispatch(sendOtp({otp:generated_otp,kongu_email},navigate))
+    }
+
+    const handleSubmit = (e)=>{
+        
+        e.preventDefault()
+        if(otp!=gotp){
+            dispatch(setAlert("Otp Not Match","danger",4000))
+            return;
+        }
+        dispatch((setAlert("Otp verified","success",3500)))
+        dispatch(signup({first_name,last_name,mobile,kongu_email,password},navigate))
     }
     return (
         <div className='register-container'>
@@ -35,12 +50,12 @@ const Register = () => {
                 <div className="modal-dialog modal-dialog-centered modal-lg">
                     <div className="modal-content text-center">
                         <h3 className='my-3'>Verify OTP</h3>
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <div className="form-group ">
-                                <input type="text" placeholder='Enter the OTP' className='form-control w-50 my-3 mx-auto' required />
+                                <input type="tel" value={otp} onChange={e=>setOtp(e.target.value)} placeholder='Enter the OTP' className='form-control w-50 my-3 mx-auto' required />
                             </div>
                             <div className="d-grid d-flex gap-2 w-25 mx-auto">
-                                <button className="btn shadow  " data-bs-dismiss="modal" aria-label="Close">Back</button>
+                                <button  className="btn shadow" data-bs-dismiss="modal" aria-label="Close">Back</button>
                                 <button className="btn shadow  ">SignUp</button>
                             </div>
                         </form>
@@ -57,7 +72,7 @@ const Register = () => {
                         <div className='register-back-btn'>
                             <Link to='/login'>
                                 <div className=" d-flex m-3">
-                                    <i class="fa-solid fa-arrow-left back-btn"></i>
+                                    <i className="fa-solid fa-arrow-left back-btn"></i>
                                 </div>
                             </Link>
                         </div>
@@ -67,7 +82,7 @@ const Register = () => {
                             </div>
                             <p className='header my-2'>Login in to dashboard </p>
                         </div>
-                        <form className='row g-2' onSubmit={handleSubmit}>
+                        <form className='row g-2' onSubmit={handleOtp}>
                             <div className="form-group col-md-12 col-lg-6">
                                 <input type="text" placeholder='First Name' className='form-control' value={first_name} onChange={e => setFirstName(e.target.value)} required />
                             </div>
@@ -88,7 +103,7 @@ const Register = () => {
                             </div>
 
                             <div className="d-grid gap-2 ">
-                                <button className="btn shadow ">SignUp</button>
+                                <button className="btn shadow ">Send OTP</button>
                             </div>
                         </form>
                     </div>

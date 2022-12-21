@@ -33,3 +33,12 @@ export const updateProfile = (profileData,navigate) => async(dispatch)=>{
         dispatch(setAlert(error.response.data,'danger'))
     }
 }
+
+export const sendOtp = (otpData,navigate)=>async(dispatch)=>{
+    try{
+        const {data}=await api.sendOtp(otpData);
+        dispatch(setAlert("OTP send successfully","success"))
+    }catch(err){
+        dispatch(setAlert(err.response.data,"danger"))
+    }
+}
