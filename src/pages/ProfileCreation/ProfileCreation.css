@@ -1,6 +1,5 @@
 .profile-creation-container{
     height: 100vh;
-    overflow-y: hidden;
     overflow-x: hidden;
     width: 100%;
 }
@@ -15,8 +14,8 @@
     object-fit: cover;
 }
 .profile-creation-container > .profile-form-container > .row > .image-container{
-    height: 141px;
-    width: 138px;
+    height: 138px;
+    width: 150px;
     border-radius: 50%;
 }
 .profile-creation-container>.profile-form-container>.row>.image-container >img {
@@ -64,41 +63,59 @@
     background-color: #EFEFEF;
 }
 
-.profile-creation-container {
-    .skills-list{
-        .skill-container{
-            display:flex;
-            justify-content:space-around;
-            align-items:center;
-            align-content: center;
-            background: #81F664;
-            height: 30px;
-            border-radius: 14px;
-            color: #FFF;
-            //     p{
-            // border-radius: 20px;
-         
-            //     }
-        }
-        .skill-beginner{
-            background: #81F664;
-        }
-        .skill-intermediate{
-            background: #F5E878;
-        }.skill-expert{
-            background-color:#64CAF6;
-        }
-    }
-    form{
-        .create-button-container{
-            display: flex;
-                justify-content: flex-end;
-        .create-button{
-            background-color:var(--main-navyblue);
-            color:var(--main-white);
-        
-            width: 120px;
-        }
-    }
-    }
+.profile-creation-container .skills-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.profile-creation-container .skills-list .skill-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    background: #81f664;
+    width: fit-content;
+    flex-wrap: wrap;
+    padding: 4px 10px;
+    border-radius: 14px;
+    color: #fff;
+    gap: 6px;
+}
+.profile-creation-container .skills-list .skill-beginner {
+    background: #81f664;
+}
+.profile-creation-container .skills-list .skill-intermediate {
+    background: #f5e878;
+}
+.profile-creation-container .skills-list .skill-expert {
+    background-color: #64caf6;
+}
+.profile-creation-container .domain-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.profile-creation-container .domain-list .domain-card {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: fit-content;
+    padding: 10px 10px;
+    gap: 10px;
+    background-color: var(--main-navyblue);
+    color: var(--main-white);
+    border-radius: 14px;
+    padding: 6px;
+}
+.profile-creation-container form .create-button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+.profile-creation-container form .create-button-container .create-button {
+    background-color: var(--main-navyblue);
+    color: var(--main-white);
+    width: 120px;
 }
