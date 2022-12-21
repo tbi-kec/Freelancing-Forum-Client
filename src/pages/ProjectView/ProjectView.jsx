@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 
 function ProjectView() {
@@ -6,9 +7,11 @@ function ProjectView() {
     <div>
       <div className="row d-flex align-items-center">
         <div className="col-md-1">
+        <Link to='/'>
           <div className=" d-flex m-3">
             <i class="fa-solid fa-arrow-left back-btn"></i>
           </div>
+        </Link>
         </div>
         <div className="col-md-4 p-2 px-5">
           <div class="input-group">

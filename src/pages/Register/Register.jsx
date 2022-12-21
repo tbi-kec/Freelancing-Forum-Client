@@ -5,6 +5,7 @@ import human from '../../assets/human.png'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { signup } from '../../actions/auth'
+import {Link} from 'react-router-dom'
 const Register = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -27,6 +28,13 @@ const Register = () => {
         <div className="container">
             <div className="row p-5">
                 <div className="col-8 card-container shadow ">
+                <div className='register-back-btn'>
+                    <Link to='/login'>
+                    <div className=" d-flex m-3">
+                        <i class="fa-solid fa-arrow-left back-btn"></i>
+                    </div>
+                    </Link>
+                </div>
                         <div className="header-container">
                         <div className="login-logo-container shadow p-2">
                             <img src={logo} alt="" />
