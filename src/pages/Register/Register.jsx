@@ -5,19 +5,21 @@ import human from '../../assets/human.png'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { signup } from '../../actions/auth'
+import { setAlert } from '../../actions/alert'
+
 const Register = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const [first_name,setFirstName]=useState('')
-    const [last_name,setLastName]=useState("")
-    const [mobile,setMobile]=useState()
-    const [kongu_email,setEmail]=useState("")
-    const [password,setPassword]=useState("")
-    const [confirm,setConfirm]=useState("")
+    const [first_name,setFirstName]=useState('a')
+    const [last_name,setLastName]=useState("a")
+    const [mobile,setMobile]=useState(888)
+    const [kongu_email,setEmail]=useState("k@gmail.com")
+    const [password,setPassword]=useState("11")
+    const [confirm,setConfirm]=useState("111")
     const handleSubmit = (e)=>{
         e.preventDefault()
         if(confirm!=password){
-            alert("Password doesn't match")
+            dispatch(setAlert("Password dont match","danger",3000))
             return
         }
         dispatch(signup({first_name,last_name,mobile,kongu_email,password},navigate))

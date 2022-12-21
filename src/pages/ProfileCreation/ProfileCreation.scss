@@ -64,3 +64,41 @@
     background-color: #EFEFEF;
 }
 
+.profile-creation-container {
+    .skills-list{
+        .skill-container{
+            display:flex;
+            justify-content:space-around;
+            align-items:center;
+            align-content: center;
+            background: #81F664;
+            height: 30px;
+            border-radius: 14px;
+            color: #FFF;
+            //     p{
+            // border-radius: 20px;
+         
+            //     }
+        }
+        .skill-beginner{
+            background: #81F664;
+        }
+        .skill-intermediate{
+            background: #F5E878;
+        }.skill-expert{
+            background-color:#64CAF6;
+        }
+    }
+    form{
+        .create-button-container{
+            display: flex;
+                justify-content: flex-end;
+        .create-button{
+            background-color:var(--main-navyblue);
+            color:var(--main-white);
+        
+            width: 120px;
+        }
+    }
+    }
+}
