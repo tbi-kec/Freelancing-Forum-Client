@@ -84,21 +84,21 @@ function Home() {
                 </Link>
                 <div className="row">
                   <div className="skill d-flex justify-content-around">
-                    <div className="bg-success skillset px-2 mt-2" >
-                      <p>HTML</p>
-                    </div>
-                    <div className="bg-success skillset px-2 mt-2" >
-                      <p>CSS</p>
-                    </div>
-                    <div className="bg-success skillset px-2 mt-2" >
-                      <p>JavaScript</p>
-                    </div>
-                    <div className="bg-success skillset px-2 mt-2" >
-                      <p>JavaScript</p>
-                    </div>
-                    <div className="bg-success skillset px-2 mt-2" >
-                      <p>JavaScript</p>
-                    </div>
+                  <div className={` skillset px-2  mt-2 skill-${'beginner'}`} >
+                  <p>HTML</p>
+                </div>
+                <div className={`skillset px-2 mt-2  skill-intermediate`} >
+                  <p>CSS</p>
+                </div>
+                <div className={`skillset px-2  mt-2  skill-${'intermediate'}`} >
+                  <p>JavaScript</p>
+                </div>
+                <div className={`skillset px-2  mt-2  skill-${'beginner'}`} >
+                  <p>JavaScript</p>
+                </div>
+                <div className={`skillset px-2  mt-2  skill-${'expert'}`} >
+                  <p>JavaScript</p>
+                </div>
                   </div>
                 </div>
 
