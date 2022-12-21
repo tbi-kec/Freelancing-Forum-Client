@@ -12,9 +12,12 @@
 }
 .notification-container >.row>.col>.d-flex>.success{
   background-color: var(--main-green);
+  color: white;
 }
 .notification-container >.row>.col>.d-flex>.danger{
     background-color: var(--main-red);
+  color: white;
+
   }
 .notification-container >.row>.col-8>h6{
     font-size: medium;
