@@ -13,7 +13,7 @@ function DepartmentUsers() {
             </div>
           </div>
           <div className="col-10">
-            <div className="fs-1">AI AND ML</div>
+            <div className="fs-1 fw-bold">AI AND ML</div>
             <div className="d-flex justify-content-between mt-4 me-5">
             <div>
               Total:60
