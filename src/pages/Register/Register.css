@@ -52,6 +52,11 @@
     background-color: var(--main-navyblue);
     color: var(--main-white);
 }
+form >.d-grid>.btn{
+    margin: 20px 0;
+    background-color: var(--main-navyblue);
+    color: var(--main-white);
+}
 
 .register-container > .image-container{
     position: fixed;
