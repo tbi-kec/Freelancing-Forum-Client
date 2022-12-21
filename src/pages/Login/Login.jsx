@@ -12,7 +12,7 @@ const Login = () => {
     const [password,setPassword]=useState("123456")
     const handleSubmit = (e) =>{
         e.preventDefault()
-        dispatch(setAlert("Logging In","info"))
+        dispatch(setAlert("Logging In","info",3000))
         dispatch(login({kongu_email:email,password},navigate))
     }
   return (
