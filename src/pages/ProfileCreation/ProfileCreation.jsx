@@ -1,8 +1,9 @@
-import React from 'react'
-import './ProfileCreation.css'
+import React,{useState} from 'react'
+import './ProfileCreation.scss'
 import human from '../../assets/human.png'
 import profileTop from '../../assets/profile.png'
 import profile from '../../assets/profileicon.png'
+
 const ProfileCreation = () => {
       const dept = [
       "Civil Engineering",
@@ -27,6 +28,26 @@ const ProfileCreation = () => {
       "Chemistry",
       "English"
     ];
+    const domains = [
+        "Web Developer",
+        "App Developer",
+        "Full Stack Developer"
+    ]
+    const [skills,setskills]=useState([{name:"js",level:"expert"}])
+    const [name,setName]=useState("")
+    const [level,setLevel]=useState("")
+    const handleSkill = ()=>{
+            setskills([...skills,{"name":name,"level":level}])
+            setName("")
+            setLevel("")
+    }   
+    const handleDelete =(id)=>{
+        console.log(id);
+        console.log(skills[id]);
+        const newSkills = skills.filter((s,idx)=>idx!=id)
+        console.log(newSkills)
+        setskills([...newSkills])
+    }
   return (
     <div className='profile-creation-container'>
         <div className="row">
@@ -55,21 +76,36 @@ const ProfileCreation = () => {
                         <div className="card">
                             <div className="card-body">
                                 <hr />
-                                <div className="row">
-                                    <div className="col-8">
+                                <div className="row skills-list mb-3">
+                                    {skills.map((s,idx)=>(
+                                        <div className={` skill-${s.level} col-2 skill-container m-2`} key={idx}>
+                                        <div>
+                                            {s.name}
+                                        </div>
+                                        <div>
+                                            <i onClick={()=>handleDelete(idx)} className="text-danger fa-solid fa-xmark"></i>
+                                        </div>    
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="row" style={{display:"flex",alignItems:"center"}}>
+                                    <div className="col-6">
                                              <div className="form-group ">
-                                                <input type="text" placeholder='Skill' className='form-control' />
+                                                <input type="text" value={name} onChange={e=>setName(e.target.value)} placeholder='Skill' className='form-control' />
                                             </div>
                                     </div>
-                                    <div className="col-4">
+                                    <div className="col-5">
                                          <div className="form-group">
-                                            <select name="domain"   className="form-select">
+                                            <select name="domain" defaultValue={level}  className="form-select" onChange={e=>setLevel(e.target.value)}>
                                                 <option value="" diabled hidden selected>Level</option>
-                                                <option value="beginner" className='bg-success form-option' >Beginner</option>
-                                                <option value="intermediate" className='bg-warning py-3 form-option' >Intermediate</option>
-                                                <option value="expert" className='bg-primary py-3 form-option' >Expert</option>
+                                                <option value="beginner" style={{background:"#81F664"}} className='form-option' >Beginner</option>
+                                                <option value="intermediate" style={{background:"#F5E878"}} className=' py-3 form-option' >Intermediate</option>
+                                                <option value="expert" style={{background:"#64CAF6"}} className=' py-3 form-option' >Expert</option>
                                             </select>
                                         </div>
+                                    </div>
+                                    <div className="col-1">
+                                        <i className="text-success fa-solid fa-plus" onClick={handleSkill} />
                                     </div>
                                 </div>
                             </div>
@@ -77,6 +113,9 @@ const ProfileCreation = () => {
                         <div className="form-group">
                             <select name="domain"   className="form-select">
                                 <option value="" diabled hidden selected>Domain Name</option>
+                                {domains.map((d,idx)=>(
+                                    <option key={idx} value={d}>{d}</option>
+                                ))}
                             </select>
                         </div>
                         <div className="form-group">
@@ -84,12 +123,15 @@ const ProfileCreation = () => {
                                
                             </textarea>
                         </div>
-
+                        <div className='create-button-container'>
+                             <button className='create-button btn btn-md my-3 '>Create</button>
+                        </div>
                     </form>
                 </div>
                 <div className="col-3">
 
                 </div>
+
             </div>
         </div>
     </div>

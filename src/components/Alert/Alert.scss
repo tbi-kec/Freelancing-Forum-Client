@@ -1,3 +1,10 @@
+.alert-wrapper{
+    display: flex;
+    z-index: 10;
+    position: absolute;
+    top:1rem;
+    right:1rem;
+
 .alert-dark {
     background: var(--dark-color);
     color: #fff;
@@ -17,4 +24,5 @@
     background: #fff;
     color: #333;
     border: #ccc solid 1px;
+}
 }
