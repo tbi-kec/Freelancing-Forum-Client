@@ -6,6 +6,7 @@ import ProfileCreation from './pages/ProfileCreation/ProfileCreation'
 import ProfileEdit from './pages/ProfileEdit/ProfileEdit'
 import Home from './pages/Home/Home'
 import ProfileView from './pages/ProfileView/ProfileView'
+import ProjectView from './pages/ProjectView/ProjectView'
 import DepartmentUsers from './pages/DepartmentUsers/DepartmentUsers'
 const AllRoutes = () => {
   return (
@@ -16,7 +17,7 @@ const AllRoutes = () => {
       <Route path='/' element={<Home />} />
       <Route path='/profile/view' element={<ProfileView/>} />
       <Route path='/profile/edit' element={<ProfileEdit/>} />
-      {/* <Route path='/projects' element={<ProjectView/>} /> */}
+      <Route path='/project/view' element={<ProjectView/>} />
       <Route path='/user/:id' element={<DepartmentUsers/>} />
     </Routes>
   )

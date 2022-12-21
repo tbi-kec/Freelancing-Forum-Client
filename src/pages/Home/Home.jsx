@@ -3,10 +3,9 @@ import Navbar from "../../components/Navbar/Navbar";
 import './Home.css'
 import profile from '../../assets/profileicon2.png'
 import DeptTitleCard from '../../components/homepage/DeptTitleCard'
-
 import Notification from '../../components/homepage/Notification'
-
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
+import ProfileCard from "../../components/ProfileCard/ProfileCard";
 
 
 
@@ -146,8 +145,8 @@ function Home() {
         <div className="card shadow my-4">
           <div className="card-body">
             <div className="d-flex fs-6 fw-bold">
-              <div className="mx-4 active-toggle" id="project" onClick={handleToggle}>Projects</div>
-              <div className="mx-4" id="talent" onClick={handleToggle}>Talents</div>
+              <div className="mx-4 fs-5 active-toggle" id="project" onClick={handleToggle}>Projects</div>
+              <div className="mx-4 fs-5" id="talent" onClick={handleToggle}>Talents</div>
             </div>
           </div>
         </div>
