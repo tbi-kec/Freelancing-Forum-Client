@@ -30,6 +30,7 @@ const Register = () => {
     }
     return (
         <div className='register-container'>
+            {/* modal */}
             <div className="modal fade " data-bs-backdrop="static" id="toggle_model" tabindex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
                 <div className="modal-dialog modal-dialog-centered modal-lg">
                     <div className="modal-content text-center">
@@ -48,6 +49,8 @@ const Register = () => {
                     </div>
                 </div>
             </div>
+
+            {/* content */}
             <div className="container">
                 <div className="row p-5">
                     <div className="col-8 card-container shadow ">
