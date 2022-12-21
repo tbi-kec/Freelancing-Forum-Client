@@ -90,3 +90,14 @@
     border-bottom: solid var(--main-blue) 5px;
     color: var(--main-blue);
 }
+
+
+.profile-right div .col .row .skill .skill-beginner {
+    background: #81f664;
+}
+.profile-right div .col .row .skill .skill-intermediate {
+    background: #f5e878;
+}
+.profile-right div .col .row .skill .skill-expert {
+    background-color: #64caf6;
+}

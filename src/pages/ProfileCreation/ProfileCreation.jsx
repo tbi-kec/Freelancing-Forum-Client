@@ -60,6 +60,7 @@ const ProfileCreation = () => {
             setName("")
             setLevel("")
     }   
+
     const handleDelete =(id)=>{
         const newSkills = skills.filter((s,idx)=>idx!=id)
         setskills([...newSkills])
