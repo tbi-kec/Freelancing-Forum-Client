@@ -11,7 +11,18 @@ const Login = () => {
     const [email,setEmail]=useState("karthikeyanr.20it@kongu.edu")
     const [password,setPassword]=useState("123456")
     const handleSubmit = (e) =>{
-        e.preventDefault()
+         e.preventDefault()
+        let femail_pattern=/^([a-z]+)\.([a-z]{2,5})\@([a-z]+)\.([a-z]{2,5})$/;
+        let email_pattern=/^([a-z]+)\.([0-9]{2})([a-z]{2,5})\@([a-z]+)\.([a-z]{2,5})$/;
+        if((!femail_pattern.test(email) && !email.endsWith("kongu.edu")) ||(!email_pattern.test(email) && !email.endsWith("kongu.edu")) ){
+            dispatch(setAlert("Invalid Email","warning",2500))
+            return
+        }
+        if(password.length<6){
+            dispatch(setAlert("Password length must be greater than 6","warning",2500))
+            return
+        }
+       
         dispatch(setAlert("Logging In","info",3000))
         dispatch(login({kongu_email:email,password},navigate))
     }
