@@ -22,3 +22,15 @@
     background-color: var(--main-navyblue);
     color: white;
 }
+
+.project-add-create-btn:hover{
+    background-color: #16226dcb;
+    color: white;
+}
+
+.skill-batch{
+    background-color: var(--main-green);
+    color: white;
+    width:fit-content ;
+    border-radius: 10px;
+}

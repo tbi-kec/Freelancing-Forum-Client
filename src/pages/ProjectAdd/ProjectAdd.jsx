@@ -58,9 +58,9 @@ function ProjectAdd() {
           />
           <div className="card project-add-form-input">
             <div className="card-body">
-              <div className="row mb-3">
+              <div className="row mb-3 d-flex">
                 {skill.map((d, idx) => (
-                  <div key={idx} className="d-flex m-3">
+                  <div key={idx} className="d-flex m-3 skill-batch">
                     <div className="mx-2">{d}</div>
                     <div>
                       <i
