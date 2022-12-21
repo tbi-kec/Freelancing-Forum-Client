@@ -1,0 +1,13 @@
+.modal-dialog>.modal-content>.row>.col-8>h3 {
+    color: var(--main-blue);
+}
+.modal-dialog>.modal-content>.row>.col-8>div{
+    color: grey;
+} 
+.modal-dialog>.modal-content>.px-4>h5>span{
+    color: var(--main-navyblue);
+    font-weight: bolder;
+}
+.modal-dialog>.modal-content>.px-4>h5{
+    font-weight: 600;
+}
