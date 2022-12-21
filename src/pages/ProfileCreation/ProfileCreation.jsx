@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import './ProfileCreation.scss'
+import './ProfileCreation.css'
 import human from '../../assets/human.png'
 import profileTop from '../../assets/profile.png'
 import profile from '../../assets/profileicon.png'
