@@ -1,0 +1,194 @@
+.profile-card{
+    width: 75%;
+    position: relative;
+    top: -5vh ;
+    display: flex;
+    flex-direction: column;
+    justify-content:start;
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+    margin: auto !important;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.25);   
+}
+
+h2,h3,h4{
+    margin: 0;
+}
+
+.profile-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+}
+
+.profile-col{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-img{
+    width: 150px;
+    height: 150px;
+}
+
+.profile-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 90%;
+}
+
+.profile-detail{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.student-assured{
+    width: 40px;
+    height: 40px;
+
+}
+
+.student-assured img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 90%;
+}
+
+.profile-head .options{
+    display: flex;
+    gap: 10px;
+    justify-content: end;
+}
+
+.profile-head .options .edit {
+    font-size: 25px;
+}
+.student-role h3{
+    /* font-family: 'Inter'; */
+    font-style: normal;
+    font-weight: 700;
+    font-size: 3    0px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: rgba(0, 0, 0, 0.58);
+}
+
+.student-name h2{
+    /* font-family: 'Inter'; */
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    text-align: center;
+}
+
+.profile-dept{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px; 
+    flex-direction: column;
+}
+
+.profile-dept .rating{
+    width: fit-content;
+    height: fit-content;
+}
+
+.profile-dept .rating img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover ;
+}
+
+.student-dept{
+    display: flex;
+    justify-content: start;
+    font-size: 20px;
+    margin: 20px auto;
+
+}
+
+.student-about{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.student-about h2{
+    color: rgba(22, 51, 109, 0.88);
+    font-size: 28px;
+}
+
+.student-about p{
+    text-align: justify;
+}
+
+.student-name{
+    color: rgba(22, 51, 109, 0.88);
+}
+
+.student-dept{
+    color: rgba(22, 51, 109, 0.88);
+}
+
+.fa-star{
+    color: #f8a114;
+    font-size: 25px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .student-card{
+        top: -15vh;
+        width: 90% !important;
+        padding: 20px !important;
+    }   
+
+    .profile-img{
+        width: 70px; 
+        height: 70px;
+    }
+
+    .profile-dept .rating{
+        width: fit-content;
+        height: fit-content;
+    }
+
+    .student-name h2{
+        font-size: 25px;
+        font-weight: 800;
+    }
+
+    .student-dept{
+        font-size: 20px;
+    }
+
+    .student-role h3{
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .student-assured{
+        width: 20px;
+        height: 20px;
+    }
+
+    .fa-star{
+        color: #f8a114;
+        font-size: 18px;
+    }
+
+    .profile-dept,.profile-detail{
+        gap: 10px;
+    }
+}

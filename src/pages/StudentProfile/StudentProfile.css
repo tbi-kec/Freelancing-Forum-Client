@@ -1,0 +1,160 @@
+.student-card{
+    width: 75%;
+    position: relative;
+    top: -175px ;
+    display: flex;
+    flex-direction: column;
+    justify-content:start;
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+    margin: auto !important;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.25);       
+}
+
+.back{
+    position: absolute;
+    top:1.5vh;
+    left: 3vw;
+    background-color: #324B7F;
+    padding: 4px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: fixed;
+}
+
+.back a i{
+    color: white;
+    font-size: 22px;
+}
+
+.student-profile{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.domain{
+    display: flex;
+    gap: 10px;
+    justify-content:start;
+    align-items: center;
+
+}
+
+.domain span{
+    color:#00000094;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.inner-card-head h2{
+    color: #007FED;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+
+.inner-card-head {
+    display: flex;
+    justify-content:space-between;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.domain .fa-circle{
+    font-size: 7px;
+    color:#007FED;
+}
+
+.posted-by{
+    color: #007FED;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.student-card .title h2,.student-skills h2{
+    font-weight: 700;
+}
+
+.inner-card{
+    box-shadow: inset 0px 0px 22px rgba(0, 0, 0, 0.122);
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: start;
+    gap: 10px;
+    width: 100%;
+}
+
+.work-history,.student-projects,.project-history{
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+}
+
+.work-history .title h2,.student-projects .title h2,.project-history .title h2{
+    color: rgba(22, 51, 109, 0.88);
+    font-size: 28px;
+    margin: 20px auto;
+}
+
+
+.card-group{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-card-head .date{
+    color: #00000091;
+    font-size: small;
+}
+
+.pipe{
+    margin: auto 4px;
+    font-size: 15px;
+    color: #007FED;
+}
+
+.project-overview p{
+    text-align: justify;
+}
+
+.add-project{
+    display: flex;
+    flex-direction: row !important;
+    color: #007FED;
+    font-weight: 800;
+    font-size: 22px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.fa-arrow-left{
+    color:#007FED;
+}
+
+@media only screen and (max-width: 600px){
+        .domain span{
+            font-size: 4.5vw;
+        }
+        .inner-card-head h2{
+            font-size: 4.5vw;
+            font-weight: 600;
+        }
+        .student-card{
+            top:-125px
+        }
+
+}

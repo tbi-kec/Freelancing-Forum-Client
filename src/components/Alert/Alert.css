@@ -1,0 +1,30 @@
+.alert-wrapper {
+    display: flex;
+    z-index: 10;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+.alert-wrapper .alert-dark {
+    top:1rem;
+    right:2rem;
+    flex-direction: column-reverse;
+}
+
+.alert-dark {
+    background: var(--dark-color);
+    color: #fff;
+}
+.alert-wrapper .alert-danger {
+    background: var(--danger-color);
+    color: #fff;
+}
+.alert-wrapper .alert-success {
+    background: var(--success-color);
+    color: #fff;
+}
+.alert-wrapper .alert-white {
+    background: #fff;
+    color: #333;
+    border: #ccc solid 1px;
+}

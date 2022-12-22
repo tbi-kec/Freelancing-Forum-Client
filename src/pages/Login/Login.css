@@ -1,0 +1,95 @@
+.login-container{
+    height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    background:var(--main-blue) ;
+    margin: auto;
+    background: linear-gradient(90deg,var(--main-blue) 0%, var(--main-blue) 50%, var(--main-lightwhite) 50%, var(--main-lightwhite) 100%);
+}
+
+.login-left-side-container{
+    background-color: #94AAF9;
+    height: 80vh;
+    margin: auto;
+    border-radius: 20px 0 0 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-left-side-container > h1,p{
+    color: var(--main-white);
+    text-align: center;
+}
+.login-left-side-container > .btn{
+    margin-top: 20px;
+    border-radius: 10px;
+    width: 30%;
+    background-color: var(--main-navyblue);
+    color: var(--main-white);
+}
+
+.login-right-side-container{
+    height: 80vh;
+    margin: auto;
+    border-radius: 0 20px 20px 0;
+    
+}
+.login-right-side-container > .header-container{
+    margin-top:40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding:0 20px;
+}
+
+.login-right-side-container > .login-logo-container{
+    width: 60px;
+    height: 62px;
+    
+}
+
+.login-right-side-container > .login-logo-container > img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.login-right-side-container >.header-container > .header{
+    color: black;
+    font-size: 24px;
+}
+.login-right-side-container>form>.form-group{
+    margin-bottom: 28px;
+}
+
+.login-right-side-container > form > .form-group > input{
+    display: block;
+    width: 90%;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+}
+.login-right-side-container>form>.form-group>label {
+   color: var(--main-grey);
+   font-size: 18px;
+}
+
+.login-right-side-container > form > .form-group > input::placeholder{
+   color:var(--main-grey);
+   padding: 20px;
+   font-size: 16px;
+}
+.login-right-side-container>form>.forget {
+  color: #173ABA;
+  font-weight: 700;
+}
+.login-right-side-container>form>.d-grid > .btn{
+        margin-top: 20px;
+        border-radius: 10px;
+       
+        background-color: var(--main-navyblue);
+        color: var(--main-white);
+}

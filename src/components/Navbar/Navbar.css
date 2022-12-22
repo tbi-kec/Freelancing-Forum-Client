@@ -1,0 +1,38 @@
+.navbar{
+    border-radius: 0 0 15px 15px;
+    background-color: var(--main-blue);
+}
+
+.search-btn{
+    background-color: var(--main-navyblue);
+}
+
+.nav-btn-1{
+    background-color: var(--main-yellow);
+    font-weight: 700;
+    border-radius: 20px;
+}
+
+.nav-btn-2{
+    background-color: var(--main-green);
+    color: var(--main-white);
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.search-bar{
+    border-radius: 15px;
+}
+
+.search-btn:hover{
+    background-color: #16226da3;
+}
+
+.nav-btn-2:hover{
+    background-color: #03a000ae;
+    color: white;
+}
+
+.nav-btn-1:hover{
+    background-color: #f5e978d7;
+}
