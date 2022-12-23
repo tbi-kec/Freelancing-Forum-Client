@@ -9,6 +9,8 @@ import ProfileView from './pages/ProfileView/ProfileView'
 import ProjectView from './pages/ProjectView/ProjectView'
 import DepartmentUsers from './pages/DepartmentUsers/DepartmentUsers'
 import ProjectAdd from './pages/ProjectAdd/ProjectAdd'
+import PreLoader from './components/PreLoader/PreLoader'
+import StudentProfile from './pages/StudentProfile/StudentProfile'
 
 const AllRoutes = () => {
   return (
@@ -17,11 +19,12 @@ const AllRoutes = () => {
       <Route path='/login' element={<Login/>} />
       <Route path='/register' element={<Register/>} />
       <Route path='/profile/create' element={<ProfileCreation/>} />
-      <Route path='/profile/view' element={<ProfileView/>} />
+      <Route path='/profile/view' element={<StudentProfile/>} />
       <Route path='/profile/edit' element={<ProfileEdit/>} />
       <Route path='/project/view' element={<ProjectView/>} />
       <Route path='/user/:id' element={<DepartmentUsers/>} />
       <Route path='/project/add' element={<ProjectAdd /> } />
+      <Route path='/preloader' element={<PreLoader /> } />
     </Routes>
   )
 }

@@ -1,0 +1,48 @@
+.add-projects
+{
+    margin: auto 30px;
+}
+
+.project-add-header{
+    font-size: 35px;
+    color: var(--main-blue);
+    font-weight: 700;
+}
+
+
+.project-add-form-input{
+    background-color: var(--main-lightwhite);
+}
+
+.project-add-create-btn{
+    background-color: var(--main-navyblue);
+    color: white;
+}
+
+.project-add-form input::placeholder,.project-add-form textarea::placeholder,.option-color,option{
+    color: #16336D;
+    font-weight: 600;
+}
+
+.tech-add{
+    justify-content: start;
+}
+
+.width-tech{
+    width: fit-content;
+}
+
+.tech{
+    background-color: #37FB06;
+    border-radius: 20px;
+}
+
+.project-add-submit-btn{
+    background-color: #37FB06;
+}
+
+.text-end{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
