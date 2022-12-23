@@ -46,7 +46,7 @@ export default function ProfileBio() {
         </div>
         <div className="student-about">
             <h2>About </h2>
-            <p>I am a freelance software engineer. I have more than 8 years of experience in programming and designing UI. I worked on front-end and as well as back-end of many high traffic websites and apps.</p>
+            <div>I am a freelance software engineer. I have more than 8 years of experience in programming and designing UI. I worked on front-end and as well as back-end of many high traffic websites and apps.</div>
 
         </div>
         </div>
