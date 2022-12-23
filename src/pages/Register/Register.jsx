@@ -82,9 +82,9 @@ const Register = () => {
             <div className="container">
                 <div className="row p-5">
                     <div className="col-8 card-container shadow ">
-                        <div className='register-back-btn'>
-                            <Link to='/login'>
-                                <div className=" d-flex m-3">
+                        <div className='register-back-btn link'>
+                            <Link to='/login' className='link'>
+                                <div className=" d-flex m-3 text-light">
                                     <i className="fa-solid fa-arrow-left back-btn"></i>
                                 </div>
                             </Link>

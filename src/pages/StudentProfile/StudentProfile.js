@@ -31,9 +31,9 @@ export default function StudentProfile() {
   return (
     <div className='student-profile'>
         <div className="back">
-        <a href="">
+        <Link to="/">
             <i class="fa-sharp fa-solid fa-arrow-left"></i>
-        </a>
+        </Link>
         </div>
         <Banner/>
         
