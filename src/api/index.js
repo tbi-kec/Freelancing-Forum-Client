@@ -10,3 +10,9 @@ export const signup = (authData) => API.post('/user/signup',authData)
 export const createProfile = (profileData) => API.post('/user/update/profile',profileData)
  
 export const sendOtp =(otpData)=>API.post('/user/otp',otpData)
+
+
+//project-create
+export const newProject = (projectData)=>API.post('/project',projectData)
+//getAllproject
+export const getAllProject =()=>API.get('/project/all')

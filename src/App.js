@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import AllRoutes from './AllRoutes'
 import {BrowserRouter as Router} from 'react-router-dom'
 import Alert from './components/Alert/Alert'
 import './App.css'
+import { setCurrentUser } from './actions/currentUser'
+import { useDispatch } from 'react-redux'
+import { getAllProjects } from './actions/project'
 const App = () => {
+  const dispatch = useDispatch();
+  const getData = async()=>{
+    const token = await localStorage.getItem("freelance");
+    if(token){
+      dispatch(setCurrentUser(JSON.parse(token)))
+    }
+  }
+  useEffect(()=>{
+    getData();
+    dispatch(getAllProjects())
+  },[])
   return (
     <div className='app-container'>
       <Router>

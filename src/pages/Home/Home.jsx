@@ -7,13 +7,18 @@ import Notification from '../../components/homepage/Notification'
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import {Link} from 'react-router-dom'
-
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 
 
 function Home() {
   const [navToggler, setNavToggler]=useState(true)
-
+  const project = useSelector((state)=>(state.projectReducer))
+  // const [projects,setProjects]=useState()
+  // useEffect(()=>{
+  //     setProjects(project?.data)
+  // },[project])
   const handleToggle = (e) =>{
     e.preventDefault()
     if(e.target.id==='project'){
@@ -26,6 +31,7 @@ function Home() {
       document.getElementById('project').classList.remove('active-toggle')
     }
   }
+
   return (
     <div>
       <Navbar />
@@ -154,8 +160,9 @@ function Home() {
         {/* content  */}
         {navToggler ?
         <div>
-         <ProjectCard />
-         <ProjectCard />
+         {project.data?.map(p=>(
+          <ProjectCard project={p} key={p._id}/>
+         ))}
         </div>  :
         <div className="my-5">
         <ProfileCard />

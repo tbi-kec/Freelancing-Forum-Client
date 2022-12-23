@@ -1,5 +1,6 @@
 import * as api from '../api'
 import { setAlert } from './alert'
+
 export const login  = (authData,navigate) => async(dispatch) =>{
     try {
         const {data}=await api.login(authData)

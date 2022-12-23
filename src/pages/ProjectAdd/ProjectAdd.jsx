@@ -1,34 +1,49 @@
 import React, { useState } from "react";
 import "./ProjectAdd.css";
 import { Link } from "react-router-dom";
+import {useDispatch,useSelector} from 'react-redux'
+import { useNavigate } from "react-router-dom";
+import { newProject } from "../../actions/project";
+import { setAlert } from "../../actions/alert";
 
 function ProjectAdd() {
+  const navigate=useNavigate();
+  const dispatch=useDispatch();
   const [title, setTitle] = useState();
   const [category, setCategory] = useState();
   const [budget, setBudget] = useState();
-  const [skill, setSkill] = useState([]);
+  const [skills, setSkill] = useState([]);
   const [date, setDate] = useState();
-  const [Description, setDescription] = useState();
+  const [description, setDescription] = useState("");
   const [currentSkill, setCurrentSkill] = useState("");
 
-
+  const user=useSelector((state)=>(state.currentUserReducer))
   const handleSkill = () => {
-    if(currentSkill != ""){
-        setSkill([...skill, currentSkill]);
+    if(currentSkill !== ""){
+        setSkill([...skills, currentSkill]);
         setCurrentSkill("");
     }
   };
   const handleDeleteSkill = (id) => {
-    const newSkill = skill.filter((d, idx) => idx != id);
+    const newSkill = skills.filter((d, idx) => idx !== id);
     setSkill([...newSkill]);
   };
+
+  const handleSubmit = async(e)=>{
+    e.preventDefault();
+    console.log(user);
+    const id=user.user._id;
+    dispatch(setAlert("Creating project","info",2500))
+    dispatch(newProject({createdBy:id,title,category,budget,skills,date,description},navigate))
+
+  }
 
   return (
     <div>
       <div className="project-add-back-btn">
         <Link to="/">
           <div className="d-flex">
-            <i class="fa-solid fa-arrow-left back-btn"></i>
+            <i className="fa-solid fa-arrow-left back-btn"></i>
           </div>
         </Link>
       </div>
@@ -37,16 +52,22 @@ function ProjectAdd() {
           <div className="project-add-header my-4">
             Enter Your Project Details
           </div>
+          <form onSubmit={handleSubmit}>
           <input
             type="text"
             className="form-control my-3 project-add-form-input"
             placeholder="Project Title"
+            value={title}
+            onChange={e=>setTitle(e.target.value)}
           />
           <select
             class="form-select my-3 project-add-form-input"
             aria-label="Default select example"
+            defaultValue={category}
+
+            onChange={e=>setCategory(e.target.value)}
           >
-            <option selected>Category</option>
+            <option disabled hidden selected >Category</option>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
@@ -55,11 +76,13 @@ function ProjectAdd() {
             type="number"
             className="form-control my-3 project-add-form-input"
             placeholder="Budget"
+            value={budget}
+            onChange={e=>setBudget(e.target.value)}
           />
           <div className="card project-add-form-input">
             <div className="card-body">
               <div className="row mb-3 d-flex">
-                {skill.map((d, idx) => (
+                {skills.map((d, idx) => (
                   <div key={idx} className="d-flex m-3 skill-batch">
                     <div className="mx-2">{d}</div>
                     <div>
@@ -94,17 +117,22 @@ function ProjectAdd() {
             type="date"
             className="form-control my-3 project-add-form-input"
             placeholder="Date"
+            value={date}
+            onChange={e=>setDate(e.target.value)}
           />
           <textarea
             placeholder="Description"
             className="form-control my-3 project-add-form-input"
             cols="30"
             rows="4"
-          ></textarea>
+            onChange={e=>setDescription(e.target.value)}
+          >{description}</textarea>
           <div className="text-end">
           <button className='btn btn-md my-3 project-add-create-btn'>Create</button>
           </div>
+          </form>
         </div>
+        
       </div>
     </div>
   );

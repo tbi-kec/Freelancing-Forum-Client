@@ -1,4 +1,3 @@
-
 import React from 'react'
 import './DeptTitle.css'
 export default function DeptTitleCard(params) {
