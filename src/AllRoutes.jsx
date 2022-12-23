@@ -9,6 +9,7 @@ import ProfileView from './pages/ProfileView/ProfileView'
 import ProjectView from './pages/ProjectView/ProjectView'
 import DepartmentUsers from './pages/DepartmentUsers/DepartmentUsers'
 import ProjectAdd from './pages/ProjectAdd/ProjectAdd'
+import PreLoader from './components/PreLoader/PreLoader'
 
 const AllRoutes = () => {
   return (
@@ -22,6 +23,7 @@ const AllRoutes = () => {
       <Route path='/project/view' element={<ProjectView/>} />
       <Route path='/user/:id' element={<DepartmentUsers/>} />
       <Route path='/project/add' element={<ProjectAdd /> } />
+      <Route path='/preloader' element={<PreLoader /> } />
     </Routes>
   )
 }
