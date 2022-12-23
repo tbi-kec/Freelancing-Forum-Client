@@ -5,6 +5,7 @@ import { setAlert } from './alert'
 export const getAllProjects=()=>async(dispatch)=>{
     try {
         const {data}=await api.getAllProject();
+        console.log(data)
         dispatch({type:'GET_PROJECTS',payload:data})
     } catch (error) {
         dispatch(setAlert("Server Error","warning"))

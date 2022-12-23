@@ -1,6 +1,7 @@
 import React from "react";
 import profile from '../../assets/profileicon2.png'
 import  './ProjectCard.css'
+import moment from 'moment'
 const show_modal = () => {
   const modal = document.getElementById('toggle_model_button')
   modal.click()
@@ -19,11 +20,11 @@ function ProjectCard({project}) {
                 <div className="fw-bold"><span>Artificial Intelligence</span><span className=" mx-3">•</span><span>AI & ML</span></div>
               </div>
               <dv className="col-4">
-                <div className="text-end pt-3 pe-4">3 minutes ago</div>
+                <div className="text-end pt-3 pe-4">{moment(project.created_on).fromNow()}</div>
               </dv>
             </div>
             <div className='p-3'>
-              The model we used is built with Keras using Convolutional Neural Networks (CNN). A convolutional neural network is a special type of deep neural network which performs extremely well for image classification purposes. A CNN basically consists of an input layer, an output layer and a hidden layer which can have multiple layers. A convolution operation is performed on these layers using a filter that performs 2D matrix multiplication on the layer and filter.
+              {project.description}
             </div>
             <div className="row ps-3">
               <div className="skill d-flex justify-content-start gap-4 ">
@@ -45,7 +46,7 @@ function ProjectCard({project}) {
               </div>
             </div>
             <div className=" px-4 mt-3 d-flex justify-content-start">
-              <h5 className=" text-end pt-2 ">Posted By <span className="fs-3 ">SANJAY S</span></h5>
+              <h5 className=" text-end pt-2 ">Posted By <span className="fs-3 ">SANJAY</span></h5>
               <div className="mx-2 text-start">
                 <img src={profile} height="50px" width='50px' alt="" />
               </div>
@@ -70,15 +71,9 @@ function ProjectCard({project}) {
             <span>Artificial Intelligence</span><span className="project-title mx-3">•</span><span>AI & ML</span>
           </div>
           <div className="project-dept">
-            The model we used is built with Keras using Convolutional Neural
-            Networks (CNN). A convolutional neural network is a special type of
-            deep neural network which performs extremely well for image
-            classification purposes. A CNN basically consists of an input layer,
-            an output layer and a hidden layer which can have multiple layers. A
-            convolution operation is performed on these layers using a filter that
-            performs 2D matrix multiplication on the layer and filter.
+           {project.description}
           </div>
-          <div className="text-end project-post-time">9 minutes ago</div>
+          <div className="text-end project-post-time">{moment(project.created_on).fromNow()}</div>
         </div>
       </div>
     </>
