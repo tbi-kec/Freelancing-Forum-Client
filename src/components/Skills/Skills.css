@@ -1,0 +1,92 @@
+.skill>.skillset{
+    font-weight: bold;
+    width: fit-content;
+    border-radius: 15px;
+    margin: 0%;
+}
+.skill>.skillset>p{
+    margin: 0%;
+}
+.skill{
+    flex-wrap: wrap;
+}
+.student-skills h2{
+    color: rgba(22, 51, 109, 0.88);
+    font-size: 28px;
+}
+
+.skillset{
+    color: rgba(55, 45, 45, 0.58);
+}
+
+.skill-card{
+    justify-content: start;
+    align-items: flex-start;
+}
+
+.student-card .row{
+    display: flex;
+}
+
+.student-card .row
+{
+    width: 80% !important;
+
+}           
+
+.student-card .row .skill{
+    justify-content:start;
+    gap: 30px;
+    
+}
+
+.skillset{
+    padding: 5px 15px;
+}
+
+.add-skill{
+    width: fit-content;
+    background: #189C00;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+.skill-row{
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+}
+
+.add-skill-div{
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+    width: 100%;
+}
+
+
+.skill .skill-beginner {
+    background: #81f664;
+}
+.skill .skill-intermediate {
+    background: #f5e878;
+}
+.skill .skill-expert {
+    background-color: #64caf6;
+}
+
+.skill-container{
+    color:white;
+    font-weight: 600;
+}
+
+a:hover{
+    color: white;
+}
+
