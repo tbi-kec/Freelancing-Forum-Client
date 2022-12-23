@@ -16,6 +16,14 @@ h2,h3,h4{
     margin: 0;
 }
 
+.edit{
+    margin: 10px;
+    background-color: var(--main-navyblue);
+    border-radius: 50%;
+    padding: 5px 10px;
+    color:white;
+}
+
 .profile-head{
     display: flex;
     justify-content: space-between;
@@ -40,9 +48,15 @@ h2,h3,h4{
     border-radius: 90%;
 }
 
+.prof{
+    display: flex;
+    gap: 30;
+    align-items: center;
+}
+
 .profile-detail{
     display: flex;
-    justify-content: space-between;
+    justify-content:center;
     align-items: flex-start;
     gap: 20px;
     flex-direction: column;
@@ -77,7 +91,7 @@ h2,h3,h4{
     font-size: 3    0px;
     /* identical to box height */
 
-    text-align: center;
+    text-align: initial;
 
     color: rgba(0, 0, 0, 0.58);
 }
@@ -99,15 +113,12 @@ h2,h3,h4{
 }
 
 .profile-dept .rating{
-    width: fit-content;
-    height: fit-content;
+    /* width: fit-content;
+    height: fit-content; */
+    display: flex;
+    justify-content: center;
 }
 
-.profile-dept .rating img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover ;
-}
 
 .student-dept{
     display: flex;

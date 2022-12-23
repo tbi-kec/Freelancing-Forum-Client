@@ -10,10 +10,10 @@ export default function ProfileBio() {
         
         <div className="profile">
         <div className="profile-head">
-            <div className="profile-img">
+        <div className='prof' >
+            <div className="profile-img me-4">
                 <img src={profile} alt="" />
-            </div>
-           
+            </div> 
            <div className="profile-detail">
                 <div className="student-name">
                     <h2>SANJAY S</h2>   
@@ -24,14 +24,15 @@ export default function ProfileBio() {
                 </div>
                     
             </div>
+            </div>
             <div className="profile-dept">
               
-                <div className="options">
+                <div className="options d-flex align-items-center">
                     <div className="student-assured">
                         <img src={assured} alt="" />
                     </div>
-                    <div className="edit">
-                    <i class="fa-regular fa-pencil"></i>
+                    <div className="edit ">
+                    <i class="fa-solid fa-pencil fs-5"></i>
                     </div>
                 
                 </div>    
@@ -45,7 +46,7 @@ export default function ProfileBio() {
         <h4><i class="fa-solid fa-location-dot"></i> Artificial Intelligence          </h4>
         </div>
         <div className="student-about">
-            <h2>About </h2>
+            <h2 className='mb-3'>About </h2>
             <div>I am a freelance software engineer. I have more than 8 years of experience in programming and designing UI. I worked on front-end and as well as back-end of many high traffic websites and apps.</div>
 
         </div>
