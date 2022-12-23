@@ -8,8 +8,8 @@ import { setAlert } from '../../actions/alert'
 const Login = () => {
     const navigate =  useNavigate()
     const dispatch = useDispatch()
-    const [email,setEmail]=useState("karthikeyanr.20it@kongu.edu")
-    const [password,setPassword]=useState("123456")
+    const [email,setEmail]=useState("")
+    const [password,setPassword]=useState("")
     const handleSubmit = (e) =>{
          e.preventDefault()
         let femail_pattern=/^([a-z]+)\.([a-z]{2,5})\@([a-z]+)\.([a-z]{2,5})$/;
