@@ -13,6 +13,7 @@ import PreLoader from './components/PreLoader/PreLoader'
 import StudentProfile from './pages/StudentProfile/StudentProfile'
 import ProtectedRoutes from './ProtectedRoutes'
 import UnProtectedRoutes from './UnProtectedRoutes'
+import Page404 from './pages/Page404/Page404'
 const AllRoutes = () => {
   return (
     <Routes>
@@ -31,7 +32,7 @@ const AllRoutes = () => {
           <Route path='/user/:id' element={<DepartmentUsers/>} />
           <Route path='/project/add' element={<ProjectAdd /> } />
           
-      
+        <Route path="*"  element={<Page404/>}/>
     </Routes>
   )
 }

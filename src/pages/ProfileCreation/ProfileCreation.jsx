@@ -53,7 +53,7 @@ const ProfileCreation = () => {
     const [payment_type,setPaymentType]=useState("")
     const handleSkill = ()=>{
         if(level===""){
-            dispatch(setAlert("Please select level"));
+            dispatch(setAlert("Please select level","warning"));
             return;
         }
             setskills([...skills,{"name":name,"level":level}])

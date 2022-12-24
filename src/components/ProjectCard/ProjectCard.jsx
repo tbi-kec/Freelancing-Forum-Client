@@ -13,7 +13,7 @@ function ProjectCard({project,constant}) {
   return (
     <>
       {/* modal */}
-      <div className="modal fade "  id="toggle_model" tabindex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
+      <div className="modal fade "  id="toggle_model" tabIndex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
         <div className="modal-dialog modal-dialog-centered modal-xl">
           <div className="modal-content ">
             <div className="row">
@@ -21,30 +21,22 @@ function ProjectCard({project,constant}) {
                 <h3 className='mt-3 mb-0 fw-bold'>{project?.title}</h3>
                 <div className="fw-bold"><span>{shortname.dept}</span><span className=" mx-3">•</span><span>{shortname.short}</span></div>
               </div>
-              <dv className="col-4">
+              <div className="col-4">
                 <div className="text-end pt-3 pe-4">{moment(project.created_on).fromNow()}</div>
-              </dv>
+              </div>
             </div>
             <div className='p-3'>
               {project.description}
             </div>
             <div className="row ps-3">
               <div className="skill d-flex justify-content-start gap-4 ">
-                <div className={` skillset px-2 skill-${'beginner'}`} >
-                  <p>HTML</p>
+                {project.skills.map((s,idx)=>(
+                    <div className={` skillset px-2 skill-${'beginner'}`} key={idx} >
+                      <p>{s}</p>
                 </div>
-                <div className={`skillset px-2 skill-intermediate`} >
-                  <p>CSS</p>
-                </div>
-                <div className={`skillset px-2 skill-${'intermediate'}`} >
-                  <p>JavaScript</p>
-                </div>
-                <div className={`skillset px-2 skill-${'intermediate'}`} >
-                  <p>JavaScript</p>
-                </div>
-                <div className={`skillset px-2 skill-${'expert'}`} >
-                  <p>JavaScript</p>
-                </div>
+                ))}
+                
+              
               </div>
             </div>
             <div className=" px-4 mt-3 d-flex justify-content-start">
