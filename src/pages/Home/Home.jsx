@@ -15,6 +15,7 @@ import { useEffect } from "react";
 function Home() {
   const [navToggler, setNavToggler]=useState(true)
   const project = useSelector((state)=>(state.projectReducer))
+  const users = useSelector((state)=>(state.userReducer))
   // const [projects,setProjects]=useState()
   // useEffect(()=>{
   //     setProjects(project?.data)
@@ -165,8 +166,9 @@ function Home() {
          ))}
         </div>  :
         <div className="my-5">
-        <ProfileCard />
-        <ProfileCard />
+        {users.data?.map(u=>(
+          <ProfileCard user={u} key={u._id}/>
+        ))}
         </div>
         }
       </div>

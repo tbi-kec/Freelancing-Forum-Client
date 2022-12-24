@@ -6,6 +6,8 @@ import './App.css'
 import { setCurrentUser } from './actions/currentUser'
 import { useDispatch } from 'react-redux'
 import { getAllProjects } from './actions/project'
+import { getAllUsers } from './actions/user'
+import { getConstants } from './actions/constant'
 const App = () => {
   const dispatch = useDispatch();
   const getData = async()=>{
@@ -17,6 +19,8 @@ const App = () => {
   useEffect(()=>{
     getData();
     dispatch(getAllProjects())
+    dispatch(getAllUsers())
+    dispatch(getConstants())
   },[])
   return (
     <div className='app-container'>

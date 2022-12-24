@@ -11,9 +11,9 @@ function ProjectAdd() {
   const dispatch=useDispatch();
   const [title, setTitle] = useState();
   const [category, setCategory] = useState();
-  const [budget, setBudget] = useState();
+  const [stipend, setBudget] = useState();
   const [skills, setSkill] = useState([]);
-  const [date, setDate] = useState();
+  const [end_date, setDate] = useState();
   const [description, setDescription] = useState("");
   const [currentSkill, setCurrentSkill] = useState("");
 
@@ -34,14 +34,14 @@ function ProjectAdd() {
     console.log(user);
     const id=user.user._id;
     dispatch(setAlert("Creating project","info",2500))
-    dispatch(newProject({createdBy:id,title,category,budget,skills,date,description},navigate))
+    dispatch(newProject({createdBy:id,title,category,stipend,skills,end_date,description},navigate))
 
   }
 
   return (
     <div>
       <div className="project-add-back-btn">
-        <Link to="/">
+        <Link to="/home">
           <div className="d-flex">
             <i className="fa-solid fa-arrow-left back-btn"></i>
           </div>
@@ -75,8 +75,8 @@ function ProjectAdd() {
           <input
             type="number"
             className="form-control my-3 project-add-form-input"
-            placeholder="Budget"
-            value={budget}
+            placeholder="Stipend"
+            value={stipend}
             onChange={e=>setBudget(e.target.value)}
           />
           <div className="card project-add-form-input">
@@ -117,7 +117,7 @@ function ProjectAdd() {
             type="date"
             className="form-control my-3 project-add-form-input"
             placeholder="Date"
-            value={date}
+            value={end_date}
             onChange={e=>setDate(e.target.value)}
           />
           <textarea
