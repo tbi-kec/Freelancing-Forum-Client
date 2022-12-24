@@ -9,22 +9,20 @@ export default function AddProject() {
   const [title, setTitle] = useState();
   const [date, setDate] = useState();
   const [fileLink, setFileLink] = useState();
-  const [technologies, setTechnologies] = useState();
-  const [skill, setSkill] = useState([]);
- 
+  const [technologies, setTechnologies] = useState([]);
   const [Description, setDescription] = useState();
-  const [currentSkill, setCurrentSkill] = useState();
+  const [currentTechnology, setCurrentTechnology] = useState();
 
   
-  const handleSkill = () => {
-    if(currentSkill != ""){
-        setSkill([...skill, currentSkill]);
-        setCurrentSkill("");
+  const handleTechnology = () => {
+    if(currentTechnology != ""){
+        setTechnologies([...technologies, currentTechnology]);
+        setCurrentTechnology("");
     }
   };
-  const handleDeleteSkill = (id) => {
-    const newSkill = skill.filter((d, idx) => idx != id);
-    setSkill([...newSkill]);
+  const handleDeleteTechnology = (id) => {
+    const newTechnology = technologies.filter((d, idx) => idx != id);
+    setTechnologies([...newTechnology]);
   };
 
 
@@ -44,25 +42,31 @@ export default function AddProject() {
                     type="text"
                     className="form-control my-3 project-add-form-input"
                     placeholder="Project Title"
+                    value={title}
+                    onChange={(e)=>setTitle(e.target.value)}
                 />
                  <input
                     type="date"
                     className="form-control my-3 project-add-form-input"
                     placeholder="Date"
+                    value={date}
+                    onChange={(e)=>setDate(e.target.value)}
                 />
                 
                 <input
                     type="text"
                     className="form-control my-3 project-add-form-input"
                     placeholder="Attach file link"
+                    value={fileLink}
+                    onChange={(e)=>setFileLink(e.target.value)}
                 />
                 <div className="card project-add-form-input">
                     <div className="card-body">
                     <div className="row mb-3 tech-add">
-                        {skill.map((d, idx) => (
+                        {technologies.map((d, idx) => (
                         <div key={idx} className="width-tech">
                             <div className="px-2 py-1 tech">{d} <i
-                                onClick={() => handleDeleteSkill(idx)}
+                                onClick={() => handleDeleteTechnology(idx)}
                                 className="text-danger fa-solid fa-xmark"
                             ></i></div>
                             
@@ -76,13 +80,13 @@ export default function AddProject() {
                     >
                         <div className="col-11">
                         <div className="form-group">
-                            <input type="text" className="form-control" placeholder="Technologies used" onChange={(e)=>setCurrentSkill(e.target.value)} value={currentSkill} />
+                            <input type="text" className="form-control" placeholder="Technologies used" onChange={(e)=>setCurrentTechnology(e.target.value)} value={currentTechnology} />
                         </div>
                         </div>
                         <div className="col-1">
                         <i
                             className="text-success fa-solid fa-plus "
-                            onClick={handleSkill}
+                            onClick={handleTechnology}
                         />
                         </div>
                     </div>
@@ -94,6 +98,8 @@ export default function AddProject() {
                     className="form-control my-3 project-add-form-input"
                     cols="30"
                     rows="4"
+                    value={Description}
+                    onChange={(e)=>setDescription(e.target.value)}
                 ></textarea>
                 <div className="text-end-profile">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>

@@ -43,7 +43,7 @@ export default function ProfileBio() {
            
         </div>
         <div className="student-dept">
-        <h4><i class="fa-solid fa-location-dot"></i> Artificial Intelligence          </h4>
+        <h4><i class="fa-solid fa-location-dot"></i> Artificial Intelligence </h4>
         </div>
         <div className="student-about">
             <h2 className='mb-3'>About </h2>

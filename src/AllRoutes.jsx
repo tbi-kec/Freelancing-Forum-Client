@@ -11,13 +11,15 @@ import DepartmentUsers from './pages/DepartmentUsers/DepartmentUsers'
 import ProjectAdd from './pages/ProjectAdd/ProjectAdd'
 import PreLoader from './components/PreLoader/PreLoader'
 import StudentProfile from './pages/StudentProfile/StudentProfile'
+import AdminPage from './pages/AdminPage/AdminPage'
 import ProtectedRoutes from './ProtectedRoutes'
 import UnProtectedRoutes from './UnProtectedRoutes'
 import Page404 from './pages/Page404/Page404'
+
 const AllRoutes = () => {
   return (
     <Routes>
-      <Route path='/' element={<PreLoader /> } />
+     <Route path='/' element={<PreLoader /> } />
       <Route element={<UnProtectedRoutes />}>
         <Route path='/login' element={<Login/>} />
         <Route path='/register' element={<Register/>} />
@@ -31,8 +33,9 @@ const AllRoutes = () => {
           <Route path='/project/view' element={<ProjectView/>} />
           <Route path='/user/:id' element={<DepartmentUsers/>} />
           <Route path='/project/add' element={<ProjectAdd /> } />
-          
-        <Route path="*"  element={<Page404/>}/>
+          <Route path='/admin' element={<AdminPage /> } />
+          <Route path="*"  element={<Page404/>}/>
+   
     </Routes>
   )
 }
