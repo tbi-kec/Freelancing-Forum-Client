@@ -50,7 +50,7 @@ const Login = () => {
                         </div>
                         <div className="form-group ">
                             <label className="form-label">Password</label>
-                            <input type="text" placeholder='Type your Password' className='px-3' value={password} onChange={e=>setPassword(e.target.value)}  required />
+                            <input type="password" placeholder='Type your Password' className='px-3' value={password} onChange={e=>setPassword(e.target.value)}  required />
                         </div>
                         <p className="text-end forget">Forget Password</p>
                         <div className="d-grid gap-4">
