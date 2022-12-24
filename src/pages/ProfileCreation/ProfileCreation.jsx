@@ -29,10 +29,6 @@ const ProfileCreation = () => {
       "Computer Application",
       "Computer Technology - UG",
       "Computer Technology - PG",
-      "Mathematics",
-      "Physics",
-      "Chemistry",
-      "English"
     ];
     const domains = [
         "Web Developer",
