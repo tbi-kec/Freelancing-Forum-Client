@@ -17,7 +17,7 @@ export const newProject = (projectData,navigate) => async(dispatch) =>{
         const {data}=await api.newProject(projectData);
         dispatch(getAllProjects());
         dispatch(setAlert("Successfully created project","success"))
-        navigate("/")
+        navigate("/Home")
     } catch (error) {
         console.log(error)
         dispatch(setAlert(error.response.data.message,"danger"))

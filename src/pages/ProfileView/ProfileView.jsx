@@ -113,7 +113,7 @@ const ProjectView = () => {
         </div>
         <div className="row ">
             <div className="col-12 image-container">
-                <div className='back'><Link excat to="/">  
+                <div className='back'><Link to="/Home">  
                 <i class="fa-solid fa-2x fa-arrow-left"></i>
                 </Link></div>
                 <img src={profileTop} alt="image-top" />

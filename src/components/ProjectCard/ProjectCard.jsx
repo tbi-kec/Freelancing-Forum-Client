@@ -7,7 +7,9 @@ const show_modal = () => {
   modal.click()
 }
 
-function ProjectCard({project}) {
+function ProjectCard({project,constant}) {
+  const shortname=constant.dept_short.find(item => item.dept=== project.createdBy.department)
+
   return (
     <>
       {/* modal */}
@@ -17,7 +19,7 @@ function ProjectCard({project}) {
             <div className="row">
               <div className="col-8 ps-4">
                 <h3 className='mt-3 mb-0 fw-bold'>{project?.title}</h3>
-                <div className="fw-bold"><span>Artificial Intelligence</span><span className=" mx-3">•</span><span>AI & ML</span></div>
+                <div className="fw-bold"><span>{shortname.dept}</span><span className=" mx-3">•</span><span>{shortname.short}</span></div>
               </div>
               <dv className="col-4">
                 <div className="text-end pt-3 pe-4">{moment(project.created_on).fromNow()}</div>
@@ -68,7 +70,7 @@ function ProjectCard({project}) {
         <div className="card-body px-4">
           <div className="project-title fs-4 my-1">{project.title}</div>
           <div className="project-holder-department my-2 fw-bold">
-            <span>Artificial Intelligence</span><span className="project-title mx-3">•</span><span>AI & ML</span>
+            <span>{shortname.dept}</span><span className="project-title mx-3">•</span><span>{shortname.short}</span>
           </div>
           <div className="project-dept">
            {project.description}

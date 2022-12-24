@@ -6,14 +6,14 @@ import {Link} from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
-        <span class="navbar-brand text-light fw-bold">
+    <nav className="navbar navbar-expand-lg">
+      <div className="container-fluid">
+        <span className="navbar-brand text-light fw-bold">
           <img src={logo} height="35px" className="mx-4" alt="kec-logo" />
           Freelancing Forum
         </span>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
@@ -21,16 +21,16 @@ const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav text-light ms-auto">
-            <li class="nav-item mx-4">
-              <span class="nav-link">
-                <div class="input-group">
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav text-light ms-auto">
+            <li className="nav-item mx-4">
+              <span className="nav-link">
+                <div className="input-group">
                   <input
                     type="text"
-                    class="form-control search-bar"
+                    className="form-control search-bar"
                     placeholder="&#128269; search"
                     aria-label="Recipient's username"
                     aria-describedby="button-addon2"
@@ -45,18 +45,18 @@ const Navbar = () => {
                 </div>
               </span>
             </li>
-            <li class="nav-item mx-4">
-              <Link to="/project/view" class="nav-link">
+            <li className="nav-item mx-4">
+              <Link to="/project/view" className="nav-link">
                 <button className="btn nav-btn-1">All Project</button>
               </Link>
             </li>
-            <li class="nav-item mx-4">
-              <Link to="/project/add" class="nav-link">
+            <li className="nav-item mx-4">
+              <Link to="/project/add" className="nav-link">
                 <button className="btn nav-btn-2">Add Project</button>
               </Link>
             </li>
-            <li class="nav-item mx-4">
-              <Link to="/profile/view" class="nav-link">
+            <li className="nav-item mx-4">
+              <Link to="/profile/view" className="nav-link">
                 <img src={profile} height="40px" alt="" />
               </Link>
             </li>

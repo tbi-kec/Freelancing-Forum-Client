@@ -12,14 +12,19 @@ import ProjectAdd from './pages/ProjectAdd/ProjectAdd'
 import PreLoader from './components/PreLoader/PreLoader'
 import StudentProfile from './pages/StudentProfile/StudentProfile'
 import AdminPage from './pages/AdminPage/AdminPage'
+import ProtectedRoutes from './ProtectedRoutes'
+import UnProtectedRoutes from './UnProtectedRoutes'
 
 const AllRoutes = () => {
   return (
     <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/login' element={<Login/>} />
-      <Route path='/register' element={<Register/>} />
-      <Route path='/profile/create' element={<ProfileCreation/>} />
+     <Route path='/' element={<PreLoader /> } />
+      <Route element={<UnProtectedRoutes />}>
+        <Route path='/login' element={<Login/>} />
+        <Route path='/register' element={<Register/>} />
+        <Route path='/profile/create' element={<ProfileCreation/>} />
+      </Route>
+      <Route path='/home' element={<Home />} />
       <Route path='/profile/view' element={<StudentProfile/>} />
       <Route path='/profile/edit' element={<ProfileEdit/>} />
       <Route path='/project/view' element={<ProjectView/>} />
