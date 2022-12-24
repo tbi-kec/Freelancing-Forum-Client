@@ -134,7 +134,7 @@ function Home() {
               {notification.length!==0 ?
                 <>
                       {notification(n=>{
-                          <Notification key={n._id} />
+                          <Notification notification={n} key={n._id} />
                     })}
                      </>
                     

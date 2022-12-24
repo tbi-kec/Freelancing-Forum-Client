@@ -2,12 +2,12 @@
 import React from 'react'
 import'./Notify.css'
 
-export default function Notification() {
+export default function Notification({notification}) {
   return (
     <div className='notification-container my-2'>
         <div className="row p-2 ">
             <div className="col-8">
-                <h6 className='mt-1'>Driver Drowsiness Project</h6>
+                <h6 className='mt-1'>{notification.messge}</h6>
             </div>
             <div className="col">
                 <div className='d-flex justify-content-end'>
