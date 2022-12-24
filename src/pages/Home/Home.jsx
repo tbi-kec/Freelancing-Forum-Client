@@ -162,12 +162,12 @@ function Home() {
         {navToggler ?
         <div>
          {project.data?.map(p=>(
-          <ProjectCard project={p} key={p._id}/>
+          <ProjectCard project={p} constant={constants.data[0]} key={p._id}/>
          ))}
         </div>  :
         <div className="my-5">
         {users.data?.map(u=>(
-          <ProfileCard user={u} key={u._id} constant={constants.data}/>
+          <ProfileCard user={u} key={u._id} constant={constants.data[0]}/>
         ))}
         </div>
         }
