@@ -22,5 +22,7 @@ export const getAllUser = ()=>API.get('/user/all')
 
 
 //constants
-
 export const getConstants = ()=>API.get('/constants/domain')
+
+//getMyDetails
+export const getDetails = (id)=>API.get(`/user/${id}`)

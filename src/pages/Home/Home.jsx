@@ -16,10 +16,23 @@ function Home() {
   const [navToggler, setNavToggler]=useState(true)
   const project = useSelector((state)=>(state.projectReducer))
   const users = useSelector((state)=>(state.userReducer))
+  const myself=useSelector((state)=>(state.myDetailsReducer))
+  const constants=useSelector((state)=>(state.constantReducer));
   // const [projects,setProjects]=useState()
   // useEffect(()=>{
   //     setProjects(project?.data)
   // },[project])
+
+  const [onbord_project,setOnBoardProject] = useState([]);
+  const [notification,setNotification]=useState([]);
+  useEffect(()=>{
+    if(myself.data && myself?.data?.onbord_project?.length!=0){
+      setOnBoardProject([...myself.data.onbord_project])
+    }
+    if(myself.data && myself?.data?.notification?.length!=0){
+      setNotification([...myself.data.notification])
+    }
+  },[myself])
   const handleToggle = (e) =>{
     e.preventDefault()
     if(e.target.id==='project'){
@@ -85,61 +98,48 @@ function Home() {
                     <img src={profile} className='p-2' alt="img" height='100%' width='100%' />
                   </div>
                   <div className="col-8 p-name pt-4 px-0">
-                    <h3>SANJAY S</h3>
-                    <p>Web Developer</p>
+                    <h3>{myself.data?.first_name}-{myself.data?.last_name}</h3>
+                    <p>{myself.data?.domain[0]}</p>
                   </div>
                 </Link>
                 <div className="row">
                   <div className="skill d-flex justify-content-around">
-                  <div className={` skillset px-2  mt-2 skill-${'beginner'}`} >
-                  <p>HTML</p>
-                </div>
-                <div className={`skillset px-2 mt-2  skill-intermediate`} >
-                  <p>CSS</p>
-                </div>
-                <div className={`skillset px-2  mt-2  skill-${'intermediate'}`} >
-                  <p>JavaScript</p>
-                </div>
-                <div className={`skillset px-2  mt-2  skill-${'beginner'}`} >
-                  <p>JavaScript</p>
-                </div>
-                <div className={`skillset px-2  mt-2  skill-${'expert'}`} >
-                  <p>JavaScript</p>
-                </div>
+                    {myself.data?.skills.map(s=>(
+                      <div className={`skillset px-2  mt-2 skill-${s.level}`} key={s._id} >
+                          <p>{s.name}</p>
+                    </div>
+                    ))}
+          
                   </div>
                 </div>
 
               </div>
               <div className="current-project my-2">
-                <div className="current-project-header my-2">
-                  <h4 className='mb-0 ms-2'>Current Project</h4>
-                  <hr className='mt-1 ms-2' />
-                </div>
-                <div className="current-project-title mt-1">
-                  <p className='mb-0 ms-2'>Current Project</p>
-                  <hr className='mt-1 ms-2 mb-1' />
-                </div>
-                <div className="current-project-title mt-1">
-                  <p className='mb-0 ms-2'>Current Project</p>
-                  <hr className='mt-1 ms-2 mb-1' />
-                </div>
-                <div className="current-project-title mt-1">
-                  <p className='mb-0 ms-2'>Current Project</p>
-                  <hr className='mt-1 ms-2 mb-1' />
-                </div>
-                <div className="current-project-title mt-1">
-                  <p className='mb-0 ms-2'>Current Project</p>
-                  <hr className='mt-1 ms-2 mb-1' />
-                </div>
-                <div className="current-project-title mt-1">
-                  <p className='mb-0 ms-2'>Current Project</p>
-                  <hr className='mt-1 ms-2 mb-1' />
-                </div>
+                 {onbord_project?.length!==0 ?
+                <>
+                      {onbord_project(o=>{
+                  <div className="current-project-header my-2" key={o._id}>
+                     <h4 className='mb-0 ms-2'>{o.name}</h4>
+                       <hr className='mt-1 ms-2' />
+                    </div>
+                    })}
+                     </>
+                    
+                 :<h4 className="p-3">No Projects</h4>
+              } 
+              
               </div>
               <div className="notification py-2 px-1">
 
-                <Notification />
-                <Notification />
+              {notification.length!==0 ?
+                <>
+                      {notification(n=>{
+                          <Notification key={n._id} />
+                    })}
+                     </>
+                    
+                 :<h4 className="p-3">No Notifications</h4>
+              } 
 
               </div>
             </div>
@@ -167,7 +167,7 @@ function Home() {
         </div>  :
         <div className="my-5">
         {users.data?.map(u=>(
-          <ProfileCard user={u} key={u._id}/>
+          <ProfileCard user={u} key={u._id} constant={constants.data}/>
         ))}
         </div>
         }

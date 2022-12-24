@@ -56,6 +56,10 @@ const ProfileCreation = () => {
     const [description,setDescription]=useState("")
     const [payment_type,setPaymentType]=useState("")
     const handleSkill = ()=>{
+        if(level===""){
+            dispatch(setAlert("Please select level"));
+            return;
+        }
             setskills([...skills,{"name":name,"level":level}])
             setName("")
             setLevel("")
@@ -139,7 +143,7 @@ const ProfileCreation = () => {
                                     </div>
                                     <div className="col-5">
                                          <div className="form-group">
-                                            <select name="domain" defaultValue={level}  className="form-select" onChange={e=>setLevel(e.target.value)}>
+                                            <select name="domain" className="form-select" onChange={e=>setLevel(e.target.value)}>
                                                 <option value="" diabled hidden selected>Level</option>
                                                 <option value="beginner" style={{background:"#81F664"}} className='form-option' >Beginner</option>
                                                 <option value="intermediate" style={{background:"#F5E878"}} className=' py-3 form-option' >Intermediate</option>

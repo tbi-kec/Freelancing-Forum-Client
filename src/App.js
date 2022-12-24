@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux'
 import { getAllProjects } from './actions/project'
 import { getAllUsers } from './actions/user'
 import { getConstants } from './actions/constant'
+import { getMyDetails } from './actions/myDetails'
 const App = () => {
   const dispatch = useDispatch();
   const getData = async()=>{
@@ -21,6 +22,7 @@ const App = () => {
     dispatch(getAllProjects())
     dispatch(getAllUsers())
     dispatch(getConstants())
+    dispatch(getMyDetails())
   },[])
   return (
     <div className='app-container'>

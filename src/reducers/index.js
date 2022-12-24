@@ -4,6 +4,7 @@ import alertReducer from "./alert";
 import projectReducer from "./projectReducer.";
 import currentUserReducer from "./currentUserReducer";
 import userReducer from "./user";
+import myDetailsReducer from "./myDetails";
 import constantReducer from "./constant";
 export default combineReducers({
         authReducer,
@@ -11,5 +12,6 @@ export default combineReducers({
         projectReducer,
         currentUserReducer,
         userReducer,
-        constantReducer
+        constantReducer,
+        myDetailsReducer
 });
