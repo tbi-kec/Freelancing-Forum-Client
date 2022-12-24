@@ -11,6 +11,7 @@ import DepartmentUsers from './pages/DepartmentUsers/DepartmentUsers'
 import ProjectAdd from './pages/ProjectAdd/ProjectAdd'
 import PreLoader from './components/PreLoader/PreLoader'
 import StudentProfile from './pages/StudentProfile/StudentProfile'
+import AdminPage from './pages/AdminPage/AdminPage'
 
 const AllRoutes = () => {
   return (
@@ -25,6 +26,7 @@ const AllRoutes = () => {
       <Route path='/user/:id' element={<DepartmentUsers/>} />
       <Route path='/project/add' element={<ProjectAdd /> } />
       <Route path='/preloader' element={<PreLoader /> } />
+      <Route path='/admin' element={<AdminPage /> } />
     </Routes>
   )
 }

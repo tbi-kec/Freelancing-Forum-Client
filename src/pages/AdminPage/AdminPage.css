@@ -1,0 +1,14 @@
+.admin-nav-ative{
+    color: white;
+    font-weight: 900;
+    background-color: var(--main-green);
+    
+}
+
+.admin-nav{
+    background-color:#f3f3f3;
+}
+
+.pointer:hover{
+    cursor: pointer;
+}
