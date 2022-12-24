@@ -16,3 +16,11 @@ export const sendOtp =(otpData)=>API.post('/user/otp',otpData)
 export const newProject = (projectData)=>API.post('/project',projectData)
 //getAllproject
 export const getAllProject =()=>API.get('/project/all')
+
+//getALLUser
+export const getAllUser = ()=>API.get('/user/all')
+
+
+//constants
+
+export const getConstants = ()=>API.get('/constants/domain')

@@ -7,7 +7,7 @@ function ProjectView() {
     <div>
       <div className="row d-flex align-items-center">
         <div className="col-md-1">
-        <Link to='/'>
+        <Link to='/Home'>
           <div className=" d-flex m-3">
             <i class="fa-solid fa-arrow-left back-btn"></i>
           </div>
