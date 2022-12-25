@@ -3,17 +3,20 @@ import profile from '../../assets/profileicon2.png'
 import  './ProjectCard.css'
 import moment from 'moment'
 import { Link } from "react-router-dom";
-const show_modal = () => {
-  const modal = document.getElementById('toggle_model_button')
-  modal.click()
-}
+import { useSelector } from "react-redux";
+
 
 function ProjectCard({project,constant}) {
   const shortname=constant.dept_short.find(item => item.dept=== project.createdBy.department)
+  const user =useSelector((state)=>(state.currentUserReducer))
+  const show_modal = () => {
+  const modal = document.getElementById(`toggle_model_${project._id}`)
+  modal.click()
+}
   return (
     <>
       {/* modal */}
-      <div className="modal fade "  id="toggle_model" tabIndex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
+      <div className="modal fade "  id={`toggle_model-${project._id}`} tabIndex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
         <div className="modal-dialog modal-dialog-centered modal-xl">
           <div className="modal-content ">
             <div className="row">
@@ -38,13 +41,15 @@ function ProjectCard({project,constant}) {
               </div>
             </div>
             <div className=" px-4 mt-3 d-flex justify-content-start">
-              <h5 className=" text-end pt-2 ">Posted By <Link to="/profile/1"><span className="fs-3 ">{project.createdBy.first_name} {project.createdBy.last_name} </span></Link></h5>
+              <h5 className=" text-end pt-2 ">Posted By : <Link to={`/profile/${project.createdBy._id}`}><span className="fs-3 ">{project.createdBy.first_name} {project.createdBy.last_name} </span></Link></h5>
               <div className="mx-2 text-start">
                 <img src={profile} height="50px" width='50px' alt="" />
               </div>
             </div>
             <div className="ms-auto me-5 my-5">
+              {user?.user._id !==project.createdBy._id &&
               <div className="btn btn-success px-5 fw-bold" >REQUEST</div>
+}
             </div>
             <input type='button' id='toggle_model_button' hidden data-bs-toggle="modal" data-bs-target="#toggle_model" />
           </div>
@@ -53,7 +58,7 @@ function ProjectCard({project,constant}) {
 
       {/* card */}
       <div className="card shadow my-4 pointer" onClick={show_modal}>
-        <input type="button" hidden id='toggle_model_button' data-bs-toggle="modal" data-bs-target="#toggle_model" />
+        <input type="button" hidden id={`toggle_model_${project._id}`} data-bs-toggle="modal" data-bs-target={`#toggle_model-${project._id}`} />
         <div className="card-body px-4">
           <div className="project-title fs-4 my-1">{project.title}</div>
           <div className="project-holder-department my-2 fw-bold">

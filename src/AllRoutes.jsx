@@ -27,7 +27,7 @@ const AllRoutes = () => {
       
          
             <Route path='/home' element={<Home />} />
-            <Route path='/forgotten-password/:uid/:token' element={<ResetPassword/>} />
+           
             <Route path='/admin' element={<AdminPage /> } />
             <Route path='/profile/create' element={<ProfileCreation/>} />
             <Route path='/profile/:id' element={<StudentProfile/>} />
@@ -35,6 +35,7 @@ const AllRoutes = () => {
             <Route path='/project/view' element={<ProjectView/>} />
             <Route path='/user/:id' element={<DepartmentUsers/>} />
             <Route path='/project/add' element={<ProjectAdd /> } />
+             <Route path='/forgotten-password/:uid/:token' element={<ResetPassword/>} />
           <Route path="*"  element={<Page404/>}/>
    
     </Routes>

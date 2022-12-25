@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
 import logo from '../../assets/logo.png'
 import human from '../../assets/human.png'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { signup,sendOtp } from '../../actions/auth'
 import { Link } from 'react-router-dom'
 import { setAlert } from '../../actions/alert'
-
+import { changePassword } from '../../actions/auth'
 const ResetPassword = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [password,setPassword]=useState("")
     const [confirm,setConfirm]=useState("")
- 
+    const {uid,token}=useParams();
     const handleResetPassword = (e)=>{
+        e.preventDefault();
         if(password.length<6){
             dispatch(setAlert("Password length must be greater than 6","warning",2500))
             return
@@ -22,6 +23,8 @@ const ResetPassword = () => {
             dispatch(setAlert("Password dont match","warning",3000))
             return
         }
+        dispatch(setAlert("Changing Password",'info'))
+        dispatch(changePassword({userId:uid,token,password,confirm_password:confirm},navigate))
     }
 
     return (
