@@ -1,4 +1,5 @@
 import axios from 'axios'
+import App from '../App'
 
 const API = axios.create({baseURL:'http://localhost:8080/'})
 
@@ -26,3 +27,6 @@ export const getConstants = ()=>API.get('/constants/domain')
 
 //getMyDetails
 export const getDetails = (id)=>API.get(`/user/${id}`)
+
+//new-study-project
+export const newStudyProject = ()=>API.post()

@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import { useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import AddProject from '../../components/AddProject/AddProject';
 import Banner from '../../components/Banner/Banner'
@@ -15,7 +16,7 @@ export default function StudentProfile() {
     const [date, setDate] = useState();
     const [Description, setDescription] = useState();
     const [currentSkill, setCurrentSkill] = useState("");
-
+    const users=useSelector((state)=>(state.userReducer))
     const handleSkill = () => {
         if(currentSkill != ""){
             setSkill([...skill, currentSkill]);
@@ -102,11 +103,10 @@ export default function StudentProfile() {
                 </div>
             </div>
         </div>
-        {
-            (()=>{
-                if(studyProject.length==0)
-                {
-                    return(
+
+
+        { studyProject.length!=0 ?
+               
                         <>
                          <div className="student-card add-project">
                             <div className="content-add w-100">
@@ -119,9 +119,7 @@ export default function StudentProfile() {
                             </div>
                         </div>          
                         </>
-                    )
-                }
-                else{
+                   :
                     <div className="student-card student-projects">
                         <div className="title">
                             <h2>
@@ -142,7 +140,7 @@ export default function StudentProfile() {
                                 <span>Mongo DB</span>
                                 </div>
                                 <div className="project-overview">
-                                <p>
+                                <p className='text-dark'>
                                 I am a freelance software engineer. I have more than 8 years of experience in programming and designing UI. I worked on front-end and as well as back-end of many high traffic websites and apps.
                                 </p>
                                 </div>
@@ -150,13 +148,12 @@ export default function StudentProfile() {
                         </div>
                     </div>
                 }
-            })()
-        }
+        
+
         <div className="student-card project-history">
             <div className="title">
-                <h2>
+                
                 Project - History
-                </h2>
             </div>
             <div className="card-group">
                 <div className="inner-card">
