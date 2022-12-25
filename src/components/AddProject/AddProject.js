@@ -29,15 +29,16 @@ export default function AddProject() {
     setTechnologies([...newTechnology]);
   };
   const handleSubmit = async(e)=>{
-    console.log("hello")
+   
     e.preventDefault();
     const id =user?.user._id;
+    console.log(id)
     dispatch(setAlert("Creating Study Project","info"))
-    dispatch(newStudyProject({created_by:id,title,date,link,technology,description},navigate))
+    dispatch(newStudyProject({createdBy:id,title,date,link,technology,description},navigate))
   }
 
   return (
-    <>
+    
         <div className="add-projects">
             <div>
 
@@ -112,8 +113,8 @@ export default function AddProject() {
                     onChange={(e)=>setDescription(e.target.value)}
                 ></textarea>
                 <div className="text-end-profile">
-                {/* <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button> */}
-                <button className='btn btn-md my-3 project-add-submit-btn'>Submit</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"  aria-label="Close">Close</button>
+                <button className='btn btn-md my-3 project-add-submit-btn' data-bs-dismiss="modal" aria-label="Close">Submit</button>
                 </div>
                 </form>
                 </div>
@@ -123,7 +124,7 @@ export default function AddProject() {
             </div>
 
         </div>
-    </>
+    
   )
 }
 

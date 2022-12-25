@@ -11,7 +11,7 @@ function ProfileCard({user,constant}) {
         navigate(`/profile/${user._id}`)
     }
   return (
-    <div className="card shadow my-4">
+    <div className="card shadow my-4 pointer">
     <div className="card-body px-4">
     <div className="row">
       <div className="col-md-9 pb-4">

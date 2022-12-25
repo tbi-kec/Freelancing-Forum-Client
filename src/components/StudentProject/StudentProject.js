@@ -10,7 +10,7 @@ export default function StudentProject({project}) {
 
   return (
     <div>
-        { project.length===0 ?
+        { !project.length?
                
                <>
                 <div className="student-card add-project">
@@ -25,37 +25,38 @@ export default function StudentProject({project}) {
                </div>          
                </>
           :
-          <>
-          {project.map(p=>(
-           <div className="student-card student-projects" key={p._id}>
+         
+           <div className="student-card student-projects" >
                <div className="title">
                    <h2>
                    Study-Projects
                    </h2>
                </div>
                <div className="card-group">
-                   <div className="inner-card">
+                 {project.map(p=>(
+                   <div className="inner-card" key={p._id}>
                        <div className="inner-card-head">
-                           <h2>Driver Drowsiness Project</h2>
+                           <h2>{p?.title}</h2>
                            <p className="date">10/06/2021</p>
                        </div>
                        <div className="tech-used">
-                       <span>React Js</span>
-                       <i className="fa pipe"> | </i>
-                       <span>Mongo DB</span>
-                       <i className="fa pipe"> | </i>
-                       <span>Mongo DB</span>
+                            <span>React Js</span>
+                            <i className="fa pipe"> | </i>
+                            <span>Mongo DB</span>
+                            <i className="fa pipe"> | </i>
+                            <span>Mongo DB</span>
                        </div>
                        <div className="project-overview">
-                       <p className='text-dark'>
-                       I am a freelance software engineer. I have more than 8 years of experience in programming and designing UI. I worked on front-end and as well as back-end of many high traffic websites and apps.
-                       </p>
+                        <p className='text-dark'>
+                        {   p?.description}
+                        </p>
                        </div>
                    </div>   
+                   ))}
                </div>
            </div>
-          ))}
-           </>
+          
+           
        }
 
 <div className="modal fade " data-bs-backdrop="static" id="toggle_model" tabIndex="-1" role='dialog' aria-labelledby="exampleModalLabel" >

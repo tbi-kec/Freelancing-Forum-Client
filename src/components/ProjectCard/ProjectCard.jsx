@@ -58,7 +58,7 @@ function ProjectCard({project,constant}) {
       </div>
 
       {/* card */}
-      <div className="card shadow my-4" onClick={show_modal}>
+      <div className="card shadow my-4 pointer" onClick={show_modal}>
         <input type="button" hidden id='toggle_model_button' data-bs-toggle="modal" data-bs-target="#toggle_model" />
         <div className="card-body px-4">
           <div className="project-title fs-4 my-1">{project.title}</div>

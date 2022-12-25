@@ -6,7 +6,7 @@ import DeptTitleCard from '../../components/homepage/DeptTitleCard'
 import Notification from '../../components/homepage/Notification'
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
-import {Link} from 'react-router-dom'
+import {Link,useNavigate} from 'react-router-dom'
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
@@ -14,6 +14,7 @@ import { useEffect } from "react";
 
 function Home() {
   const [navToggler, setNavToggler]=useState(true)
+  const navigate=useNavigate()
   const project = useSelector((state)=>(state.projectReducer))
   const users = useSelector((state)=>(state.userReducer))
   const myself=useSelector((state)=>(state.myDetailsReducer))
@@ -46,7 +47,9 @@ function Home() {
       document.getElementById('project').classList.remove('active-toggle')
     }
   }
-
+  const handleNavigate = ()=>{
+      navigate(`/profile/${myself.data._id}`)
+  }
   return (
     <div>
       <Navbar />
@@ -54,55 +57,28 @@ function Home() {
         <div className='row dashboard-content' >
           <div className="col-lg-8 all-dept-container pt-4 pb-4 px-4">
             <div className="row">
-              <div className="col-sm-6 mt-2 ">
-              <Link to="user/1">
-                <DeptTitleCard title='AI And ML' />
-              </Link>
+              {constants.data && constants.data[0]?.dept_short?.map((d)=>(
+                 <div className="col-sm-6 mt-2 " key={d._id}>
+                    <Link to="user/1">
+                      <DeptTitleCard title={d.short}/>
+                    </Link>
               </div>
-              <div className="col-sm-6 mt-2">
-                <DeptTitleCard title='Mechanical' />
-              </div>
-
-              <div className="col-sm-6  mt-2">
-                <DeptTitleCard title='Robotics' />
-              </div>
-              <div className="col-sm-6  mt-2">
-                <DeptTitleCard title='IT' />
-              </div>
-              <div className="col-sm-6  mt-2">
-                <DeptTitleCard title='CSE' />
-              </div>
-              <div className="col-sm-6  mt-2">
-                <DeptTitleCard title='Automobile' />
-              </div>
-              <div className="col-sm-6 mt-2">
-                <DeptTitleCard title='Civil' />
-              </div>
-              <div className="col-sm-6 mt-2">
-                <DeptTitleCard title='EEE' />
-              </div>
-
-              <div className="col-sm-6 mt-2">
-                <DeptTitleCard title='ECE' />
-              </div>
-              <div className="col-sm-6 mt-2">
-                <DeptTitleCard title='Automobile' />
-              </div>
+              ))}
             </div>
           </div>
 
           <div className="col-lg-4 profile-right ">
             <div className="">
               <div className="col p-card p-3">
-                <Link to="/profile/view" className="row">
+               <div className="row">
                   <div className="col-4 px-0 p-img">
-                    <img src={profile} className='p-2' alt="img" height='100%' width='100%' />
+                    <img src={profile} className='p-2' alt="img" height='100%' width='100%' onClick={handleNavigate} />
                   </div>
                   <div className="col-8 p-name pt-4 px-0">
                     <h3>{myself.data?.first_name}-{myself.data?.last_name}</h3>
                     <p>{myself.data?.domain[0]}</p>
                   </div>
-                </Link>
+                </div>
                 <div className="row">
                   <div className="skill d-flex justify-content-around">
                     {myself.data?.skills.map(s=>(
@@ -154,8 +130,8 @@ function Home() {
         <div className="card shadow my-4">
           <div className="card-body">
             <div className="d-flex fs-6 fw-bold">
-              <div className="mx-4 fs-5 active-toggle" id="project" onClick={handleToggle}>Projects</div>
-              <div className="mx-4 fs-5" id="talent" onClick={handleToggle}>Talents</div>
+              <div className="mx-4 fs-5 active-toggle pointer" id="project" onClick={handleToggle}>Projects</div>
+              <div className="mx-4 fs-5 pointer" id="talent" onClick={handleToggle}>Talents</div>
             </div>
           </div>
         </div>

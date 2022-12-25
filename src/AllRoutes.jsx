@@ -20,14 +20,16 @@ const AllRoutes = () => {
   return (
     <Routes>
         <Route path='/' element={<PreLoader /> } />
-        <Route element={<UnProtectedRoutes />}>
+      
             <Route path='/login' element={<Login/>} />
             <Route path='/register' element={<Register/>} />
-            <Route path='/profile/create' element={<ProfileCreation/>} />
-        </Route>
+          
+      
+         
             <Route path='/home' element={<Home />} />
             <Route path='/forgotten-password/:uid/:token' element={<ResetPassword/>} />
             <Route path='/admin' element={<AdminPage /> } />
+            <Route path='/profile/create' element={<ProfileCreation/>} />
             <Route path='/profile/:id' element={<StudentProfile/>} />
             <Route path='/profile/edit' element={<ProfileEdit/>} />
             <Route path='/project/view' element={<ProjectView/>} />
