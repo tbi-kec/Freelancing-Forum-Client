@@ -50,7 +50,7 @@ const Login = () => {
   return (
     <div className='login-container'>
     {/* modal */}
-    <div className="modal fade " id="toggle_model" tabindex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
+    <div className="modal fade" id="toggle_model" tabindex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
                 <div className="modal-dialog modal-dialog-centered modal-lg">
                     <div className="modal-content text-center">
                         <h3 className='my-3'>Forget Password</h3>
