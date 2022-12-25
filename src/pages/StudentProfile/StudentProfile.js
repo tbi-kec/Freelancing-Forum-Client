@@ -41,9 +41,7 @@ export default function StudentProfile() {
         <ProfileBio/>
 
         <Skills/>
-
-
-
+        
         <div className="modal fade " data-bs-backdrop="static" id="toggle_model" tabindex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
                 <div className="modal-dialog modal-dialog-centered modal-lg">
                     <div className="modal-content text-center">
@@ -149,10 +147,8 @@ export default function StudentProfile() {
                     </div>
                 }
         
-
         <div className="student-card project-history">
-            <div className="title">
-                
+            <div className="title">    
                 Project - History
             </div>
             <div className="card-group">
@@ -171,7 +167,6 @@ export default function StudentProfile() {
                 </div>
             </div>
         </div>
-
     </div>
   )
 }

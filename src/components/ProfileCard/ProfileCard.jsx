@@ -4,9 +4,7 @@ import starColor from '../../assets/Color-star.png'
 import starDull from '../../assets/dull-star.png'
 
 function ProfileCard({user,constant}) {
-    const rating=4;
     const shortname=constant.dept_short.find(item => item.dept=== user.department)
-    
   return (
     <div className="card shadow my-4">
     <div className="card-body px-4">
