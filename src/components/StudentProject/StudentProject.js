@@ -16,7 +16,7 @@ export default function StudentProject({ project }) {
         <>
           <div className="inner-card add-project">
             <div className="content-add w-100">
-              ADD YOUR STUDY PROJECT TO COMPLETE YOUR PROFILE
+              ADD YOUR STUDY PROJECT
             </div>
             <div className="add-skill-div" onClick={handleClick}>
               <div className="add-skill">
