@@ -8,8 +8,6 @@ export default function StudentProject({project}) {
         model.click();
       }
 
-    
-
   return (
     <div>
         { project.length===0 ?
