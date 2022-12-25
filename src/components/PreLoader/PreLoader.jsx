@@ -8,12 +8,10 @@ import decode from 'jwt-decode'
 import { useEffect } from 'react'
 function PreLoader() {
   const navigate=useNavigate();
-  const dispatch=useDispatch();
-
   const handleLogout =()=>{
     localStorage.removeItem("freelance")
     setTimeout(()=>{
-    navigate('/Home')
+    navigate('/home')
   },3000)
   }
     useEffect(()=>{
@@ -21,11 +19,12 @@ function PreLoader() {
 
         const result = JSON.parse(localStorage.getItem("freelance"))
         const token=result?.token;
+
       if(!result){
               setTimeout(()=>{
                   navigate('/login')
               },3000)
-                }
+          }
         if(token){
                 const decodedToken = decode(token)
                 
@@ -33,19 +32,20 @@ function PreLoader() {
                     handleLogout()
                     return
                 }
-            
-               
-                
+                setTimeout(()=>{
+                       navigate("/home")
+                },3000)
+             
         }
       },[]);
+
   return (
     <div className='preloader text-center'>
-        <div className='text-center'  style={{backgroundImage:`url(${WhiteImg})`}}>
+        <div className='text-center' >
             <img className='my-2 animate__animated animate__pulse animate__infinite ' src={KecLogo} height='70' width='70' alt="" />
-            <p className='animate__animated animate__pulse text-black '>Transform YourSelf</p>
+            <p className='animate__animated animate__pulse text-black text-light '>Transform YourSelf</p>
         </div><br />
-       
-
+  
     </div>
   )
 }
