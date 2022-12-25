@@ -30,3 +30,8 @@ export const getDetails = (id)=>API.get(`/user/${id}`)
 
 //new-study-project
 export const newStudyProject = (projectData)=>API.post('/study',projectData)
+
+
+//forget-password
+export const sendEmail = (email)=>API.post('/user/forgotten-password',email)
+export const changePassword = (resetData)=>API.post(`/user/reset/forgotten-password`,resetData)

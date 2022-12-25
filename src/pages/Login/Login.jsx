@@ -5,6 +5,7 @@ import './Login.css'
 import { login } from '../../actions/auth'
 import logo from '../../assets/logo.png'
 import { setAlert } from '../../actions/alert'
+import { sendEmail } from '../../actions/auth'
 
 const Login = () => {
     const navigate =  useNavigate()
@@ -40,6 +41,8 @@ const Login = () => {
             dispatch(setAlert("Invalid Email","warning",2500))
             return
         }
+        dispatch(setAlert("Sending Email","info"))
+        dispatch(sendEmail({kongu_email:FPEmail}));
 
     }
 
