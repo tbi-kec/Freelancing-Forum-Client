@@ -32,8 +32,9 @@ export default function AddProject() {
    
     e.preventDefault();
     const id =user?.user._id;
+    console.log(id)
     dispatch(setAlert("Creating Study Project","info"))
-    dispatch(newStudyProject({created_by:id,title,date,link,technology,description},navigate))
+    dispatch(newStudyProject({createdBy:id,title,date,link,technology,description},navigate))
   }
 
   return (

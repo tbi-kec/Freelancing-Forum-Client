@@ -106,7 +106,7 @@ const Register = () => {
                                 <input type="tel" placeholder='Mobile' className='form-control' value={mobile} onChange={e => setMobile(e.target.value)} required />
                             </div>
                             <div className="form-group col-12">
-                                <input type="email" placeholder='Email Id' className='form-control' value={kongu_email} onChange={e => setEmail(e.target.value)} required />
+                                <input type="email" placeholder='Kongu Email Id' className='form-control' value={kongu_email} onChange={e => setEmail(e.target.value)} required />
                             </div>
                             <div className="form-group col-12">
                                 <input type="password" placeholder='Enter Password' className='form-control' value={password} onChange={e => setPassword(e.target.value)} required />

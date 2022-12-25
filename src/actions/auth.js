@@ -18,9 +18,11 @@ export const signup = (authData,navigate) => async(dispatch) =>{
     try {
         const {data}=await api.signup(authData)
         dispatch({type:"AUTH",payload:data})
-        dispatch(setAlert("User Create successfully","success"))
+         navigate("/profile/create")
+        dispatch(setAlert("User Created successfully","success"))
+        
         dispatch(setCurrentUser())
-        navigate("/profile/create")
+       
     } catch (error) {
         dispatch(setAlert(error.response.data,'danger'))
     }
