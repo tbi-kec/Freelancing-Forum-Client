@@ -154,8 +154,8 @@ function Home() {
         <div className="card shadow my-4">
           <div className="card-body">
             <div className="d-flex fs-6 fw-bold">
-              <div className="mx-4 fs-5 active-toggle" id="project" onClick={handleToggle}>Projects</div>
-              <div className="mx-4 fs-5" id="talent" onClick={handleToggle}>Talents</div>
+              <div className="mx-4 fs-5 active-toggle pointer" id="project" onClick={handleToggle}>Projects</div>
+              <div className="mx-4 fs-5 pointer" id="talent" onClick={handleToggle}>Talents</div>
             </div>
           </div>
         </div>

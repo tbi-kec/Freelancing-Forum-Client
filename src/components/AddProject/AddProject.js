@@ -110,8 +110,8 @@ export default function AddProject() {
                     onChange={(e)=>setDescription(e.target.value)}
                 ></textarea>
                 <div className="text-end-profile">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                <button className='btn btn-md my-3 project-add-submit-btn'>Submit</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"  aria-label="Close">Close</button>
+                <button className='btn btn-md my-3 project-add-submit-btn' data-bs-dismiss="modal" aria-label="Close">Submit</button>
                 </div>
                 </form>
                 </div>
