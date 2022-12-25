@@ -1,6 +1,6 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { useSelector } from 'react-redux';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import AddProject from '../../components/AddProject/AddProject';
 import Banner from '../../components/Banner/Banner'
 import ProfileBio from '../../components/ProfileBio/ProfileBio'
@@ -8,39 +8,36 @@ import Skills from '../../components/Skills/Skills'
 import './StudentProfile.css'
 
 export default function StudentProfile() {
+    const {id}=useParams();
     const [studyProject,setStudyProject]=useState([])
-    const [title, setTitle] = useState();
-    const [category, setCategory] = useState();
-    const [budget, setBudget] = useState();
-    const [skill, setSkill] = useState([]);
-    const [date, setDate] = useState();
-    const [Description, setDescription] = useState();
-    const [currentSkill, setCurrentSkill] = useState("");
+    const [user,setUser]=useState(null);
     const users=useSelector((state)=>(state.userReducer))
-    const handleSkill = () => {
-        if(currentSkill != ""){
-            setSkill([...skill, currentSkill]);
-            setCurrentSkill("");
-        }
-      };
+    const filterUser =  async()=>{
+        let newUser = users.data.filter(u=>u._id === id);
+        console.log(newUser[0])
+        setUser(newUser[0])
+    }
+    useEffect(()=>{
+        if(users.data){
+            filterUser();
+        }   
+    },[users])
 
-      const handleClick = () => {
-        const model = document.getElementById('toggle_model_button')
-        model.click();
-      }
+    
+
 
   return (
     <div className='student-profile'>
         <div className="back">
         <Link to="/Home">
-            <i class="fa-sharp fa-solid fa-arrow-left"></i>
+            <i className="fa-sharp fa-solid fa-arrow-left"></i>
         </Link>
         </div>
         <Banner/>
         
-        <ProfileBio/>
+        <ProfileBio  user={user}/>
 
-        <Skills/>
+        <Skills skills={user?.skills}/>
 
 
 
@@ -108,14 +105,14 @@ export default function StudentProfile() {
         </div>
 
 
-        { studyProject.length!=0 ?
+        { studyProject.length!==0 ?
                
                         <>
                          <div className="student-card add-project">
                             <div className="content-add w-100">
                                 ADD YOUR STUDY PROJECT TO COMPLETE YOUR PROFILE
                             </div>
-                                <div className="add-skill-div" onClick={handleClick}>
+                                <div className="add-skill-div" >
                                     <div className='add-skill'>
                                     <i class="fa-solid fa-plus"></i>
                                 </div>    
