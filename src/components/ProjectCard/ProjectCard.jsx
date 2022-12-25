@@ -10,7 +10,6 @@ const show_modal = () => {
 
 function ProjectCard({project,constant}) {
   const shortname=constant.dept_short.find(item => item.dept=== project.createdBy.department)
-
   return (
     <>
       {/* modal */}
@@ -35,9 +34,7 @@ function ProjectCard({project,constant}) {
                     <div className={` skillset px-2 skill-${'beginner'}`} key={idx} >
                       <p>{s}</p>
                 </div>
-                ))}
-                
-              
+                ))}       
               </div>
             </div>
             <div className=" px-4 mt-3 d-flex justify-content-start">
@@ -46,13 +43,10 @@ function ProjectCard({project,constant}) {
                 <img src={profile} height="50px" width='50px' alt="" />
               </div>
             </div>
-
             <div className="ms-auto me-5 my-5">
               <div className="btn btn-success px-5 fw-bold" >REQUEST</div>
             </div>
-
             <input type='button' id='toggle_model_button' hidden data-bs-toggle="modal" data-bs-target="#toggle_model" />
-
           </div>
         </div>
       </div>

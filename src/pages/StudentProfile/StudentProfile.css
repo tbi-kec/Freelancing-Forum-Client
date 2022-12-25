@@ -139,10 +139,6 @@
     justify-content: center;
 }
 
-/* .fa-arrow-left{
-    color:#007FED;
-} */
-
 @media only screen and (max-width: 600px){
         .domain span{
             font-size: 4.5vw;

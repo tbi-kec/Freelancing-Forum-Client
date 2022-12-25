@@ -1,6 +1,5 @@
 import React,{useState} from 'react'
 import './ProfileCreation.css'
-import human from '../../assets/human.png'
 import profileTop from '../../assets/profile.png'
 import profile from '../../assets/profileicon.png'
 import { setAlert } from '../../actions/alert'
@@ -153,14 +152,6 @@ const ProfileCreation = () => {
                                 </div>
                             </div>
                         </div>
-                        {/* <div className="form-group">
-                            <select name="domain" value={domain} onChange={e=>setDomain(e.target.value)} className="form-select">
-                                <option value="" diabled hidden selected>Domain Name</option>
-                                {domains.map((d,idx)=>(
-                                    <option key={idx} value={d}>{d}</option>
-                                ))}
-                            </select>
-                        </div> */}
 
                          <div className="card my-3">
                             <div className="card-body">
