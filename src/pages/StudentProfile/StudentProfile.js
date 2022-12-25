@@ -4,13 +4,26 @@ import { Link, useParams } from "react-router-dom";
 import AddProject from '../../components/AddProject/AddProject';
 import Banner from '../../components/Banner/Banner'
 import ProfileBio from '../../components/ProfileBio/ProfileBio'
+import ProjectHistory from '../../components/ProjectHistory/ProjectHistory';
 import Skills from '../../components/Skills/Skills'
+import StudentProject from '../../components/StudentProject/StudentProject';
+import WorkHistory from '../../components/WorkHistory/WorkHistory';
 import './StudentProfile.css'
 
 export default function StudentProfile() {
+<<<<<<< HEAD
     const {id}=useParams();
     const [studyProject,setStudyProject]=useState([])
     const [user,setUser]=useState(null);
+=======
+    const [title, setTitle] = useState();
+    const [category, setCategory] = useState();
+    const [budget, setBudget] = useState();
+    const [skill, setSkill] = useState([]);
+    const [date, setDate] = useState();
+    const [Description, setDescription] = useState();
+    const [currentSkill, setCurrentSkill] = useState("");
+>>>>>>> aadc89493aba25a8a1891d2a73918083c2bc6b78
     const users=useSelector((state)=>(state.userReducer))
     const filterUser =  async()=>{
         let newUser = users.data.filter(u=>u._id === id);
@@ -25,6 +38,10 @@ export default function StudentProfile() {
 
     
 
+<<<<<<< HEAD
+=======
+      
+>>>>>>> aadc89493aba25a8a1891d2a73918083c2bc6b78
 
   return (
     <div className='student-profile'>
@@ -39,6 +56,7 @@ export default function StudentProfile() {
 
         <Skills skills={user?.skills}/>
 
+<<<<<<< HEAD
 
 
         <div className="modal fade " data-bs-backdrop="static" id="toggle_model" tabindex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
@@ -152,30 +170,14 @@ export default function StudentProfile() {
            
 
         
+=======
+>>>>>>> aadc89493aba25a8a1891d2a73918083c2bc6b78
         
+        <WorkHistory/>
 
-        <div className="student-card project-history">
-            <div className="title">
-                <h2>
-                Project - History
-                </h2>
-            </div>
-            <div className="card-group">
-                <div className="inner-card">
-                    <div className="inner-card-head">
-                        <h2>Driver Drowsiness Project</h2>
-                    </div>
-                    <div className="domain">
-                       <span>Aritificial Inetlligence</span>
-                       <i class="fa-solid fa-circle"></i>
-                       <span>AI and ML</span>
-                    </div>
-                    <div className="posted-by">
-                        Worked with  Rohith,Linga,Sujith
-                    </div>
-                </div>
-            </div>
-        </div>
+        <StudentProject/>
+
+        <ProjectHistory/>
 
     </div>
   )
