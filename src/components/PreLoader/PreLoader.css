@@ -12,8 +12,21 @@
 .preloader>div>img{
     filter: drop-shadow(5px 5px 5px #222);
 }
+.preloader>div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(5px 5px 5px #222);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100%;
+    width: 100%;
+}
 .preloader>div>p{
-    text-shadow: 5px 2px 6px rgba(128, 0, 0, 0.81);
+    /* text-shadow: 5px 2px 6px rgba(128, 0, 0, 0.81); */
+    filter: drop-shadow(5px 5px 5px #222);
 }
 .animate__animated .animate__lightSpeedOutRight{
     --animate-delay: 5s;

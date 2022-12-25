@@ -1,6 +1,7 @@
 import React from 'react'
 import './PreLoader.css'
 import KecLogo from '../../assets/keclogo.png'
+import WhiteImg from '../../assets/left_graph.png'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import decode from 'jwt-decode'
@@ -38,11 +39,12 @@ function PreLoader() {
         }
       },[]);
   return (
-    <div className='preloader'>
-        <div className='text-center'>
+    <div className='preloader text-center'>
+        <div className='text-center'  style={{backgroundImage:`url(${WhiteImg})`}}>
             <img className='my-2 animate__animated animate__pulse animate__infinite ' src={KecLogo} height='70' width='70' alt="" />
-            <p className='animate__animated animate__pulse '>Transform YourSelf</p>
-        </div>
+            <p className='animate__animated animate__pulse text-black '>Transform YourSelf</p>
+        </div><br />
+       
 
     </div>
   )
