@@ -27,12 +27,6 @@ export default function Skills() {
           ))}
         </div>
       </div>
-
-      <div className="add-skill-div">
-        <div href="" className="add-skill" onClick={handleSkill}>
-          <i class="fa-solid fa-plus"></i>
-        </div>
-      </div>
     </div>
   );
 }
