@@ -53,6 +53,10 @@
     font-size: 18px;
 }
 
+.inner-card{
+    padding: 20px !important;
+}
+
 .inner-card-head h2{
     color: #007FED;
     font-size: 30px;
@@ -63,6 +67,7 @@
     display: flex;
     justify-content:space-between;
     align-items: stretch;
+    width: 100%;
     gap: 20px;
 }
 
@@ -99,10 +104,11 @@
     align-items: flex-start;
 }
 
-.work-history .title h2,.student-projects .title h2,.project-history .title h2{
+.work-history .title h2,.student-projects .title h2,.project-history .title h2,.stud-project .title h2{
     color: rgba(22, 51, 109, 0.88);
     font-size: 28px;
-    margin: 20px auto;
+    margin: 20px 0px;
+    /* font-weight: normal; */
 }
 
 .card-group{

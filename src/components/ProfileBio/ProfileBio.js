@@ -10,10 +10,11 @@ export default function ProfileBio({user}) {
 
   return (
     
-    <div className='student-card '>
+    <div className='student-card'>
         
         <div className="profile">
         <div className="profile-head">
+            
         <div className='prof' >
             <div className="profile-img me-4">
                 <img src={profile} alt="" />

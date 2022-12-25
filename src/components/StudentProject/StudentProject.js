@@ -9,13 +9,18 @@ export default function StudentProject({ project }) {
     }
 
     return (
-        <div>
+        <div className="student-card stud-project">
+            <div className="title">
+                    <h2>
+                        Study-Projects
+                    </h2>
+                </div>
             {project.length < 3 ?
 
                 <>
-                    <div className="student-card add-project">
+                    <div className="add-project inner-card">
                         <div className="content-add w-100">
-                            ADD YOUR STUDY PROJECT TO COMPLETE YOUR PROFILE
+                            ADD YOUR STUDY PROJECT
                         </div>
                         <div className="add-skill-div" onClick={handleClick}>
                             <div className='add-skill'>
@@ -26,12 +31,14 @@ export default function StudentProject({ project }) {
                 </>
                 : <></>}
 
-            {project.length ? <div className="student-card student-projects mt-4" >
-                <div className="title">
+            {
+            
+            project.length ? <div className="student-projects mt-4" >
+                {/* <div className="title">
                     <h2>
                         Study-Projects
                     </h2>
-                </div>
+                </div> */}
                 <div className="card-group">
                     {project.map(p => (
                         <div className="inner-card" key={p._id}>
