@@ -10,12 +10,14 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    filter: drop-shadow(5px 5px 5px #222);
 }
 
 .left-side-container {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    filter: drop-shadow(5px 5px 5px #222);
 }
 
 
