@@ -9,6 +9,7 @@ import { getAllProjects } from './actions/project'
 import { getAllUsers } from './actions/user'
 import { getConstants } from './actions/constant'
 import { getMyDetails } from './actions/myDetails'
+import StudentProfile from './pages/StudentProfile/StudentProfile'
 const App = () => {
   const dispatch = useDispatch();
   const getData = async()=>{
@@ -32,6 +33,10 @@ const App = () => {
       </Router>
     </div>
   )
+
+  // return(
+  //   <StudentProfile/>
+  // )
 }
 
 export default App
