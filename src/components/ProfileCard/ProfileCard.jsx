@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom'
 
 function ProfileCard({user,constant}) {
     const navigate = useNavigate()
-    const rating=4;
     const shortname=constant.dept_short.find(item => item.dept=== user.department)
     const handleNavigate = ()=>{
         navigate(`/profile/${user._id}`)

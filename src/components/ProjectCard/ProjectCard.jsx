@@ -2,6 +2,7 @@ import React from "react";
 import profile from '../../assets/profileicon2.png'
 import  './ProjectCard.css'
 import moment from 'moment'
+import { Link } from "react-router-dom";
 const show_modal = () => {
   const modal = document.getElementById('toggle_model_button')
   modal.click()
@@ -40,7 +41,7 @@ function ProjectCard({project,constant}) {
               </div>
             </div>
             <div className=" px-4 mt-3 d-flex justify-content-start">
-              <h5 className=" text-end pt-2 ">Posted By <span className="fs-3 ">SANJAY</span></h5>
+              <h5 className=" text-end pt-2 ">Posted By <Link to="/profile/1"><span className="fs-3 ">{project.createdBy.first_name} {project.createdBy.last_name} </span></Link></h5>
               <div className="mx-2 text-start">
                 <img src={profile} height="50px" width='50px' alt="" />
               </div>

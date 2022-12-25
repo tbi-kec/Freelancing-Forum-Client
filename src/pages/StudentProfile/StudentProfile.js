@@ -11,6 +11,7 @@ import WorkHistory from '../../components/WorkHistory/WorkHistory';
 import './StudentProfile.css'
 
 export default function StudentProfile() {
+
     const {id}=useParams();
     const [studyProject,setStudyProject]=useState([])
     const [work_history,setWorkHistory]=useState([])
@@ -19,7 +20,6 @@ export default function StudentProfile() {
     const users=useSelector((state)=>(state.userReducer))
     const filterUser =  async()=>{
         let newUser = users.data.filter(u=>u._id === id);
-        console.log(newUser[0])
         setUser(newUser[0])
     }
     useEffect(()=>{
@@ -50,13 +50,29 @@ export default function StudentProfile() {
         <Banner/>
         
         <ProfileBio  user={user} key={1}/>
-
         <Skills skills={user?.skills}/>
 
-        
-        <WorkHistory/>
 
-        <StudentProject/>
+
+
+       
+        <div className="student-card work-history">
+            <div className="title">
+                <h2>
+                Work - History
+                </h2>
+            </div>
+            <div className="card-group">
+                
+                {work_history?.map(w=>(
+                    <WorkHistory work={w} key={w._id} />
+                ))}
+
+            
+            </div>
+        </div>
+
+        <StudentProject project={studyProject}/>
 
         <ProjectHistory/>
 
