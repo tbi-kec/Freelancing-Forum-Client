@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import profile from '../../assets/profileicon2.png'
 import assured from '../../assets/verified.png'
 import './ProfileBio.css'
@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import EditProfile from '../EditProfile/EditProfile'
 export default function ProfileBio({user}) {
     const current = useSelector((state)=>(state.currentUserReducer));
-
+    const [projectGiven,setProjectGiven]=useState([])
     const [first_name,setFirstName]=useState('')
     const [last_name,setLastName]=useState("")
     const [mobile,setMobile]=useState()
@@ -87,6 +87,17 @@ export default function ProfileBio({user}) {
         modal.click()
       }
 
+      const filterData = ()=>{
+        const data = user?.projects_given?.filter(p=>p.project_status=="created");
+        console.log(data)
+        setProjectGiven([...data]);
+      }
+      useEffect(()=>{
+            if(user?.projects_given){
+                filterData();
+            }
+      },[user])
+     
   return (
     
     <div className='student-card '>
@@ -158,9 +169,12 @@ export default function ProfileBio({user}) {
     Request
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="#">Action</a></li>
+    {projectGiven?.map(p=>(
+         <li><a class="dropdown-item" href="#" key={p._id}>{p.title}</a></li>
+    ))}
+    {/* <li><a class="dropdown-item" href="#">Action</a></li>
     <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li> */}
   </ul>
 </div>
         </div>
