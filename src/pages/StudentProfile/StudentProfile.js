@@ -46,11 +46,8 @@ export default function StudentProfile() {
         <div className="modal fade " data-bs-backdrop="static" id="toggle_model" tabindex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
                 <div className="modal-dialog modal-dialog-centered modal-lg">
                     <div className="modal-content text-center">
-                        <AddProject/>
-
-                        
+                        <AddProject/>           
                         <input type='button' id='toggle_model_button' hidden  data-bs-toggle="modal" data-bs-target="#toggle_model" />
-
                     </div>
                 </div>
             </div>
@@ -105,8 +102,6 @@ export default function StudentProfile() {
                 </div>
             </div>
         </div>
-
-
         {
             (()=>{
                 if(studyProject.length==0)
@@ -157,11 +152,6 @@ export default function StudentProfile() {
                 }
             })()
         }
-       
-
-        
-        
-
         <div className="student-card project-history">
             <div className="title">
                 <h2>
