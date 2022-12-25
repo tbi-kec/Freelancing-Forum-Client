@@ -8,10 +8,13 @@ export default function StudentProject({ project }) {
   };
 
   return (
-    <div>
+    <div className="student-card stud-project">
+        <div className="title">
+            <h2>Study-Projects</h2>
+          </div>
       {project.length < 3 ? (
         <>
-          <div className="student-card add-project">
+          <div className="inner-card add-project">
             <div className="content-add w-100">
               ADD YOUR STUDY PROJECT TO COMPLETE YOUR PROFILE
             </div>
@@ -27,10 +30,8 @@ export default function StudentProject({ project }) {
       )}
 
       {project.length ? (
-        <div className="student-card student-projects mt-4">
-          <div className="title">
-            <h2>Study-Projects</h2>
-          </div>
+        <div className=" student-projects mt-4">
+          
           <div className="card-group">
             {project.map((p) => (
               <div className="inner-card" key={p._id}>
