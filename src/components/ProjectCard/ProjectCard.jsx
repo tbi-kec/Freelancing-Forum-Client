@@ -2,17 +2,20 @@ import React from "react";
 import profile from '../../assets/profileicon2.png'
 import  './ProjectCard.css'
 import moment from 'moment'
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+import { useNavigate } from "react-router-dom";
 
 function ProjectCard({project,constant}) {
   const shortname=constant.dept_short.find(item => item.dept=== project.createdBy.department)
   const user =useSelector((state)=>(state.currentUserReducer))
+  const navigate=useNavigate();
   const show_modal = () => {
-  const modal = document.getElementById(`toggle_model_${project._id}`)
-  modal.click()
-}
+    const modal = document.getElementById(`toggle_model_${project._id}`)
+    modal.click()
+  }
+  const handleNavigate = ()=>{
+      navigate(`/profile/${project.createdBy._id}`)
+  }
   return (
     <>
       {/* modal */}
@@ -37,26 +40,21 @@ function ProjectCard({project,constant}) {
                     <div className={` skillset px-2 skill-${'beginner'}`} key={idx} >
                       <p>{s}</p>
                 </div>
-                ))}
-                
-              
+                ))}       
               </div>
             </div>
             <div className=" px-4 mt-3 d-flex justify-content-start">
-              <h5 className=" text-end pt-2 ">Posted By : <Link to={`/profile/${project.createdBy._id}`}><span className="fs-3 ">{project.createdBy.first_name} {project.createdBy.last_name} </span></Link></h5>
+              <h5 className=" text-end pt-2 ">Posted By : <span data-bs-dismiss="modal" aria-label="close" className="fs-3 " onClick={handleNavigate}>{project.createdBy.first_name} {project.createdBy.last_name} </span></h5>
               <div className="mx-2 text-start">
                 <img src={profile} height="50px" width='50px' alt="" />
               </div>
             </div>
-
             <div className="ms-auto me-5 my-5">
               {user?.user._id !==project.createdBy._id &&
               <div className="btn btn-success px-5 fw-bold" >REQUEST</div>
 }
             </div>
-
             <input type='button' id='toggle_model_button' hidden data-bs-toggle="modal" data-bs-target="#toggle_model" />
-
           </div>
         </div>
       </div>

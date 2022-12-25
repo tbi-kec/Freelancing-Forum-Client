@@ -1,0 +1,52 @@
+.edit-profile-container{
+        .skills-list {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+            }
+            .skill-container {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                align-content: center;
+                background: #81f664;
+                width: fit-content;
+                flex-wrap: wrap;
+                padding: 4px 10px;
+                border-radius: 14px;
+                color: #fff;
+                gap: 6px;
+            }
+            .skill-beginner {
+                background: #81f664;
+            }
+            .skill-expert {
+                background-color: #64caf6;
+            }
+                .skill-intermediate {
+                    background: #f5e878;
+                }
+        .domain-list {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+        }
+            .domain-card {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                flex-wrap: wrap;
+                width: fit-content;
+                padding: 10px 10px;
+                gap: 10px;
+                background-color: var(--main-navyblue);
+                color: var(--main-white);
+                border-radius: 14px;
+                padding: 6px;
+            }
+}
+
+
+

@@ -1,117 +1,107 @@
-import React,{useState} from 'react'
-import './ProfileCreation.css'
-import profileTop from '../../assets/profile.png'
-import profile from '../../assets/profileicon.png'
+import React, {useEffect, useState} from 'react'
 import { setAlert } from '../../actions/alert'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { updateProfile } from '../../actions/auth'
+import { useDispatch,useSelector } from 'react-redux'
+import './EditProfile.scss'
 
-const ProfileCreation = () => {
-    const navigate=useNavigate()
+function EditProfile() {
+    const user = useSelector((state)=>(state.myDetailsReducer))
     const dispatch=useDispatch()
-      const dept = [
-      "Civil Engineering",
-      "Mechanical Engineering",
-      "Mechatronics Engineering",
-      "Automobile Engineering",
-      "Chemical Engineering",
-      "Food Technology",
-      "Electrical and Electronics Engineering",
-      "Electronics and Instrumentation Engineering",
-      "Electronics and Communication Engineering",
-      "Computer Science and Engineering",
-      "Information Technology",
-      "Computer Science and Design",
-      "Artificial Intelligence (AIML & AIDS)",
-      "Management Studies",
-      "Computer Application",
-      "Computer Technology - UG",
-      "Computer Technology - PG",
-    ];
-    const domains = [
-        "Web Developer",
-        "App Developer",
-        "Full Stack Developer"
-    ]
-    const paymentTypes=[
-        "Free",
-        "Per Month",
-        "Per Project",
-        "Per Day",
-        "Per Hour",
-    ]
-    const [department,setDepartment]=useState("")
-    const [personal_email,setPersonalMail]=useState("")
-    const [skills,setskills]=useState([])
-    const [name,setName]=useState("")
-    const [level,setLevel]=useState("")
-    const [domain,setDomain]=useState([])
-    const [currentDomain,setCurrentDomain]=useState("")
-    const [description,setDescription]=useState("")
-    const [payment_type,setPaymentType]=useState("")
-    const handleSkill = ()=>{
-        if(level===""){
-            dispatch(setAlert("Please select level","warning"));
-            return;
-        }
-            setskills([...skills,{"name":name,"level":level}])
-            setName("")
-            setLevel("")
-    }   
-
-    const handleDelete =(id)=>{
-        const newSkills = skills.filter((s,idx)=>idx!=id)
-        setskills([...newSkills])
-    }
-    const handleDomain = ()=>{
-        setDomain([...domain,currentDomain])
-        setCurrentDomain("")
-    }
-
-    const handleDeleteDomain =(id)=>{
-        const newDomain = domain.filter((d,idx)=>idx!=id)
-        setDomain([...newDomain])
-    }
-    const handleSubmit =async(e)=>{
-        const user =await JSON.parse( localStorage.getItem('freelance'))
-        console.log(user)
-        e.preventDefault()
-        if(!skills.length){
-            dispatch(setAlert("Skills can't be empty","warning"))
-            return
-        }
-        if(!domain.length){
-            dispatch(setAlert("Domain's can't be empty","warning"))
-            return
-        }
-        dispatch(setAlert("Creating Profile","info"))
-        dispatch(updateProfile({id:user.user._id,department,personal_email,skills,domain,description,payment_type},navigate))
-
-    }
+    const dept = [
+        "Civil Engineering",
+        "Mechanical Engineering",
+        "Mechatronics Engineering",
+        "Automobile Engineering",
+        "Chemical Engineering",
+        "Food Technology",
+        "Electrical and Electronics Engineering",
+        "Electronics and Instrumentation Engineering",
+        "Electronics and Communication Engineering",
+        "Computer Science and Engineering",
+        "Information Technology",
+        "Computer Science and Design",
+        "Artificial Intelligence (AIML & AIDS)",
+        "Management Studies",
+        "Computer Application",
+        "Computer Technology - UG",
+        "Computer Technology - PG",
+      ];
+      const domains = [
+          "Web Developer",
+          "App Developer",
+          "Full Stack Developer"
+      ]
+      const paymentTypes=[
+          "Free",
+          "Per Month",
+          "Per Project",
+          "Per Day",
+          "Per Hour",
+      ]
+      
+    const [first_name,setFirstName]=useState()
+    const [last_name,setLastName]=useState()
+    const [mobile,setMobile]=useState()
+     const [personal_email,setPersonalMail]=useState()
+      const [skills,setskills]=useState([])
+      const [name,setName]=useState("")
+      const [level,setLevel]=useState("")
+      const [domain,setDomain]=useState([])
+      const [currentDomain,setCurrentDomain]=useState("")
+      const [description,setDescription]=useState()
+      const [payment_type,setPaymentType]=useState()
+      const handleSkill = ()=>{
+          if(level===""){
+              dispatch(setAlert("Please select level","warning"));
+              return;
+          }
+              setskills([...skills,{"name":name,"level":level}])
+              setName("")
+              setLevel("")
+      }   
+  
+      const handleDelete =(id)=>{
+          const newSkills = skills.filter((s,idx)=>idx!=id)
+          setskills([...newSkills])
+      }
+      const handleDomain = ()=>{
+          setDomain([...domain,currentDomain])
+          setCurrentDomain("")
+      }
+  
+      const handleDeleteDomain =(id)=>{
+          const newDomain = domain.filter((d,idx)=>idx!=id)
+          setDomain([...newDomain])
+      }
+      useEffect(()=>{
+            if(user?.data){
+                setFirstName(user?.data.first_name)
+                setLastName(user?.data.last_name)
+                setMobile(user?.data.mobile)
+                setPersonalMail(user?.data.personal_email)
+                setskills([...user.data.skills])
+                setDomain([...user.data.domain])
+                setDescription(user?.data.description)
+                setPaymentType(user?.data.payment_type)
+            }
+        },[user])
 
   return (
-    <div className='profile-creation-container'>
-        <div className="row">
-            <div className="col-12 image-container">
-                <img src={profileTop} alt="image-top" />
-            </div>
-        </div>
-        <div className="container profile-form-container my-3">
-            <div className="row">
-                <div className="col-3 image-container">
-                    <img src={profile} alt="profile-image" />
-                </div>
-                <div className="col-6 profile-form">
-                    <form onSubmit={handleSubmit} >
-                        <div className="form-group">
-                            <select name="Department" defaultValue={department} onChange={e=>setDepartment(e.target.value)}  placeholder='Department' className="form-select" required>
-                                <option value="" diabled hidden selected>Department</option>
-                                {dept.map(d=>(
-                                    <option value={d} key={d}>{d}</option>
-                                ))}
-                            </select>
-                        </div>
+    <div className='edit-profile-container'>
+                <h2 className='my-3'>Edit Profile</h2>
+                <div className='d-flex justify-content-center'>
+
+                <form className='row g-2'>
+                            <div className="form-group col-md-12 col-lg-6">
+                                <input type="text" placeholder='First Name' className='form-control' value={first_name} onChange={e => setFirstName(e.target.value)} required />
+                            </div>
+                            <div className="form-group col-md-12 col-lg-6">
+                                <input type="text" placeholder='Last Name' className='form-control' value={last_name} onChange={e => setLastName(e.target.value)} required />
+                            </div>
+                            <div className="form-group col-12">
+                                <input type="tel" placeholder='Mobile' className='form-control' value={mobile} onChange={e => setMobile(e.target.value)} required />
+                            </div>
+                          
+                        
                         <div className="form-group ">
                             <input type="email" value={personal_email} onChange={e=>setPersonalMail(e.target.value)} placeholder='Perosnal Email Id' className='form-control' required />
                         </div>
@@ -200,19 +190,13 @@ const ProfileCreation = () => {
                                {description}
                             </textarea>
                         </div>
-                        <div className='create-button-container'>
-                             <button className='create-button btn btn-md my-3 '>Create</button>
+                            <div className="d-grid gap-2 ">
+                                <button className="btn shadow ">Edit</button>
                         </div>
-                    </form>
-                </div>
-                <div className="col-3">
-
-                </div>
-
+                </form>
             </div>
-        </div>
     </div>
   )
 }
 
-export default ProfileCreation
+export default EditProfile
