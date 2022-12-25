@@ -58,7 +58,7 @@ const Login = () => {
                             <input type="text" className='form-control w-50' placeholder="Email" value={FPEmail} onChange={(e)=>{setFPEmail(e.target.value)}}  />
                         </div>
                         <div className='d-flex justify-content-center mb-5'>
-                            <button className='btn btn-primary w-25' onClick={handleForgetPasswordSubmit}>Send</button>
+                            <button className='btn btn-primary w-25' data-bs-dismiss="modal" aria-label="Close" onClick={handleForgetPasswordSubmit}>Send</button>
                         </div>
                         <input type='button' id='toggle_model_button' hidden  data-bs-toggle="modal" data-bs-target="#toggle_model" />
 
