@@ -1,18 +1,18 @@
 import React,{useState} from 'react'
 import AddProject from '../AddProject/AddProject';
 
-export default function StudentProject() {
+export default function StudentProject({project}) {
 
     const handleClick = () => {
         const model = document.getElementById('toggle_model_button')
         model.click();
       }
 
-    const [studyProject,setStudyProject]=useState([])
+    
 
   return (
-    <>
-        { studyProject.length==0 ?
+    <div>
+        { project.length===0 ?
                
                <>
                 <div className="student-card add-project">
@@ -21,13 +21,15 @@ export default function StudentProject() {
                    </div>
                        <div className="add-skill-div" onClick={handleClick}>
                            <div className='add-skill'>
-                           <i class="fa-solid fa-plus"></i>
+                           <i className="fa-solid fa-plus"></i>
                        </div>    
                    </div>
                </div>          
                </>
           :
-           <div className="student-card student-projects">
+          <>
+          {project.map(p=>(
+           <div className="student-card student-projects" key={p._id}>
                <div className="title">
                    <h2>
                    Study-Projects
@@ -41,9 +43,9 @@ export default function StudentProject() {
                        </div>
                        <div className="tech-used">
                        <span>React Js</span>
-                       <i class="fa pipe"> | </i>
+                       <i className="fa pipe"> | </i>
                        <span>Mongo DB</span>
-                       <i class="fa pipe"> | </i>
+                       <i className="fa pipe"> | </i>
                        <span>Mongo DB</span>
                        </div>
                        <div className="project-overview">
@@ -54,9 +56,11 @@ export default function StudentProject() {
                    </div>   
                </div>
            </div>
+          ))}
+           </>
        }
 
-<div className="modal fade " data-bs-backdrop="static" id="toggle_model" tabindex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
+<div className="modal fade " data-bs-backdrop="static" id="toggle_model" tabIndex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
             <div className="modal-dialog modal-dialog-centered modal-lg">
                 <div className="modal-content text-center">
                     <AddProject/>           
@@ -66,6 +70,6 @@ export default function StudentProject() {
         </div>
 
 
-    </>
+    </div>
   )
 }

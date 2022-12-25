@@ -3,9 +3,11 @@ import profile from '../../assets/profileicon2.png'
 import assured from '../../assets/verified.png'
 import './ProfileBio.css'
 import { useSelector } from 'react-redux'
+import starColor from '../../assets/Color-star.png'
+import starDull from '../../assets/dull-star.png'
 export default function ProfileBio({user}) {
     const current = useSelector((state)=>(state.currentUserReducer));
-    
+
   return (
     
     <div className='student-card '>
@@ -33,14 +35,29 @@ export default function ProfileBio({user}) {
                     <div className="student-assured">
                         <img src={assured} alt="" />
                     </div>
-                    {current.user?._id===user?._id &&
+                    {current?.user?._id===user?._id &&
                     <div className="edit ">
                     <i class="fa-solid fa-pencil fs-5"></i>
                     </div>
 }
                 </div>    
                 <div className="rating">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                        {(
+                        function () {
+                            var rate=[]
+                            for(let i=0;i<user?.rating;i++){
+                            rate.push(<img src={starColor} alt='star' height='30px' />)
+                            }
+                            for(let j=0;j<5-user?.rating;j++){
+                            rate.push(<img src={starDull} alt='star' height='25px' />)
+                            }
+                            return(
+                            <div>
+                            {rate}
+                            </div>
+                            )
+                        }
+                        ())}
                 </div>    
             </div>
            
