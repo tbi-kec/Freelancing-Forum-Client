@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { setAlert } from '../../actions/alert'
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
+import './EditProfile.scss'
 
 function EditProfile() {
+    const user = useSelector((state)=>(state.myDetailsReducer))
     const dispatch=useDispatch()
     const dept = [
         "Civil Engineering",
@@ -36,19 +38,17 @@ function EditProfile() {
           "Per Hour",
       ]
       
-    const [first_name,setFirstName]=useState('')
-    const [last_name,setLastName]=useState("")
+    const [first_name,setFirstName]=useState()
+    const [last_name,setLastName]=useState()
     const [mobile,setMobile]=useState()
-    const [kongu_email,setEmail]=useState("")
-      const [department,setDepartment]=useState("")
-      const [personal_email,setPersonalMail]=useState("")
+     const [personal_email,setPersonalMail]=useState()
       const [skills,setskills]=useState([])
       const [name,setName]=useState("")
       const [level,setLevel]=useState("")
       const [domain,setDomain]=useState([])
       const [currentDomain,setCurrentDomain]=useState("")
-      const [description,setDescription]=useState("")
-      const [payment_type,setPaymentType]=useState("")
+      const [description,setDescription]=useState()
+      const [payment_type,setPaymentType]=useState()
       const handleSkill = ()=>{
           if(level===""){
               dispatch(setAlert("Please select level","warning"));
@@ -72,8 +72,21 @@ function EditProfile() {
           const newDomain = domain.filter((d,idx)=>idx!=id)
           setDomain([...newDomain])
       }
+      useEffect(()=>{
+            if(user?.data){
+                setFirstName(user?.data.first_name)
+                setLastName(user?.data.last_name)
+                setMobile(user?.data.mobile)
+                setPersonalMail(user?.data.personal_email)
+                setskills([...user.data.skills])
+                setDomain([...user.data.domain])
+                setDescription(user?.data.description)
+                setPaymentType(user?.data.payment_type)
+            }
+        },[user])
+
   return (
-    <div>
+    <div className='edit-profile-container'>
                 <h2 className='my-3'>Edit Profile</h2>
                 <div className='d-flex justify-content-center'>
 
@@ -87,17 +100,8 @@ function EditProfile() {
                             <div className="form-group col-12">
                                 <input type="tel" placeholder='Mobile' className='form-control' value={mobile} onChange={e => setMobile(e.target.value)} required />
                             </div>
-                            <div className="form-group col-12">
-                                <input type="email" placeholder='Kongu Email Id' className='form-control' value={kongu_email} onChange={e => setEmail(e.target.value)} required />
-                            </div>
-                            <div className="form-group">
-                            <select name="Department" defaultValue={department} onChange={e=>setDepartment(e.target.value)}  placeholder='Department' className="form-select" required>
-                                <option value="" diabled hidden selected>Department</option>
-                                {dept.map(d=>(
-                                    <option value={d} key={d}>{d}</option>
-                                ))}
-                            </select>
-                        </div>
+                          
+                        
                         <div className="form-group ">
                             <input type="email" value={personal_email} onChange={e=>setPersonalMail(e.target.value)} placeholder='Perosnal Email Id' className='form-control' required />
                         </div>

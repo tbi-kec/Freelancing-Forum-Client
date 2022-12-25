@@ -6,7 +6,7 @@ export default function ProjectHistory() {
         <div className="student-card project-history">
             <div className="title">
                 
-                Project - History
+                <h2>Project - History</h2>
             </div>
             <div className="card-group">
                 <div className="inner-card">
