@@ -151,16 +151,10 @@ export default function StudentProfile() {
                                 I am a freelance software engineer. I have more than 8 years of experience in programming and designing UI. I worked on front-end and as well as back-end of many high traffic websites and apps.
                                 </p>
                                 </div>
-                            </div>
-
-                        
-
-                            
+                            </div>   
                         </div>
                     </div>
-
                 }
-
             })()
         }
        
