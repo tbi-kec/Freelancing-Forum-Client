@@ -29,7 +29,7 @@ export default function AddProject() {
     setTechnologies([...newTechnology]);
   };
   const handleSubmit = async(e)=>{
-    console.log("hello")
+   
     e.preventDefault();
     const id =user?.user._id;
     dispatch(setAlert("Creating Study Project","info"))
@@ -37,7 +37,7 @@ export default function AddProject() {
   }
 
   return (
-    <>
+    
         <div className="add-projects">
             <div>
 
@@ -123,7 +123,7 @@ export default function AddProject() {
             </div>
 
         </div>
-    </>
+    
   )
 }
 
