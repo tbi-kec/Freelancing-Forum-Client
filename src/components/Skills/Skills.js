@@ -1,15 +1,8 @@
 import React, { useState } from "react";
 import "./Skills.css";
 
-export default function Skills() {
-  const [skills, setskills] = useState([
-    { name: "HTML", level: "beginner" },
-    { name: "HTML", level: "intermediate" },
-  ]);
+export default function Skills({skills}) {
 
-  const handleSkill = () =>{
-    
-  }
   return (
     <div className="student-card align-items-start ">
       <div className="student-skills mb-4 ">
@@ -17,7 +10,7 @@ export default function Skills() {
       </div>
       <div className="row">
         <div className="skill d-flex">
-          {skills.map((s, idx) => (
+          {skills?.map((s, idx) => (
             <div
               className={` skill-${s.level}  skill-container py-1 px-2 m-2 rounded-3`}
               key={idx}

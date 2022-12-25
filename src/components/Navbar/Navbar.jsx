@@ -5,7 +5,7 @@ import profile from "../../assets/profileicon2.png";
 import {Link} from 'react-router-dom';
 import { useSelector } from "react-redux";
 const Navbar = () => {
-  const myDetails = useSelector((state)=>(state.myDetailsReducer))
+  
   const user= useSelector((state)=>(state.currentUserReducer));
 
   return (
@@ -59,7 +59,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item mx-4">
-              <Link to={`/profile/${user.user._id}`} className="nav-link">
+              <Link to={`/profile/${user?.user._id}`} className="nav-link">
                 <img src={profile} height="40px" alt="" />
               </Link>
             </li>

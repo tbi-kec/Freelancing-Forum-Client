@@ -29,4 +29,4 @@ export const getConstants = ()=>API.get('/constants/domain')
 export const getDetails = (id)=>API.get(`/user/${id}`)
 
 //new-study-project
-export const newStudyProject = ()=>API.post()
+export const newStudyProject = (projectData)=>API.patch('/user/update/study_project',projectData)

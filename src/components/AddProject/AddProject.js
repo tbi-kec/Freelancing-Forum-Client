@@ -1,30 +1,40 @@
 import React,{useState} from 'react';
 import { Link } from "react-router-dom";
-
+import { useSelector,useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import './AddProject.css'
-
+import { setAlert } from '../../actions/alert';
+import { newStudyProject } from '../../actions/myDetails';
 export default function AddProject() {
 
-    
+  const user = useSelector((state)=>(state.currentUserReducer))
+  const dispatch=useDispatch();
+  const navigate = useNavigate();
   const [title, setTitle] = useState();
   const [date, setDate] = useState();
-  const [fileLink, setFileLink] = useState();
-  const [technologies, setTechnologies] = useState([]);
-  const [Description, setDescription] = useState();
+  const [link, setLink] = useState();
+  const [technology, setTechnologies] = useState([]);
+  const [description, setDescription] = useState();
   const [currentTechnology, setCurrentTechnology] = useState();
 
-  
+
   const handleTechnology = () => {
     if(currentTechnology != ""){
-        setTechnologies([...technologies, currentTechnology]);
+        setTechnologies([...technology, currentTechnology]);
         setCurrentTechnology("");
     }
   };
   const handleDeleteTechnology = (id) => {
-    const newTechnology = technologies.filter((d, idx) => idx != id);
+    const newTechnology = technology.filter((d, idx) => idx != id);
     setTechnologies([...newTechnology]);
   };
-
+  const handleSubmit = async(e)=>{
+    console.log("hello")
+    e.preventDefault();
+    const id =user?.user._id;
+    dispatch(setAlert("Creating Study Project","info"))
+    dispatch(newStudyProject({created_by:id,title,date,link,technology,description},navigate))
+  }
 
   return (
     <>
@@ -37,7 +47,7 @@ export default function AddProject() {
                     Add Project
                 </div>
 
-                <form action="">
+                <form onSubmit={handleSubmit} >
                 <input
                     type="text"
                     className="form-control my-3 project-add-form-input"
@@ -56,14 +66,14 @@ export default function AddProject() {
                 <input
                     type="text"
                     className="form-control my-3 project-add-form-input"
-                    placeholder="Attach file link"
-                    value={fileLink}
-                    onChange={(e)=>setFileLink(e.target.value)}
+                    placeholder="Github or Drive Link"
+                    value={link}
+                    onChange={(e)=>setLink(e.target.value)}
                 />
                 <div className="card project-add-form-input">
                     <div className="card-body">
                     <div className="row mb-3 tech-add">
-                        {technologies.map((d, idx) => (
+                        {technology.map((d, idx) => (
                         <div key={idx} className="width-tech">
                             <div className="px-2 py-1 tech">{d} <i
                                 onClick={() => handleDeleteTechnology(idx)}
@@ -98,11 +108,11 @@ export default function AddProject() {
                     className="form-control my-3 project-add-form-input"
                     cols="30"
                     rows="4"
-                    value={Description}
+                    value={description}
                     onChange={(e)=>setDescription(e.target.value)}
                 ></textarea>
                 <div className="text-end-profile">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                {/* <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button> */}
                 <button className='btn btn-md my-3 project-add-submit-btn'>Submit</button>
                 </div>
                 </form>

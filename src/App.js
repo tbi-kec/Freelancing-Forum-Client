@@ -23,7 +23,7 @@ const App = () => {
     dispatch(getAllUsers())
     dispatch(getConstants())
     dispatch(getMyDetails())
-  },[])
+  },[dispatch])
   return (
     <div className='app-container'>
       <Router>
