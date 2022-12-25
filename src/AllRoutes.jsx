@@ -14,6 +14,7 @@ import AdminPage from './pages/AdminPage/AdminPage'
 import ProtectedRoutes from './ProtectedRoutes'
 import UnProtectedRoutes from './UnProtectedRoutes'
 import Page404 from './pages/Page404/Page404'
+import ResetPassword from './pages/ResetPassword/ResetPassword'
 
 const AllRoutes = () => {
   return (
@@ -25,6 +26,7 @@ const AllRoutes = () => {
             <Route path='/profile/create' element={<ProfileCreation/>} />
         </Route>
             <Route path='/home' element={<Home />} />
+            <Route path='/forgotten-password/:uid/:token' element={<ResetPassword/>} />
             <Route path='/admin' element={<AdminPage /> } />
             <Route path='/profile/:id' element={<StudentProfile/>} />
             <Route path='/profile/edit' element={<ProfileEdit/>} />

@@ -11,6 +11,7 @@ const Login = () => {
     const dispatch = useDispatch()
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
+    const [FPEmail,setFPEmail]=useState("")
     const handleSubmit = (e) =>{
          e.preventDefault()
         let femail_pattern=/^([a-z]+)\.([a-z]{2,5})\@([a-z]+)\.([a-z]{2,5})$/;
@@ -23,12 +24,45 @@ const Login = () => {
             dispatch(setAlert("Password length must be greater than 6","warning",2500))
             return
         }
-       
         dispatch(setAlert("Logging In","info",3000))
         dispatch(login({kongu_email:email,password},navigate))
     }
+
+    const handleOnClickForget = ()=>{
+        const model = document.getElementById('toggle_model_button')
+        model.click();
+    }
+
+    const handleForgetPasswordSubmit = () =>{
+        let femail_pattern=/^([a-z]+)\.([a-z]{2,5})\@([a-z]+)\.([a-z]{2,5})$/;
+        let email_pattern=/^([a-z]+)\.([0-9]{2})([a-z]{2,5})\@([a-z]+)\.([a-z]{2,5})$/;
+        if((!femail_pattern.test(FPEmail) && !FPEmail.endsWith("kongu.edu")) ||(!email_pattern.test(FPEmail) && !FPEmail.endsWith("kongu.edu")) ){
+            dispatch(setAlert("Invalid Email","warning",2500))
+            return
+        }
+
+    }
+
+
   return (
     <div className='login-container'>
+    {/* modal */}
+    <div className="modal fade " id="toggle_model" tabindex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
+                <div className="modal-dialog modal-dialog-centered modal-lg">
+                    <div className="modal-content text-center">
+                        <h3 className='my-3'>Forget Password</h3>
+                        <div className="container px-5 my-5 d-flex justify-content-center">
+                            <input type="text" className='form-control w-50' placeholder="Email" value={FPEmail} onChange={(e)=>{setFPEmail(e.target.value)}}  />
+                        </div>
+                        <div className='d-flex justify-content-center mb-5'>
+                            <button className='btn btn-primary w-25' onClick={handleForgetPasswordSubmit}>Send</button>
+                        </div>
+                        <input type='button' id='toggle_model_button' hidden  data-bs-toggle="modal" data-bs-target="#toggle_model" />
+
+                    </div>
+                </div>
+            </div>
+
         <div className="container">
             <div className="row p-5">
                 <div className="login-left-side-container shadow col-sm-12  col-lg-6">
@@ -53,7 +87,7 @@ const Login = () => {
                             <label className="form-label">Password</label>
                             <input type="password" placeholder='Type your Password' className='px-3' value={password} onChange={e=>setPassword(e.target.value)}  required />
                         </div>
-                        <p className="text-end forget">Forget Password</p>
+                        <p className="text-end forget" onClick={handleOnClickForget}>Forget Password</p>
                         <div className="d-grid gap-4">
                             <button className="btn">Login</button>
                         </div>
