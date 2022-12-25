@@ -18,6 +18,7 @@ function ProjectAdd() {
   const [currentSkill, setCurrentSkill] = useState("");
 
   const user=useSelector((state)=>(state.currentUserReducer))
+  const myself = useSelector((state)=>(state.myDetailsReducer))
   const handleSkill = () => {
     if(currentSkill !== ""){
         setSkill([...skills, currentSkill]);
@@ -32,7 +33,7 @@ function ProjectAdd() {
   const handleSubmit = async(e)=>{
     e.preventDefault();
     console.log(user);
-    const id=user.user._id;
+    const id=user?.user._id || myself?.data._id;
     dispatch(setAlert("Creating project","info",2500))
     dispatch(newProject({createdBy:id,title,category,stipend,skills,end_date,description},navigate))
 
