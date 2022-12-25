@@ -1,0 +1,23 @@
+.right-side-container>div ,.left-side-container>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+
+.right-side-container {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.left-side-container {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+
+
+

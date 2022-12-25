@@ -18,6 +18,7 @@ function Home() {
   const users = useSelector((state)=>(state.userReducer))
   const myself=useSelector((state)=>(state.myDetailsReducer))
   const constants=useSelector((state)=>(state.constantReducer));
+  console.log(myself)
   // const [projects,setProjects]=useState()
   // useEffect(()=>{
   //     setProjects(project?.data)
@@ -125,7 +126,7 @@ function Home() {
                     })}
                      </>
                     
-                 :<h4 className="p-3">No Projects</h4>
+                 :<h5 className="text-center  py-5 mt-2">No Projects</h5>
               } 
               
               </div>
@@ -138,7 +139,7 @@ function Home() {
                     })}
                      </>
                     
-                 :<h4 className="p-3">No Notifications</h4>
+                 :<h5 className="text-center  py-5 ">No Notifications</h5>
               } 
 
               </div>
