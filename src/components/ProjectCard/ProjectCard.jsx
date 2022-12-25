@@ -4,18 +4,19 @@ import  './ProjectCard.css'
 import moment from 'moment'
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-const show_modal = () => {
-  const modal = document.getElementById('toggle_model_button')
-  modal.click()
-}
+
 
 function ProjectCard({project,constant}) {
   const shortname=constant.dept_short.find(item => item.dept=== project.createdBy.department)
   const user =useSelector((state)=>(state.currentUserReducer))
+  const show_modal = () => {
+  const modal = document.getElementById(`toggle_model_${project._id}`)
+  modal.click()
+}
   return (
     <>
       {/* modal */}
-      <div className="modal fade "  id="toggle_model" tabIndex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
+      <div className="modal fade "  id={`toggle_model-${project._id}`} tabIndex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
         <div className="modal-dialog modal-dialog-centered modal-xl">
           <div className="modal-content ">
             <div className="row">
@@ -62,7 +63,7 @@ function ProjectCard({project,constant}) {
 
       {/* card */}
       <div className="card shadow my-4 pointer" onClick={show_modal}>
-        <input type="button" hidden id='toggle_model_button' data-bs-toggle="modal" data-bs-target="#toggle_model" />
+        <input type="button" hidden id={`toggle_model_${project._id}`} data-bs-toggle="modal" data-bs-target={`#toggle_model-${project._id}`} />
         <div className="card-body px-4">
           <div className="project-title fs-4 my-1">{project.title}</div>
           <div className="project-holder-department my-2 fw-bold">
