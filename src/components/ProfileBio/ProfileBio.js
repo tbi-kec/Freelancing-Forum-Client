@@ -9,10 +9,11 @@ import { setAlert } from "../../actions/alert";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import EditProfile from "../EditProfile/EditProfile";
+
 export default function ProfileBio({ user }) {
   const current = useSelector((state) => state.currentUserReducer);
   const [projectGiven, setProjectGiven] = useState([]);
-  const [selectedProject,setSelectedProject]=useState({id:'',name:''})
+  const [selectedProject,setSelectedProject]=useState({})
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -34,7 +35,21 @@ export default function ProfileBio({ user }) {
       filterData();
     }
   }, [user]);
+  const handleSelect = (e)=>{
+    const id = e.target.value
 
+      const data = user?.projects_given.filter(p=>p._id==id);
+      console.log(data)
+      if(data)
+      setSelectedProject({...data[0]})
+    
+  }
+useEffect(()=>{
+  if(selectedProject!=null){
+    dispatch(setAlert(`Selected Project-${selectedProject.title}`,"info",1500))
+    
+  }
+},[selectedProject])
   return (
     <div className="student-card ">
       {/* model - edit */}
@@ -71,9 +86,9 @@ export default function ProfileBio({ user }) {
       >
         <div className="modal-dialog modal-dialog-centered modal-lg">
           <div className="modal-content text-center">
-          {selectedProject.name==='' ?
+          {selectedProject.title!="" ?
           <div>
-            <div className="fs-4 m-5">You are assigning <b>{selectedProject.name}</b> project to {user?.first_name}-{user?.last_name}</div>
+            <div className="fs-4 m-5">You are assigning <b>{selectedProject?.title}</b> project to {user?.first_name}-{user?.last_name}</div>
             <div className="d-flex justify-content-around">
             <button
               class="btn btn-danger my-3"
@@ -170,12 +185,12 @@ export default function ProfileBio({ user }) {
             {user?.department}
           </h4>
           <div className="d-flex">
-            <select className="form-select mx-3" value={selectedProject} onChange={(e)=>setSelectedProject(e.target.value)} >
-              <option selected disabled value={{id:'',name:''}}>
+            <select className="form-select mx-3"  onChange={e=>handleSelect(e)} >
+              <option selected disabled hidden>
                 Project
               </option>
               {projectGiven?.map((p) => (
-                <option value={{id:p._id,name:p.title}} key={p._id}>
+                <option value={p._id} key={p._id}>
                   {p.title}
                 </option>
               ))}
