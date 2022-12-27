@@ -1,5 +1,6 @@
 import React from 'react'
 import profile from '../../assets/profileicon2.png'
+import ProgressBar from '../../components/ProgressBar/ProgressBar'
 
 function ProjectShow() {
   return (
@@ -45,6 +46,9 @@ function ProjectShow() {
             <div className='p-3'>
                 <div className='fs-4 mt-4 fw-bold'>Applicant</div>
                 {/* render user profile card */}
+            </div>
+            <div>
+                <ProgressBar />
             </div>
           </div>
     </div>

@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import './ProgressBar.css'
 
 function ProgressBar() {
-    let formStepsNum = 1;
+    let formStepsNum = 0;
     
     const nextprogress=()=>{
         formStepsNum++;
@@ -40,7 +40,6 @@ function ProgressBar() {
                 <div
                     className="progress-step progress-step"
                     data-title="Assign"><i className="fas fa-hands-helping"></i></div>
-                <div className="progress-step" data-title="Verification"><i className="fas fa-user-check"></i></div>
                 <div className="progress-step" data-title="OnProgress"><i className="fas fa-toolbox"></i></div>
                 <div className="progress-step" data-title="Completed"><i className="fas fa-check-circle"></i></div>
             </div>
