@@ -1,0 +1,81 @@
+
+  
+  /* Progressbar */
+  .progressbar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    counter-reset: step;
+    margin: 2rem 0 4rem;
+  }
+  
+  .progressbar::before,
+  .progress {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    background-color: #dcdcdc;
+    z-index: -1;
+  }
+  
+  .progress {
+    background-color: var(--main-blue);
+    width: 0%;
+    transition: 0.3s;
+  }
+  
+  .progress-step {
+    width: 2.1875rem;
+    height: 2.1875rem;
+    background-color: rgb(214, 241, 245);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .progress-step::before {
+    counter-increment: step;
+    
+  }
+  
+  .progress-step::after {
+    content: attr(data-title);
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    font-size: 0.85rem;
+    color: #666;
+  }
+  
+  .progress-step-active {
+    background-color: var(--main-blue);
+    color:white
+  }
+  
+
+  
+  @keyframes animate {
+    from {
+      transform: scale(1, 0);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1, 1);
+      opacity: 1;
+    }
+  }
+  
+  /* Button */
+
+  .progress-btn  >.btn {
+
+    background-color: var(--main-blue);
+    color: white;
+
+  }
+  .progress-btn>.btn:hover {
+    box-shadow: 0 0 0 2px var(grey), 0 0 0 3px var(--main-blue);
+  }
