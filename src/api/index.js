@@ -38,3 +38,6 @@ export const changePassword = (resetData)=>API.post(`/user/reset/forgotten-passw
 
 //request-project-to-admin
 export const requestProjectToAdmin = (projectData)=>API.post(`/project/provider/request`,projectData);
+
+//admin-get-projects
+export const getProjectHistory= ()=>API.get('/admin/requested_project');
