@@ -35,3 +35,6 @@ export const newStudyProject = (projectData)=>API.post('/study',projectData)
 //forget-password
 export const sendEmail = (email)=>API.post('/user/forgotten-password',email)
 export const changePassword = (resetData)=>API.post(`/user/reset/forgotten-password`,resetData)
+
+//request-project-to-admin
+export const requestProjectToAdmin = (projectData)=>API.post(`/project/provider/request`,projectData);
