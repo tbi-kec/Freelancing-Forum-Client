@@ -19,7 +19,7 @@ export const newProject = (projectData)=>API.post('/project',projectData)
 export const getAllProject =()=>API.get('/project/all')
 
 //getALLUser
-export const getAllUser = ()=>API.get('/user/all')
+export const getAllUser = ()=>API.get('/user')
 
 
 //constants
@@ -41,3 +41,5 @@ export const requestProjectToAdmin = (projectData)=>API.post(`/project/provider/
 
 //admin-get-projects
 export const getProjectHistory= ()=>API.get('/admin/requested_project');
+
+export const responseRequest = (responseData)=>API.post('/admin/admin_response',responseData)

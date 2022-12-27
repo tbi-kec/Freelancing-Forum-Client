@@ -3,44 +3,17 @@ import './ProfileCreation.css'
 import profileTop from '../../assets/profile.png'
 import profile from '../../assets/profileicon.png'
 import { setAlert } from '../../actions/alert'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { updateProfile } from '../../actions/auth'
+import { useEffect } from 'react'
 
 const ProfileCreation = () => {
     const navigate=useNavigate()
     const dispatch=useDispatch()
-      const dept = [
-      "Civil Engineering",
-      "Mechanical Engineering",
-      "Mechatronics Engineering",
-      "Automobile Engineering",
-      "Chemical Engineering",
-      "Food Technology",
-      "Electrical and Electronics Engineering",
-      "Electronics and Instrumentation Engineering",
-      "Electronics and Communication Engineering",
-      "Computer Science and Engineering",
-      "Information Technology",
-      "Computer Science and Design",
-      "Artificial Intelligence (AIML & AIDS)",
-      "Management Studies",
-      "Computer Application",
-      "Computer Technology - UG",
-      "Computer Technology - PG",
-    ];
-    const domains = [
-        "Web Developer",
-        "App Developer",
-        "Full Stack Developer"
-    ]
-    const paymentTypes=[
-        "Free",
-        "Per Month",
-        "Per Project",
-        "Per Day",
-        "Per Hour",
-    ]
+    const constants = useSelector((state)=>(state.constantReducer))
+
+    //const [dept,setDept]=useState([]);
     const [department,setDepartment]=useState("")
     const [personal_email,setPersonalMail]=useState("")
     const [skills,setskills]=useState([])
@@ -50,6 +23,26 @@ const ProfileCreation = () => {
     const [currentDomain,setCurrentDomain]=useState("")
     const [description,setDescription]=useState("")
     const [payment_type,setPaymentType]=useState("")
+    const [domains,setDomains]=useState([])
+    // useEffect(()=>{
+    //     if(constants.data!=null){
+    //         alert("hii")
+    //         setDept([...constants.data.dept_short])
+    //     }
+    //     if(constants && constants?.data && constants?.data.domain ){
+    //         setDomains([...constants.data.domain])
+    //     }
+        
+    // },[constants])
+
+    const paymentTypes=[
+        "Free",
+        "Per Month",
+        "Per Project",
+        "Per Day",
+        "Per Hour",
+    ]
+    
     const handleSkill = ()=>{
         if(level===""){
             dispatch(setAlert("Please select level","warning"));
@@ -89,6 +82,7 @@ const ProfileCreation = () => {
         dispatch(updateProfile({id:user.user._id,department,personal_email,skills,domain,description,payment_type},navigate))
 
     }
+    
 
   return (
     <div className='profile-creation-container'>
@@ -105,10 +99,10 @@ const ProfileCreation = () => {
                 <div className="col-6 profile-form">
                     <form onSubmit={handleSubmit} >
                         <div className="form-group">
-                            <select name="Department" defaultValue={department} onChange={e=>setDepartment(e.target.value)}  placeholder='Department' className="form-select" required>
+                            <select name="Department"  onChange={e=>setDepartment(e.target.value)}  placeholder='Department' className="form-select" required>
                                 <option value="" diabled hidden selected>Department</option>
-                                {dept.map(d=>(
-                                    <option value={d} key={d}>{d}</option>
+                                {constants?.data[0]?.dept_short.map(d=>(
+                                    <option value={d.dept} key={d.dept}>{d.dept}</option>
                                 ))}
                             </select>
                         </div>
@@ -138,7 +132,7 @@ const ProfileCreation = () => {
                                     </div>
                                     <div className="col-5">
                                          <div className="form-group">
-                                            <select name="domain" className="form-select" onChange={e=>setLevel(e.target.value)}>
+                                            <select name="level" className="form-select" onChange={e=>setLevel(e.target.value)}>
                                                 <option value="" diabled hidden selected>Level</option>
                                                 <option value="beginner" style={{background:"#81F664"}} className='form-option' >Beginner</option>
                                                 <option value="intermediate" style={{background:"#F5E878"}} className=' py-3 form-option' >Intermediate</option>
@@ -174,7 +168,7 @@ const ProfileCreation = () => {
                                             <div className="form-group">
                                                 <select name="domain" value={currentDomain} onChange={e=>setCurrentDomain(e.target.value)} className="form-select">
                                                     <option value="" diabled hidden selected>Domain Name</option>
-                                                    {domains.map((d,idx)=>(
+                                                    {constants?.data[0]?.domain.map((d,idx)=>(
                                                         <option key={idx} value={d}>{d}</option>
                                                     ))}
                                                 </select>
@@ -196,8 +190,8 @@ const ProfileCreation = () => {
                             </select>
                         </div>
                         <div className="form-group">
-                            <textarea onChange={e=>setDescription(e.target.value)} className='form-control' placeholder='Description' cols="10" rows="3" required>
-                               {description}
+                            <textarea value={description} onChange={e=>setDescription(e.target.value)} className='form-control' placeholder='Description' cols="10" rows="3" required>
+                               
                             </textarea>
                         </div>
                         <div className='create-button-container'>

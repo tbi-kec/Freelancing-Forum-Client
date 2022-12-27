@@ -10,11 +10,11 @@ export const login  = (authData,navigate) => async(dispatch) =>{
         const {data}=await api.login(authData)
         dispatch({type:"AUTH",payload:data})
         navigate("/home")
-        dispatch(getMyDetails())
         dispatch(getAllUsers())
         dispatch(setCurrentUser())
         dispatch(getAllProjects())
         dispatch(getRequestedProjects())
+        dispatch(getMyDetails())
         dispatch(setAlert("Login Successfull","success"))
     } catch (error) {
         console.log(error)
@@ -28,9 +28,8 @@ export const signup = (authData,navigate) => async(dispatch) =>{
         dispatch({type:"AUTH",payload:data})
          navigate("/profile/create")
         dispatch(setAlert("User Created successfully","success"))
-        
         dispatch(setCurrentUser())
-       
+       dispatch(getMyDetails());
     } catch (error) {
         dispatch(setAlert(error.response.data,'danger'))
     }
