@@ -8,10 +8,20 @@ export const getRequestedProjects=()=>async(dispatch)=>{
         console.log(data)
         dispatch({type:'GET_ALL_PROJECTS',payload:data})
     } catch (error) {
+        alert("error")
         dispatch(setAlert("Server Error","warning"))
     }
 }
 
-
+export const respondToRequest =(responseData,navigate)=>async(dispatch)=>{
+    try {
+        const {data}=await api.responseRequest(responseData);
+        navigate('/admin')
+        dispatch(getRequestedProjects());
+        dispatch(setAlert("Responded Successfully","success"))
+    } catch (error) {
+        dispatch(setAlert("Server Error","danger"))
+    }
+}
 
 

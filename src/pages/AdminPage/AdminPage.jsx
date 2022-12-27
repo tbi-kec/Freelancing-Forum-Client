@@ -1,13 +1,17 @@
 import React, {useState} from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import "./AdminPage.css";
-import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useSelector,useDispatch } from "react-redux";
 import { useEffect } from "react";
+import { respondToRequest } from "../../actions/admin";
+import { setAlert } from "../../actions/alert";
 function AdminPage() {
   const [nav,setNav]=useState('request');
   const [project,setProject]=useState([]);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const projects = useSelector((state)=>(state.adminReducer));
-  console.log(projects)
   useEffect(()=>{
     if(projects && projects.data){
       setProject([...projects.data])
@@ -35,12 +39,17 @@ function AdminPage() {
         }
     }
 
-    const handleAccpet = (e) =>{
-        
+    const handleAccpet = (e,id) =>{
+        e.preventDefault();
+        dispatch(setAlert("Accepting Project","info",2000))
+        dispatch(respondToRequest({status:"accepted",p_id:id},navigate))
     }
     
-    const handleReject = (e) =>{
-        
+    const handleReject = (e,id) =>{
+      e.preventDefault(); 
+       dispatch(setAlert("Rejecting Project","info",2000))
+      dispatch(respondToRequest({status:"created",p_id:id},navigate))
+  
     }
   return (
     <div>
@@ -67,16 +76,16 @@ function AdminPage() {
           </tr>
         </thead>
         <tbody>
-        {project.map((e,i)=>{
-          if(e.project_status==='pending-admin')
+        {project.map((p,i)=>{
+          if(p.project_status==='pending-admin')
           return(
             <tr>
               <th scope="row">1</th>
-              <td>{e.createdBy.first_name}-{e.createdBy.last_name}</td>
-              <td>{e.developer.first_name}-{e.developer.last_name}</td>
-              <td>{e.title}</td>
-              <td><button className="btn btn-outline-success" onClick={handleAccpet}>Accept</button></td>
-              <td><button className="btn btn-outline-danger" onClick={handleReject}>Reject</button></td>
+              <td>{p.createdBy.first_name}-{p.createdBy.last_name}</td>
+              <td>{p.developer.first_name}-{p.developer.last_name}</td>
+              <td>{p.title}</td>
+              <td><button className="btn btn-outline-success" onClick={(e)=>handleAccpet(e,p._id)}>Accept</button></td>
+              <td><button className="btn btn-outline-danger" onClick={(e)=>handleReject(e,p._id)}>Reject</button></td>
             </tr>
           )
         })}

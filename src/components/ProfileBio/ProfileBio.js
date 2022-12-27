@@ -192,6 +192,7 @@ console.log(current?.user?._id, user?._id)
             <i class="fa-solid fa-location-dot"></i>
             {user?.department}
           </h4>
+          {projectGiven.length ?
           <div className="d-flex">
             <select className="form-select mx-3"  onChange={e=>handleSelect(e)} >
               <option selected disabled hidden>
@@ -213,7 +214,10 @@ console.log(current?.user?._id, user?._id)
               Request
             </button>
           </div>
+          :''
+}
         </div>
+              
         <div className="student-about">
           <h2 className="mb-3">About </h2>
           <div> {user?.description} </div>

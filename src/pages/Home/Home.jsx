@@ -28,6 +28,7 @@ function Home() {
   const [onbord_project,setOnBoardProject] = useState([]);
   const [notification,setNotification]=useState([]);
   useEffect(()=>{
+    
     if(myself.data && myself?.data?.onbord_project?.length!=0){
       setOnBoardProject([...myself.data.onbord_project])
     }
