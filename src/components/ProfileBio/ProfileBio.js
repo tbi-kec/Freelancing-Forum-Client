@@ -17,6 +17,7 @@ export default function ProfileBio({ user }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  console.log("project",selectedProject)
   
   const show_modal = () => {
     const modal = document.getElementById("toggle_model_button");
@@ -185,8 +186,8 @@ const handleAssign = (e)=>{
             </div>
           </div>
         </div>
-        <div className="student-dept d-flex justify-content-between">
-          <h4>
+        <div className="student-dept d-flex flex-wrap justify-content-between">
+          <h4 className="mb-4">
             <i class="fa-solid fa-location-dot"></i>
             {user?.department}
           </h4>

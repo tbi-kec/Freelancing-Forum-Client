@@ -3,7 +3,7 @@ import AddProject from "../AddProject/AddProject";
 
 export default function StudentProject({ project }) {
   const handleClick = () => {
-    const model = document.getElementById("toggle_model_button");
+    const model = document.getElementById("toggle_model_button_study_project");
     model.click();
   };
 
@@ -60,7 +60,7 @@ export default function StudentProject({ project }) {
       <div
         className="modal fade "
         data-bs-backdrop="static"
-        id="toggle_model"
+        id="toggle_model_button_study_project"
         tabIndex="-1"
         role="dialog"
         aria-labelledby="exampleModalLabel"
@@ -70,10 +70,10 @@ export default function StudentProject({ project }) {
             <AddProject />
             <input
               type="button"
-              id="toggle_model_button"
+              id="toggle_model_button_study_project"
               hidden
               data-bs-toggle="modal"
-              data-bs-target="#toggle_model"
+              data-bs-target="#toggle_model_button_study_project"
             />
           </div>
         </div>

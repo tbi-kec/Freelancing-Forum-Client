@@ -15,6 +15,7 @@ import ProtectedRoutes from './ProtectedRoutes'
 import UnProtectedRoutes from './UnProtectedRoutes'
 import Page404 from './pages/Page404/Page404'
 import ResetPassword from './pages/ResetPassword/ResetPassword'
+import ProjectShow from './pages/ProjectShow/ProjectShow'
 import ProgressBar from './components/ProgressBar/ProgressBar'
 
 const AllRoutes = () => {
@@ -35,6 +36,7 @@ const AllRoutes = () => {
             <Route path='/profile/:id' element={<StudentProfile/>} />
             <Route path='/profile/edit' element={<ProfileEdit/>} />
             <Route path='/project/view' element={<ProjectView/>} />
+            <Route path='/project/show/:id' element={<ProjectShow/>} />
             <Route path='/user/:id' element={<DepartmentUsers/>} />
             <Route path='/project/add' element={<ProjectAdd /> } />
              <Route path='/forgotten-password/:uid/:token' element={<ResetPassword/>} />

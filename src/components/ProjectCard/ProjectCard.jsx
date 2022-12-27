@@ -18,7 +18,27 @@ function ProjectCard({project,constant}) {
   }
   return (
     <>
-      {/* modal */}
+      {/* modal- request*/}
+      <div className="modal fade "  id="toggle_model_request" tabIndex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
+        <div className="modal-dialog modal-dialog-centered modal-xl">
+          <div className="modal-content text-center ">
+    
+          <div className="fs-4 m-5">You are requesting for the <b>{project.title}</b> project</div>
+          <div className="text-center">
+          <button
+              className="btn btn-md m-3 px-4 project-add-submit-btn"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              OK
+            </button>
+          </div>
+            <input type='button' id='toggle_model_request' hidden data-bs-toggle="modal" data-bs-target="#toggle_model_request" />
+          </div>
+        </div>
+      </div>
+ 
+      {/* modal - confirmation */}
       <div className="modal fade "  id={`toggle_model-${project._id}`} tabIndex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
         <div className="modal-dialog modal-dialog-centered modal-xl">
           <div className="modal-content ">
@@ -51,7 +71,8 @@ function ProjectCard({project,constant}) {
             </div>
             <div className="ms-auto me-5 my-5">
               {user?.user._id !==project.createdBy._id &&
-              <div className="btn btn-success px-5 fw-bold" >REQUEST</div>
+              <div className="btn btn-success px-5 fw-bold"  data-bs-toggle="modal"
+              data-bs-target="#toggle_model_request" >REQUEST</div>
 }
             </div>
             <input type='button' id='toggle_model_button' hidden data-bs-toggle="modal" data-bs-target="#toggle_model" />
