@@ -34,6 +34,14 @@ function AdminPage() {
             document.getElementById('progress').classList.remove('admin-nav-ative')
         }
     }
+
+    const handleAccpet = (e) =>{
+        
+    }
+    
+    const handleReject = (e) =>{
+        
+    }
   return (
     <div>
       <Navbar />
@@ -59,30 +67,19 @@ function AdminPage() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Karthi</td>
-            <td>Jana</td>
-            <td>Project Name</td>
-            <td><button className="btn btn-outline-success">Accept</button></td>
-            <td><button className="btn btn-outline-danger">Reject</button></td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Logesh</td>
-            <td>Karthi</td>
-            <td>Project Name with long Characters Example</td>
-            <td><button className="btn btn-outline-success ">Accept</button></td>
-            <td><button className="btn btn-outline-danger">Reject</button></td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>Logesh the blaster</td>
-            <td>Project Name with long Characters Example</td>
-            <td><button className="btn btn-outline-success">Accept</button></td>
-            <td><button className="btn btn-outline-danger">Reject</button></td>
-          </tr>
+        {project.map((e,i)=>{
+          if(e.project_status==='pending-admin')
+          return(
+            <tr>
+              <th scope="row">1</th>
+              <td>{e.createdBy.first_name}-{e.createdBy.last_name}</td>
+              <td>{e.developer.first_name}-{e.developer.last_name}</td>
+              <td>{e.title}</td>
+              <td><button className="btn btn-outline-success" onClick={handleAccpet}>Accept</button></td>
+              <td><button className="btn btn-outline-danger" onClick={handleReject}>Reject</button></td>
+            </tr>
+          )
+        })}
         </tbody>
       </table>
       }
