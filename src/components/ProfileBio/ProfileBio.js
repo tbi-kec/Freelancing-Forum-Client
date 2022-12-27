@@ -55,6 +55,7 @@ const handleAssign = (e)=>{
     setAlert("Requesting Admin","info",3000)
     dispatch(requestAdmin({d_id:user._id,p_id:selectedProject._id}))
 }
+console.log(current?.user?._id, user?._id)
   return (
     <div className="student-card ">
       {/* model - edit */}
