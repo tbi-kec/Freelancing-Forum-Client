@@ -9,6 +9,7 @@ import { getAllProjects } from './actions/project'
 import { getAllUsers } from './actions/user'
 import { getConstants } from './actions/constant'
 import { getMyDetails } from './actions/myDetails'
+import { getRequestedProjects } from './actions/admin'
 const App = () => {
   const dispatch = useDispatch();
   const getData = async()=>{
@@ -23,6 +24,7 @@ const App = () => {
     dispatch(getAllUsers())
     dispatch(getConstants())
     dispatch(getMyDetails())
+    dispatch(getRequestedProjects())
   },[dispatch])
   return (
     <div className='app-container'>

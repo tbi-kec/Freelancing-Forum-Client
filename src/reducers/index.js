@@ -6,6 +6,7 @@ import currentUserReducer from "./currentUserReducer";
 import userReducer from "./user";
 import myDetailsReducer from "./myDetails";
 import constantReducer from "./constant";
+import adminReducer from "./admin";
 export default combineReducers({
         authReducer,
         alertReducer,
@@ -13,5 +14,6 @@ export default combineReducers({
         currentUserReducer,
         userReducer,
         constantReducer,
-        myDetailsReducer
+        myDetailsReducer,
+        adminReducer
 });

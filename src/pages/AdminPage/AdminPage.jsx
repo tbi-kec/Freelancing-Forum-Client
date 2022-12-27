@@ -1,9 +1,19 @@
 import React, {useState} from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import "./AdminPage.css";
-
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 function AdminPage() {
-    const [nav,setNav]=useState('request')
+  const [nav,setNav]=useState('request');
+  const [project,setProject]=useState([]);
+  const projects = useSelector((state)=>(state.adminReducer));
+  console.log(projects)
+  useEffect(()=>{
+    if(projects && projects.data){
+      setProject([...projects.data])
+    }
+  },[projects])
+    
     const handleNavigation = (e) =>{
         if(e.target.id==='request'){
             setNav(e.target.id)

@@ -1,6 +1,6 @@
 import * as api from '../api'
 import { setAlert } from './alert'
-
+import { getRequestedProjects } from './admin';
 export const getMyDetails=()=>async(dispatch)=>{
     try {
         const user =await JSON.parse(localStorage.getItem('freelance'));
@@ -31,6 +31,7 @@ export const requestAdmin = (projectData)=>async(dispatch)=>{
         alert(projectData)
         const {data}=await api.requestProjectToAdmin(projectData);
         dispatch(getMyDetails());
+        dispatch(getRequestedProjects())
         dispatch(setAlert("Request Send to Admin","success",3000))
     } catch (error) {
         alert(error)

@@ -4,6 +4,7 @@ import { setCurrentUser } from './currentUser'
 import { getMyDetails } from './myDetails'
 import { getAllUsers } from './user'
 import { getAllProjects } from './project'
+import { getRequestedProjects } from './admin'
 export const login  = (authData,navigate) => async(dispatch) =>{
     try {
         const {data}=await api.login(authData)
@@ -13,6 +14,7 @@ export const login  = (authData,navigate) => async(dispatch) =>{
         dispatch(getAllUsers())
         dispatch(setCurrentUser())
         dispatch(getAllProjects())
+        dispatch(getRequestedProjects())
         dispatch(setAlert("Login Successfull","success"))
     } catch (error) {
         console.log(error)
@@ -42,6 +44,7 @@ export const updateProfile = (profileData,navigate) => async(dispatch)=>{
         dispatch(getAllUsers())
         dispatch(setCurrentUser())
         dispatch(getAllProjects())
+        dispatch(getRequestedProjects())
         dispatch(setAlert("Profile created Successfully","success"))
     } catch (error) {
         console.log(error)
