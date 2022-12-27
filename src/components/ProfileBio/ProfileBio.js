@@ -12,10 +12,11 @@ import EditProfile from "../EditProfile/EditProfile";
 export default function ProfileBio({ user }) {
   const current = useSelector((state) => state.currentUserReducer);
   const [projectGiven, setProjectGiven] = useState([]);
-  const [selectedProject,setSelectedProject]=useState({id:'',name:''})
+  const [selectedProject,setSelectedProject]=useState('')
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  console.log("project",selectedProject)
   
   const show_modal = () => {
     const modal = document.getElementById("toggle_model_button");
@@ -71,9 +72,9 @@ export default function ProfileBio({ user }) {
       >
         <div className="modal-dialog modal-dialog-centered modal-lg">
           <div className="modal-content text-center">
-          {selectedProject.name==='' ?
+          {selectedProject!=='' ?
           <div>
-            <div className="fs-4 m-5">You are assigning <b>{selectedProject.name}</b> project to {user?.first_name}-{user?.last_name}</div>
+            <div className="fs-4 m-5">You are assigning <b>{JSON.parse(selectedProject).name}</b> project to {user?.first_name}-{user?.last_name}</div>
             <div className="d-flex justify-content-around">
             <button
               class="btn btn-danger my-3"
@@ -164,18 +165,18 @@ export default function ProfileBio({ user }) {
             </div>
           </div>
         </div>
-        <div className="student-dept d-flex justify-content-between">
-          <h4>
+        <div className="student-dept d-flex flex-wrap justify-content-between">
+          <h4 className="mb-4">
             <i class="fa-solid fa-location-dot"></i>
             {user?.department}
           </h4>
           <div className="d-flex">
             <select className="form-select mx-3" value={selectedProject} onChange={(e)=>setSelectedProject(e.target.value)} >
-              <option selected disabled value={{id:'',name:''}}>
+              <option selected disabled value=''>
                 Project
               </option>
               {projectGiven?.map((p) => (
-                <option value={{id:p._id,name:p.title}} key={p._id}>
+                <option value={JSON.stringify({id:p._id,name:p.title})} key={p._id}>
                   {p.title}
                 </option>
               ))}
