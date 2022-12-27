@@ -16,6 +16,7 @@ import UnProtectedRoutes from './UnProtectedRoutes'
 import Page404 from './pages/Page404/Page404'
 import ResetPassword from './pages/ResetPassword/ResetPassword'
 import ProjectShow from './pages/ProjectShow/ProjectShow'
+import ProgressBar from './components/ProgressBar/ProgressBar'
 
 const AllRoutes = () => {
   return (
@@ -24,6 +25,7 @@ const AllRoutes = () => {
       
             <Route path='/login' element={<Login/>} />
             <Route path='/register' element={<Register/>} />
+            <Route path='/progress' element={<ProgressBar/>} />
           
       
          

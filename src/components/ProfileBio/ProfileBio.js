@@ -9,10 +9,11 @@ import { setAlert } from "../../actions/alert";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import EditProfile from "../EditProfile/EditProfile";
+import { requestAdmin } from "../../actions/myDetails";
 export default function ProfileBio({ user }) {
-  const current = useSelector((state) => state.currentUserReducer);
+  const current = useSelector((state) => state.myDetailsReducer);
   const [projectGiven, setProjectGiven] = useState([]);
-  const [selectedProject,setSelectedProject]=useState('')
+  const [selectedProject,setSelectedProject]=useState({})
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -23,19 +24,37 @@ export default function ProfileBio({ user }) {
     modal.click();
   };
 
-  const filterData = () => {
-    const data = user?.projects_given?.filter(
-      (p) => p.project_status == "created"
-    );
-    console.log(data);
+  const filterData = (projects) => {
+  
+    const data = projects.filter((p) => p.project_status == "created");
+   
     setProjectGiven([...data]);
   };
   useEffect(() => {
-    if (user?.projects_given) {
-      filterData();
+    if (current && current?.data) {
+  
+      filterData(current.data.projects_given);
     }
-  }, [user]);
+  }, [current]);
+  const handleSelect = (e)=>{
+    const id = e.target.value
+      const data = current?.data?.projects_given.filter(p=>p._id==id);
+      console.log(data)
+      if(data)
+      setSelectedProject({...data[0]})
+    
+  }
+useEffect(()=>{
+  if(selectedProject._id!=null){
+    dispatch(setAlert(`Selected Project-${selectedProject.title}`,"info",1500))
+  }
+},[selectedProject])
 
+const handleAssign = (e)=>{
+    e.preventDefault();
+    setAlert("Requesting Admin","info",3000)
+    dispatch(requestAdmin({d_id:user._id,p_id:selectedProject._id}))
+}
   return (
     <div className="student-card ">
       {/* model - edit */}
@@ -72,9 +91,9 @@ export default function ProfileBio({ user }) {
       >
         <div className="modal-dialog modal-dialog-centered modal-lg">
           <div className="modal-content text-center">
-          {selectedProject!=='' ?
+          {selectedProject._id!=null ?
           <div>
-            <div className="fs-4 m-5">You are assigning <b>{JSON.parse(selectedProject).name}</b> project to {user?.first_name}-{user?.last_name}</div>
+            <div className="fs-4 m-5">You are assigning <b>{selectedProject?.title}</b> project to {user?.first_name}-{user?.last_name}</div>
             <div className="d-flex justify-content-around">
             <button
               class="btn btn-danger my-3"
@@ -84,9 +103,10 @@ export default function ProfileBio({ user }) {
               Cancel
             </button>
             <button
-              className="btn btn-md my-3 project-add-submit-btn"
+              className="btn btn-md my-3 project-add-submit-btn text-light"
               data-bs-dismiss="modal"
               aria-label="Close"
+              onClick={handleAssign}
             >
               Assign
             </button>
@@ -98,6 +118,7 @@ export default function ProfileBio({ user }) {
               className="btn btn-md m-3 px-4 project-add-submit-btn"
               data-bs-dismiss="modal"
               aria-label="Close"
+
             >
               OK
             </button>
@@ -171,12 +192,12 @@ export default function ProfileBio({ user }) {
             {user?.department}
           </h4>
           <div className="d-flex">
-            <select className="form-select mx-3" value={selectedProject} onChange={(e)=>setSelectedProject(e.target.value)} >
-              <option selected disabled value=''>
+            <select className="form-select mx-3"  onChange={e=>handleSelect(e)} >
+              <option selected disabled hidden>
                 Project
               </option>
               {projectGiven?.map((p) => (
-                <option value={JSON.stringify({id:p._id,name:p.title})} key={p._id}>
+                <option value={p._id} key={p._id}>
                   {p.title}
                 </option>
               ))}

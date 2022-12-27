@@ -37,11 +37,11 @@ export const signup = (authData,navigate) => async(dispatch) =>{
 export const updateProfile = (profileData,navigate) => async(dispatch)=>{
     try {
         const {data} = await api.createProfile(profileData)
+        navigate('/home')
          dispatch(getMyDetails())
         dispatch(getAllUsers())
         dispatch(setCurrentUser())
-             dispatch(getAllProjects())
-        navigate('/home')
+        dispatch(getAllProjects())
         dispatch(setAlert("Profile created Successfully","success"))
     } catch (error) {
         console.log(error)
