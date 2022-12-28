@@ -60,7 +60,7 @@ export default function StudentProject({ project }) {
       <div
         className="modal fade "
         data-bs-backdrop="static"
-        id="toggle_model_button_study_project"
+        id="toggle_model_study_project"
         tabIndex="-1"
         role="dialog"
         aria-labelledby="exampleModalLabel"
@@ -73,7 +73,7 @@ export default function StudentProject({ project }) {
               id="toggle_model_button_study_project"
               hidden
               data-bs-toggle="modal"
-              data-bs-target="#toggle_model_button_study_project"
+              data-bs-target="#toggle_model_study_project"
             />
           </div>
         </div>
