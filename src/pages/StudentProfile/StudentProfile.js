@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect,useLayoutEffect, useState} from 'react'
 import { useSelector } from 'react-redux';
 import { Link, useParams,useNavigate } from "react-router-dom";
 import AddProject from '../../components/AddProject/AddProject';
@@ -15,6 +15,7 @@ export default function StudentProfile() {
     const {id}=useParams();
     const [studyProject,setStudyProject]=useState([])
     const [work_history,setWorkHistory]=useState([])
+    const [project_given,setProjectGiven]=useState([])
     const [user,setUser]=useState(null);
 
     const users=useSelector((state)=>(state.userReducer))
@@ -28,13 +29,17 @@ export default function StudentProfile() {
         }   
     },[users])
 
-    useEffect(()=>{
+    useLayoutEffect(()=>{
          if(user&& user?.work_history && user.work_history?.length){
                 setWorkHistory(user.work_history)
         }
         if(user&& user?.study_project && user.study_project?.length){
                 setStudyProject(user.study_project)
         }
+        if(user&& user?.project_given && user.project_given?.length){
+                setProjectGiven(user.project_given)
+        }
+
     },[user])
 
     
@@ -72,9 +77,9 @@ export default function StudentProfile() {
             </div>
         </div>
 
-        <StudentProject project={studyProject}/>
+        <StudentProject project={studyProject} user={user}/>
 
-        <ProjectHistory/>
+        <ProjectHistory project={project_given} />
 
     </div>
   )

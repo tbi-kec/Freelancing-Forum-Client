@@ -193,13 +193,12 @@ console.log(current?.user?._id, user?._id)
             <i class="fa-solid fa-location-dot"></i>
             {user?.department}
           </h4>
-        
+        {projectGiven.length!=0 && current?.data?._id != user?._id &&
           <div className="d-flex">
             <select className="form-select mx-3"  onChange={e=>handleSelect(e)} >
               <option selected disabled hidden>
                 Project
               </option>
-            
               {projectGiven?.map((p) => (
                 <option value={p._id} key={p._id}>
                   {p.title}
@@ -216,7 +215,7 @@ console.log(current?.user?._id, user?._id)
               Request
             </button>
           </div>
-          
+}
 
         </div>
               

@@ -8,7 +8,7 @@ export default function Notification({notification}) {
     <div className='notification-container my-2'>
         <div className="row p-2 ">
             <div className="col-8">
-                <h6 className='mt-1'>{notification.message}</h6>
+                <h6 className='mt-1 text-light'>{notification.message}</h6>
             </div>
             <div className="col">
                 {notification.message=='pending-user'?
@@ -18,6 +18,7 @@ export default function Notification({notification}) {
                 </div>
                 :""
 }
+
             </div>
         </div>
     </div>

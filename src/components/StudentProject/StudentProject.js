@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import AddProject from "../AddProject/AddProject";
+import { useSelector } from "react-redux";
 
-export default function StudentProject({ project }) {
+export default function StudentProject({ project,user }) {
+    const current = useSelector((state) => state.myDetailsReducer);
   const handleClick = () => {
     const model = document.getElementById("toggle_model_button_study_project");
     model.click();
@@ -12,7 +14,7 @@ export default function StudentProject({ project }) {
         <div className="title">
             <h2>Study-Projects</h2>
           </div>
-      {project.length < 3 ? (
+      {project.length < 3  && current?.data?._id == user?._id? (
         <>
           <div className="inner-card add-project">
             <div className="content-add w-100">

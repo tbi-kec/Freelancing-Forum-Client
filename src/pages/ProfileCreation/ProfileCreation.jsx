@@ -101,9 +101,12 @@ const ProfileCreation = () => {
                         <div className="form-group">
                             <select name="Department"  onChange={e=>setDepartment(e.target.value)}  placeholder='Department' className="form-select" required>
                                 <option value="" diabled hidden selected>Department</option>
-                                {constants?.data[0]?.dept_short.map(d=>(
+                                {constants.data && <>
+                                {constants?.data[0]?.dept_short?.map(d=>(
                                     <option value={d.dept} key={d.dept}>{d.dept}</option>
                                 ))}
+                                </>
+                                }
                             </select>
                         </div>
                         <div className="form-group ">
@@ -132,7 +135,7 @@ const ProfileCreation = () => {
                                     </div>
                                     <div className="col-5">
                                          <div className="form-group">
-                                            <select name="level" className="form-select" onChange={e=>setLevel(e.target.value)}>
+                                            <select name="level" className="form-select" defaultValue="beginner" onChange={e=>setLevel(e.target.value)}>
                                                 <option value="" diabled hidden selected>Level</option>
                                                 <option value="beginner" style={{background:"#81F664"}} className='form-option' >Beginner</option>
                                                 <option value="intermediate" style={{background:"#F5E878"}} className=' py-3 form-option' >Intermediate</option>
@@ -168,9 +171,11 @@ const ProfileCreation = () => {
                                             <div className="form-group">
                                                 <select name="domain" value={currentDomain} onChange={e=>setCurrentDomain(e.target.value)} className="form-select">
                                                     <option value="" diabled hidden selected>Domain Name</option>
-                                                    {constants?.data[0]?.domain.map((d,idx)=>(
+                                                    {constants.data && <>
+                                                    {constants?.data[0]?.domain?.map((d,idx)=>(
                                                         <option key={idx} value={d}>{d}</option>
                                                     ))}
+                                                    </>}
                                                 </select>
                                             </div>
                                     </div>

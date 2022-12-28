@@ -5,6 +5,7 @@ import './EditProfile.scss'
 
 function EditProfile() {
     const user = useSelector((state)=>(state.myDetailsReducer))
+    const constants = useSelector((state)=>(state.constantReducer))
     const dispatch=useDispatch()
     const dept = [
         "Civil Engineering",
@@ -47,8 +48,8 @@ function EditProfile() {
       const [level,setLevel]=useState("")
       const [domain,setDomain]=useState([])
       const [currentDomain,setCurrentDomain]=useState("")
-      const [description,setDescription]=useState()
-      const [payment_type,setPaymentType]=useState()
+      const [description,setDescription]=useState("")
+      const [payment_type,setPaymentType]=useState("")
       const handleSkill = ()=>{
           if(level===""){
               dispatch(setAlert("Please select level","warning"));
@@ -164,9 +165,12 @@ function EditProfile() {
                                             <div className="form-group">
                                                 <select name="domain" value={currentDomain} onChange={e=>setCurrentDomain(e.target.value)} className="form-select">
                                                     <option value="" diabled hidden selected>Domain Name</option>
-                                                    {domains.map((d,idx)=>(
+                                                    {constants.data && <>
+                                                     {constants?.data[0]?.domain?.map((d,idx)=>(
                                                         <option key={idx} value={d}>{d}</option>
                                                     ))}
+                                                    </>
+                                                     }
                                                 </select>
                                             </div>
                                     </div>
@@ -178,10 +182,10 @@ function EditProfile() {
                         </div>
 
                          <div className="form-group">
-                            <select name="payment-types" defaultValue={payment_type} onChange={e=>setPaymentType(e.target.value)}   className="form-select" required>
+                            <select name="payment-types"  onChange={e=>setPaymentType(e.target.value)}   className="form-select" required>
                                 <option value="" diabled hidden selected>Paymen Type</option>
                                 {paymentTypes.map((d,idx)=>(
-                                    <option key={idx} value={d}>{d}</option>
+                                    <option key={idx} selected={payment_type==d} value={d}>{d}</option>
                                 ))}
                             </select>
                         </div>
