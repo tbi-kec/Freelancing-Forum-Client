@@ -31,13 +31,13 @@ export const newStudyProject = (projectData,navigate)=>async(dispatch)=>{
 
 export const requestAdmin = (projectData)=>async(dispatch)=>{
     try {
-        alert(projectData)
+       
         const {data}=await api.requestProjectToAdmin(projectData);
         dispatch(getMyDetails());
         dispatch(getRequestedProjects())
         dispatch(setAlert("Request Send to Admin","success",3000))
     } catch (error) {
-        alert(error)
+        
         dispatch(setAlert("Server Busy try after some time","danger"))
     }
 }

@@ -32,7 +32,7 @@ function Home() {
     if(myself.data && myself?.data?.onbord_project?.length!=0){
       setOnBoardProject([...myself.data.onbord_project])
     }
-    if(myself.data && myself?.data?.notification?.length!=0){
+    if(myself.data && myself?.data?.notification){
       setNotification([...myself.data.notification])
     }
   },[myself])
@@ -111,9 +111,9 @@ function Home() {
 
               {notification.length!==0 ?
                 <>
-                      {notification(n=>{
+                      {notification.map(n=>(
                           <Notification notification={n} key={n._id} />
-                    })}
+                    ))}
                      </>
                     
                  :<h5 className="text-center  py-5 ">No Notifications</h5>

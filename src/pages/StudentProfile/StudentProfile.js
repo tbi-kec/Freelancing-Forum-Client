@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import { useSelector } from 'react-redux';
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams,useNavigate } from "react-router-dom";
 import AddProject from '../../components/AddProject/AddProject';
 import Banner from '../../components/Banner/Banner'
 import ProfileBio from '../../components/ProfileBio/ProfileBio'
@@ -11,7 +11,7 @@ import WorkHistory from '../../components/WorkHistory/WorkHistory';
 import './StudentProfile.css'
 
 export default function StudentProfile() {
-
+    const navigate = useNavigate()
     const {id}=useParams();
     const [studyProject,setStudyProject]=useState([])
     const [work_history,setWorkHistory]=useState([])

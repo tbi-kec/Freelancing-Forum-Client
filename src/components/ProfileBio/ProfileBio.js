@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import EditProfile from "../EditProfile/EditProfile";
 import { requestAdmin } from "../../actions/myDetails";
 export default function ProfileBio({ user }) {
+  
   const current = useSelector((state) => state.myDetailsReducer);
   const [projectGiven, setProjectGiven] = useState([]);
   const [selectedProject,setSelectedProject]=useState({})
@@ -159,7 +160,7 @@ const handleAssign = (e)=>{
               <div className="student-assured">
                 <img src={assured} alt="" />
               </div>
-              {current?.user?._id === user?._id && (
+             {current?.data?._id == user?._id &&
                 <div className="edit " onClick={show_modal}>
                   <i class="fa-solid fa-pencil fs-5"></i>
                   <input
@@ -168,10 +169,10 @@ const handleAssign = (e)=>{
                     id="toggle_model_button"
                     data-bs-toggle="modal"
                     data-bs-target="#toggle_model"
-                  />
-                </div>
-              )}
-            </div>
+                  /> 
+                </div>}
+     </div>
+             
             <div className="rating">
               {(function () {
                 var rate = [];
@@ -191,12 +192,13 @@ const handleAssign = (e)=>{
             <i class="fa-solid fa-location-dot"></i>
             {user?.department}
           </h4>
-          {projectGiven.length ?
+        
           <div className="d-flex">
             <select className="form-select mx-3"  onChange={e=>handleSelect(e)} >
               <option selected disabled hidden>
                 Project
               </option>
+            
               {projectGiven?.map((p) => (
                 <option value={p._id} key={p._id}>
                   {p.title}
@@ -213,8 +215,8 @@ const handleAssign = (e)=>{
               Request
             </button>
           </div>
-          :''
-}
+          
+
         </div>
               
         <div className="student-about">

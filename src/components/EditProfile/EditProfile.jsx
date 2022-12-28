@@ -130,9 +130,9 @@ function EditProfile() {
                                          <div className="form-group">
                                             <select name="domain" className="form-select" onChange={e=>setLevel(e.target.value)}>
                                                 <option value="" diabled hidden selected>Level</option>
-                                                <option value="beginner" style={{background:"#81F664"}} className='form-option' >Beginner</option>
-                                                <option value="intermediate" style={{background:"#F5E878"}} className=' py-3 form-option' >Intermediate</option>
-                                                <option value="expert" style={{background:"#64CAF6"}} className=' py-3 form-option' >Expert</option>
+                                                <option value="beginner" style={{background:"#81F664",color:"white"}} className='form-option' >Beginner</option>
+                                                <option value="intermediate" style={{background:"#F5E878",color:"white"}} className=' py-3 form-option' >Intermediate</option>
+                                                <option value="expert" style={{background:"#64CAF6",color:"white"}} className=' py-3 form-option' >Expert</option>
                                             </select>
                                         </div>
                                     </div>
@@ -186,8 +186,8 @@ function EditProfile() {
                             </select>
                         </div>
                         <div className="form-group">
-                            <textarea onChange={e=>setDescription(e.target.value)} className='form-control' placeholder='Description' cols="10" rows="3" required>
-                               {description}
+                            <textarea value={description} onChange={e=>setDescription(e.target.value)} className='form-control' placeholder='Description' cols="10" rows="3" required>
+                               
                             </textarea>
                         </div>
                             <div className="d-grid gap-2 ">

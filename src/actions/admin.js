@@ -8,7 +8,6 @@ export const getRequestedProjects=()=>async(dispatch)=>{
         console.log(data)
         dispatch({type:'GET_ALL_PROJECTS',payload:data})
     } catch (error) {
-        alert("error")
         dispatch(setAlert("Server Error","warning"))
     }
 }
