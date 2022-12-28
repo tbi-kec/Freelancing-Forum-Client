@@ -106,30 +106,19 @@ function AdminPage() {
           </tr>
         </thead>
         <tbody>
+        {project.map((e,i)=>{
+          if(e.project_status==='pending-user' || e.project_status==='assigned' || e.project_status==='partial')
+          return(
           <tr>
             <th scope="row">1</th>
-            <td>Karthi</td>
-            <td>Jana</td>
-            <td>Project Name</td>
+            <td>{e.createdBy.first_name}-{e.createdBy.last_name}</td>
+              <td>{e.developer.first_name}-{e.developer.last_name}</td>
+              <td>{e.title}</td>
             <td>12-12-2022</td>
             <td>Beginning</td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Logesh</td>
-            <td>Karthi</td>
-            <td>Project Name with long Characters Example</td>
-            <td>12-12-2022</td>
-            <td>Partial</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>Logesh the blaster</td>
-            <td>Project Name with long Characters Example</td>
-            <td>12-12-2022</td>
-            <td>Beginning</td>
-          </tr>
+          )
+        })}
         </tbody>
       </table>
       }
@@ -147,30 +136,19 @@ function AdminPage() {
           </tr>
         </thead>
         <tbody>
+        {project.map((e,i)=>{
+        if(e.project_status==='completed')
+          return(
           <tr>
             <th scope="row">1</th>
-            <td>Karthi</td>
-            <td>Jana</td>
-            <td>Project Name</td>
+            <td>{e.createdBy.first_name}-{e.createdBy.last_name}</td>
+              <td>{e.developer.first_name}-{e.developer.last_name}</td>
+              <td>{e.title}</td>
             <td>12-12-2022</td>
             <td>12-12-2022</td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Logesh</td>
-            <td>Karthi</td>
-            <td>Project Name with long Characters Example</td>
-            <td>12-12-2022</td>
-            <td>12-12-2022</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>Logesh the blaster</td>
-            <td>Project Name with long Characters Example</td>
-            <td>12-12-2022</td>
-            <td>12-12-2022</td>
-          </tr>
+          )
+        })}
         </tbody>
       </table>
       }
