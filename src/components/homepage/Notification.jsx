@@ -20,8 +20,9 @@ const handleReject =(e)=>{
   e.preventDefault()
   dispatch(responseToNotification({status:"rejected",p_id:notification.p_id._id},navigate))
 }
-const deleteNotification =(e)=>{
+const deleteNotificationButton=(e)=>{
     e.preventDefault();
+    console.log("clicked");
     const id =user?.user?._id;
     dispatch(deleteNotification({u_id:id,n_id:notification?._id},navigate))
 }
@@ -38,9 +39,10 @@ const deleteNotification =(e)=>{
                     <button className='btn success px-2 py-1 me-2' onClick={handleAccept} >Accept</button>
                     <button className='btn danger px-2 py-0 ' onClick={handleReject}>Reject</button>
                 </div>
-                :<div className='d-flex justify-content-end  fs-5  m-2 text-white' onClick={deleteNotification}>
-                
-                <i className="fa-sharp fa-solid fa-xmark"></i>
+                :<div className='d-flex justify-content-end  text-white' >
+                <button onClick={deleteNotificationButton} className="btn btn-light">
+                <i className="fa-sharp fa-solid fa-xmark "></i>
+                </button>
             </div>
 }
 
