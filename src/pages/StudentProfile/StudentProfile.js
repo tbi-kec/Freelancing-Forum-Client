@@ -44,11 +44,19 @@ export default function StudentProfile() {
 
     },[user])
 
+    const handleLogout = () =>{
+        localStorage.removeItem('freelance');
+        navigate('/');
+    }
+
     
 
 
   return (
     <div className='student-profile'>
+    <div className='logout-btn text-end '>
+        <button className="btn logout text-light" onClick={handleLogout}>Log Out</button>
+      </div>
         <div className="back">
         <Link to="/Home">
             <i className="fa-sharp fa-solid fa-arrow-left"></i>
