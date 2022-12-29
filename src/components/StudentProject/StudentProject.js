@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import AddProject from "../AddProject/AddProject";
 import { useSelector } from "react-redux";
 
-export default function StudentProject({ project,user }) {
-    const current = useSelector((state) => state.myDetailsReducer);
+export default function StudentProject({ project, user }) {
+  const current = useSelector((state) => state.myDetailsReducer);
   const handleClick = () => {
     const model = document.getElementById("toggle_model_button_study_project");
     model.click();
@@ -11,10 +11,10 @@ export default function StudentProject({ project,user }) {
 
   return (
     <div className="student-card stud-project">
-        <div className="title">
-            <h2>Study-Projects</h2>
-          </div>
-      {project.length < 3  && current?.data?._id == user?._id? (
+      <div className="title">
+        <h2>Study-Projects</h2>
+      </div>
+      {project.length < 3 && current?.data?._id == user?._id ? (
         <>
           <div className="inner-card add-project">
             <div className="content-add w-100">
@@ -33,7 +33,7 @@ export default function StudentProject({ project,user }) {
 
       {project.length ? (
         <div className=" student-projects mt-4">
-          
+
           <div className="card-group">
             {project.map((p) => (
               <div className="inner-card" key={p._id}>
@@ -42,11 +42,12 @@ export default function StudentProject({ project,user }) {
                   <p className="date">10/06/2021</p>
                 </div>
                 <div className="tech-used">
-                  <span>React Js</span>
-                  <i className="fa pipe"> | </i>
-                  <span>Mongo DB</span>
-                  <i className="fa pipe"> | </i>
-                  <span>Mongo DB</span>
+                  {p?.technology.map((e) => (
+                    <>
+                    <span>{e}</span>
+                    <i className="fa pipe"> | </i>
+                    </>
+                  ))}
                 </div>
                 <div className="project-overview">
                   <p className="text-dark">{p?.description}</p>
