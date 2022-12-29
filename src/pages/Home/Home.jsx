@@ -97,9 +97,17 @@ function Home() {
               <div className="current-project my-2">
                  {onbord_project.length!==0 ?
                 <>
+                <div className="current-project-header my-2">
+                     <h4 className='mb-0 ms-2 '>Current Project</h4>
+                       <hr className='mt-1 ms-2' />
+                    </div>
                   {onbord_project.map(p=>(
-                  <div className="current-project-header my-2" key={p._id}>
-                     <h4 className='mb-0 ms-2 '>{p.title}</h4>
+                  <div className="current-project-title my-2" key={p._id}>
+                     <p className="mb-0 ms-2">{p.title}</p>
+                     <div className="d-flex justify-content-between">
+                      <p className="mb-0 ms-2">{p.createdBy==myself.data?._id?('Provided'):(`End On: ${p.end_date}`)}</p>
+                      <p className="mb-0 ms-2">Status : {p.project_status}</p>
+                     </div>
                        <hr className='mt-1 ms-2' />
                     </div>
                     ))}

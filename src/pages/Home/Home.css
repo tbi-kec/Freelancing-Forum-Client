@@ -55,7 +55,10 @@
 .current-project>.current-project-title>p{
     color: black;
     text-align: start;
-
+}
+.current-project>.current-project-title>div>p{
+    font-size: 10px;
+    color: black;
 }
 
 .notification{
