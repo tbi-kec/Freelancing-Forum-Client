@@ -50,7 +50,7 @@ export const responseToNotification= (responseData,navigate)=>async(dispatch)=>{
         dispatch(setAlert("Responded to notification successfully","success"))
         navigate("/home")
     } catch (error) {
-        alert(error.message)
+        
         dispatch(setAlert("Server error","danger"))
     }
 }

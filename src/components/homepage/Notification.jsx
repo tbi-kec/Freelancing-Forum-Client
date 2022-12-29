@@ -13,12 +13,12 @@ export default function Notification({notification}) {
   
     const handleAccept = (e)=>{
     e.preventDefault();
-    dispatch(responseToNotification({status:"accepted",n_id:notification._id},navigate))
+    dispatch(responseToNotification({status:"accepted",p_id:notification.p_id._id,n_id:notification._id},navigate))
 
 }  
 const handleReject =(e)=>{
   e.preventDefault()
-  dispatch(responseToNotification({status:"rejected",n_id:notification._id},navigate))
+  dispatch(responseToNotification({status:"rejected",p_id:notification.p_id._id,n_id:notification._id},navigate))
 }
 const deleteNotificationButton=(e)=>{
     e.preventDefault();

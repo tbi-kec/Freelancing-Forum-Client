@@ -30,7 +30,7 @@ function Home() {
   
   useEffect(()=>{
     
-    if(myself.data && myself?.data?.onbord_project?.length!=0){
+    if(myself.data && myself?.data?.onbord_project?.length){
       setOnBoardProject([...myself.data.onbord_project])
     }
     if(myself.data && myself?.data?.notification){
@@ -97,12 +97,12 @@ function Home() {
               <div className="current-project my-2">
                  {onbord_project.length!==0 ?
                 <>
-                  {onbord_project.map(p=>{
+                  {onbord_project.map(p=>(
                   <div className="current-project-header my-2" key={p._id}>
-                     <h4 className='mb-0 ms-2 text-'>{p.title}</h4>
+                     <h4 className='mb-0 ms-2 '>{p.title}</h4>
                        <hr className='mt-1 ms-2' />
                     </div>
-                    })}
+                    ))}
                      </>
                     
                  :<h5 className="text-center  py-5 mt-2">No Projects</h5>
