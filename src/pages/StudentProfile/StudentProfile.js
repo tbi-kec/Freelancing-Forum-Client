@@ -39,7 +39,7 @@ export default function StudentProfile() {
         }
         if(user&& user?.projects_given && user.projects_given?.length){
                 console.log(user.project_given)
-                setProjectGiven([...user.projects_given])
+                setProjectGiven(user.projects_given)
         }
 
     },[user])

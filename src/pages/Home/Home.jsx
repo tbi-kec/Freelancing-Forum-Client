@@ -27,6 +27,7 @@ function Home() {
 
   const [onbord_project,setOnBoardProject] = useState([]);
   const [notification,setNotification]=useState([]);
+  
   useEffect(()=>{
     
     if(myself.data && myself?.data?.onbord_project?.length!=0){
@@ -51,6 +52,7 @@ function Home() {
   const handleNavigate = ()=>{
       navigate(`/profile/${myself.data._id}`)
   }
+ 
   return (
     <div>
       <Navbar />
@@ -93,11 +95,11 @@ function Home() {
 
               </div>
               <div className="current-project my-2">
-                 {onbord_project?.length!==0 ?
+                 {onbord_project.length!==0 ?
                 <>
-                      {onbord_project(o=>{
-                  <div className="current-project-header my-2" key={o._id}>
-                     <h4 className='mb-0 ms-2'>{o.name}</h4>
+                  {onbord_project.map(p=>{
+                  <div className="current-project-header my-2" key={p._id}>
+                     <h4 className='mb-0 ms-2 text-'>{p.title}</h4>
                        <hr className='mt-1 ms-2' />
                     </div>
                     })}
@@ -140,12 +142,12 @@ function Home() {
         {navToggler ?
         <div>
          {project.data?.map(p=>(
-          <ProjectCard project={p} constant={constants.data[0]} key={p._id}/>
+          <ProjectCard project={p} constant={constants?.data[0]} key={p._id}/>
          ))}
         </div>  :
         <div className="my-5">
         {users.data?.map(u=>(
-          <ProfileCard user={u} key={u._id} constant={constants.data[0]}/>
+          <ProfileCard user={u} key={u._id} constant={constants?.data[0]}/>
         ))}
         </div>
         }

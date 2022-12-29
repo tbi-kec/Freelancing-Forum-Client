@@ -9,7 +9,7 @@ export default function ProjectHistory({project}) {
         <div className="student-card project-history">
             <div className="title">
                 
-                <h2>P</h2>
+                <h2>Project-History</h2>
             </div>
             <div className="card-group">
                 {project.length&&
