@@ -3,11 +3,13 @@ import React from 'react'
 export default function ProjectHistory({project}) {
     console.log(project)
   return (
+
     <div>
+    {project.length!=0 ?
         <div className="student-card project-history">
             <div className="title">
                 
-                <h2>Project - History</h2>
+                <h2>P</h2>
             </div>
             <div className="card-group">
                 {project.length&&
@@ -26,7 +28,10 @@ export default function ProjectHistory({project}) {
                 </div>
 }
             </div>
-        </div>
+        </div> :
+        <></>
+    
+    }
     </div>
   )
 }
