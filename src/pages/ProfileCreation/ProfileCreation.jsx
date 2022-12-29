@@ -18,7 +18,7 @@ const ProfileCreation = () => {
     const [personal_email,setPersonalMail]=useState("")
     const [skills,setskills]=useState([])
     const [name,setName]=useState("")
-    const [level,setLevel]=useState("")
+    const [level,setLevel]=useState("beginner")
     const [domain,setDomain]=useState([])
     const [currentDomain,setCurrentDomain]=useState("")
     const [description,setDescription]=useState("")
@@ -50,7 +50,7 @@ const ProfileCreation = () => {
         }
             setskills([...skills,{"name":name,"level":level}])
             setName("")
-            setLevel("")
+            setLevel("beginner")
     }   
 
     const handleDelete =(id)=>{

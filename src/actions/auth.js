@@ -5,6 +5,7 @@ import { getMyDetails } from './myDetails'
 import { getAllUsers } from './user'
 import { getAllProjects } from './project'
 import { getRequestedProjects } from './admin'
+import { getConstants } from './constant'
 export const login  = (authData,navigate) => async(dispatch) =>{
     try {
         const {data}=await api.login(authData)
@@ -16,7 +17,7 @@ export const login  = (authData,navigate) => async(dispatch) =>{
         dispatch(setAlert("Login Successfull","success"))
        // navigate("/home")
         dispatch(getAllUsers())
-        
+        dispatch(getConstants())
         dispatch(getAllProjects())
         dispatch(getRequestedProjects())
          navigate("/home")
@@ -30,6 +31,7 @@ export const signup = (authData,navigate) => async(dispatch) =>{
     try {
         const {data}=await api.signup(authData)
         dispatch({type:"AUTH",payload:data}) 
+        dispatch(getConstants())
         dispatch(setCurrentUser(JSON.parse(localStorage.getItem("freelance"))))
         dispatch(setAlert("User Created successfully","success"))
        navigate("/profile/create")
@@ -43,6 +45,7 @@ export const updateProfile = (profileData,navigate) => async(dispatch)=>{
         const {data} = await api.createProfile(profileData)
          dispatch(getMyDetails())
         dispatch(getAllUsers())
+        dispatch(getConstants())
         dispatch(getAllProjects())
         dispatch(getRequestedProjects())
         dispatch(setAlert("Profile created Successfully","success"))

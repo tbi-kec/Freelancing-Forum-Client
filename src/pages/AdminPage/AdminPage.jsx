@@ -115,7 +115,7 @@ function AdminPage() {
               <td>{e.developer.first_name}-{e.developer.last_name}</td>
               <td>{e.title}</td>
             <td>12-12-2022</td>
-            <td>Beginning</td>
+            <td>{e.project_status}</td>
           </tr>
           )
         })}
