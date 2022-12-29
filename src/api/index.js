@@ -43,3 +43,9 @@ export const requestProjectToAdmin = (projectData)=>API.post(`/project/provider/
 export const getProjectHistory= ()=>API.get('/admin/requested_project');
 
 export const responseRequest = (responseData)=>API.post('/admin/admin_response',responseData)
+
+//developer-acceptOrReject
+
+export const developerResponse =(responseData)=>API.post('/project/provider/request/status',responseData)
+
+export const deleteNotification =(deleteId)=>API.delete('/user/notification/delete',{deleteId})

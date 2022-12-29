@@ -12,6 +12,7 @@ export const getMyDetails=()=>async(dispatch)=>{
             dispatch(setAlert("Fetching or updating  details","info",2000))
            
         }
+        return;
     } catch (error) {
        
         dispatch(setAlert("Server Error","warning"))
@@ -39,5 +40,27 @@ export const requestAdmin = (projectData)=>async(dispatch)=>{
     } catch (error) {
         
         dispatch(setAlert("Server Busy try after some time","danger"))
+    }
+}
+
+export const responseToNotification= (responseData,navigate)=>async(dispatch)=>{
+    try {
+        const {data}=await api.developerResponse(responseData)
+        dispatch(getMyDetails());
+        dispatch(setAlert("Responded to notification successfully","success"))
+        navigate("/home")
+    } catch (error) {
+        alert(error.message)
+        dispatch(setAlert("Server error","danger"))
+    }
+}
+
+export const deleteNotification =(deleteData,navigate)=>async(dispatch)=>{
+    try {
+        const {data}=await api.deleteNotification(deleteData);
+        dispatch(getMyDetails());
+        dispatch(setAlert("Deleted notification","success"))
+    } catch (error) {
+        dispatch(setAlert("Server error","danger"))
     }
 }

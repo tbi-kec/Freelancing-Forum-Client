@@ -9,13 +9,17 @@ export const login  = (authData,navigate) => async(dispatch) =>{
     try {
         const {data}=await api.login(authData)
         dispatch({type:"AUTH",payload:data})
-        navigate("/home")
+         
+        dispatch(setCurrentUser(JSON.parse(localStorage.getItem("freelance"))))
+        dispatch(getMyDetails())
+       
+        dispatch(setAlert("Login Successfull","success"))
+       // navigate("/home")
         dispatch(getAllUsers())
-        dispatch(setCurrentUser())
+        
         dispatch(getAllProjects())
         dispatch(getRequestedProjects())
-        dispatch(getMyDetails())
-        dispatch(setAlert("Login Successfull","success"))
+         navigate("/home")
     } catch (error) {
         console.log(error)
       dispatch(setAlert(error.response.data,'danger'))
@@ -25,11 +29,10 @@ export const login  = (authData,navigate) => async(dispatch) =>{
 export const signup = (authData,navigate) => async(dispatch) =>{
     try {
         const {data}=await api.signup(authData)
-        dispatch({type:"AUTH",payload:data})
-         navigate("/profile/create")
+        dispatch({type:"AUTH",payload:data}) 
+        dispatch(setCurrentUser(JSON.parse(localStorage.getItem("freelance"))))
         dispatch(setAlert("User Created successfully","success"))
-        dispatch(setCurrentUser())
-       dispatch(getMyDetails());
+       navigate("/profile/create")
     } catch (error) {
         dispatch(setAlert(error.response.data,'danger'))
     }
@@ -38,13 +41,12 @@ export const signup = (authData,navigate) => async(dispatch) =>{
 export const updateProfile = (profileData,navigate) => async(dispatch)=>{
     try {
         const {data} = await api.createProfile(profileData)
-        navigate('/home')
          dispatch(getMyDetails())
         dispatch(getAllUsers())
-        dispatch(setCurrentUser())
         dispatch(getAllProjects())
         dispatch(getRequestedProjects())
         dispatch(setAlert("Profile created Successfully","success"))
+          navigate('/home')
     } catch (error) {
         console.log(error)
         dispatch(setAlert(error.response.data,'danger'))
