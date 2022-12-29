@@ -19,7 +19,7 @@ function Home() {
   const users = useSelector((state)=>(state.userReducer))
   const myself=useSelector((state)=>(state.myDetailsReducer))
   const constants=useSelector((state)=>(state.constantReducer));
-  console.log(myself)
+ 
   // const [projects,setProjects]=useState()
   // useEffect(()=>{
   //     setProjects(project?.data)

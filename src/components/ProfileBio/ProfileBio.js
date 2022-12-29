@@ -18,7 +18,7 @@ export default function ProfileBio({ user }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  console.log("project",selectedProject)
+ 
   
   const show_modal = () => {
     const modal = document.getElementById("toggle_model_button");
@@ -33,16 +33,15 @@ export default function ProfileBio({ user }) {
   };
   useEffect(() => {
     if (current && current?.data) {
-  
       filterData(current.data.projects_given);
     }
   }, [current]);
   const handleSelect = (e)=>{
     const id = e.target.value
       const data = current?.data?.projects_given.filter(p=>p._id==id);
-      console.log(data)
+
       if(data)
-      setSelectedProject({...data[0]})
+       setSelectedProject({...data[0]})
     
   }
 useEffect(()=>{
@@ -56,7 +55,7 @@ const handleAssign = (e)=>{
     setAlert("Requesting Admin","info",3000)
     dispatch(requestAdmin({d_id:user._id,p_id:selectedProject._id}))
 }
-console.log(current?.user?._id, user?._id)
+
   return (
     <div className="student-card ">
       {/* model - edit */}

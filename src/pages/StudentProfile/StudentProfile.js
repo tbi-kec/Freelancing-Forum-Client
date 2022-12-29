@@ -29,15 +29,17 @@ export default function StudentProfile() {
         }   
     },[users])
 
-    useLayoutEffect(()=>{
+    useEffect(()=>{
+        console.log(user)
          if(user&& user?.work_history && user.work_history?.length){
                 setWorkHistory(user.work_history)
         }
         if(user&& user?.study_project && user.study_project?.length){
                 setStudyProject(user.study_project)
         }
-        if(user&& user?.project_given && user.project_given?.length){
-                setProjectGiven(user.project_given)
+        if(user&& user?.projects_given && user.projects_given?.length){
+                console.log(user.project_given)
+                setProjectGiven([...user.projects_given])
         }
 
     },[user])

@@ -1,6 +1,7 @@
 import React from 'react'
 
-export default function ProjectHistory() {
+export default function ProjectHistory({project}) {
+    console.log(project)
   return (
     <div>
         <div className="student-card project-history">
@@ -9,6 +10,7 @@ export default function ProjectHistory() {
                 <h2>Project - History</h2>
             </div>
             <div className="card-group">
+                {project.length&&
                 <div className="inner-card">
                     <div className="inner-card-head">
                         <h2>Driver Drowsiness Project</h2>
@@ -22,6 +24,7 @@ export default function ProjectHistory() {
                         Worked with  Rohith,Linga,Sujith
                     </div>
                 </div>
+}
             </div>
         </div>
     </div>

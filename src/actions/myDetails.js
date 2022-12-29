@@ -7,7 +7,7 @@ export const getMyDetails=()=>async(dispatch)=>{
         if(user!=null){
             
             const {data}=await api.getDetails(user.user._id);
-            console.log(data)
+            
              dispatch({type:'GET_MY_DETAILS',payload:data})
             dispatch(setAlert("Fetching or updating  details","info",2000))
            
