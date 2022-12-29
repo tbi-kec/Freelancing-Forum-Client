@@ -51,6 +51,8 @@ function AdminPage() {
       dispatch(respondToRequest({status:"created",p_id:id},navigate))
   
     }
+
+    console.log(project)
   return (
     <div>
       <Navbar />
