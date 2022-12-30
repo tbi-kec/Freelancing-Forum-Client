@@ -37,7 +37,7 @@ const AllRoutes = () => {
             <Route path='/profile/edit' element={<ProfileEdit/>} />
             <Route path='/project/view' element={<ProjectView/>} />
             <Route path='/project/show/:id' element={<ProjectShow/>} />
-            <Route path='/user/:id' element={<DepartmentUsers/>} />
+            <Route path='/user/:dept' element={<DepartmentUsers/>} />
             <Route path='/project/add' element={<ProjectAdd /> } />
              <Route path='/forgotten-password/:uid/:token' element={<ResetPassword/>} />
           <Route path="*"  element={<Page404/>}/>

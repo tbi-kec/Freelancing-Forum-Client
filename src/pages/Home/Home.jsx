@@ -8,8 +8,8 @@ import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import {Link,useNavigate} from 'react-router-dom'
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
-
+import { useEffect } from "react"
+import moment from "moment";
 
 
 function Home() {
@@ -62,8 +62,8 @@ function Home() {
             <div className="row">
               {constants.data && constants.data[0]?.dept_short?.map((d)=>(
                  <div className="col-sm-6 mt-2 " key={d._id}>
-                    <Link to="user/1">
-                      <DeptTitleCard title={d.short}/>
+                    <Link to={`/user/${d.dept}`}>
+                      <DeptTitleCard title={d.short} />
                     </Link>
               </div>
               ))}
@@ -102,10 +102,10 @@ function Home() {
                        <hr className='mt-1 ms-2' />
                     </div>
                   {onbord_project.map(p=>(
-                  <div className="current-project-title my-2 me-4" key={p._id}>
-                     <p className="mb-0 ms-2">{p.title}</p>
+                  <div className="current-project-title my-2" key={p._id}>
+                     <p className="mb-0 ms-2"><Link to={`/project/show/${p._id}`}>{p.title}</Link></p>
                      <div className="d-flex justify-content-between">
-                      <p className="mb-0 ms-2">{p.createdBy==myself.data?._id?('Provided'):(`End On: ${p.end_date}`)}</p>
+                      <p className="mb-0 ms-2">{p.createdBy==myself.data?._id?('Provided '):(`End on: ${moment(p.end_date).fromNow()}`)}</p>
                       <p className="mb-0 ms-2">Status : {p.project_status}</p>
                      </div>
                        <hr className='mt-1 ms-2' />

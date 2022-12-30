@@ -36,15 +36,20 @@ export default function ProfileBio({ user }) {
     const id = e.target.value;
     const data = current?.data?.projects_given.filter((p) => p._id == id);
 
-    if (data) setSelectedProject({ ...data[0] });
-  };
-  useEffect(() => {
-    if (selectedProject._id != null) {
-      dispatch(
-        setAlert(`Selected Project-${selectedProject.title}`, "info", 1500)
-      );
-    }
-  }, [selectedProject]);
+      if(data)
+       setSelectedProject({...data[0]})
+    
+  }
+useEffect(()=>{
+  if(selectedProject._id!=null){
+    dispatch(setAlert(`Selected Project-${selectedProject.title}`,"info",1500))
+  }
+},[selectedProject])
+const handleClick = ()=>{
+
+  const model = document.getElementById("toggle_model_button");
+  model.click();
+}
 
   const handleAssign = (e) => {
     e.preventDefault();
@@ -64,7 +69,7 @@ export default function ProfileBio({ user }) {
       >
         <div className="modal-dialog modal-dialog-centered modal-xl">
           <div className="modal-content text-center ">
-            <EditProfile />
+            <EditProfile handleClick={()=>handleClick()}/>
             <input
               type="button"
               id="toggle_model_button"

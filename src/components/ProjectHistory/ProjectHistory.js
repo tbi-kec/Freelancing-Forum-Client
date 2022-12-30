@@ -12,13 +12,11 @@ export default function ProjectHistory({project}) {
                 
                 <h2>Project - History</h2>
             </div>
-            {project.map((e,i)=>{
-            return(
-            <div className="card-group">
-                {project.length&&
+            {project.map((p)=>(
+            <div className="card-group" ley={p._id}>
                 <div className="inner-card">
                     <div className="inner-card-head">
-                        <h2>{project.title}</h2>
+                        <h2>{p.title}</h2>
                     </div>
                     <div className="domain">
                        <span>Aritificial Inetlligence</span>
@@ -29,10 +27,10 @@ export default function ProjectHistory({project}) {
                         Worked with  Rohith,Linga,Sujith
                     </div>
                 </div>
-}
+
             </div>
             )
-        })}
+        )}
         </div>
       </div>
          :
