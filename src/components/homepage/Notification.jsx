@@ -26,6 +26,7 @@ const deleteNotificationButton=(e)=>{
     const id =user?.user?._id;
     dispatch(deleteNotification({u_id:id,n_id:notification?._id},navigate))
 }
+
   return (
     <div className='notification-container my-2'>
         <div className="row p-2 ">

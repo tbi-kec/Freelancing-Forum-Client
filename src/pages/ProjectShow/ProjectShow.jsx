@@ -1,28 +1,39 @@
 import React from 'react'
 import profile from '../../assets/profileicon2.png'
 import ProgressBar from '../../components/ProgressBar/ProgressBar'
-
+import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import moment from 'moment'
 function ProjectShow() {
+  const {id}=useParams();
+  
+  const project=useSelector((state)=>(state.projectReducer))
   return (
+
     <div>
+     
+        {project?.data?.filter(p=> p._id == id)?.map(p=>(
+          
+      
+        
                <div className="container mt-3">
             <div className="row">
               <div className="col-12 ps-4">
                 {/* <h3 className='mt-3 mb-0 fw-bold'>{project?.title}</h3> */}
-                <h3 className='mt-3 mb-0 fw-bold mb-3'>KEC Freelancer Forum</h3>
+                <h3 className='mt-3 mb-0 fw-bold mb-3'>{p.title}</h3>
                 {/* <div className="fw-bold"><span>{shortname.dept}</span><span className=" mx-3">•</span><span>{shortname.short}</span></div> */}
-                <div className="fw-bold"><span>Information Technology</span><span className=" mx-3">•</span><span>IT</span></div>
+                <div className="fw-bold"><span>{p.createdBy.department}</span><span className=" mx-3">•</span><span>IT</span></div>
               </div>
             </div>
             <div className='p-3'>
-              {/* {project.description} */}
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              {/* {project.description} */}Lorem
+             {p.description}
             </div>
             <div className='p-3'>
-                <b>Deadline:</b> 12/01/2022
+                <b>Deadline:</b> {moment(p.end_date).fromNow()}
             </div>
             <div className='p-3'>
-                <b>Stipend:</b> 3000
+                <b>Stipend:</b> {p.stipend}
             </div>
             <div className="row ps-3">
                 <div className='fs-5 fw-bold my-4'>Skills Required</div>
@@ -38,7 +49,7 @@ function ProjectShow() {
             </div>
             <div className=" px-4 mt-3 d-flex justify-content-start">
               {/* <h5 className=" text-end pt-2 ">Posted By : <span data-bs-dismiss="modal" aria-label="close" className="fs-3 " onClick={handleNavigate}>{project.createdBy.first_name} {project.createdBy.last_name} </span></h5> */}
-              <h5 className=" text-end pt-2 ">Posted By : <span data-bs-dismiss="modal" aria-label="close" className="fs-3 ">Name</span></h5>
+              <h5 className=" text-end pt-2 ">Posted By : <span data-bs-dismiss="modal" aria-label="close" className="fs-3 ">{p.createdBy.first_name} - {p.createdBy.last_name}</span></h5>
               <div className="mx-2 text-start">
                 <img src={profile} height="50px" width='50px' alt="" />
               </div>
@@ -51,7 +62,10 @@ function ProjectShow() {
                 <ProgressBar />
             </div>
           </div>
-    </div>
+  ))}
+          </div>
+
+   
   )
 }
 

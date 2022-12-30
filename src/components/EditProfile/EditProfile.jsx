@@ -17,11 +17,10 @@ function EditProfile({handleClick}) {
           "Per Day",
           "Per Hour",
       ]
-
     const [first_name,setFirstName]=useState()
     const [last_name,setLastName]=useState()
     const [mobile,setMobile]=useState()
-     const [personal_email,setPersonalMail]=useState()
+    const [personal_email,setPersonalMail]=useState()
       const [skills,setskills]=useState([])
       const [name,setName]=useState("")
       const [level,setLevel]=useState("")
