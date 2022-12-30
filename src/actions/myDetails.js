@@ -64,3 +64,16 @@ export const deleteNotification =(deleteData,navigate)=>async(dispatch)=>{
         dispatch(setAlert("Server error","danger"))
     }
 }
+
+
+export const editProfile = (editData,navigate)=>async(dispatch)=>{
+    try {
+        
+        const {data}=await api.editProfile(editData);
+        dispatch(getMyDetails());
+        dispatch(setAlert("Edited Succesfully","info"));
+        navigate(`/profile/${editData.id}`)
+    } catch (error) {
+        dispatch(setAlert("Error Occured","warning"))
+    }
+}

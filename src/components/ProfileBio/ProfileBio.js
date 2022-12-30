@@ -49,6 +49,11 @@ useEffect(()=>{
     dispatch(setAlert(`Selected Project-${selectedProject.title}`,"info",1500))
   }
 },[selectedProject])
+const handleClick = ()=>{
+
+  const model = document.getElementById("toggle_model_button");
+  model.click();
+}
 
 const handleAssign = (e)=>{
     e.preventDefault();
@@ -68,7 +73,7 @@ const handleAssign = (e)=>{
       >
         <div className="modal-dialog modal-dialog-centered modal-xl">
           <div className="modal-content text-center ">
-            <EditProfile />
+            <EditProfile handleClick={()=>handleClick()}/>
             <input
               type="button"
               id="toggle_model_button"

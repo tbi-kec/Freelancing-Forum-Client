@@ -84,3 +84,5 @@ export const changePassword =(resetData,navigate)=>async(dispatch)=>{
         dispatch(setAlert("Password can't be changes","danger"))
     }
 }
+
+

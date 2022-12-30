@@ -1,44 +1,23 @@
-import React, {useEffect, useState} from 'react'
-import { setAlert } from '../../actions/alert'
-import { useDispatch,useSelector } from 'react-redux'
+import React, {useEffect, useState} from 'react';
+import { setAlert } from '../../actions/alert';
+import { useDispatch,useSelector } from 'react-redux';
+import { editProfile } from '../../actions/myDetails';
+import { useNavigate } from 'react-router-dom';
 import './EditProfile.scss'
 
-function EditProfile() {
+function EditProfile({handleClick}) {
     const user = useSelector((state)=>(state.myDetailsReducer))
     const constants = useSelector((state)=>(state.constantReducer))
-    const dispatch=useDispatch()
-    const dept = [
-        "Civil Engineering",
-        "Mechanical Engineering",
-        "Mechatronics Engineering",
-        "Automobile Engineering",
-        "Chemical Engineering",
-        "Food Technology",
-        "Electrical and Electronics Engineering",
-        "Electronics and Instrumentation Engineering",
-        "Electronics and Communication Engineering",
-        "Computer Science and Engineering",
-        "Information Technology",
-        "Computer Science and Design",
-        "Artificial Intelligence (AIML & AIDS)",
-        "Management Studies",
-        "Computer Application",
-        "Computer Technology - UG",
-        "Computer Technology - PG",
-      ];
-      const domains = [
-          "Web Developer",
-          "App Developer",
-          "Full Stack Developer"
-      ]
-      const paymentTypes=[
+    const navigate = useNavigate();
+    const dispatch=useDispatch();
+   const paymentTypes=[
           "Free",
           "Per Month",
           "Per Project",
           "Per Day",
           "Per Hour",
       ]
-      
+
     const [first_name,setFirstName]=useState()
     const [last_name,setLastName]=useState()
     const [mobile,setMobile]=useState()
@@ -86,12 +65,30 @@ function EditProfile() {
             }
         },[user])
 
+    const handleSubmit =async(e)=>{
+       
+        e.preventDefault()
+
+        if(!skills.length){
+            dispatch(setAlert("Skills can't be empty","warning"))
+            return
+        }
+        if(!domain.length){
+            dispatch(setAlert("Domain's can't be empty","warning"))
+            return
+        }
+        //dispatch(setAlert("Editing profile","info"))
+       
+        dispatch(editProfile({id:user.data?._id,first_name,last_name,mobile,personal_email,skills,domain,description,payment_type},navigate))
+        //handleClick();
+    }
+
   return (
     <div className='edit-profile-container'>
                 <h2 className='my-3'>Edit Profile</h2>
                 <div className='d-flex justify-content-center'>
 
-                <form className='row g-2'>
+                <form className='row g-2' onSubmit={handleSubmit}>
                             <div className="form-group col-md-12 col-lg-6">
                                 <input type="text" placeholder='First Name' className='form-control' value={first_name} onChange={e => setFirstName(e.target.value)} required />
                             </div>
