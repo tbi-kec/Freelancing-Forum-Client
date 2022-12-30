@@ -4,6 +4,7 @@ import ProgressBar from '../../components/ProgressBar/ProgressBar'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import moment from 'moment'
+import { Link } from 'react-router-dom'
 function ProjectShow() {
   const {id}=useParams();
   const navigate=useNavigate();
@@ -39,7 +40,8 @@ function ProjectShow() {
               </div>
             </div>
             <div className=" px-4 mt-3 d-flex justify-content-start">
-              <h5 className=" text-end pt-2 ">Posted By : <span data-bs-dismiss="modal" aria-label="close" className="fs-3 " onClick={()=>navigate(`/profile/${p.createdBy._id}`)}>{p.createdBy.first_name} - {p.createdBy.last_name}</span></h5>
+              <h5 className=" text-end pt-2 ">Posted By : <span data-bs-dismiss="modal" aria-label="close" className="fs-3 ">
+                <Link to={`/profile/${p.createdBy._id}`}>{p.createdBy.first_name} - {p.createdBy.last_name}</Link></span></h5>
               <div className="mx-2 text-start">
                 <img src={profile} height="50px" width='50px' alt="" />
               </div>

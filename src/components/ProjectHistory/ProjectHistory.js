@@ -18,13 +18,8 @@ export default function ProjectHistory({project}) {
                     <div className="inner-card-head">
                         <h2>{p.title}</h2>
                     </div>
-                    <div className="domain">
-                       <span>Aritificial Inetlligence</span>
-                       <i class="fa-solid fa-circle"></i>
-                       <span>AI and ML</span>
-                    </div>
-                    <div className="posted-by">
-                        Worked with  Rohith,Linga,Sujith
+                    <div className='project-desc'>
+                        {p.description}
                     </div>
                 </div>
 

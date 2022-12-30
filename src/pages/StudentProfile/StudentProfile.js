@@ -17,7 +17,7 @@ export default function StudentProfile() {
     const [work_history,setWorkHistory]=useState([])
     const [project_given,setProjectGiven]=useState([])
     const [user,setUser]=useState(null);
-
+    const current = useSelector((state)=>(state.currentUserReducer))
     const users=useSelector((state)=>(state.userReducer))
     const filterUser =  async()=>{
         let newUser = users.data.filter(u=>u._id === id);
@@ -54,7 +54,7 @@ export default function StudentProfile() {
 
   return (
     <div className='student-profile'>
-    {user?._id==id &&
+    {user?._id== current?.user?._id &&
     <div className='logout-btn text-end '>
         <button className="btn logout text-light" onClick={handleLogout}>Log Out</button>
       </div>
