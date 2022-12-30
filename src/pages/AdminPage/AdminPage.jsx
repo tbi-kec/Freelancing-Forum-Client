@@ -6,6 +6,7 @@ import { useSelector,useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { respondToRequest } from "../../actions/admin";
 import { setAlert } from "../../actions/alert";
+import moment from "moment";
 function AdminPage() {
   const [nav,setNav]=useState('request');
   const [project,setProject]=useState([]);
@@ -56,11 +57,11 @@ function AdminPage() {
   return (
     <div>
       <Navbar />
-      <div className="admin-nav mb-4">
-          <div className="d-flex justify-content-between align-items-center">
-            <div className="mx-auto fw-bold py-4 px-5 pointer admin-nav-ative" id="request" onClick={handleNavigation}>Request</div>
-            <div className="mx-auto fw-bold py-4 px-5 pointer" id="progress" onClick={handleNavigation}>Progress</div>
-            <div className="mx-auto fw-bold  py-4 px-5 pointer" id="completed" onClick={handleNavigation}>Completed</div>
+      <div className="admin-nav mb-4" style={{background:"white"}}>
+          <div className="d-flex justify-content-between align-items-center ">
+            <div className="mx-auto fw-bold py-4 px-5 pointer  pointer-nav admin-nav-ative" id="request" onClick={handleNavigation}>Request</div>
+            <div className="mx-auto fw-bold py-4 px-5 pointer pointer-nav" id="progress" onClick={handleNavigation}>Progress</div>
+            <div className="mx-auto fw-bold  py-4 px-5 pointer  pointer-nav" id="completed" onClick={handleNavigation}>Completed</div>
         </div>
       </div>
       <div className="container">
@@ -112,12 +113,12 @@ function AdminPage() {
           if(e.project_status==='pending-user' || e.project_status==='assigned' || e.project_status==='partial')
           return(
           <tr>
-            <th scope="row">1</th>
+            <th scope="row">{i+1}</th>
             <td>{e.createdBy.first_name}-{e.createdBy.last_name}</td>
               <td>{e.developer.first_name}-{e.developer.last_name}</td>
               <td>{e.title}</td>
-            <td>12-12-2022</td>
-            <td>{e.project_status}</td>
+              <td>{moment(e.created_on).fromNow()}</td>
+              <td>{e.project_status}</td>
           </tr>
           )
         })}
@@ -142,7 +143,7 @@ function AdminPage() {
         if(e.project_status==='completed')
           return(
           <tr>
-            <th scope="row">1</th>
+            <th scope="row">{i+1}</th>
             <td>{e.createdBy.first_name}-{e.createdBy.last_name}</td>
               <td>{e.developer.first_name}-{e.developer.last_name}</td>
               <td>{e.title}</td>

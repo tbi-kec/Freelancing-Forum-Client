@@ -1,14 +1,25 @@
 .admin-nav-ative{
     color: white;
     font-weight: 900;
-    background-color: var(--main-green);
-    
+    background-color: var(--main-green) !important;
+    border-radius: 8px;
+    z-index:10 !important;
 }
 
 .admin-nav{
     background-color:#f3f3f3;
+    
 }
 
 .pointer:hover{
     cursor: pointer;
+}
+
+.pointer-nav{
+    flex:1;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    z-index: 1;
+  
 }
