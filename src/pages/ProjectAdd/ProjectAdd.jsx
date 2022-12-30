@@ -21,6 +21,10 @@ function ProjectAdd() {
   const user = useSelector((state) => (state.currentUserReducer))
   const constants = useSelector((state) => (state.constantReducer));
   const handleSkill = () => {
+    if(skills.length>4){
+            alert("Max of 5");
+            return ;
+        }
     if (currentSkill !== "") {
       setSkill([...skills, currentSkill]);
       setCurrentSkill("");

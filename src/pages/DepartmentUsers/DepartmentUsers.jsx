@@ -2,7 +2,6 @@ import React from "react";
 import './DepartmentUsers.css'
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import {Link} from 'react-router-dom'
-import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -37,9 +36,9 @@ function DepartmentUsers() {
             <div>
               Total:{students?.length}
             </div>
-            <div>II Year:20</div>
+            {/* <div>II Year:20</div>
             <div>III Year:20</div>
-            <div>IV Year:20</div>
+            <div>IV Year:20</div> */}
             </div>
           </div>
         </div>

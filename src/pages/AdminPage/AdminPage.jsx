@@ -83,9 +83,9 @@ function AdminPage() {
           return(
             <tr>
               <th scope="row">1</th>
-              <td>{p.createdBy.first_name}-{p.createdBy.last_name}</td>
-              <td>{p.developer.first_name}-{p.developer.last_name}</td>
-              <td>{p.title}</td>
+              <td onClick={()=>navigate(`/profile/${p.createdBy._id}`)} >{p.createdBy.first_name}-{p.createdBy.last_name}</td>
+              <td onClick={()=>navigate(`/profile/${p.developer._id}`)} >{p.developer.first_name}-{p.developer.last_name}</td>
+              <td onClick={()=>navigate(`/project/show/${p._id}`)} >{p.title}</td>
               <td><button className="btn btn-outline-success" onClick={(e)=>handleAccpet(e,p._id)}>Accept</button></td>
               <td><button className="btn btn-outline-danger" onClick={(e)=>handleReject(e,p._id)}>Reject</button></td>
             </tr>
@@ -113,9 +113,9 @@ function AdminPage() {
           return(
           <tr>
             <th scope="row">1</th>
-            <td>{e.createdBy.first_name}-{e.createdBy.last_name}</td>
-              <td>{e.developer.first_name}-{e.developer.last_name}</td>
-              <td>{e.title}</td>
+              <td onClick={()=>navigate(`/profile/${e.createdBy._id}`)} >{e.createdBy.first_name}-{e.createdBy.last_name}</td>
+              <td onClick={()=>navigate(`/profile/${e.developer._id}`)}>{e.developer.first_name}-{e.developer.last_name}</td>
+              <td onClick={()=>navigate(`/project/show/${e._id}`)} >{e.title}</td>
             <td>12-12-2022</td>
             <td>{e.project_status}</td>
           </tr>
@@ -143,9 +143,9 @@ function AdminPage() {
           return(
           <tr>
             <th scope="row">1</th>
-            <td>{e.createdBy.first_name}-{e.createdBy.last_name}</td>
-              <td>{e.developer.first_name}-{e.developer.last_name}</td>
-              <td>{e.title}</td>
+            <td onClick={()=>navigate(`/profile/${e.createdBy._id}`)}>{e.createdBy.first_name}-{e.createdBy.last_name}</td>
+              <td onClick={()=>navigate(`/profile/${e.developer._id}`)}>{e.developer.first_name}-{e.developer.last_name}</td>
+              <td onClick={()=>navigate(`/project/show/${e._id}`)}>{e.title}</td>
             <td>12-12-2022</td>
             <td>12-12-2022</td>
           </tr>

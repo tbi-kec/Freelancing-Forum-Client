@@ -33,6 +33,10 @@ function EditProfile({handleClick}) {
               dispatch(setAlert("Please select level","warning"));
               return;
           }
+          if(skills.length>4){
+            alert("Max of 5");
+            return ;
+        }
               setskills([...skills,{"name":name,"level":level}])
               setName("")
               setLevel("")
@@ -43,6 +47,10 @@ function EditProfile({handleClick}) {
           setskills([...newSkills])
       }
       const handleDomain = ()=>{
+        if(domain.length>2){
+            alert("Max of 5");
+            return ;
+        }
           setDomain([...domain,currentDomain])
           setCurrentDomain("")
       }
