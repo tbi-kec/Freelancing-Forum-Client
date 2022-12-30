@@ -102,7 +102,7 @@ function Home() {
                        <hr className='mt-1 ms-2' />
                     </div>
                   {onbord_project.map(p=>(
-                  <div className="current-project-title my-2" key={p._id}>
+                  <div className="current-project-title my-2 me-4" key={p._id}>
                      <p className="mb-0 ms-2">{p.title}</p>
                      <div className="d-flex justify-content-between">
                       <p className="mb-0 ms-2">{p.createdBy==myself.data?._id?('Provided'):(`End On: ${p.end_date}`)}</p>

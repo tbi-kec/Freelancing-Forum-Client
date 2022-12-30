@@ -12,8 +12,6 @@ const ProfileCreation = () => {
     const navigate=useNavigate()
     const dispatch=useDispatch()
     const constants = useSelector((state)=>(state.constantReducer))
-
-    //const [dept,setDept]=useState([]);
     const [department,setDepartment]=useState("")
     const [personal_email,setPersonalMail]=useState("")
     const [skills,setskills]=useState([])
@@ -23,17 +21,10 @@ const ProfileCreation = () => {
     const [currentDomain,setCurrentDomain]=useState("")
     const [description,setDescription]=useState("")
     const [payment_type,setPaymentType]=useState("")
-    const [domains,setDomains]=useState([])
-    // useEffect(()=>{
-    //     if(constants.data!=null){
-    //         alert("hii")
-    //         setDept([...constants.data.dept_short])
-    //     }
-    //     if(constants && constants?.data && constants?.data.domain ){
-    //         setDomains([...constants.data.domain])
-    //     }
-        
-    // },[constants])
+    const [github,setGithub]=useState("")
+    const [linkedin,setLinkedin]=useState("")
+    
+
 
     const paymentTypes=[
         "Free",
@@ -198,6 +189,12 @@ const ProfileCreation = () => {
                             <textarea value={description} onChange={e=>setDescription(e.target.value)} className='form-control' placeholder='Description' cols="10" rows="3" required>
                                
                             </textarea>
+                        </div>
+                        <div className="form-group ">
+                            <input type="text" value={github} onChange={e=>setGithub(e.target.value)} placeholder='Github Link' className='form-control' required />
+                        </div>
+                        <div className="form-group ">
+                            <input type="text" value={linkedin} onChange={e=>setLinkedin(e.target.value)} placeholder='LinkedIn Link' className='form-control' required />
                         </div>
                         <div className='create-button-container'>
                              <button className='create-button btn btn-md my-3 '>Create</button>

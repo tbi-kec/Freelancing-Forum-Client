@@ -30,7 +30,7 @@ export default function StudentProfile() {
     },[users])
 
     useEffect(()=>{
-        console.log(user)
+        // console.log(user._id, id);
          if(user&& user?.work_history && user.work_history?.length){
                 setWorkHistory(user.work_history)
         }
@@ -54,11 +54,14 @@ export default function StudentProfile() {
 
   return (
     <div className='student-profile'>
+    {user?._id==id &&
     <div className='logout-btn text-end '>
         <button className="btn logout text-light" onClick={handleLogout}>Log Out</button>
       </div>
+    
+    }
         <div className="back">
-        <Link to="/Home">
+        <Link to="/home">
             <i className="fa-sharp fa-solid fa-arrow-left"></i>
         </Link>
         </div>
