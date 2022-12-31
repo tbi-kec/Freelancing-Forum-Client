@@ -4,25 +4,24 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import './ProgressBar.css'
 
-function ProgressBar(props) {
-    const [progressStepsNum, setprogressStepsNum] = useState();
-    console.log(props.status)
-
+function ProgressBar({status}) {
+   
+    const [progressStepsNum, setprogressStepsNum] = useState(0);
+  
     const nextprogress = () => {
         setprogressStepsNum(prevprogressStep=>prevprogressStep+1);
-        console.log(`on next ${progressStepsNum}`)
+     //   console.log(`on next ${progressStepsNum}`)
         updateProgressbar();
     }
-    const updateProgressbar = () => {
-        console.log('On update')
+    const updateProgressbar = (cnt) => {
+    
         const progressSteps = document.querySelectorAll(".progress-step");
         const progress = document.getElementById("progress");
         progressSteps.forEach((progressStep, idx) => {
-            return idx < progressStepsNum + 1 ?
+            return idx < cnt + 1 ?
                 progressStep.classList.add("progress-step-active")
                 :
                 progressStep.classList.remove("progress-step-active");
-
         });
 
         const progressActive = document.querySelectorAll(".progress-step-active");
@@ -31,18 +30,23 @@ function ProgressBar(props) {
 
     }
    const setinital=async ()=>{
-    if (props.status === "assigned") { 
-        console.log('on set')
-        setprogressStepsNum(0); }
-    else if (props.status == "partial") { setprogressStepsNum(1); }
-    else { setprogressStepsNum(2); }
-
+    let cnt=0;
+    if (status == "assigned") { 
+        setprogressStepsNum(0);
+     }
+    else if (status == "partial") { 
+        cnt=1;
+        setprogressStepsNum(1) }
+    else { 
+        cnt=1;
+        setprogressStepsNum(2); }
+        console.log(cnt);
+    updateProgressbar(cnt)
+    
     }
     useEffect(() => {
-        console.log(props.status)
-       setinital();
-        updateProgressbar();
-    }, [])
+        setinital();
+    }, [status])
 
 
     return (
