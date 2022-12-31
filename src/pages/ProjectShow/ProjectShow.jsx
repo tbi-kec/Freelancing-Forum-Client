@@ -13,8 +13,8 @@ function ProjectShow() {
 
     <div>   
         {project?.data?.filter(p=> p._id == id)?.map(p=>(    
-               <div className="container mt-3">
-            <div className="row">
+               <div className="container my-3 ">
+            <div className="row ">
               <div className="col-12 ps-4">
                 <h3 className='mt-3 mb-0 fw-bold mb-3'>{p.title}</h3>
                 <div className="fw-bold"><span>{p.createdBy.department}</span><span className=" mx-3">•</span><span>IT</span></div>
@@ -34,7 +34,7 @@ function ProjectShow() {
               <div className="skill d-flex justify-content-start gap-4 ">
                 {p.skills.map((e,i)=>{
                   return(
-                    <div className="skillset px-2 skill-beginner" >{e}</div>
+                    <div className="skillset px-2 skill-beginner text-light" >{e}</div>
                   )
                 })}
               </div>

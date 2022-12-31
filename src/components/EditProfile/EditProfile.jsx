@@ -33,8 +33,8 @@ function EditProfile({handleClick}) {
               dispatch(setAlert("Please select level","warning"));
               return;
           }
-          if(skills.length>4){
-            alert("Max of 5");
+          if(skills.length>5){
+           dispatch(setAlert("Only 5 skills can be given","warning"))
             return ;
         }
               setskills([...skills,{"name":name,"level":level}])
@@ -47,8 +47,8 @@ function EditProfile({handleClick}) {
           setskills([...newSkills])
       }
       const handleDomain = ()=>{
-        if(domain.length>2){
-            alert("Max of 5");
+        if(domain.length>3){
+            dispatch(setAlert("Only 3 domains can be given","warning"))
             return ;
         }
           setDomain([...domain,currentDomain])

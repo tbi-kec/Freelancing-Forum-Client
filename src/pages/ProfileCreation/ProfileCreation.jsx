@@ -39,8 +39,8 @@ const ProfileCreation = () => {
             dispatch(setAlert("Please select level","warning"));
             return;
         }
-        if(skills.length>4){
-            alert("Max of 5");
+        if(skills.length>5){
+            dispatch(setAlert("Only 5 skills can be given","warning"))
             return ;
         }
             setskills([...skills,{"name":name,"level":level}])
@@ -53,8 +53,8 @@ const ProfileCreation = () => {
         setskills([...newSkills])
     }
     const handleDomain = ()=>{
-        if(domain.length>2){
-            alert("Max of 3");
+        if(domain.length>3){
+            dispatch(setAlert("Only 3 domains can be given","warning"))
             return ;
         }
         setDomain([...domain,currentDomain])
@@ -78,11 +78,9 @@ const ProfileCreation = () => {
             return
         }
         dispatch(setAlert("Creating Profile","info"))
-        dispatch(updateProfile({id:user.user._id,department,personal_email,skills,domain,description,payment_type},navigate))
+        dispatch(updateProfile({id:user.user._id,department,personal_email,linkedin,github,skills,domain,description,payment_type},navigate))
 
     }
-    
-
   return (
     <div className='profile-creation-container'>
         <div className="row">
