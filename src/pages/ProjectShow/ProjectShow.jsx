@@ -52,7 +52,8 @@ function ProjectShow() {
             </div> */}
             <div className='p-3'>
             <div className='fs-4 mt-4 fw-bold'>Progress</div>
-                <ProgressBar />
+             { console.log(p.project_status)}
+                <ProgressBar status={p.project_status} />
             </div>
           </div>
   ))}
