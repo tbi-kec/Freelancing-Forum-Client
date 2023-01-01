@@ -19,7 +19,7 @@ function ProjectCard({project,constant}) {
   return (
     <>
       {/* modal- request*/}
-      <div className="modal fade "  id="toggle_model_request" tabIndex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
+      <div className="modal fade "  id={`toggle_model_request-${project._id}`} tabIndex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
         <div className="modal-dialog modal-dialog-centered modal-xl">
           <div className="modal-content text-center ">
     
@@ -72,7 +72,7 @@ function ProjectCard({project,constant}) {
             <div className="ms-auto me-5 my-5">
               {user?.user._id !==project.createdBy._id &&
               <div className="btn btn-success px-5 fw-bold"  data-bs-toggle="modal"
-              data-bs-target="#toggle_model_request" >REQUEST</div>
+              data-bs-target={`#toggle_model_request-${project._id}`} >REQUEST</div>
 }
             </div>
             <input type='button' id='toggle_model_button' hidden data-bs-toggle="modal" data-bs-target="#toggle_model" />
