@@ -83,7 +83,9 @@ export default function StudentProfile() {
             <div className="card-group">
                 
                 {work_history?.map(w=>(
-                    <WorkHistory work={w} key={w._id} />
+                  
+                        <WorkHistory work={w} key={w._id} />
+                    
                 ))}
 
             

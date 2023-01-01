@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 export default function ProjectHistory({project}) {
     console.log(project)
@@ -13,6 +14,7 @@ export default function ProjectHistory({project}) {
                 <h2>Project - History</h2>
             </div>
             {project.map((p)=>(
+                <Link to={`/project/show/${p._id}`} className='text-dark'>
             <div className="card-group" ley={p._id}>
                 <div className="inner-card">
                     <div className="inner-card-head">
@@ -24,6 +26,8 @@ export default function ProjectHistory({project}) {
                 </div>
 
             </div>
+            </Link>
+            
             )
         )}
         </div>

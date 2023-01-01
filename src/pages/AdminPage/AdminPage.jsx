@@ -1,4 +1,6 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
+import { DownloadTableExcel } from "react-export-table-to-excel";
+import jsPDF from "jspdf";
 import Navbar from "../../components/Navbar/Navbar";
 import "./AdminPage.css";
 import { useNavigate } from "react-router-dom";
@@ -53,6 +55,18 @@ function AdminPage() {
   
     }
 
+    const generatePDF = () =>{
+      var doc = new jsPDF();
+      doc.html(document.querySelector('#table-complete'),{
+        callback:function(pdf){
+          var pageCount = doc.internal.getNumberOfPages()
+          pdf.deletePage(pageCount)
+          pdf.save("Freelancing Forum Report.pdf")
+        }
+      })
+    }
+
+    const tableRef=useRef(null)
     console.log(project)
   return (
     <div>
@@ -117,7 +131,7 @@ function AdminPage() {
               <td onClick={()=>navigate(`/profile/${e.createdBy._id}`)} >{e.createdBy.first_name}-{e.createdBy.last_name}</td>
               <td onClick={()=>navigate(`/profile/${e.developer._id}`)}>{e.developer.first_name}-{e.developer.last_name}</td>
               <td onClick={()=>navigate(`/project/show/${e._id}`)} >{e.title}</td>
-            <td>{moment(e.created_on).fromNow()}</td>
+            <td>{moment(e.created_on).format('DD-MM-YYYY')}</td>
             <td>{e.project_status}</td>
           </tr>
           )
@@ -126,7 +140,19 @@ function AdminPage() {
       </table>
       }
       {nav==='completed' &&
-      <table class="table">
+      <div>
+      <div className="d-flex justify-content-between my-5">
+      <DownloadTableExcel
+                    filename="Freelancing Forum Report"
+                    sheet="Report"
+                    currentTableRef={tableRef.current}
+                >
+                   <button className="btn download-excel"> Export Excel </button>
+                </DownloadTableExcel>
+                <button className="btn download-excel" onClick={generatePDF}>Export PDF</button>
+        
+      </div>
+      <table class="table" ref={tableRef} id='table-complete' >
         <thead>
           <tr >
             <th scope="col">#</th>
@@ -147,14 +173,14 @@ function AdminPage() {
             <td onClick={()=>navigate(`/profile/${e.createdBy._id}`)}>{e.createdBy.first_name}-{e.createdBy.last_name}</td>
               <td onClick={()=>navigate(`/profile/${e.developer._id}`)}>{e.developer.first_name}-{e.developer.last_name}</td>
               <td onClick={()=>navigate(`/project/show/${e._id}`)}>{e.title}</td>
-            <th scope="row">{i+1}</th>
-            <td>{moment(e.created_on).fromNow()}</td>
+            <td>{moment(e.created_on).format('DD-MM-YYYY')}</td>
             <td>12-12-2022</td>
           </tr>
           )
         })}
         </tbody>
       </table>
+      </div>
       }
       </div>
     </div>

@@ -9,6 +9,7 @@ function ProjectShow() {
   const {id}=useParams();
   const navigate=useNavigate();
   const project=useSelector((state)=>(state.projectReducer))
+  console.log(project);
   return (
 
     <div>   
@@ -46,10 +47,17 @@ function ProjectShow() {
                 <img src={profile} height="50px" width='50px' alt="" />
               </div>
             </div>
-            {/* <div className='p-3'>
+            <div className='p-3'>
                 <div className='fs-4 mt-4 fw-bold'>Applicant</div>
+                {p.requested.map((u,i)=>{
+                  return(
+                    <div>
+                      <div>{u.first_name}</div>
+                    </div>
+                  )
+                })}
           
-            </div> */}
+            </div>
             <div className='p-3'>
             <div className='fs-4 mt-4 fw-bold'>Progress</div>
          

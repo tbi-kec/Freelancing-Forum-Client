@@ -1,5 +1,3 @@
-
-
 import React from 'react'
 import { useEffect, useState } from 'react';
 import './ProgressBar.css'
@@ -10,11 +8,9 @@ function ProgressBar({status}) {
   
     const nextprogress = () => {
         setprogressStepsNum(prevprogressStep=>prevprogressStep+1);
-     //   console.log(`on next ${progressStepsNum}`)
         updateProgressbar();
     }
     const updateProgressbar = (cnt) => {
-    
         const progressSteps = document.querySelectorAll(".progress-step");
         const progress = document.getElementById("progress");
         progressSteps.forEach((progressStep, idx) => {
@@ -41,8 +37,7 @@ function ProgressBar({status}) {
         cnt=1;
         setprogressStepsNum(2); }
         console.log(cnt);
-    updateProgressbar(cnt)
-    
+        updateProgressbar(cnt)
     }
     useEffect(() => {
         setinital();
@@ -99,6 +94,7 @@ function ProgressBar({status}) {
                         className="progress-step progress-step"
                         data-title="Assign"><i className="fas fa-hands-helping"></i></div>
                     <div className="progress-step" data-title="OnProgress"><i className="fas fa-toolbox"></i></div>
+                    <div className="progress-step" data-title="Testing"><i class="fa-sharp fa-solid fa-vial"></i></div>
                     <div className="progress-step" data-title="Completed"><i className="fas fa-check-circle"></i></div>
                 </div>
                 <div className="progress-btn">
