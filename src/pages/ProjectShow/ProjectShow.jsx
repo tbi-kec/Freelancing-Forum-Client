@@ -47,23 +47,32 @@ function ProjectShow() {
                 <img src={profile} height="50px" width='50px' alt="" />
               </div>
             </div>
+            {(p.project_status==='created') ?
             <div className='p-3'>
                 <div className='fs-4 mt-4 fw-bold'>Applicant</div>
+                <div className='container my-3'>
                 {p.requested.map((u,i)=>{
                   return(
-                    <div>
-                      <div>{u.first_name}</div>
+                    <div className='card shadow'>
+                      <div className="card-body px-5 d-flex justify-content-around">
+                      <Link to={`/profile/${u._id}`} className='text-dark' >
+                        <div className='fs-4'>{u.first_name}-{u.last_name}</div>
+                      </Link>
+                        <button className='btn btn-outline-primary'>Accept</button>
+                      </div>
                     </div>
                   )
                 })}
-          
+                </div>
             </div>
+            :
             <div className='p-3'>
             <div className='fs-4 mt-4 fw-bold'>Progress</div>
          
                 <ProgressBar p_id={p._id} status={p.project_status} />
           
             </div>
+            }
           </div>
   ))}
           </div>
