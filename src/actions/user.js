@@ -8,6 +8,7 @@ export const getAllUsers=()=>async(dispatch)=>{
         console.log(data)
         dispatch({type:'GET_ALL_USERS',payload:data})
     } catch (error) {
+        
         dispatch(setAlert("Server Error","warning"))
     }
 }

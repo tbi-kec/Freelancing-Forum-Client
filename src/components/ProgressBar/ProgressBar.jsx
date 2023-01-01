@@ -1,15 +1,16 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch} from 'react-redux';
+import { useDispatch,useSelector} from 'react-redux';
 import { updateStatus } from '../../actions/project';
 import './ProgressBar.css'
 
-function ProgressBar({status,p_id}) {
+function ProgressBar({status,p_id,c_id,d_id}) {
    const navigate = useNavigate();
    const dispatch = useDispatch();
     const [progressStepsNum, setprogressStepsNum] = useState(0);
-  
+  const user = useSelector((state)=>(state.myDetailsReducer))
+  console.log(user)
     const nextprogress = () => {
         setprogressStepsNum(prevprogressStep=>prevprogressStep+1);
      //   console.log(`on next ${progressStepsNum}`)
@@ -42,12 +43,13 @@ function ProgressBar({status,p_id}) {
     else if (status == "partial") { 
        
         setprogressStepsNum(1) }
+    else if(status=="testing")
+        setprogressStepsNum(2)
     else { 
       
-        setprogressStepsNum(2); 
+        setprogressStepsNum(3); 
     }
  
-    
     }
     useEffect(() => {
         setinital();
@@ -113,12 +115,19 @@ function ProgressBar({status,p_id}) {
                     <div className="progress-step" data-title="Testing"><i class="fa-sharp fa-solid fa-vial"></i></div>
                     <div className="progress-step" data-title="Completed"><i className="fas fa-check-circle"></i></div>
                 </div>
-                {progressStepsNum !=2 ?
+                {progressStepsNum <2 && d_id==user?.data._id ?
                 <div className="progress-btn">
                     <div href="#" className="btn" data-bs-toggle="modal"
                         data-bs-target="#toggle_model_request">Next</div>
                 </div>
                 :""}
+                {progressStepsNum >=2 && c_id==user?.data._id ?
+                <div className="progress-btn">
+                    <div href="#" className="btn" data-bs-toggle="modal"
+                        data-bs-target="#toggle_model_request">Next</div>
+                </div>
+                :""}
+                    
             </div>
             
         </>
