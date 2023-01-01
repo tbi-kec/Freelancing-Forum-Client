@@ -23,7 +23,7 @@ function EditProfile({handleClick}) {
     const [personal_email,setPersonalMail]=useState()
       const [skills,setskills]=useState([])
       const [name,setName]=useState("")
-      const [level,setLevel]=useState("")
+      const [level,setLevel]=useState("beginner")
       const [domain,setDomain]=useState([])
       const [currentDomain,setCurrentDomain]=useState("")
       const [description,setDescription]=useState("")
@@ -39,7 +39,7 @@ function EditProfile({handleClick}) {
         }
               setskills([...skills,{"name":name,"level":level}])
               setName("")
-              setLevel("")
+              setLevel("beginner")
       }   
   
       const handleDelete =(id)=>{
@@ -133,7 +133,7 @@ function EditProfile({handleClick}) {
                                     </div>
                                     <div className="col-5">
                                          <div className="form-group">
-                                            <select name="domain" className="form-select" onChange={e=>setLevel(e.target.value)}>
+                                            <select name="skills-level"  className="form-select" onChange={e=>setLevel(e.target.value)}>
                                                 <option value="" diabled hidden selected>Level</option>
                                                 <option value="beginner" style={{background:"#81F664",color:"white"}} className='form-option' >Beginner</option>
                                                 <option value="intermediate" style={{background:"#F5E878",color:"white"}} className=' py-3 form-option' >Intermediate</option>

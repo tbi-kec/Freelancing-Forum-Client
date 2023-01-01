@@ -55,3 +55,6 @@ export const editProfile = (editData)=>API.patch(`/user/edit/profile/${editData.
 
 //update-status of project
 export const updateStatus = (status)=>API.post('/project/update/progress',status)
+
+//developer-request-a-project
+export const developerRequestProject =(requestData)=>API.post('/project/developer/request',requestData)
