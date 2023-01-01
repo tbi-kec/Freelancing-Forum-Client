@@ -1,48 +1,64 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch} from 'react-redux';
+import { updateStatus } from '../../actions/project';
 import './ProgressBar.css'
 
-function ProgressBar({status}) {
-   
+function ProgressBar({status,p_id}) {
+   const navigate = useNavigate();
+   const dispatch = useDispatch();
     const [progressStepsNum, setprogressStepsNum] = useState(0);
   
     const nextprogress = () => {
         setprogressStepsNum(prevprogressStep=>prevprogressStep+1);
-        updateProgressbar();
+     //   console.log(`on next ${progressStepsNum}`)
+       // updateProgressbar();
+      
+                    dispatch(updateStatus({p_id,status:progressStepsNum+1},navigate))
+    
+      
     }
-    const updateProgressbar = (cnt) => {
+    const updateProgressbar = () => {
+    
         const progressSteps = document.querySelectorAll(".progress-step");
         const progress = document.getElementById("progress");
         progressSteps.forEach((progressStep, idx) => {
-            return idx < cnt + 1 ?
+            return idx < progressStepsNum + 1 ?
                 progressStep.classList.add("progress-step-active")
                 :
                 progressStep.classList.remove("progress-step-active");
         });
-
         const progressActive = document.querySelectorAll(".progress-step-active");
         progress.style.width = ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
 
-
+        
     }
    const setinital=async ()=>{
-    let cnt=0;
+    
     if (status == "assigned") { 
         setprogressStepsNum(0);
      }
     else if (status == "partial") { 
-        cnt=1;
+       
         setprogressStepsNum(1) }
     else { 
-        cnt=1;
-        setprogressStepsNum(2); }
-        console.log(cnt);
-        updateProgressbar(cnt)
+      
+        setprogressStepsNum(2); 
+    }
+ 
+    
     }
     useEffect(() => {
         setinital();
     }, [status])
 
+    useEffect(()=>{
+        setTimeout(()=>{
+                updateProgressbar()
+
+    },1000)
+    },[progressStepsNum])
 
     return (
         <>
@@ -97,11 +113,14 @@ function ProgressBar({status}) {
                     <div className="progress-step" data-title="Testing"><i class="fa-sharp fa-solid fa-vial"></i></div>
                     <div className="progress-step" data-title="Completed"><i className="fas fa-check-circle"></i></div>
                 </div>
+                {progressStepsNum !=2 ?
                 <div className="progress-btn">
                     <div href="#" className="btn" data-bs-toggle="modal"
                         data-bs-target="#toggle_model_request">Next</div>
                 </div>
+                :""}
             </div>
+            
         </>
 
     )

@@ -2,10 +2,12 @@ import React from "react";
 import profile from '../../assets/profileicon2.png'
 import  './ProjectCard.css'
 import moment from 'moment'
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import { developerRequestProject } from "../../actions/myDetails";
+import { setAlert } from "../../actions/alert";
 function ProjectCard({project,constant}) {
+  const dispatch = useDispatch()
   const shortname=constant.dept_short.find(item => item.dept=== project.createdBy.department)
   const user =useSelector((state)=>(state.currentUserReducer))
   const navigate=useNavigate();
@@ -16,10 +18,16 @@ function ProjectCard({project,constant}) {
   const handleNavigate = ()=>{
       navigate(`/profile/${project.createdBy._id}`)
   }
+  const handleRequest = (e)=>{
+    e.preventDefault();
+    dispatch(setAlert("Requesting project","info"))
+    dispatch(developerRequestProject({p_id:project._id,d_id:user?.user._id},navigate))
+
+  }
   return (
     <>
       {/* modal- request*/}
-      <div className="modal fade "  id="toggle_model_request" tabIndex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
+      <div className="modal fade "  id={`toggle_model_request-${project._id}`} tabIndex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
         <div className="modal-dialog modal-dialog-centered modal-xl">
           <div className="modal-content text-center ">
     
@@ -29,6 +37,7 @@ function ProjectCard({project,constant}) {
               className="btn btn-md m-3 px-4 project-add-submit-btn"
               data-bs-dismiss="modal"
               aria-label="Close"
+              onClick={e=>handleRequest(e)}
             >
               OK
             </button>
@@ -70,9 +79,9 @@ function ProjectCard({project,constant}) {
               </div>
             </div>
             <div className="ms-auto me-5 my-5">
-              {user?.user._id !==project.createdBy._id &&
-              <div className="btn btn-success px-5 fw-bold"  data-bs-toggle="modal"
-              data-bs-target="#toggle_model_request" >REQUEST</div>
+              {user?.user._id !==project.createdBy._id && project.project_status=="created" &&
+              <div className="btn btn-success px-5 fw-bold" data-bs-toggle="modal"
+              data-bs-target={`#toggle_model_request-${project._id}`} >REQUEST</div>
 }
             </div>
             <input type='button' id='toggle_model_button' hidden data-bs-toggle="modal" data-bs-target="#toggle_model" />

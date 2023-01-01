@@ -24,3 +24,15 @@ export const newProject = (projectData,navigate) => async(dispatch) =>{
     }
 }
 
+
+
+export const updateStatus = (status,navigate)=>async(dispatch)=>{
+    try {
+        const {data}=await api.updateStatus(status);
+        dispatch(getAllProjects());
+        dispatch(setAlert("Progress updated","success"))
+        navigate(`/project/show/${status.p_id}`)
+        } catch (error) {
+        dispatch(setAlert("Progress not updates","danger"))
+    }
+}

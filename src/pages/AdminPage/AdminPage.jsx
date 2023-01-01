@@ -169,7 +169,7 @@ function AdminPage() {
         if(e.project_status==='completed')
           return(
           <tr>
-            <th scope="row">{i+1}</th>
+            <th scope="row">{i}</th>
             <td onClick={()=>navigate(`/profile/${e.createdBy._id}`)}>{e.createdBy.first_name}-{e.createdBy.last_name}</td>
               <td onClick={()=>navigate(`/profile/${e.developer._id}`)}>{e.developer.first_name}-{e.developer.last_name}</td>
               <td onClick={()=>navigate(`/project/show/${e._id}`)}>{e.title}</td>

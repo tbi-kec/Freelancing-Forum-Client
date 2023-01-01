@@ -5,16 +5,12 @@ export const getMyDetails=()=>async(dispatch)=>{
     try {
         const user =await JSON.parse(localStorage.getItem('freelance'));
         if(user!=null){
-            
             const {data}=await api.getDetails(user.user._id);
-            
-             dispatch({type:'GET_MY_DETAILS',payload:data})
+            dispatch({type:'GET_MY_DETAILS',payload:data})
             dispatch(setAlert("Fetching or updating  details","info",2000))
-           
         }
         return;
     } catch (error) {
-       
         dispatch(setAlert("Server Error","warning"))
     }
 }
@@ -75,5 +71,16 @@ export const editProfile = (editData,navigate)=>async(dispatch)=>{
         navigate(`/profile/${editData.id}`)
     } catch (error) {
         dispatch(setAlert("Error Occured","warning"))
+    }
+}
+
+export const developerRequestProject =(requestData,navigate)=>async(dispatch)=>{
+    try {
+        const {data}=await api.developerRequestProject(requestData);
+        dispatch(setAlert("Requested Project","success"));
+        navigate("/home")
+    } catch (error) {
+        alert(error.message)
+        dispatch(setAlert("Request Error","danger"))
     }
 }
