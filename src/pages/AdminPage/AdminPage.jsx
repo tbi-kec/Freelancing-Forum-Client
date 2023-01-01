@@ -12,6 +12,11 @@ import moment from "moment";
 function AdminPage() {
   const [nav,setNav]=useState('request');
   const [project,setProject]=useState([]);
+  const [request,setRequest]=useState([]);
+  const [progress,setProgress]=useState([]);
+  const [completed,setCompleted]=useState([]);
+  const [startDate,setStartDate]=useState();
+  const [endDate,setEndDate]=useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const projects = useSelector((state)=>(state.adminReducer));
@@ -19,6 +24,15 @@ function AdminPage() {
     if(projects && projects.data){
       setProject([...projects.data])
     }
+    project.map((project)=>{
+      if(project.project_status==='pending-admin'){
+          setRequest([...request,project])
+      }else if(project.project_status==='pending-user' || project.project_status==='assigned' || project.project_status==='partial' || project.project_status==='testing'){
+        setProgress([...progress,project])
+      }else{
+        setCompleted([...completed,project])
+      }
+    })
   },[projects])
     
     const handleNavigation = (e) =>{
@@ -68,6 +82,7 @@ function AdminPage() {
 
     const tableRef=useRef(null)
     console.log(project)
+
   return (
     <div>
       <Navbar />
@@ -93,8 +108,7 @@ function AdminPage() {
           </tr>
         </thead>
         <tbody>
-        {project.map((p,i)=>{
-          if(p.project_status==='pending-admin')
+        {request.map((p,i)=>{
           return(
             <tr>
               <th scope="row">1</th>
@@ -123,8 +137,7 @@ function AdminPage() {
           </tr>
         </thead>
         <tbody>
-        {project.map((e,i)=>{
-          if(e.project_status==='pending-user' || e.project_status==='assigned' || e.project_status==='partial')
+        {progress.map((e,i)=>{
           return(
           <tr>
             <th scope="row">{i+1}</th>
@@ -141,7 +154,16 @@ function AdminPage() {
       }
       {nav==='completed' &&
       <div>
-      <div className="d-flex justify-content-between my-5">
+      <div className="row my-5">
+      <div className="col-md-3  px-5 d-flex align-items-center ">
+        <label className="fw-bold me-3">From:</label>
+        <input type="date" className="form-control" onChange={setStartDate} value={startDate} />
+      </div>
+      <div className="col-md-3 px-5 d-flex align-items-center ">
+      <label className="fw-bold me-3">To:</label>
+        <input type="date" className="form-control" onChange={setEndDate} value={endDate} />
+      </div>
+      <div className="col-md-3">
       <DownloadTableExcel
                     filename="Freelancing Forum Report"
                     sheet="Report"
@@ -149,7 +171,10 @@ function AdminPage() {
                 >
                    <button className="btn download-excel"> Export Excel </button>
                 </DownloadTableExcel>
-                <button className="btn download-excel" onClick={generatePDF}>Export PDF</button>
+                </div>
+                <div className="col-md-3">
+                    <button className="btn download-excel" onClick={generatePDF}>Export PDF</button>
+                </div>
         
       </div>
       <table class="table" ref={tableRef} id='table-complete' >
@@ -165,8 +190,7 @@ function AdminPage() {
           </tr>
         </thead>
         <tbody>
-        {project.map((e,i)=>{
-        if(e.project_status==='completed')
+        {completed.map((e,i)=>{
           return(
           <tr>
             <th scope="row">{i}</th>
@@ -174,7 +198,7 @@ function AdminPage() {
               <td onClick={()=>navigate(`/profile/${e.developer._id}`)}>{e.developer.first_name}-{e.developer.last_name}</td>
               <td onClick={()=>navigate(`/project/show/${e._id}`)}>{e.title}</td>
             <td>{moment(e.created_on).format('DD-MM-YYYY')}</td>
-            <td>12-12-2022</td>
+            <td>{moment(e.completed_on).format('DD-MM-YYYY')}</td>
           </tr>
           )
         })}
