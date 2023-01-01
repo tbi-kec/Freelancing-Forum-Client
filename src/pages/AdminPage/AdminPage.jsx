@@ -20,6 +20,8 @@ function AdminPage() {
       setProject([...projects.data])
     }
   },[projects])
+
+  
     
     const handleNavigation = (e) =>{
         if(e.target.id==='request'){
