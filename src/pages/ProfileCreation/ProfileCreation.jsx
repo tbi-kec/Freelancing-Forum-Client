@@ -197,10 +197,10 @@ const ProfileCreation = () => {
                             </textarea>
                         </div>
                         <div className="form-group ">
-                            <input type="text" value={github} onChange={e=>setGithub(e.target.value)} placeholder='Github Link' className='form-control' required />
+                            <input type="url" value={github} onChange={e=>setGithub(e.target.value)} placeholder='Github Link' className='form-control' required />
                         </div>
                         <div className="form-group ">
-                            <input type="text" value={linkedin} onChange={e=>setLinkedin(e.target.value)} placeholder='LinkedIn Link' className='form-control' required />
+                            <input type="url" value={linkedin} onChange={e=>setLinkedin(e.target.value)} placeholder='LinkedIn Link' className='form-control' required />
                         </div>
                         <div className='create-button-container'>
                              <button className='create-button btn btn-md my-3 '>Create</button>

@@ -27,7 +27,7 @@ function ProjectShow() {
                 <b>Deadline:</b> {moment(p.end_date).fromNow()}
             </div>
             <div className='p-3'>
-                <b>Stipend:</b> {p.stipend}
+                <b>Stipend:</b> ₹{p.stipend}
             </div>
             <div className="row ps-3">
                 <div className='fs-5 fw-bold my-4'>Skills Required</div>
@@ -53,7 +53,7 @@ function ProjectShow() {
             <div className='p-3'>
             <div className='fs-4 mt-4 fw-bold'>Progress</div>
          
-                <ProgressBar status={p.project_status} />
+                <ProgressBar p_id={p._id} status={p.project_status} />
           
             </div>
           </div>

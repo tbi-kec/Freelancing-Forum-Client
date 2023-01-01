@@ -70,7 +70,7 @@ function ProjectCard({project,constant}) {
               </div>
             </div>
             <div className="ms-auto me-5 my-5">
-              {user?.user._id !==project.createdBy._id &&
+              {user?.user._id !==project.createdBy._id && project.project_status=="created" &&
               <div className="btn btn-success px-5 fw-bold"  data-bs-toggle="modal"
               data-bs-target="#toggle_model_request" >REQUEST</div>
 }

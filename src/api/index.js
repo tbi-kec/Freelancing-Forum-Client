@@ -52,3 +52,6 @@ export const deleteNotification =(deleteId)=>API.post('/user/notification/delete
 
 //edit-profile
 export const editProfile = (editData)=>API.patch(`/user/edit/profile/${editData.id}`,editData)
+
+//update-status of project
+export const updateStatus = (status)=>API.post('/project/update/progress',status)
