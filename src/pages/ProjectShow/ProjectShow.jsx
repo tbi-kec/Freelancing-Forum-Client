@@ -50,20 +50,25 @@ function ProjectShow() {
             {(p.project_status==='created') ?
             <div className='p-3'>
                 <div className='fs-4 mt-4 fw-bold'>Applicant</div>
-                <div className='container my-3'>
+                <div className='container my-1'>
+                <div className="row">
                 {p.requested.map((u,i)=>{
                   return(
-                    <div className='card shadow'>
-                      <div className="card-body px-5 d-flex justify-content-around">
+                    <div className='col-3 card shadow'>
+                      <div className="card-body px-5 ">
+                        <div className="dev-profile d-flex justify-content-around align-items-center">
+                        <img src={profile} height="50px" width='50px' alt="" />
                       <Link to={`/profile/${u._id}`} className='text-dark' >
-                        <div className='fs-4'>{u.first_name}-{u.last_name}</div>
+                        <h6>{u.first_name}-{u.last_name}</h6>
                       </Link>
-                        <button className='btn btn-outline-primary'>Accept</button>
+                     </div>
+                        <button className='btn btn-success'>Accept</button>
                       </div>
                     </div>
                   )
                 })}
                 </div>
+            </div>
             </div>
             :
             <div className='p-3'>
