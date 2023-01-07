@@ -10,7 +10,7 @@ import { sendEmail } from '../../actions/auth'
 const Login = () => {
     const navigate =  useNavigate()
     const dispatch = useDispatch()
-    const [email,setEmail]=useState("karthikeyanr.20it@kongu.edu")
+    const [email,setEmail]=useState("   .20it@kongu.edu")
     const [password,setPassword]=useState("123456")
     const [FPEmail,setFPEmail]=useState("")
     const handleSubmit = (e) =>{

@@ -24,17 +24,25 @@ function AdminPage() {
     if(projects && projects.data){
       setProject([...projects.data])
     }
-    project.map((project)=>{
-      if(project.project_status==='pending-admin'){
-          setRequest([...request,project])
-      }else if(project.project_status==='pending-user' || project.project_status==='assigned' || project.project_status==='partial' || project.project_status==='testing'){
-        setProgress([...progress,project])
-      }else{
-        setCompleted([...completed,project])
-      }
-    })
   },[projects])
 
+  useEffect(()=>{
+    if(project.length!=0){
+      const requests=project.filter(p=>p.project_status==="pending-admin")
+      setRequest([...requests])
+      const progresses=project.filter(p=>p.project_status==="pending-user" || p.project_status==='assigned' || p.project_status==='partial' || p.project_status==='testing' )
+      setProgress([...progresses])
+      const complete=project.filter(p=>p.project_status==="completed")
+      setCompleted([...complete])
+    }
+  },[project])
+  useEffect(()=>{
+    if(startDate!=null && endDate!=null){
+    const complete=completed.filter(p=>p.completed_on>=startDate && p.completed_on<=endDate)
+      setCompleted([...complete])
+    }
+
+  },[startDate,endDate])
   
     
     const handleNavigation = (e) =>{
@@ -113,7 +121,7 @@ function AdminPage() {
         {request.map((p,i)=>{
           return(
             <tr>
-              <th scope="row">1</th>
+              <th scope="row">{i+1}</th>
               <td onClick={()=>navigate(`/profile/${p.createdBy._id}`)} >{p.createdBy.first_name}-{p.createdBy.last_name}</td>
               <td onClick={()=>navigate(`/profile/${p.developer._id}`)} >{p.developer.first_name}-{p.developer.last_name}</td>
               <td onClick={()=>navigate(`/project/show/${p._id}`)} >{p.title}</td>
@@ -159,11 +167,11 @@ function AdminPage() {
       <div className="row my-5">
       <div className="col-md-3  px-5 d-flex align-items-center ">
         <label className="fw-bold me-3">From:</label>
-        <input type="date" className="form-control" onChange={setStartDate} value={startDate} />
+        <input type="date" className="form-control" onChange={(e)=>setStartDate(e.target.value)} value={startDate} />
       </div>
       <div className="col-md-3 px-5 d-flex align-items-center ">
       <label className="fw-bold me-3">To:</label>
-        <input type="date" className="form-control" onChange={setEndDate} value={endDate} />
+        <input type="date" className="form-control" onChange={(e)=>setEndDate(e.target.value)} value={endDate} />
       </div>
       <div className="col-md-3">
       <DownloadTableExcel
@@ -195,7 +203,7 @@ function AdminPage() {
         {completed.map((e,i)=>{
           return(
           <tr>
-            <th scope="row">{i}</th>
+            <th scope="row">{i+1}</th>
             <td onClick={()=>navigate(`/profile/${e.createdBy._id}`)}>{e.createdBy.first_name}-{e.createdBy.last_name}</td>
               <td onClick={()=>navigate(`/profile/${e.developer._id}`)}>{e.developer.first_name}-{e.developer.last_name}</td>
               <td onClick={()=>navigate(`/project/show/${e._id}`)}>{e.title}</td>

@@ -39,7 +39,7 @@ const ProfileCreation = () => {
             dispatch(setAlert("Please select level","warning"));
             return;
         }
-        if(skills.length>5){
+        if(skills.length>4){
             dispatch(setAlert("Only 5 skills can be given","warning"))
             return ;
         }
@@ -53,7 +53,7 @@ const ProfileCreation = () => {
         setskills([...newSkills])
     }
     const handleDomain = ()=>{
-        if(domain.length>3){
+        if(domain.length>2){
             dispatch(setAlert("Only 3 domains can be given","warning"))
             return ;
         }
