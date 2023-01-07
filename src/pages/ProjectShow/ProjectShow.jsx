@@ -2,19 +2,29 @@ import React from 'react'
 import profile from '../../assets/profileicon2.png'
 import ProgressBar from '../../components/ProgressBar/ProgressBar'
 import { useParams, useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { setAlert } from "../../actions/alert";
+import { requestAdmin } from '../../actions/myDetails'
+import { useSelector, useDispatch } from 'react-redux'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 function ProjectShow() {
   const {id}=useParams();
   const navigate=useNavigate();
   const project=useSelector((state)=>(state.projectReducer))
+  const dispatch=useDispatch();
   console.log(project);
-  return (
+  const user=useSelector((state)=>(state.myDetailsReducer))
 
+  const handleAccept = (e,d_id) =>{
+      e.preventDefault()
+      setAlert("Requesting Admin", "info", 3000);
+      dispatch(requestAdmin({ d_id, p_id:id }));
+  }
+  
+  return (
     <div>   
         {project?.data?.filter(p=> p._id == id)?.map(p=>(    
-               <div className="container my-3 ">
+               <div className="container my-3 " key={p._id}>
             <div className="row ">
               <div className="col-12 ps-4">
                 <h3 className='mt-3 mb-0 fw-bold mb-3'>{p.title}</h3>
@@ -61,8 +71,7 @@ function ProjectShow() {
                       <Link to={`/profile/${u._id}`} className='text-dark' >
                         <h6>{u.first_name}-{u.last_name}</h6>
                       </Link>
-                     </div>
-                        <button className='btn btn-success'>Accept</button>
+                        <button className='btn btn-outline-primary' onClick={(e)=>handleAccept(e,u._id)} >Accept</button>
                       </div>
                     </div>
                   )
@@ -74,7 +83,7 @@ function ProjectShow() {
             <div className='p-3'>
             <div className='fs-4 mt-4 fw-bold'>Progress</div>
          
-                <ProgressBar c_id={p.createdBy._id} d_id={p.developer._id} p_id={p._id} status={p.project_status} />
+                <ProgressBar c_id={p.createdBy._id} d_id={p.developer._id} p_id={p._id} status={p.project_status} key={project._id} />
           
             </div>
             }

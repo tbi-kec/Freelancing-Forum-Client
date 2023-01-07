@@ -232,7 +232,7 @@ const handleClick = ()=>{
         </div>
         <div className="d-flex my-3 mt-4">
           <div className="me-3">
-          <a href="" className="text-dark" target="_blank">
+          <a href={user?.linkedin} className="text-dark" target="_blank">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="30"
@@ -247,7 +247,7 @@ const handleClick = ()=>{
             </a>
           </div>
           <div className="mx-3">
-          <a href="" className="text-dark" target="_blank">
+          <a href={user?.github} className="text-dark" target="_blank">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="30"

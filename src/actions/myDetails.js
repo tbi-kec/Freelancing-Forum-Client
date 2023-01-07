@@ -84,3 +84,13 @@ export const developerRequestProject =(requestData,navigate)=>async(dispatch)=>{
         dispatch(setAlert("Request Error","danger"))
     }
 }
+
+export const developerUpdateRating =(ratingData)=>async(dispatch)=>{
+    try{
+        const {data}=await api.developerUpdateRating(ratingData);
+        dispatch(setAlert("You have rated the project","success"));
+    }catch(error){
+       // alert(error.message)
+        dispatch(setAlert("Request Error","danger"))
+    }
+} 

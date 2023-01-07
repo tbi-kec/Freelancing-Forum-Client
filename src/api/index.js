@@ -58,3 +58,6 @@ export const updateStatus = (status)=>API.post('/project/update/progress',status
 
 //developer-request-a-project
 export const developerRequestProject =(requestData)=>API.post('/project/developer/request',requestData)
+
+//develper-rating
+export const developerUpdateRating =(ratingData)=>API.post('/user/rating',ratingData)

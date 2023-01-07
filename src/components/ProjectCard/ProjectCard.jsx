@@ -21,9 +21,12 @@ function ProjectCard({project,constant}) {
   const handleRequest = (e)=>{
     e.preventDefault();
     dispatch(setAlert("Requesting project","info"))
-    dispatch(developerRequestProject({p_id:project._id,d_id:user?.user._id},navigate))
-
+   dispatch(developerRequestProject({p_id:project._id,d_id:user?.user._id},navigate))
   }
+
+  const request_filter=project.requested.some(r=>r._id==user.user._id)
+  console.log(request_filter);
+
   return (
     <>
       {/* modal- request*/}
@@ -79,7 +82,7 @@ function ProjectCard({project,constant}) {
               </div>
             </div>
             <div className="ms-auto me-5 my-5">
-              {user?.user._id !==project.createdBy._id && project.project_status=="created" &&
+              {user?.user._id !==project.createdBy._id && project.project_status=="created" && !request_filter &&
               <div className="btn btn-success px-5 fw-bold" data-bs-toggle="modal"
               data-bs-target={`#toggle_model_request-${project._id}`} >REQUEST</div>
 }

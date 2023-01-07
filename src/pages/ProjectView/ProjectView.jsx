@@ -8,12 +8,30 @@ function ProjectView() {
   const constants =useSelector((state)=>(state.constantReducer))
   const [department,setDepartement]=useState([])
   const [domain,setDomain]=useState([])
+  const [filteredProject,setFilteredProject]=useState([])
+  const [search,setSearch]=useState('')
+  const [currentCategory,setCurrentCategory]=useState('')
   useEffect(()=>{
     if(constants.data){
       setDepartement([...constants.data[0].dept_short])
       setDomain([...constants.data[0].domain])
     }
   },[constants])
+  useEffect(()=>{
+    
+     const Filtered=projects.data?.filter((p)=> (p.title.toLowerCase().includes(search?.toLowerCase()) ))
+      setFilteredProject([...Filtered])
+    
+  },[search])
+
+  useEffect(()=>{
+    if(currentCategory!=''){
+     const Filtered=projects.data?.filter((p)=> (p.category===currentCategory ))
+      setFilteredProject([...Filtered])
+    }
+  },[currentCategory])
+  console.log("projects",projects,currentCategory);
+  
   return (
     <div>
       <div className="row d-flex align-items-center">
@@ -32,6 +50,8 @@ function ProjectView() {
               placeholder="&#128269; search"
               aria-label="Recipient's username"
               aria-describedby="button-addon2"
+              value={search}
+              onChange={(e)=>setSearch(e.target.value)}
             />
             <button
               className="btn text-light search-bar search-btn"
@@ -44,7 +64,7 @@ function ProjectView() {
         </div>
         <div className="col-md-3 p-2 px-5">
           <div className="form-group">
-            <select name="domain" className="form-select">
+            <select name="domain" className="form-select" onChange={(e)=>setCurrentCategory(e.target.value)} value={currentCategory} >
               <option value="" diabled hidden selected >
                 Category
               </option>
@@ -54,21 +74,10 @@ function ProjectView() {
             </select>
           </div>
         </div>
-        <div className="col-md-3 p-2 px-5">
-          <div className="form-group">
-            <select name="domain" className="form-select">
-              <option value="" diabled hidden selected> Department </option>
-                {department.map((d,idx)=>(
-                    <option key={idx} value={d.dept}>{d.dept}-{d.short}</option>
-                ))}
-          
-            </select>
-          </div>
-        </div>
       </div>
       <div className="m-5 pb-5">
-        {projects.data?.map(p=>(
-          <ProjectCard project={p}constant={constants.data[0]} key={p._id} />
+        {filteredProject?.map(p=>(
+          <ProjectCard project={p} constant={constants.data[0]} key={p._id} />
         ))}
       </div>
     </div>
