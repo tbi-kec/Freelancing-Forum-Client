@@ -10,7 +10,7 @@ import { sendEmail } from '../../actions/auth'
 const Login = () => {
     const navigate =  useNavigate()
     const dispatch = useDispatch()
-    const [email,setEmail]=useState("   .20it@kongu.edu")
+    const [email,setEmail]=useState(".20it@kongu.edu")
     const [password,setPassword]=useState("123456")
     const [FPEmail,setFPEmail]=useState("")
     const handleSubmit = (e) =>{
@@ -69,9 +69,10 @@ const Login = () => {
         <div className="container">
             <div className="row p-5">
                 <div className="login-left-side-container shadow col-sm-12  col-lg-6">
-                    <h1>New Here</h1>
+                    <h1>FreeLancing Forum</h1>
                     <h1>Join with us</h1>
                     <p>It's The Bright One, It's The Right One, That's Website.</p>
+                    <p>Earn While You Learn</p>
                     <button className='btn shadow' onClick={()=>navigate("/Register")}>Sign Up</button>
                 </div>
                 <div className="login-right-side-container shadow col-sm-12  col-lg-6 p-3">

@@ -72,8 +72,8 @@ export default function StudentProfile() {
 
 
 
-
-       
+        {user?.admin_verify==false ?<></> :
+       <>
         <div className="student-card work-history">
             <div className="title">
                 <h2>
@@ -95,7 +95,8 @@ export default function StudentProfile() {
         <StudentProject project={studyProject} user={user}/>
 
         <ProjectHistory project={project_given} />
-
+        </>
+                }
     </div>
   )
 }

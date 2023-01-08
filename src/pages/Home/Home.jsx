@@ -7,9 +7,10 @@ import Notification from '../../components/homepage/Notification'
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import {Link,useNavigate} from 'react-router-dom'
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import { useEffect } from "react"
 import moment from "moment";
+import { setAlert } from "../../actions/alert";
 
 
 function Home() {
@@ -19,7 +20,7 @@ function Home() {
   const users = useSelector((state)=>(state.userReducer))
   const myself=useSelector((state)=>(state.myDetailsReducer))
   const constants=useSelector((state)=>(state.constantReducer));
- 
+ const dispatch=useDispatch()
   // const [projects,setProjects]=useState()
   // useEffect(()=>{
   //     setProjects(project?.data)
@@ -52,7 +53,13 @@ function Home() {
   const handleNavigate = ()=>{
       navigate(`/profile/${myself.data._id}`)
   }
- 
+//  useEffect(()=>{
+//     if(myself.data){
+//       if(myself?.data?.admin_verify==false){
+//         dispatch(setAlert("Wait untill Admin has verfie your account","info"))
+//       }
+//     }
+//  },[myself])
   return (
     <div>
       <Navbar />

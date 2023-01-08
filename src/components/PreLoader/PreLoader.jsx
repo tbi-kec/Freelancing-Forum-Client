@@ -43,7 +43,7 @@ function PreLoader() {
     <div className='preloader text-center'>
         <div className='text-center' >
             <img className='my-2 animate__animated animate__pulse animate__infinite ' src={KecLogo} height='70' width='70' alt="" />
-            <p className='animate__animated animate__pulse text-black text-light '>Transform YourSelf</p>
+            <p className='animate__animated animate__pulse text-black text-light'>Transform YourSelf</p>
         </div><br />
   
     </div>
