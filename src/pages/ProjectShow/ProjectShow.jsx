@@ -78,9 +78,7 @@ function ProjectShow() {
             :
             <div className='p-3'>
             <div className='fs-4 mt-4 fw-bold'>Progress</div>
-         
                 <ProgressBar c_id={p.createdBy._id} d_id={p.developer._id} p_id={p._id} status={p.project_status} key={project._id} />
-          
             </div>
             }
           </div>
