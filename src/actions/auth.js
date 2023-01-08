@@ -34,7 +34,10 @@ export const signup = (authData,navigate) => async(dispatch) =>{
         dispatch(getConstants())
         dispatch(setCurrentUser(JSON.parse(localStorage.getItem("freelance"))))
         dispatch(setAlert("User Created successfully","success"))
-       navigate("/profile/create")
+        if(authData.user_type=='client')
+            navigate('/home');
+        else
+            navigate("/profile/create")
     } catch (error) {
         dispatch(setAlert(error.response.data,'danger'))
     }
@@ -59,7 +62,7 @@ export const updateProfile = (profileData,navigate) => async(dispatch)=>{
 export const sendOtp = (otpData,navigate)=>async(dispatch)=>{
     try{
         const {data}=await api.sendOtp(otpData);
-        dispatch(setAlert("OTP send successfully","success"))
+        dispatch(setAlert("OTP send successfully to your kongu email","success"))
     }catch(err){
         dispatch(setAlert(err.response.data,"danger"))
     }

@@ -18,6 +18,7 @@ const ProfileCreation = () => {
     const [name,setName]=useState("")
     const [level,setLevel]=useState("beginner")
     const [domain,setDomain]=useState([])
+    const [domain_name,setDomainName]=useState("");
     const [currentDomain,setCurrentDomain]=useState("")
     const [description,setDescription]=useState("")
     const [payment_type,setPaymentType]=useState("")
@@ -53,12 +54,20 @@ const ProfileCreation = () => {
         setskills([...newSkills])
     }
     const handleDomain = ()=>{
+        if(currentDomain=="" && domain_name==""){
+            dispatch(setAlert("Please select or give your other domain","warning"))
+            return;
+        }
         if(domain.length>2){
             dispatch(setAlert("Only 3 domains can be given","warning"))
             return ;
         }
-        setDomain([...domain,currentDomain])
+        if(currentDomain!="")
+            setDomain([...domain,currentDomain])
+        else if(domain_name!='')
+            setDomain([...domain,domain_name])
         setCurrentDomain("")
+        setDomainName("")
     }
 
     const handleDeleteDomain =(id)=>{
@@ -164,7 +173,7 @@ const ProfileCreation = () => {
                                 </div>
                                 <div className="row" style={{display:"flex",alignItems:"center"}}>
                                     
-                                    <div className="col-10">
+                                    <div className="col-6">
                                             <div className="form-group">
                                                 <select name="domain" value={currentDomain} onChange={e=>setCurrentDomain(e.target.value)} className="form-select">
                                                     <option value="" diabled hidden selected>Domain Name</option>
@@ -174,6 +183,11 @@ const ProfileCreation = () => {
                                                     ))}
                                                     </>}
                                                 </select>
+                                            </div>
+                                    </div>
+                                     <div className="col-4">
+                                            <div className="form-group">
+                                                <input type="text" value={domain_name} onChange={e=>setDomainName(e.target.value)} placeholder='Other Domain' className='form-control' />
                                             </div>
                                     </div>
                                     <div className="col-2">

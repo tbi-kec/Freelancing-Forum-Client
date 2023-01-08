@@ -160,12 +160,14 @@ const handleClick = ()=>{
               </div>
             </div>
           </div>
+         {current?.data?.admin_verify &&
           <div className="profile-dept">
+             
             <div className="options d-flex align-items-center">
               <div className="student-assured">
                 <img src={assured} alt="" />
               </div>
-              {current?.data?._id == user?._id && (
+              {current?.data?._id == user?._id  && (
                 <div className="edit " onClick={show_modal}>
                   <i class="fa-solid fa-pencil fs-5"></i>
                   <input
@@ -178,7 +180,7 @@ const handleClick = ()=>{
                 </div>
               )}
             </div>
-
+      
             <div className="rating">
               {(function () {
                 var rate = [];
@@ -192,9 +194,10 @@ const handleClick = ()=>{
               })()}
             </div>
           </div>
+            }
         </div>
         <div className="student-dept d-flex flex-wrap justify-content-between">
-          <h4 className="mb-4">
+          <h4 className="mb-2">
             <i class="fa-solid fa-location-dot"></i>
             {user?.department}
           </h4>
@@ -225,7 +228,7 @@ const handleClick = ()=>{
             </div>
           )}
         </div>
-
+          {user?.user_type=='freelancer' && user?.admin_verify==false? <p className="text-start  text-success fs-5 text-bold">Waiting for Admin Approval *</p> : " "}
         <div className="student-about">
           <h2 className="mb-3">About </h2>
           <div> {user?.description} </div>

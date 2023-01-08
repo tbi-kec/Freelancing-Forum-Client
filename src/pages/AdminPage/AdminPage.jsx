@@ -1,11 +1,11 @@
-import React, {useState, useRef} from "react";
+import React, {useState,useEffect ,useLayoutEffect ,useRef} from "react";
 import { DownloadTableExcel } from "react-export-table-to-excel";
 import jsPDF from "jspdf";
 import Navbar from "../../components/Navbar/Navbar";
 import "./AdminPage.css";
 import { useNavigate } from "react-router-dom";
 import { useSelector,useDispatch } from "react-redux";
-import { useEffect } from "react";
+
 import { respondToRequest } from "../../actions/admin";
 import { setAlert } from "../../actions/alert";
 import moment from "moment";
@@ -20,7 +20,7 @@ function AdminPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const projects = useSelector((state)=>(state.adminReducer));
-  useEffect(()=>{
+  useLayoutEffect(()=>{
     if(projects && projects.data){
       setProject([...projects.data])
     }
@@ -91,7 +91,7 @@ function AdminPage() {
     }
 
     const tableRef=useRef(null)
-    console.log(project)
+   
 
   return (
     <div>
@@ -103,6 +103,7 @@ function AdminPage() {
             <div className="mx-auto fw-bold  py-4 px-5 pointer  pointer-nav" id="completed" onClick={handleNavigation}>Completed</div>
         </div>
       </div>
+      {project.length!=0 &&
       <div className="container">
       {nav==='request' &&
       <table class="table">
@@ -217,6 +218,7 @@ function AdminPage() {
       </div>
       }
       </div>
+}
     </div>
   );
 }

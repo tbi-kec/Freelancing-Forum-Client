@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux'
 import { signup,sendOtp } from '../../actions/auth'
 import { Link } from 'react-router-dom'
 import { setAlert } from '../../actions/alert'
+import { useEffect } from 'react'
 
 const Register = () => {
     const navigate = useNavigate()
@@ -19,6 +20,8 @@ const Register = () => {
     const [confirm,setConfirm]=useState("")
     const [otp,setOtp]=useState()
     const [gotp,setGotp]=useState()
+    const [rollno,setRollNo]=useState('')
+    const [user_type,setUserType]=useState("")
     const handleOtp = (e)=>{
         e.preventDefault();
          let femail_pattern=/^([a-z]+)\.([a-z]{2,5})\@([a-z]+)\.([a-z]{2,5})$/;
@@ -39,7 +42,7 @@ const Register = () => {
         model.click();
         var generated_otp = Math.floor(1000 + Math.random() * 9000);
         setGotp(generated_otp)
-        dispatch(setAlert("Sending Otp","info",3000))
+        dispatch(setAlert("Sending Otp to your kongu email","info",3000))
         dispatch(sendOtp({otp:generated_otp,kongu_email},navigate))
     }
 
@@ -53,8 +56,14 @@ const Register = () => {
         }
         dispatch((setAlert("Otp verified","success",3500)))
         modal.click();
-        dispatch(signup({first_name,last_name,mobile,kongu_email,password},navigate))
+        dispatch(signup({first_name,last_name,mobile,rollno,user_type,kongu_email,password},navigate))
     }
+    const user_types = ['client','freelancer']
+    useEffect(()=>{
+        dispatch(setAlert("You must have Github and Linkedin account to create a profile","info",3000))
+    },[])
+
+
     return (
         <div className='register-container'>
             {/* modal */}
@@ -109,9 +118,20 @@ const Register = () => {
                                 <input type="email" placeholder='Kongu Email Id' className='form-control' value={kongu_email} onChange={e => setEmail(e.target.value)} required />
                             </div>
                             <div className="form-group col-12">
-                                <input type="password" placeholder='Enter Password' className='form-control' value={password} onChange={e => setPassword(e.target.value)} required />
+                                <input type="text" placeholder='Enter Roll No' className='form-control' value={rollno} onChange={e => setRollNo(e.target.value)} required />
                             </div>
                             <div className="form-group col-12">
+                                <select name="user_type"  className='form-select' onChange={e=>setUserType(e.target.value)} required>
+                                    <option value="" selected hidden>User Role</option>
+                                    {user_types.map((u,i)=>(
+                                        <option value={u} key={i}>{u.toUpperCase()}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className="form-group col-6">
+                                <input type="password" placeholder='Enter Password' className='form-control' value={password} onChange={e => setPassword(e.target.value)} required />
+                            </div>
+                            <div className="form-group col-6">
                                 <input type="password" placeholder='Confirm Password' className='form-control' value={confirm} onChange={e => setConfirm(e.target.value)} required />
                             </div>
 
