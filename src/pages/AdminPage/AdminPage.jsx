@@ -10,7 +10,7 @@ import { respondToRequest } from "../../actions/admin";
 import { setAlert } from "../../actions/alert";
 import moment from "moment";
 function AdminPage() {
-  const [nav,setNav]=useState('request');
+  const [nav,setNav]=useState('approval');
   const [project,setProject]=useState([]);
   const [request,setRequest]=useState([]);
   const [progress,setProgress]=useState([]);
@@ -46,9 +46,17 @@ function AdminPage() {
   
     
     const handleNavigation = (e) =>{
-        if(e.target.id==='request'){
+        if(e.target.id==='approval'){
             setNav(e.target.id)
             document.getElementById(e.target.id).classList.add('admin-nav-ative')
+            document.getElementById('request').classList.remove('admin-nav-ative')
+            document.getElementById('progress').classList.remove('admin-nav-ative')
+            document.getElementById('completed').classList.remove('admin-nav-ative')
+        }
+        else if(e.target.id==='request'){
+            setNav(e.target.id)
+            document.getElementById(e.target.id).classList.add('admin-nav-ative')
+            document.getElementById('approval').classList.remove('admin-nav-ative')
             document.getElementById('progress').classList.remove('admin-nav-ative')
             document.getElementById('completed').classList.remove('admin-nav-ative')
         }
@@ -56,11 +64,13 @@ function AdminPage() {
             setNav(e.target.id)
             document.getElementById(e.target.id).classList.add('admin-nav-ative')
             document.getElementById('request').classList.remove('admin-nav-ative')
+            document.getElementById('approval').classList.remove('admin-nav-ative')
             document.getElementById('completed').classList.remove('admin-nav-ative')
         }
         else{
             setNav(e.target.id)
             document.getElementById(e.target.id).classList.add('admin-nav-ative')
+            document.getElementById('approval').classList.remove('admin-nav-ative')
             document.getElementById('request').classList.remove('admin-nav-ative')
             document.getElementById('progress').classList.remove('admin-nav-ative')
         }
@@ -98,13 +108,40 @@ function AdminPage() {
       <Navbar />
       <div className="admin-nav mb-4" style={{background:"white"}}>
           <div className="d-flex justify-content-between align-items-center ">
-            <div className="mx-auto fw-bold py-4 px-5 pointer  pointer-nav admin-nav-ative" id="request" onClick={handleNavigation}>Request</div>
+            <div className="mx-auto fw-bold py-4 px-5 pointer  pointer-nav admin-nav-ative" id="approval" onClick={handleNavigation}>User Approval</div>
+            <div className="mx-auto fw-bold py-4 px-5 pointer  pointer-nav" id="request" onClick={handleNavigation}>Request</div>
             <div className="mx-auto fw-bold py-4 px-5 pointer pointer-nav" id="progress" onClick={handleNavigation}>Progress</div>
             <div className="mx-auto fw-bold  py-4 px-5 pointer  pointer-nav" id="completed" onClick={handleNavigation}>Completed</div>
         </div>
       </div>
-      {project.length!=0 &&
+
+      {project.length==0 &&
       <div className="container">
+      {nav==='approval' &&
+      <table class="table">
+        <thead>
+          <tr >
+            <th scope="col">#</th>
+            <th scope="col">Freelancer</th>
+            <th scope="col">Accept</th>
+            <th scope="col">Reject</th>
+
+          </tr>
+        </thead>
+        <tbody>
+        {request.map((p,i)=>{
+          return(
+            <tr>
+              <th scope="row">{i+1}</th>
+              <td onClick={()=>navigate(`/profile/${p.createdBy._id}`)} >{p.createdBy.first_name}-{p.createdBy.last_name}</td>
+              <td><button className="btn btn-outline-success" onClick={(e)=>handleAccpet(e,p._id)}>Accept</button></td>
+              <td><button className="btn btn-outline-danger" onClick={(e)=>handleReject(e,p._id)}>Reject</button></td>
+            </tr>
+          )
+        })}
+        </tbody>
+      </table>
+      }
       {nav==='request' &&
       <table class="table">
         <thead>
