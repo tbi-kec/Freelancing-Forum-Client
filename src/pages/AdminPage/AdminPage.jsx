@@ -20,11 +20,19 @@ function AdminPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const projects = useSelector((state)=>(state.adminReducer));
+  const [requestedUsers,setRequestedUsers]=useState([]);
+  const users = useSelector((state)=>(state.userReducer));
   useLayoutEffect(()=>{
     if(projects && projects.data){
       setProject([...projects.data])
     }
   },[projects])
+  useLayoutEffect(()=>{
+      if(users.data){
+        const data = users?.data.filter(u => u.admin_verify==false&&u.user_type=='freelancer');
+        setRequestedUsers([...data]);
+      }
+  },[users])
 
   useEffect(()=>{
     if(project.length!=0){
@@ -101,6 +109,12 @@ function AdminPage() {
     }
 
     const tableRef=useRef(null)
+    const handleAccpetUser = (e,id)=>{
+
+    }
+    const handleRejectUser = (e,id)=>{
+
+    }
    
 
   return (
@@ -129,13 +143,13 @@ function AdminPage() {
           </tr>
         </thead>
         <tbody>
-        {request.map((p,i)=>{
+        {requestedUsers?.map((p,i)=>{
           return(
             <tr>
               <th scope="row">{i+1}</th>
-              <td onClick={()=>navigate(`/profile/${p.createdBy._id}`)} >{p.createdBy.first_name}-{p.createdBy.last_name}</td>
-              <td><button className="btn btn-outline-success" onClick={(e)=>handleAccpet(e,p._id)}>Accept</button></td>
-              <td><button className="btn btn-outline-danger" onClick={(e)=>handleReject(e,p._id)}>Reject</button></td>
+              <td onClick={()=>navigate(`/profile/${p._id}`)} >{p.first_name}-{p.last_name}</td>
+              <td><button className="btn btn-outline-success" onClick={(e)=>handleAccpetUser(e,p._id)}>Accept</button></td>
+              <td><button className="btn btn-outline-danger" onClick={(e)=>handleRejectUser(e,p._id)}>Reject</button></td>
             </tr>
           )
         })}

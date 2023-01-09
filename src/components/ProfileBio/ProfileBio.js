@@ -152,6 +152,7 @@ const handleClick = ()=>{
               <div className="student-name">
                 <h2>
                   {user?.first_name}-{user?.last_name}
+                  ({user?.rollno})
                 </h2>
               </div>
 
