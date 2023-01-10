@@ -5,7 +5,6 @@ import Navbar from "../../components/Navbar/Navbar";
 import "./AdminPage.css";
 import { useNavigate } from "react-router-dom";
 import { useSelector,useDispatch } from "react-redux";
-
 import { respondToRequest } from "../../actions/admin";
 import { setAlert } from "../../actions/alert";
 import moment from "moment";
@@ -17,6 +16,7 @@ function AdminPage() {
   const [completed,setCompleted]=useState([]);
   const [startDate,setStartDate]=useState();
   const [endDate,setEndDate]=useState();
+  const [message,setMessage]=useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const projects = useSelector((state)=>(state.adminReducer));
@@ -105,6 +105,20 @@ function AdminPage() {
 
   return (
     <div>
+    {/* model */}
+    <div className="modal fade "  id={`approval`} tabIndex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
+        <div className="modal-dialog modal-dialog-centered modal-xl">
+          <div className="modal-content p-5">
+                <label className="form-label">Reason for rejection</label>
+                <input type="text" className="form-control" />
+                <button className="btn btn-danger">Reject</button>
+
+            <input type='button' id='toggle_model_button' hidden data-bs-toggle="modal" data-bs-target="#toggle_model" />
+          </div>
+        </div>
+      </div>
+
+
       <Navbar />
       <div className="admin-nav mb-4" style={{background:"white"}}>
           <div className="d-flex justify-content-between align-items-center ">
@@ -134,8 +148,8 @@ function AdminPage() {
             <tr>
               <th scope="row">{i+1}</th>
               <td onClick={()=>navigate(`/profile/${p.createdBy._id}`)} >{p.createdBy.first_name}-{p.createdBy.last_name}</td>
-              <td><button className="btn btn-outline-success" onClick={(e)=>handleAccpet(e,p._id)}>Accept</button></td>
-              <td><button className="btn btn-outline-danger" onClick={(e)=>handleReject(e,p._id)}>Reject</button></td>
+              <td><button className="btn btn-outline-success" onClick={(e)=>handleAccpet(e,p._id)}>Accept</button></td>b
+              <td><button className="btn btn-outline-danger"  data-bs-toggle="modal" data-bs-target="#approval">Reject</button></td>
             </tr>
           )
         })}
