@@ -126,7 +126,7 @@ function AdminPage() {
           <div className="modal-content p-5">
                 <label className="form-label">Reason for rejection</label>
                 <input type="text" className="form-control" />
-                <button className="btn btn-danger">Reject</button>
+                <button  className="btn btn-danger my-3">Reject</button>
 
             <input type='button' id='toggle_model_button' hidden data-bs-toggle="modal" data-bs-target="#toggle_model" />
           </div>
@@ -164,7 +164,7 @@ function AdminPage() {
               <th scope="row">{i+1}</th>
               <td onClick={()=>navigate(`/profile/${p._id}`)} >{p.first_name}-{p.last_name}</td>
               <td><button className="btn btn-outline-success" onClick={(e)=>handleAccpetUser(e,p._id)}>Accept</button></td>
-              <td><button className="btn btn-outline-danger" onClick={(e)=>handleRejectUser(e,p._id)} data-bs-toggle="modal" data-bs-target="#approval">Reject</button></td>
+              <td><button className="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#approval">Reject</button></td>
             </tr>
           )
         })}

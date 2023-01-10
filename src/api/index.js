@@ -61,3 +61,5 @@ export const developerRequestProject =(requestData)=>API.post('/project/develope
 
 //develper-rating
 export const developerUpdateRating =(ratingData)=>API.post('/user/rating',ratingData)
+
+export const accpetUser=(id)=>API.post('/')
