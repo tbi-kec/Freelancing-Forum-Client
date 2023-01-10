@@ -8,6 +8,7 @@ import { useSelector,useDispatch } from "react-redux";
 import { respondToRequest } from "../../actions/admin";
 import { setAlert } from "../../actions/alert";
 import moment from "moment";
+
 function AdminPage() {
   const [nav,setNav]=useState('approval');
   const [project,setProject]=useState([]);
@@ -159,11 +160,11 @@ function AdminPage() {
         <tbody>
         {requestedUsers?.map((p,i)=>{
           return(
-            <tr>
+            <tr key={p._id}>
               <th scope="row">{i+1}</th>
-              <td onClick={()=>navigate(`/profile/${p.createdBy._id}`)} >{p.createdBy.first_name}-{p.createdBy.last_name}</td>
-              <td><button className="btn btn-outline-success" onClick={(e)=>handleAccpet(e,p._id)}>Accept</button></td>b
-              <td><button className="btn btn-outline-danger"  data-bs-toggle="modal" data-bs-target="#approval">Reject</button></td>
+              <td onClick={()=>navigate(`/profile/${p._id}`)} >{p.first_name}-{p.last_name}</td>
+              <td><button className="btn btn-outline-success" onClick={(e)=>handleAccpetUser(e,p._id)}>Accept</button></td>
+              <td><button className="btn btn-outline-danger" onClick={(e)=>handleRejectUser(e,p._id)} data-bs-toggle="modal" data-bs-target="#approval">Reject</button></td>
             </tr>
           )
         })}
