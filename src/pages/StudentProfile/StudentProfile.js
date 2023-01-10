@@ -60,11 +60,11 @@ export default function StudentProfile() {
       </div>
     
     }
-        <div className="back">
+        {/* <div className="back">
         <Link to="/home">
             <i className="fa-sharp fa-solid fa-arrow-left"></i>
         </Link>
-        </div>
+        </div> */}
         <Banner/>
         
         <ProfileBio  user={user} key={1}/>
@@ -74,6 +74,7 @@ export default function StudentProfile() {
 
         {user?.admin_verify==false ?<></> :
        <>
+       {work_history.length!=0 &&
         <div className="student-card work-history">
             <div className="title">
                 <h2>
@@ -91,10 +92,12 @@ export default function StudentProfile() {
             
             </div>
         </div>
-
+}
+                
         <StudentProject project={studyProject} user={user}/>
-
+        {project_given.length!=0 &&
         <ProjectHistory project={project_given} />
+}
         </>
                 }
     </div>

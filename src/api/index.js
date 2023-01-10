@@ -62,4 +62,4 @@ export const developerRequestProject =(requestData)=>API.post('/project/develope
 //develper-rating
 export const developerUpdateRating =(ratingData)=>API.post('/user/rating',ratingData)
 
-export const accpetUser=(id)=>API.post('/')
+export const acceptOrRejectUser=(requestData)=>API.post('/admin/profile/verification',requestData)

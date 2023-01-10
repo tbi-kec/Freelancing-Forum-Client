@@ -10,6 +10,7 @@ import { setAlert } from "../../actions/alert";
 import moment from "moment";
 import UserAprprovalModal from "../../components/AdminModals/UserAprprovalModal";
 import RequestModal from "../../components/AdminModals/RequestModal";
+import { acceptOrRejectUser } from "../../actions/admin";
 
 function AdminPage() {
   const [nav, setNav] = useState('approval');
@@ -113,12 +114,11 @@ function AdminPage() {
 
   const tableRef = useRef(null)
   const handleAccpetUser = (e, id) => {
-
+    e.preventDefault();
+    dispatch(setAlert("Accepting freelancer","info"))
+    dispatch(acceptOrRejectUser({u_id:id,status:"accepted",message:"accpted"},navigate))
   }
-  const handleRejectUser = (e, id) => {
-
-  }
-
+ 
 
   return (
     <div>
@@ -133,13 +133,13 @@ function AdminPage() {
       </div>
 
       {project.length == 0 &&
-        <div className="container">
+        <div className="container" key={"user-nav"}>
 
           {/* userApproval */}
           {nav === 'approval' &&
-            <table class="table">
-              <thead>
-                <tr >
+            <table class="table" key={1}>
+              <thead key={"user"}>
+                <tr key={"header-user"} >
                   <th scope="col">#</th>
                   <th scope="col">Freelancer</th>
                   <th scope="col">Accept</th>
@@ -151,12 +151,12 @@ function AdminPage() {
                 {requestedUsers?.map((p, i) => {
                   return (
                     <>
-                      <UserAprprovalModal id={p._id}/>
+                      <UserAprprovalModal id={p._id} name={`${p.first_name}-${p.last_name}`}/>
                       <tr key={p._id}>
                         <th scope="row">{i + 1}</th>
                         <td onClick={() => navigate(`/profile/${p._id}`)} >{p.first_name}-{p.last_name}</td>
                         <td><button className="btn btn-outline-success" onClick={(e) => handleAccpetUser(e, p._id)}>Accept</button></td>
-                        <td><button className="btn btn-outline-danger" onClick={(e) => handleRejectUser(e, p._id)} data-bs-toggle="modal" data-bs-target={`#toggle_model_user_approval-${p._id}`}>Reject</button></td>
+                        <td><button className="btn btn-outline-danger"  data-bs-toggle="modal" data-bs-target={`#toggle_model_user_approval-${p._id}`}>Reject</button></td>
                       </tr>
                     </>
 
