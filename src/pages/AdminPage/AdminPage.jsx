@@ -191,7 +191,7 @@ function AdminPage() {
                       <td onClick={() => navigate(`/profile/${p.developer._id}`)} >{p.developer.first_name}-{p.developer.last_name}</td>
                       <td onClick={() => navigate(`/project/show/${p._id}`)} >{p.title}</td>
                       <td><button className="btn btn-outline-success" onClick={(e) => handleAccpet(e, p._id)}>Accept</button></td>
-                      <td><button className="btn btn-outline-danger" onClick={(e) => handleReject(e, p._id)}>Reject</button></td>
+                      <td><button className="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target={`#toggle_model_project_request-${p._id}`} onClick={(e) => handleReject(e, p._id)}>Reject</button></td>
                     </tr>
                     </>
                     
