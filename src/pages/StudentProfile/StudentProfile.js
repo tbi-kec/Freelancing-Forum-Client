@@ -68,7 +68,9 @@ export default function StudentProfile() {
         <Banner/>
         
         <ProfileBio  user={user} key={1}/>
-        <Skills skills={user?.skills}/>
+        {user?.user_type=='freelancer' &&
+            <Skills skills={user?.skills}/>
+    }
 
 
 

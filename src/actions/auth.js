@@ -38,9 +38,6 @@ export const signup = (authData,navigate) => async(dispatch) =>{
         dispatch(getConstants())
         dispatch(setCurrentUser(JSON.parse(localStorage.getItem("freelance"))))
         dispatch(setAlert("User Created successfully","success"))
-        if(authData.user_type=='client')
-           navigate(`/profile/${data.user._id}`)
-        else
             navigate("/profile/create")
     } catch (error) {
         dispatch(setAlert(error.response.data,'danger'))
