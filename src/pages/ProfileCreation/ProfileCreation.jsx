@@ -25,7 +25,8 @@ const ProfileCreation = () => {
     const [github,setGithub]=useState("")
     const [linkedin,setLinkedin]=useState("")
     
-    const user = JSON.parse(localStorage.getItem("freelance"));
+    const {user} = JSON.parse(localStorage.getItem("freelance"));
+  
     const paymentTypes=[
         "Free",
         "Per Month",
@@ -74,10 +75,10 @@ const ProfileCreation = () => {
         setDomain([...newDomain])
     }
     const handleSubmit =async(e)=>{
-        const user =await JSON.parse( localStorage.getItem('freelance'))
+        //const user =await JSON.parse( localStorage.getItem('freelance'))
         console.log(user)
         e.preventDefault()
-        if(!skills.length && user.user_type=='freelancer'){
+        if(!skills.length && user.user_type=="freelancer"){
             dispatch(setAlert("Skills can't be empty","warning"))
             return
         }
@@ -86,7 +87,7 @@ const ProfileCreation = () => {
             return
         }
         dispatch(setAlert("Creating Profile","info"))
-        dispatch(updateProfile({id:user.user._id,department,personal_email,linkedin,github,skills,domain,description,payment_type},navigate))
+        dispatch(updateProfile({id:user._id,department,personal_email,linkedin,github,skills,domain,description,payment_type},navigate))
 
     }
   return (
@@ -117,8 +118,9 @@ const ProfileCreation = () => {
                         <div className="form-group ">
                             <input type="email" value={personal_email} onChange={e=>setPersonalMail(e.target.value)} placeholder='Perosnal Email Id' className='form-control' required />
                         </div>
-                        {user?.user_type=='freelancer' &&
+                        {user?.user_type=="freelancer" &&
                         <>
+                       
                         <div className="card">
                             <div className="card-body">
                                 <hr />
@@ -207,8 +209,7 @@ const ProfileCreation = () => {
                                     <option key={idx} value={d}>{d}</option>
                                 ))}
                             </select>
-                        </div>
-                        
+                        </div>              
                             </>
 }    
                         <div className="form-group">
