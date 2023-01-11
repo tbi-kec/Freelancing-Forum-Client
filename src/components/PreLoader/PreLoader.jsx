@@ -33,7 +33,7 @@ function PreLoader() {
                     return
                 }
                 setTimeout(()=>{
-                       navigate("/home")
+                       navigate(`/profile/${result.user._id}`)
                 },3000)
              
         }

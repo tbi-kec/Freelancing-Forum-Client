@@ -25,8 +25,7 @@ const ProfileCreation = () => {
     const [github,setGithub]=useState("")
     const [linkedin,setLinkedin]=useState("")
     
-
-
+    const user = JSON.parse(localStorage.getItem("freelance"));
     const paymentTypes=[
         "Free",
         "Per Month",
@@ -78,11 +77,11 @@ const ProfileCreation = () => {
         const user =await JSON.parse( localStorage.getItem('freelance'))
         console.log(user)
         e.preventDefault()
-        if(!skills.length){
+        if(!skills.length && user.user_type=='freelancer'){
             dispatch(setAlert("Skills can't be empty","warning"))
             return
         }
-        if(!domain.length){
+        if(!domain.length  && user.user_type=='freelancer'){
             dispatch(setAlert("Domain's can't be empty","warning"))
             return
         }
@@ -118,6 +117,8 @@ const ProfileCreation = () => {
                         <div className="form-group ">
                             <input type="email" value={personal_email} onChange={e=>setPersonalMail(e.target.value)} placeholder='Perosnal Email Id' className='form-control' required />
                         </div>
+                        {user?.user_type=='freelancer' &&
+                        <>
                         <div className="card">
                             <div className="card-body">
                                 <hr />
@@ -133,6 +134,8 @@ const ProfileCreation = () => {
                                         </div>
                                     ))}
                                 </div>
+                                
+                                
                                 <div className="row" style={{display:"flex",alignItems:"center"}}>
                                     <div className="col-6">
                                              <div className="form-group ">
@@ -153,7 +156,7 @@ const ProfileCreation = () => {
                                         <i className="text-success fa-solid  fa-plus" onClick={handleSkill} />
                                     </div>
                                 </div>
-                            </div>
+                              </div>
                         </div>
 
                          <div className="card my-3">
@@ -196,7 +199,7 @@ const ProfileCreation = () => {
                                 </div>
                             </div>
                         </div>
-
+                        
                          <div className="form-group">
                             <select name="payment-types" defaultValue={payment_type} onChange={e=>setPaymentType(e.target.value)}   className="form-select" required>
                                 <option value="" diabled hidden selected>Paymen Type</option>
@@ -205,6 +208,9 @@ const ProfileCreation = () => {
                                 ))}
                             </select>
                         </div>
+                        
+                            </>
+}    
                         <div className="form-group">
                             <textarea value={description} onChange={e=>setDescription(e.target.value)} className='form-control' placeholder='Description' cols="10" rows="3" required>
                                

@@ -15,17 +15,21 @@ export const login  = (authData,navigate) => async(dispatch) =>{
         dispatch(getMyDetails())
        
         dispatch(setAlert("Login Successfull","success"))
-       // navigate("/home")
+       
         dispatch(getAllUsers())
         dispatch(getConstants())
         dispatch(getAllProjects())
         dispatch(getRequestedProjects())
-         navigate("/home")
+        if(data?.user?.isAdmin){
+            navigate("/admin")
+        }
+        else navigate(`/profile/${data.user._id}`)
     } catch (error) {
         console.log(error)
       dispatch(setAlert(error.response.data,'danger'))
     }
 }
+
 
 export const signup = (authData,navigate) => async(dispatch) =>{
     try {
@@ -34,9 +38,6 @@ export const signup = (authData,navigate) => async(dispatch) =>{
         dispatch(getConstants())
         dispatch(setCurrentUser(JSON.parse(localStorage.getItem("freelance"))))
         dispatch(setAlert("User Created successfully","success"))
-        if(authData.user_type=='client')
-            navigate('/home');
-        else
             navigate("/profile/create")
     } catch (error) {
         dispatch(setAlert(error.response.data,'danger'))
@@ -46,13 +47,14 @@ export const signup = (authData,navigate) => async(dispatch) =>{
 export const updateProfile = (profileData,navigate) => async(dispatch)=>{
     try {
         const {data} = await api.createProfile(profileData)
+        const {user}=await JSON.parse(localStorage.getItem("freelance"))
          dispatch(getMyDetails())
         dispatch(getAllUsers())
         dispatch(getConstants())
         dispatch(getAllProjects())
         dispatch(getRequestedProjects())
         dispatch(setAlert("Profile created Successfully","success"))
-          navigate('/home')
+          navigate(`/profile/${user._id}`)
     } catch (error) {
         console.log(error)
         dispatch(setAlert(error.response.data,'danger'))

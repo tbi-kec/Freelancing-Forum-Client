@@ -1,5 +1,6 @@
 import * as api from '../api'
 import { setAlert } from './alert'
+import { getAllUsers } from './user';
 
 
 export const getRequestedProjects=()=>async(dispatch)=>{
@@ -24,3 +25,13 @@ export const respondToRequest =(responseData,navigate)=>async(dispatch)=>{
 }
 
 
+export const acceptOrRejectUser = (userData,navigate) => async(dispatch)=>{
+    try {
+        const {data}=await api.acceptOrRejectUser(userData);
+        dispatch(setAlert(`${userData.status} freelancer successfully`,"success"));
+        dispatch(getAllUsers());
+        navigate("/admin")
+    } catch (error) {
+        dispatch(setAlert("Server Error","danger"))
+    }
+}
