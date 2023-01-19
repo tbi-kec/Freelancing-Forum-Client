@@ -16,6 +16,7 @@ function DepartmentUsers() {
     const students = users.data.filter(u=> u.department==dept)
     setStudents([...students])
   }
+  
   useEffect(()=>{
     if(users.data)
        getData();

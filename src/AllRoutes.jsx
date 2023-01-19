@@ -30,7 +30,7 @@ const AllRoutes = () => {
           
       
          
-            {/* <Route path='/home' element={<Home />} /> */}
+           
           <Route element={<AdminProtected />}>
             <Route path='/admin' element={<AdminPage /> } />
           </Route>
@@ -38,10 +38,12 @@ const AllRoutes = () => {
               <Route path='/profile/create' element={<ProfileCreation/>} />
               <Route path='/profile/:id' element={<StudentProfile/>} />
               <Route path='/profile/edit' element={<ProfileEdit/>} />
+              <Route path='/home' element={<Home />} />
+              <Route path='/project/view' element={<ProjectView/>} />
+              <Route path='/project/show/:id' element={<ProjectShow/>} />
+              <Route path='/user/:dept' element={<DepartmentUsers/>} />
             </Route>
-            {/* <Route path='/project/view' element={<ProjectView/>} />
-            <Route path='/project/show/:id' element={<ProjectShow/>} />
-            <Route path='/user/:dept' element={<DepartmentUsers/>} /> */}
+            
           
           <Route path="*"  element={<Page404/>}/>
    

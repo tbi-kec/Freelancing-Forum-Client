@@ -23,7 +23,8 @@ export const login  = (authData,navigate) => async(dispatch) =>{
         if(data?.user?.isAdmin){
             navigate("/admin")
         }
-        else navigate(`/profile/${data.user._id}`)
+        //else navigate(`/profile/${data.user._id}`)
+        else navigate("/home")
     } catch (error) {
         console.log(error)
       dispatch(setAlert(error.response.data,'danger'))
@@ -54,7 +55,8 @@ export const updateProfile = (profileData,navigate) => async(dispatch)=>{
         dispatch(getAllProjects())
         dispatch(getRequestedProjects())
         dispatch(setAlert("Profile created Successfully","success"))
-          navigate(`/profile/${user._id}`)
+          //navigate(`/profile/${user._id}`)
+          navigate("/home")
     } catch (error) {
         console.log(error)
         dispatch(setAlert(error.response.data,'danger'))

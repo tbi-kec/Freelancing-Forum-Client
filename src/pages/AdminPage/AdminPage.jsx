@@ -137,14 +137,13 @@ function AdminPage() {
 
           {/* userApproval */}
           {nav === 'approval' &&
-            <table class="table" key={1}>
-              <thead key={"user"}>
-                <tr key={"header-user"} >
+            <table class="table" key={"user-admin-table-1"}>
+              <thead key={"user-admin-table-123"}>
+                <tr key={"user-admin-table-1-header-col-1"} >
                   <th scope="col">#</th>
                   <th scope="col">Freelancer</th>
                   <th scope="col">Accept</th>
                   <th scope="col">Reject</th>
-
                 </tr>
               </thead>
               <tbody>
@@ -163,7 +162,7 @@ function AdminPage() {
                   )
                 })}
               </tbody>
-            </table>
+          </table>
           }
 
           {/* Request */}

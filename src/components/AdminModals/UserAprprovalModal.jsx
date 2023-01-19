@@ -16,7 +16,7 @@ function UserAprprovalModal({id,name}) {
   }
   
   return (
-    <div>
+    <>
       {/* model */}
       <div className="modal fade " id={`toggle_model_user_approval-${id}`} tabIndex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
         <div className="modal-dialog modal-dialog-centered modal-lg">
@@ -28,7 +28,7 @@ function UserAprprovalModal({id,name}) {
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

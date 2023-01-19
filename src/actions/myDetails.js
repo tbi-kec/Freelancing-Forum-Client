@@ -1,6 +1,7 @@
 import * as api from '../api'
 import { setAlert } from './alert'
 import { getRequestedProjects } from './admin';
+
 export const getMyDetails=()=>async(dispatch)=>{
     try {
         const user =await JSON.parse(localStorage.getItem('freelance'));
