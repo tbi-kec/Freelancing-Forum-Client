@@ -116,7 +116,7 @@ function AdminPage() {
   const handleAccpetUser = (e, id) => {
     e.preventDefault();
     dispatch(setAlert("Accepting freelancer","info"))
-    dispatch(acceptOrRejectUser({u_id:id,status:"accepted",message:"accpted"},navigate))
+    dispatch(acceptOrRejectUser({u_id:id,status:"accepted",message:"accepted"},navigate))
   }
  
 
@@ -124,7 +124,7 @@ function AdminPage() {
     <div>
       <Navbar />
       <div className="admin-nav mb-4" style={{ background: "white" }}>
-        <div className="d-flex justify-content-between align-items-center ">
+        <div className="d-flex justify-content-between align-items-center " key={1}>
           <div className="mx-auto fw-bold py-4 px-5 pointer  pointer-nav admin-nav-ative" id="approval" onClick={handleNavigation}>User Approval</div>
           <div className="mx-auto fw-bold py-4 px-5 pointer  pointer-nav" id="request" onClick={handleNavigation}>Request</div>
           <div className="mx-auto fw-bold py-4 px-5 pointer pointer-nav" id="progress" onClick={handleNavigation}>Progress</div>
@@ -132,7 +132,7 @@ function AdminPage() {
         </div>
       </div>
 
-      {project.length == 0 &&
+    
         <div className="container" key={"user-nav"}>
           {/* userApproval model */}
           {
@@ -146,7 +146,7 @@ function AdminPage() {
 
           {/* userApproval */}
           {nav === 'approval' &&
-            <table class="table" key={"user-admin-table-1"}>
+            <table className="table" key={"user-admin-table-1"}>
               <thead key={"user-admin-table-123"}>
                 <tr key={"user-admin-table-1-header-col-1"} >
                   <th scope="col">#</th>
@@ -158,7 +158,6 @@ function AdminPage() {
               <tbody>
                 {requestedUsers?.map((p, i) => {
                   return (
-                    
                       <tr key={p._id}>
                         <th scope="row">{i + 1}</th>
                         <td onClick={() => navigate(`/profile/${p._id}`)} >{p.first_name}-{p.last_name}</td>
@@ -183,7 +182,7 @@ function AdminPage() {
 
           {/* Request */}
           {nav === 'request' &&
-            <table class="table">
+            <table className="table">
               <thead>
                 <tr >
                   <th scope="col">#</th>
@@ -213,7 +212,7 @@ function AdminPage() {
 
           {/* progress */}
           {nav === 'progress' &&
-            <table class="table">
+            <table className="table">
               <thead>
                 <tr >
                   <th scope="col">#</th>
@@ -268,7 +267,7 @@ function AdminPage() {
                 </div>
 
               </div>
-              <table class="table" ref={tableRef} id='table-complete' >
+              <table className="table" ref={tableRef} id='table-complete' >
                 <thead>
                   <tr >
                     <th scope="col">#</th>
@@ -298,7 +297,7 @@ function AdminPage() {
             </div>
           }
         </div>
-      }
+      
     </div>
   );
 }
