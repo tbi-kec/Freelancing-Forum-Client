@@ -71,8 +71,8 @@ const Login = () => {
                 <div className="login-left-side-container shadow col-sm-12  col-lg-6">
                     <h1 className=''>KEC Freelancing Forum</h1>
                     <h1 className='pb-4'>Join with us</h1>
-                    <p>It's The Bright One, It's The Right One, That's Website.</p>
-                    <p>Earn While You Learn</p>
+                    <p className='fs-5'>It's The Bright One, It's The Right One, That's Website.</p>
+                    <p className='fs-5'>Earn While You Learn</p>
                     <button className='btn shadow' onClick={()=>navigate("/Register")}>Sign Up</button>
                 </div>
                 <div className="login-right-side-container shadow col-sm-12  col-lg-6 p-3">

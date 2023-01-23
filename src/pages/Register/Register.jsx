@@ -71,6 +71,7 @@ const Register = () => {
                 <div className="modal-dialog modal-dialog-centered modal-lg">
                     <div className="modal-content text-center">
                         <h3 className='my-3'>Verify OTP</h3>
+                        <h5>Check <span className='fs-weight-bold'>{kongu_email}</span>  E-mail</h5>
                         <form onSubmit={handleSubmit}>
                             <div className="form-group ">
                                 <input type="tel" value={otp} onChange={e=>setOtp(e.target.value)} placeholder='Enter the OTP' className='form-control w-50 my-3 mx-auto' required />
@@ -115,7 +116,7 @@ const Register = () => {
                                 <input type="tel" placeholder='Mobile' className='form-control' value={mobile} onChange={e => setMobile(e.target.value)} required />
                             </div>
                             <div className="form-group col-12">
-                                <input type="email" placeholder='Kongu Email Id' className='form-control' value={kongu_email} onChange={e => setEmail(e.target.value)} required />
+                                <input type="email" placeholder='Kongu.edu Email Id' className='form-control' value={kongu_email} onChange={e => setEmail(e.target.value)} required />
                             </div>
                             <div className="form-group col-12">
                                 <input type="text" placeholder='Enter Roll No' className='form-control' value={rollno} onChange={e => setRollNo(e.target.value)} required />

@@ -13,10 +13,10 @@ function DepartmentUsers() {
   const constants=useSelector((state)=>(state.constantReducer));
   const [students,setStudents]=useState([])
   const getData=()=>{
-    const students = users.data.filter(u=> u.department==dept)
+    const students = users.data.filter(u=> u.department==dept && u.admin_verify==true)
     setStudents([...students])
   }
-  
+
   useEffect(()=>{
     if(users.data)
        getData();
