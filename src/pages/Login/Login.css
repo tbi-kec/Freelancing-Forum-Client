@@ -45,13 +45,18 @@
     padding:0 20px;
 }
 
-.login-right-side-container > .login-logo-container{
+.login-right-side-container > .header-container > .logo-container {
+    display: flex;
+    flex-direction: row !important;
+}
+
+.login-right-side-container > .header-container > .logo-container > .login-logo-container{
     width: 60px;
     height: 62px;
     
 }
 
-.login-right-side-container > .login-logo-container > img{
+.login-right-side-container > .header-container > .logo-container > .login-logo-container > img{
     height: 100%;
     width: 100%;
     object-fit: cover;
