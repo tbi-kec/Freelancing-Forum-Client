@@ -10,6 +10,7 @@ import {Link,useNavigate} from 'react-router-dom'
 import { useSelector,useDispatch } from "react-redux";
 import { useEffect } from "react"
 import moment from "moment";
+import Footer from "../../components/Footer/Footer";
 import { setAlert } from "../../actions/alert";
 
 
@@ -156,17 +157,27 @@ function Home() {
         {/* content  */}
         {navToggler ?
         <div>
-         {project.data?.map(p=>(
-          <ProjectCard project={p} constant={constants?.data[0]} key={p._id}/>
-         ))}
+          {
+            project.data != null &&
+              project.data
+              .slice(project.data.length-10,project.data.length)?.map(p=>(
+                <ProjectCard project={p} constant={constants?.data[0]} key={p._id}/>
+              ))
+          }
         </div>  :
         <div className="my-5">
-        {users.data?.map(u=>(
-          <ProfileCard user={u} key={u._id} constant={constants?.data[0]}/>
-        ))}
+          {
+            users.data != null &&
+              users.data
+              .sort((a,b) => {return a.rating >b.rating ? -1 : 1})
+              .slice(0,users.data.length > 10 ? 10 : users.data.length)?.map(u=>(
+                <ProfileCard user={u} key={u._id} constant={constants?.data[0]}/>
+              ))
+          }
         </div>
         }
       </div>
+      <Footer />
     </div>
   )
 }

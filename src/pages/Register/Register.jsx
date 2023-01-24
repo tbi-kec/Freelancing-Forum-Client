@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import './Register.css'
 import logo from '../../assets/logo.png'
+import iiclogo from '../../assets/IIC_logo.png'
+import emdclogo from '../../assets/emdclogo22.png'
 import human from '../../assets/human.png'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
@@ -24,7 +26,7 @@ const Register = () => {
     const [user_type,setUserType]=useState("")
     const handleOtp = (e)=>{
         e.preventDefault();
-         let femail_pattern=/^([a-z]+)\.([a-z]{2,5})\@([a-z]+)\.([a-z]{2,5})$/;
+        let femail_pattern=/^([a-z]+)\.([a-z]{2,5})\@([a-z]+)\.([a-z]{2,5})$/;
         let email_pattern=/^([a-z]+)\.([0-9]{2})([a-z]{2,5})\@([a-z]+)\.([a-z]{2,5})$/;
         if((!femail_pattern.test(kongu_email) && !kongu_email.endsWith("kongu.edu")) ||(!email_pattern.test(kongu_email) && !kongu_email.endsWith("kongu.edu")) ){
             dispatch(setAlert("Invalid Email","warning",2500))
@@ -34,7 +36,7 @@ const Register = () => {
             dispatch(setAlert("Password length must be greater than 6","warning",2500))
             return
         }
-         if(confirm!=password){
+        if(confirm!=password){
             dispatch(setAlert("Password dont match","warning",3000))
             return
         }
@@ -47,7 +49,7 @@ const Register = () => {
     }
 
     const handleSubmit = (e)=>{
-        
+
         e.preventDefault()
         const modal=document.getElementById('modal_button');
         if(otp!=gotp){
@@ -100,8 +102,16 @@ const Register = () => {
                             </Link>
                         </div>
                         <div className="header-container">
-                            <div className="login-logo-container shadow p-2">
-                                <img src={logo} alt="" />
+                            <div className="logo-container">
+                                <div className="login-logo-container shadow p-2 mx-2">
+                                    <img src={iiclogo} alt="" />
+                                </div>
+                                <div className="login-logo-container shadow p-2 mx-2">
+                                    <img src={logo} alt="" />
+                                </div>
+                                <div className="login-logo-container shadow p-2 mx-2">
+                                    <img src={emdclogo} alt="" />
+                                </div>
                             </div>
                             <p className='header my-2'>Login in to dashboard </p>
                         </div>

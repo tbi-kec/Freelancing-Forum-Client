@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux'
 import './Login.css'
 import { login } from '../../actions/auth'
 import logo from '../../assets/logo.png'
+import iiclogo from '../../assets/IIC_logo.png'
+import emdclogo from '../../assets/emdclogo22.png'
 import { setAlert } from '../../actions/alert'
 import { sendEmail } from '../../actions/auth'
 
@@ -77,8 +79,16 @@ const Login = () => {
                 </div>
                 <div className="login-right-side-container shadow col-sm-12  col-lg-6 p-3">
                     <div className="header-container">
-                        <div className="login-logo-container shadow p-2">
-                            <img src={logo} alt="" />
+                        <div className="logo-container">
+                            <div className="login-logo-container shadow p-2 mx-2">
+                                <img src={iiclogo} alt="" />
+                            </div>
+                            <div className="login-logo-container shadow p-2 mx-2">
+                                <img src={logo} alt="" />
+                            </div>
+                            <div className="login-logo-container shadow p-2 mx-2">
+                                <img src={emdclogo} alt="" />
+                            </div>
                         </div>
                         <p className='header my-2'>Login in to dashboard </p>
                     </div>
