@@ -55,9 +55,9 @@ const Login = () => {
     <div className="modal fade" id="toggle_model" tabindex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
                 <div className="modal-dialog modal-dialog-centered modal-lg">
                     <div className="modal-content text-center">
-                        <h3 className='my-3'>Forget Password</h3>
+                        <h3 className='my-3'>Forgetten My Password</h3>
                         <div className="container px-5 my-5 d-flex justify-content-center">
-                            <input type="text" className='form-control w-50' placeholder="Email" value={FPEmail} onChange={(e)=>{setFPEmail(e.target.value)}}  />
+                            <input type="text" className='form-control w-50' placeholder="Kongu Email" value={FPEmail} onChange={(e)=>{setFPEmail(e.target.value)}}  />
                         </div>
                         <div className='d-flex justify-content-center mb-5'>
                             <button className='btn btn-primary w-25' data-bs-dismiss="modal" aria-label="Close" onClick={handleForgetPasswordSubmit}>Send</button>
@@ -71,6 +71,7 @@ const Login = () => {
         <div className="container">
             <div className="row p-5">
                 <div className="login-left-side-container shadow col-sm-12  col-lg-6">
+                    
                     <h1 className=''>KEC Freelancing Forum</h1>
                     <h1 className='pb-4'>Join with us</h1>
                     <p className='fs-5'>It's The Bright One, It's The Right One, That's Website.</p>
@@ -80,21 +81,21 @@ const Login = () => {
                 <div className="login-right-side-container shadow col-sm-12  col-lg-6 p-3">
                     <div className="header-container">
                         <div className="logo-container">
-                            <div className="login-logo-container shadow p-2 mx-2">
+                            <div className="login-logo-container ">
                                 <img src={iiclogo} alt="" />
                             </div>
-                            <div className="login-logo-container shadow p-2 mx-2">
+                            <div className="login-logo-container">
                                 <img src={logo} alt="" />
                             </div>
-                            <div className="login-logo-container shadow p-2 mx-2">
-                                <img src={emdclogo} alt="" />
+                            <div className="login-logo-container">
+                                <img src={emdclogo}  alt="" />
                             </div>
                         </div>
                         <p className='header my-2'>Login in to dashboard </p>
                     </div>
                     <form onSubmit={handleSubmit}>
                         <div className="form-group ">
-                            <label className="form-label">Email</label>
+                            <label className="form-label">Kongu Email</label>
                             <input type="text" placeholder='Type your mail' className='px-3' value={email} onChange={e=>setEmail(e.target.value)} required  />
                         </div>
                         <div className="form-group ">
