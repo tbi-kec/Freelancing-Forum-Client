@@ -68,7 +68,7 @@ const Login = () => {
                 </div>
             </div>
 
-        <div className="container">
+        <div className="container-fluid">
             <div className="row p-5">
                 <div className="login-left-side-container shadow col-sm-12  col-lg-6">
                     

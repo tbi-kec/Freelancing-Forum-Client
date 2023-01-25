@@ -1,7 +1,4 @@
-.add-projects
-{
-    margin: auto 30px;
-}
+
 
 .project-add-header{
     font-size: 35px;
@@ -11,7 +8,8 @@
 
 
 .project-add-form-input{
-    background-color: var(--main-lightwhite);
+    width: 100%;
+    background-color: #EFEFEF;
 }
 
 .project-add-create-btn{
@@ -20,8 +18,7 @@
 }
 
 .project-add-form input::placeholder,.project-add-form textarea::placeholder,.option-color,option{
-    /* color: #16336D; */
-    /* font-weight: 600; */
+   color:black;
 }
 
 .tech-add{
@@ -29,16 +26,26 @@
 }
 
 .width-tech{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    background: #81f664;
     width: fit-content;
+    flex-wrap: wrap;
+    padding: 4px 10px;
+    border-radius: 14px;
+    color: #fff;
+    gap: 6px;
 }
 
 .tech{
-    background-color: #37FB06;
-    border-radius: 20px;
+   
 }
 
 .project-add-submit-btn,.project-add-submit-btn:hover{
     background-color: #37FB06;
+    color: white;
 }
 
 .text-end-profile{

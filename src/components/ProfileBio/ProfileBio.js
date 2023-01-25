@@ -87,7 +87,7 @@ const handleClick = ()=>{
         className="modal fade "
         data-bs-backdrop="static"
         id="toggle_model_request"
-        tabindex="-1"
+        tabIndex="-1"
         role="dialog"
         aria-labelledby="exampleModalLabel"
       >

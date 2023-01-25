@@ -23,7 +23,7 @@ export default function StudentProfile() {
         let newUser = users.data.filter(u=>u._id === id);
         setUser(newUser[0])
     }
-    useEffect(()=>{
+    useLayoutEffect(()=>{
         if(users.data){
             filterUser();
         }   
@@ -54,54 +54,49 @@ export default function StudentProfile() {
 
   return (
     <div className='student-profile'>
+    {/* logout */}
     {user?._id== current?.user?._id &&
     <div className='logout-btn text-end '>
         <button className="btn logout text-light" onClick={handleLogout}>Log Out</button>
       </div>
     
     }
-        {/* <div className="back">
-        <Link to="/home">
+        <div className="back" onClick={()=>navigate("/home")}>
+        <Link>
             <i className="fa-sharp fa-solid fa-arrow-left"></i>
         </Link>
-        </div> */}
+        </div>
         <Banner/>
         
-        <ProfileBio  user={user} key={1}/>
+        <ProfileBio  user={user} />
         {user?.user_type=='freelancer' &&
             <Skills skills={user?.skills}/>
-    }
+        }
 
-
-
-        {user?.admin_verify==false ?<></> :
-       <>
-       {work_history.length!=0 &&
-        <div className="student-card work-history">
-            <div className="title">
-                <h2>
-                Work - History
-                </h2>
-            </div>
-            <div className="card-group">
-                
-                {work_history?.map(w=>(
-                  
-                        <WorkHistory work={w} key={w._id} />
-                    
-                ))}
+        {user?.admin_verify==false  &&
+            work_history.length!=0 && user?.admin_verify==true &&
+                <div className="student-card work-history">
+                    <div className="title">
+                        <h2>
+                        Work - History
+                        </h2>
+                    </div>
+                    <div className="card-group">
+                        
+                        {work_history?.map(w=>(
+                                <WorkHistory work={w} key={w._id} />
+                        ))}
 
             
             </div>
         </div>
-}
-                
-        <StudentProject project={studyProject} user={user}/>
-        {project_given.length!=0 &&
-        <ProjectHistory project={project_given} />
-}
-        </>
+        }
+     
+                <StudentProject project={studyProject} user={user}/>
+                {project_given.length!=0 &&
+                    <ProjectHistory project={project_given} />
                 }
+    
     </div>
   )
 }

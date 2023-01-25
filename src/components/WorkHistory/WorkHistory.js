@@ -14,6 +14,6 @@ export default function WorkHistory() {
                     <div className="posted-by">
                         Posted by LingashKumar
                     </div>
-                </div>
+        </div>
   )
 }

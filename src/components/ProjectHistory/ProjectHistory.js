@@ -1,21 +1,20 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export default function ProjectHistory({project}) {
-    console.log(project)
+   const navigate = useNavigate();
+   const handleNavigate=(id)=>{
+    navigate(`/project/show/${id}`)
+   }
   return (
-
-    <div>
-    {project.length!=0 ?
     <div>
         <div className="student-card project-history">
             <div className="title">
-                
                 <h2>Project - History</h2>
             </div>
             {project.map((p)=>(
-                <Link to={`/project/show/${p._id}`} className='text-dark'>
-            <div className="card-group" ley={p._id}>
+                
+            <div className="card-group" onClick={()=>handleNavigate(p._id)} key={p._id}>
                 <div className="inner-card">
                     <div className="inner-card-head">
                         <h2>{p.title}</h2>
@@ -26,16 +25,12 @@ export default function ProjectHistory({project}) {
                 </div>
 
             </div>
-            </Link>
+            
             
             )
         )}
         </div>
       </div>
-         :
-        <></>
-    
-    }
-    </div>
+        
   )
 }
