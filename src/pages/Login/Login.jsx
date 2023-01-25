@@ -109,7 +109,9 @@ const Login = () => {
             <div className="d-flex justify-content-around align-items-center mt-3 ">
            
             </div>
-
+             <div className="login-logo-container">
+                <img src={logo} alt="" width="50px" height="50px" />
+              </div>
             <h1 className="">KEC Freelancing Forum</h1>
             <h1 className="pb-4">Join with us</h1>
             <p className="fs-5">
@@ -129,9 +131,7 @@ const Login = () => {
                  <div className="login-logo-container">
                 <img src={emdclogo} alt="" width="50px" height="50px" />
               </div>
-              <div className="login-logo-container">
-                <img src={logo} alt="" width="50px" height="50px" />
-              </div>
+             
               <div className="login-logo-container">
                 <img src={tbilogo} alt="" width="100px" height="50px" />
               </div>
