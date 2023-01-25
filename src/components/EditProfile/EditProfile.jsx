@@ -17,10 +17,10 @@ function EditProfile({handleClick}) {
           "Per Day",
           "Per Hour",
       ]
-    const [first_name,setFirstName]=useState()
-    const [last_name,setLastName]=useState()
-    const [mobile,setMobile]=useState()
-    const [personal_email,setPersonalMail]=useState()
+    const [first_name,setFirstName]=useState("")
+    const [last_name,setLastName]=useState("")
+    const [mobile,setMobile]=useState("")
+    const [personal_email,setPersonalMail]=useState("")
       const [skills,setskills]=useState([])
       const [name,setName]=useState("")
       const [level,setLevel]=useState("beginner")
@@ -134,7 +134,7 @@ function EditProfile({handleClick}) {
                                     <div className="col-5">
                                          <div className="form-group">
                                             <select name="skills-level"  className="form-select" onChange={e=>setLevel(e.target.value)}>
-                                                <option value="" diabled hidden selected>Level</option>
+                                                <option value="" disabled hidden selected>Level</option>
                                                 <option value="beginner" style={{background:"#81F664",color:"white"}} className='form-option' >Beginner</option>
                                                 <option value="intermediate" style={{background:"#F5E878",color:"white"}} className=' py-3 form-option' >Intermediate</option>
                                                 <option value="expert" style={{background:"#64CAF6",color:"white"}} className=' py-3 form-option' >Expert</option>
@@ -167,8 +167,8 @@ function EditProfile({handleClick}) {
                                     
                                     <div className="col-10">
                                             <div className="form-group">
-                                                <select name="domain" value={currentDomain} onChange={e=>setCurrentDomain(e.target.value)} className="form-select">
-                                                    <option value="" diabled hidden selected>Domain Name</option>
+                                                <select name="domain" defaultvalue={currentDomain} onChange={e=>setCurrentDomain(e.target.value)} className="form-select">
+                                                    <option value="" disabled hidden selected>Domain Name</option>
                                                     {constants.data && <>
                                                      {constants?.data[0]?.domain?.map((d,idx)=>(
                                                         <option key={idx} value={d}>{d}</option>
@@ -187,7 +187,7 @@ function EditProfile({handleClick}) {
 
                          <div className="form-group">
                             <select name="payment-types"  onChange={e=>setPaymentType(e.target.value)}   className="form-select" required>
-                                <option value="" diabled hidden selected>Paymen Type</option>
+                                <option value="" disabled hidden selected>Paymen Type</option>
                                 {paymentTypes.map((d,idx)=>(
                                     <option key={idx} selected={payment_type==d} value={d}>{d}</option>
                                 ))}

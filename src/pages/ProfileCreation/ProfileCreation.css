@@ -50,7 +50,6 @@
 
 .profile-creation-container>.profile-form-container>.row>.profile-form>form>.form-group>input::placeholder {
     color: var(--main-navyblue);
-
     font-size: 18px;
 }
 
