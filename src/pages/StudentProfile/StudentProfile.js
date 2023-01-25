@@ -91,8 +91,8 @@ export default function StudentProfile() {
             </div>
         </div>
         }
-     
-                <StudentProject project={studyProject} user={user}/>
+     {user.admin_verify==true &&
+                <StudentProject project={studyProject} user={user}/> }
                 {project_given.length!=0 &&
                     <ProjectHistory project={project_given} />
                 }
