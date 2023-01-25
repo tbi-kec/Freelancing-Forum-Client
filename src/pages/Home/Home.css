@@ -53,35 +53,35 @@
 }
 
 .home-profile-img {
-    width: 230px;
-    height: 230px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     border: 30px solid white;
     position: absolute;
-    top: -35px;
-    left: -35px;
+    top: -32px;
+    left: -32px;
 }
 
 .profile-img-div {
     position: relative;
-    width: 250px;
+    width: 180px;
 }
 
-.skill {
+.home-page-container .skill {
     flex-direction: row;
     min-width: 250px;
 }
 
-.skill>.skillset{
+.home-page-container .skill>.skillset{
     font-weight: bold;
     width: 160px !important;
     border-radius: 0px 10px 10px 0px !important;
     margin: 0%;
 }
-.skill>.skillset>p{
+.home-page-container .skill>.skillset>p{
     margin: 0%;
 }
-.skill{
+.home-page-container .skill{
     flex-wrap: wrap;
     flex-direction: column;
 }
@@ -94,18 +94,28 @@
 }
 
 .rating>div>img{
-    width: 60px;
-    height: 50px;
+    width: 40px;
+    height: 30px;
 }
 
 .notification{
     box-shadow: inset 0px 0px 22px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     border-radius: 12px;
-    overflow-y: hidden;
+    scroll-behavior: auto;
+    /* overflow-y: hidden; */
     overflow-x: hidden;
 }
-
+.notifications-header{
+    height: 40px;
+    background-color: var(--main-blue);
+    color: var(--main-white);
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    
+}
 .dashboard {
     flex-direction: row;
 }

@@ -35,7 +35,7 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav text-light ms-auto">
-            <li className="nav-item mx-4">
+            {/* <li className="nav-item mx-4">
               <span className="nav-link">
                 <div className="input-group">
                   <input
@@ -54,7 +54,7 @@ const Navbar = () => {
                   </button>
                 </div>
               </span>
-            </li>
+            </li> */}
             <li className="nav-item mx-4">
               <Link to="/project/view" className="nav-link">
                 <button className="btn nav-btn-1">All Project</button>

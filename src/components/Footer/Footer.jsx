@@ -5,6 +5,8 @@ import iiclogo from '../../assets/IIC_logo.png'
 import emdclogo from '../../assets/emdclogo22.png'
 
 function Footer(){
+  let date = new Date();
+  let year=date.getFullYear();
   return(
     <div className="footer">
       <div className="footer-content">
@@ -12,13 +14,13 @@ function Footer(){
           <footer className="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 row-cols-1 py-5 my-5 justify-content-center align-items-center text-center">
             <div className="col my-4">
               <div className="flogo-container">
-                <div className="footer-logo-container shadow p-2 mx-2">
+                <div className="footer-logo-container ">
                   <img src={iiclogo} alt="" />
                 </div>
-                <div className="footer-logo-container shadow p-2 mx-2">
+                <div className="footer-logo-container ">
                   <img src={logo} alt="" />
                 </div>
-                <div className="footer-logo-container shadow p-2 mx-2">
+                <div className="footer-logo-container ">
                   <img src={emdclogo} alt="" />
                 </div>
               </div>
@@ -46,7 +48,7 @@ function Footer(){
               <div className="flogo-container">
                 <div className="row my-3 feedback feedback-btn p-3">
                   <button className="btn btn-primary font-weight-bold">Give Your feedback <i className="fa-solid fa-arrow-right fs-5 forward-btn"></i></button>
-                  <p className="feedback-text">Hello, users Our goal is to Find the perfect freelance services for your projects</p>
+                  <p className="feedback-text my-2 fs-6 text-light">Hello, users Our goal is to Find the perfect freelance services for your projects</p>
 
                 </div>
                 <div className="footer-logo-container shadow p-2 mx-2">
@@ -60,7 +62,7 @@ function Footer(){
               <a href="/" className="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
                 <svg className="bi" width="30" height="24"><use xlinkHref="#bootstrap"></use></svg>
               </a>
-              <span className="text-muted">© 2023 TBI@KEC. All rights reserved</span>
+              <span className="text-muted">© {year} TBI@KEC. All rights reserved</span>
             </div>
 
             <ul className="nav justify-ficon list-unstyled d-flex">

@@ -64,7 +64,7 @@ function Home() {
 //     }
 //  },[myself])
   return (
-    <div>
+    <div className="home-page-container">
       <Navbar />
       <div className="container mt-3">
         <div className="d-flex dashboard">
@@ -76,20 +76,20 @@ function Home() {
                   <img src={profile} alt="img" height='100%' width='100%' onClick={handleNavigate} />
                 </div>
               </div>
-              <div className="p-name pt-4 px-0 d-flex flex-column">
-                <h3 className="name fs-1 font-weight-bold">{myself.data?.first_name} {myself.data?.last_name}</h3>
-                <h3 className="domain fs-2 fs-md-4 my-1">{myself.data?.domain[0]}</h3>
+              <div className="p-name pt-2 px-0 d-flex flex-column">
+                <h3 className="name fs-3 font-weight-bold">{myself.data?.first_name} {myself.data?.last_name}</h3>
+                <h3 className="domain fs-4 fs-md-5 my-2">{myself.data?.domain[0]}</h3>
 
                 <div className="rating">
                   {(function () {
                     var rate = [];
                     for (let i = 0; i < myself.data?.rating; i++) {
-                      rate.push(<img src={starColor} alt="star" height="30px" />);
+                      rate.push(<img src={starColor} alt="star" height="12px" />);
                     }
                     for (let j = 0; j < 5 - myself.data?.rating; j++) {
-                      rate.push(<img src={starDull} alt="star" height="25px" />);
+                      rate.push(<img src={starDull} alt="star" height="10px" />);
                     }
-                    return <div>{rate}</div>;
+                    return <div key={rate.length}>{rate}</div>;
                   })()}
                 </div>
               </div>
@@ -130,7 +130,8 @@ function Home() {
             </div>
           </div>
           {/* Notification */}
-          <div className="notification flex-grow-1 p-3 my-4">
+          <div className="notification flex-grow-1  my-4">
+            <div className="notifications-header">Notifications</div>
             {notification.length!==0 ?
               <>
                 {notification.map(n=>(
@@ -149,8 +150,8 @@ function Home() {
         <div className="card shadow my-4">
           <div className="card-body">
             <div className="d-flex fs-6 fw-bold">
-              <div className="mx-4 fs-5 active-toggle pointer" id="project" onClick={handleToggle}>Projects</div>
-              <div className="mx-4 fs-5 pointer" id="talent" onClick={handleToggle}>Talents</div>
+              <div className="mx-4 fs-5 active-toggle pointer" id="project" onClick={handleToggle}>Recent Projects</div>
+              <div className="mx-4 fs-5 pointer" id="talent" onClick={handleToggle}>Top Talents</div>
             </div>
           </div>
         </div>
@@ -170,7 +171,7 @@ function Home() {
             users.data != null &&
               users.data
               .sort((a,b) => {return a.rating >b.rating ? -1 : 1})
-              .slice(0,users.data.length > 10 ? 10 : users.data.length)?.map(u=>(
+              .slice(0,users.data.length > 10 ? 10 : users.data.length)?.filter(u=> u.admin_verify==true).map(u=>(
                 <ProfileCard user={u} key={u._id} constant={constants?.data[0]}/>
               ))
           }

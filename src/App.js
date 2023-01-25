@@ -10,6 +10,7 @@ import {getAllUsers} from './actions/user'
 import {getConstants} from './actions/constant'
 import {getMyDetails} from './actions/myDetails'
 import {getRequestedProjects} from './actions/admin'
+import Loading from './components/Loading/Loading'
 const App = () => {
   const dispatch = useDispatch();
   const getData = async () => {
@@ -29,6 +30,7 @@ const App = () => {
   return (
     <div className='app-container'>
       <Router>
+        {/* <Loading /> */}
         <Alert />
         <AllRoutes />
       </Router>
