@@ -107,14 +107,16 @@ const Login = () => {
         <div className="row p-5">
           <div className="login-left-side-container shadow col-sm-12  col-lg-6">
             <div className="d-flex justify-content-around align-items-center mt-3 ">
-           
+            <div className="login-logo-container d-flex justify-content-center mb-5">
+                <img src={logo} alt="" width="100px" height="100px" />
+              </div>
             </div>
 
-            <h1 className="">KEC Freelancing Forum</h1>
-            <h1 className="pb-4">Join with us</h1>
-            <p className="fs-5">
+            <h1 className="fs-3">KEC EMDC'S <br/> Freelancers Forum</h1>
+            <h1 className="fs-4 my-3">Join with us</h1>
+            {/* <p className="fs-5">
               It's The Bright One, It's The Right One, That's Website.
-            </p>
+            </p> */}
             <p className="fs-5">Earn While You Learn</p>
             <button
               className="btn shadow"
@@ -129,9 +131,7 @@ const Login = () => {
                  <div className="login-logo-container">
                 <img src={emdclogo} alt="" width="50px" height="50px" />
               </div>
-              <div className="login-logo-container">
-                <img src={logo} alt="" width="50px" height="50px" />
-              </div>
+             
               <div className="login-logo-container">
                 <img src={tbilogo} alt="" width="100px" height="50px" />
               </div>
