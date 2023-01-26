@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import {Link} from 'react-router-dom'
+import { useSelector,useDispatch } from 'react-redux'
+import {Link,useNavigate} from 'react-router-dom'
 import './RequestedProjects.scss'
 import RequestModal from "../../components/AdminModals/RequestModal";
-
+import { setAlert } from '../../actions/alert'
+import { respondToRequest } from '../../actions/admin'
 const RequestedProjects = () => {
+  const navigate = useNavigate();
+  const dispatch=useDispatch()
   const project = useSelector((state) => (state.adminReducer))
   const [projects, setProjects] = useState(null)
   const [responded, setResponded] = useState(false)
@@ -23,31 +26,27 @@ const RequestedProjects = () => {
     return <h1>Loading ...</h1>
   }
 
-  const acceptRequest = (e)=>{
-    setResponded(true);
+
+  const handleAccpet = (e, id) => {
     e.preventDefault();
+    setResponded(true)
+    dispatch(setAlert("Accepting Project", "info", 2000))
+    dispatch(respondToRequest({ status: "accepted", p_id: id }, navigate))
+    setResponded(false)
+  }
+
+  const handleReject = (e, id) => {
+    e.preventDefault();
+    setResponded(true)
+    dispatch(setAlert("Rejecting Project", "info", 2000))
+    dispatch(respondToRequest({ status: "created", p_id: id }, navigate))
+    setResponded(false)
+  }
   
 
-  }
-  /*
-  project name
-  client
-  freelancer
-  admin requested date
-  accept/reject
-  */
- console.log(projects);
   return (
-    <>
-      {/* request model */}
-      {
-        projects.map((p, i) => {
-          return (
-            <RequestModal id={p._id} />
-          )
-        })}
       <div className='container mt-5 text-center'>
-        <table class="table table-hover table-stripped">
+        <table class="table table-stripped">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -71,18 +70,23 @@ const RequestedProjects = () => {
                   <td><Link to={`/profile/${p.developer._id}`} className="text-dark ">{p.developer.first_name} {p.developer.last_name}</Link></td>
                   <td>Need to change backend</td>
                   <td>
-                  {!responded &&
-                    <button className='btn btn-success' onClick={acceptRequest}>Accept</button>
-                  }
-                    <button className='btn btn-danger' data-bs-toggle="modal" data-bs-target={`#toggle_model_project_request-${p._id}`}>Reject</button>
+                 
+                    <button className='btn btn-success mx-3'disabled={responded} onClick={e=>handleAccpet(e,p._id)}>Accept</button>
+                  
+                    <button className='btn btn-danger mx-3' disabled={responded} onClick={e=>handleReject(e,p._id)} data-bs-toggle="modal" data-bs-target={`#toggle_model_project_request-${p._id}`}>Reject</button>
                   </td>
                 </tr>
               ))}
           </tbody>
         </table>
-
+         {
+        projects.map((p, i) => {
+          return (
+            <RequestModal id={p._id} />
+          )
+        })}
       </div>
-    </>
+   
   )
 }
 
