@@ -142,9 +142,9 @@ function ProjectAdd() {
                 </div>
               </div>
             </div>
-            <div className="row d-flex align-items-center">
-              <div className="col-md-6 fw-bold">End Date:</div>
-              <div className="col-md-6">
+            <div className="row d-flex align-items-center my-2">
+              <div className="col-md-2 fw-bold">End Date:</div>
+              <div className="col-md-10">
                 <input
                   type="date"
                   className="form-control my-3 project-add-form-input"
