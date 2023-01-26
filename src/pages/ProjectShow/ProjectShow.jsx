@@ -1,4 +1,6 @@
 import React from "react";
+import "./ProjectShow.css";
+import bannerIcon from "../../assets/Maskgroup.png";
 import profile from "../../assets/profileicon2.png";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import { useParams, useNavigate } from "react-router-dom";
@@ -27,8 +29,8 @@ function ProjectShow() {
         ?.filter((p) => p._id == id)
         ?.map((p) => (
           <div className="container my-3 " key={p._id}>
-            <div className="row mb-5 ">
-              <div className="col-12 ps-4">
+            <div className="row mb-5 banner-project ">
+              <div className="col-8 ps-4">
                 <h3 className="mt-3 mb-0 fw-bold mb-3">{p.title}</h3>
                 <div className="fw-bold">
                   <span>{p.createdBy.department}</span>
@@ -36,22 +38,29 @@ function ProjectShow() {
                   <span>IT</span>
                 </div>
                 <div className=" mt-3 d-flex justify-content-start">
-                  <h5 className=" text-end pt-2 ">
+                  <h5 className="pt-2 ">
                     Posted By :{" "}
-                    <span
+              
+                  </h5>
+                  <div className=" mx-2 text-start">
+                  <span
                       data-bs-dismiss="modal"
                       aria-label="close"
                       className="fs-3 "
                     >
-                      <Link to={`/profile/${p.createdBy._id}`}>
+                      <Link
+                        to={`/profile/${p.createdBy._id}`}
+                        className="text-light fw-bold"
+                      >
                         {p.createdBy.first_name} - {p.createdBy.last_name}
                       </Link>
                     </span>
-                  </h5>
-                  <div className="mx-2 text-start">
-                    <img src={profile} height="50px" width="50px" alt="" />
+                    <img src={profile} height="50px" width="50px" alt="" className="banner-profile-1" />
                   </div>
                 </div>
+              </div>
+              <div className="col-4">
+                <img src={bannerIcon} alt="" height="170px" width="200px" className="banner-profile"/>
               </div>
             </div>
             <div className="card shadow my-5">
@@ -60,7 +69,7 @@ function ProjectShow() {
               </div>
             </div>
             <div className="card">
-              <div className="card-body">
+              <div className="card-body me-3">
                 <div className="row">
                   <div className="col-md-9">
                     <div className="row px-3 pb-4">
@@ -79,7 +88,7 @@ function ProjectShow() {
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-3">
+                  <div className="col-md-3 notification flex-grow-1">
                     <div className="p-3">
                       <b>Start date:</b> {moment(p.end_date).fromNow()}
                     </div>
@@ -87,7 +96,11 @@ function ProjectShow() {
                       <b>End date:</b> {moment(p.end_date).fromNow()}
                     </div>
                     <div className="p-3">
-                      <b>Total Stipend:</b><span className="text-success fw-bold"> ₹{p.stipend}</span>
+                      <b>Total Stipend:</b>
+                      <span className="text-success fw-bold">
+                        {" "}
+                        ₹{p.stipend}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -97,24 +110,78 @@ function ProjectShow() {
             {p.project_status === "created" ? (
               <div className="p-3">
                 <div className="fs-4 mt-4 fw-bold">Applicant</div>
+                <div>
+                  <div className="row">
+                    <div className="col-md-6">
+                      <div className="card m-3  applicant-card">
+                        <div className="card-body">
+                          <div className="row d-flex align-items-center">
+                            <div className="col-3">
+                              <img
+                                src={profile}
+                                alt="img"
+                                height="70px"
+                                width="70px"
+                              />
+                            </div>
+                            <div className="col-9">
+                              <div className="row">
+                                <div className="col-6">
+                                  <div className="fw-bold">KARTHIKEYAN R</div>
+                                  <div>IT</div>
+                                </div>
+                                <div className="col-6">
+                                  <div className="row">
+                                    <div className="col-6">accept</div>
+                                    <div className="col-6">reject</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+            
+                  </div>
+                </div>
                 <div className="container my-3">
                   {p.requested.map((u, i) => {
                     return (
-                      <div className="card shadow">
-                        <div className="card-body px-5 d-flex justify-content-around">
-                          <Link to={`/profile/${u._id}`} className="text-dark">
-                            <div className="fs-4">
-                              {u.first_name}-{u.last_name}
+                      <div className="col-md-6">
+                      <div className="card m-3  applicant-card">
+                        <div className="card-body">
+                          <div className="row d-flex align-items-center">
+                            <div className="col-3">
+                            <Link to={`/profile/${u._id}`} className="text-light">
+                              <img
+                                src={profile}
+                                alt="img"
+                                height="70px"
+                                width="70px"
+                              />
+                               </Link>
                             </div>
-                          </Link>
-                          <button
-                            className="btn btn-outline-primary"
-                            onClick={(e) => handleAccept(e, u._id)}
-                          >
-                            Accept
-                          </button>
+                            <div className="col-9">
+                              <div className="row">
+                                <div className="col-6">
+                                <Link to={`/profile/${u._id}`} className="text-light">
+                                  <div className="fw-bold">{u.first_name}-{u.last_name}</div>
+                                  <div>IT</div>
+                                  </Link>
+                                </div>
+                                <div className="col-6">
+                                  <div className="row">
+                                    <div className="col-6"  onClick={(e) => handleAccept(e, u._id)}>accept</div>
+                                    <div className="col-6">reject</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
+                    </div>
                     );
                   })}
                 </div>
@@ -122,7 +189,6 @@ function ProjectShow() {
             ) : (
               <div className="p-3">
                 <div className="fs-4 mt-4 fw-bold">Progress</div>
-
                 <ProgressBar
                   c_id={p.createdBy._id}
                   d_id={p.developer._id}
@@ -130,12 +196,7 @@ function ProjectShow() {
                   status={p.project_status}
                   key={project._id}
                 />
-                 <div className="p-3">
-                      <b>Deadline:</b> {moment(p.end_date).fromNow()}
-                    </div>
-               
               </div>
-
             )}
           </div>
         ))}

@@ -1,0 +1,30 @@
+.banner-project{
+    background-color: #566E7A;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0px;
+    color: white;
+}
+.applicant-img{
+    shape-outside: circle(50%);
+}
+.applicant-card{
+    background-color: #5378F8;
+    color: white;
+    border-radius: 10px;
+}
+.banner-profile{
+    height: 170px !important;
+}
+.banner-profile-1{
+    height: 50px !important;
+}
+
+@media (max-width: 766px)  {
+    .banner-profile{
+        display: none;
+    }
+    .banner-profile-1{
+        display: none;
+    }
+  }
