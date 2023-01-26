@@ -27,6 +27,7 @@ export default function StudentProject({ project, user }) {
 
           <div className="card-group">
             {project.map((p) => (
+              <a href={p?.link} target="_blank">
               <div className="inner-card" key={p._id}>
                 <div className="inner-card-head">
                   <h2>{p?.title}</h2>
@@ -44,6 +45,7 @@ export default function StudentProject({ project, user }) {
                   <p className="text-dark">{p?.description}</p>
                 </div>
               </div>
+              </a>
             ))}
           </div>
         </div>
