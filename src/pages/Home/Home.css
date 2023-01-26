@@ -39,12 +39,16 @@
 
 .skill-beginner {
     background: #81f664;
+    color:white !important;
+
 }
 .skill-intermediate {
     background: #f5e878;
+    color:white !important;
 }
 .skill-expert {
     background-color: #64caf6;
+    color:white !important;
 }
 
 .profile-section {
@@ -72,16 +76,16 @@
     min-width: 250px;
 }
 
-.home-page-container .skill>.skillset{
+.home-page-container .home-profile-bottom .skill>.skillset{
     font-weight: bold;
     width: 160px !important;
     border-radius: 0px 10px 10px 0px !important;
     margin: 0%;
 }
-.home-page-container .skill>.skillset>p{
+.home-page-container .home-profile-bottom .skill>.skillset>p{
     margin: 0%;
 }
-.home-page-container .skill{
+.home-page-container.home-profile-bottom  .skill{
     flex-wrap: wrap;
     flex-direction: column;
 }

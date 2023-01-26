@@ -2,8 +2,8 @@ import React,{useState} from 'react'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import './AdminProjectReport.scss'
+
 const AdminProjectReport = () => {
-  
   const [fromdate,setFromDate]=useState()
   const [endDate,setEndDate]=useState()
   const [clientDept,setClientDept]=useState()
@@ -16,13 +16,15 @@ const AdminProjectReport = () => {
   const setDeptData = ()=>{
     const dept = constants.data[0].dept_short;
     setDepts([...dept])
-   
   }
+
   useEffect(()=>{
     if(constants && constants.data){
       setDeptData();
     }
   },[constants])
+
+
  
   const [projects,setProjects]=useState()
   const project = useSelector((state)=>(state.adminReducer))
@@ -30,19 +32,24 @@ const AdminProjectReport = () => {
     e.preventDefault();
   }
   const filterByFromDate=()=>{
-
+      const data=projects.filter(p => p.created_on >= fromdate )
+      setProjects([...data])
   }
   const filterByEndDate = ()=>{
-
+      const data = projects.filter(p => p.created_on <= endDate)
+      setProjects([...data])
   }
   const filterByStatus = ()=>{
-
+      const data = projects.filter(p=>p.project_status==status)
+      setProjects([...data])
   }
   const filterByClientDept = ()=>{
-
+    const data = projects.filter(p => p.createdBy.department == clientDept)
+    setProjects([...data])
   }
   const filterByFreelanceDept = () =>{
-
+      const data = projects.filter(p => p.developer.department==freelancerDept)
+      setProjects([...data])
   }
   useEffect(()=>{
       if(fromdate!=null)
@@ -73,6 +80,12 @@ const AdminProjectReport = () => {
         filterByFreelanceDept();
       }
   },[freelancerDept])
+
+  useEffect(()=>{
+    if(project && project.data){
+      setProjects([...project.data])
+    }
+  },[project])
 
 
   const project_status = ['all','created','pending-admin','pending-user','assigned','partial','testing','completed']
