@@ -14,8 +14,8 @@ const FreeLancerApproval = () => {
       setData();
     }
   }, [freelancers])
-  if (users == null)
-    return <h1>Loading...</h1>
+  // if (users == null)
+  //   return <h1>Loading...</h1>
   /*
   name
   department
@@ -32,7 +32,7 @@ const FreeLancerApproval = () => {
           )
         })
       }
-      <div className='container mt-5'>
+      <div className='container mt-5 text-center'>
         <table class="table table-hover table-stripped">
           <thead>
             <tr>
@@ -44,17 +44,21 @@ const FreeLancerApproval = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((u, i) => (
-              <tr key={u._id}>
-                <th scope="row">{i + 1}</th>
-                <td>{u.first_name} {u.last_name}</td>
-                <td>{u.created_on}</td>
-                <td>
-                  <button className='btn btn-success'>Accept</button>
-                  <button className='btn btn-danger'>Reject</button>
-                </td>
-              </tr>
-            ))}
+            {users == null || users.length == 0 ?
+              <tr >
+                <td className='py-5 fw-bold' colSpan="6">No User Request Found</td>
+              </tr> : 
+              users.map((u, i) => (
+                <tr key={u._id}>
+                  <th scope="row">{i + 1}</th>
+                  <td>{u.first_name} {u.last_name}</td>
+                  <td>{u.created_on}</td>
+                  <td>
+                    <button className='btn btn-success'>Accept</button>
+                    <button className='btn btn-danger' data-bs-toggle="modal" data-bs-target={`#toggle_model_user_approval-${u._id}`}>Reject</button>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
 
