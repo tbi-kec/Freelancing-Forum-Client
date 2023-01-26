@@ -56,7 +56,7 @@ export default function StudentProfile() {
   return (
     <div className='student-profile'>
     {/* logout */}
-    {user?._id== current?.user?._id &&
+    {user?._id== current?.user?._id  &&
     <div className='logout-btn text-end '>
         <button className="btn logout text-light" onClick={handleLogout}>Log Out</button>
       </div>

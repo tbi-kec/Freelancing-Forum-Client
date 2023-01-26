@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react'
+import {useSelector} from 'react-redux'
 import './Loading.css'
 
 const Loading = () => {
+  const loadingData = useSelector((state)=>(state.loadingReducer));
+ const {loading}=loadingData.initialState;
+ 
   useEffect(()=>{
     handleClick()
   },[])
@@ -16,7 +20,7 @@ const Loading = () => {
       {/* Modal  */}
       <input type="button" id="trigger_btn"  data-bs-toggle="modal" data-bs-target="#PreloaderModal" hidden />
       <input type="button" id="modal_close" data-bs-dismiss="modal" data-bs-target="#PreloaderModal" aria-label="Close" hidden />
-      <div className="modal fade"  id="PreloaderModal" tabindex="-1" aria-labelledby="PreloaderModalLabel" aria-hidden="true">
+      <div className="modal fade"  id="PreloaderModal" tabIndex="-1" aria-labelledby="PreloaderModalLabel" aria-hidden="true">
         <div className="modal-dialog" data-bs-focus="false">
           <div className="modal-content">
             <div className="modal-header">

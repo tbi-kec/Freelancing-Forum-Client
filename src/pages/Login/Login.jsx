@@ -61,7 +61,7 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <Loading/>
+      {/* <Loading /> */}
       {/* modal */}
       <div
         className="modal fade"
