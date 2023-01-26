@@ -5,7 +5,7 @@ import './Page404.css'
 function Page404(){
   return(
     <div className="page-404-container">
-      <Navbar/>
+      
       <div className="page-404-outer">
         <div className="blob1">
           <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -29,7 +29,7 @@ function Page404(){
         </div>
       <div className="page-404 d-flex flex-column flex-grow-1 justify-content-center align-items-center text-center">
         <p className="page-404-no">404</p>
-        <h1 className="page-404-header fw-bold">Page not found</h1>
+        <h3 className="page-404-header fw-bold">Page not found</h3>
         <p className="page-404-sub mx-5 text-dark">Oops! The page you are looking for does not exist. It might have been moved or deleted.</p>
       </div>
       </div>

@@ -178,6 +178,13 @@ function ProgressBar({status,p_id,c_id,d_id}) {
                     <div className="progress-step" data-title="Testing"><i class="fa-sharp fa-solid fa-vial"></i></div>
                     <div className="progress-step" data-title="Completed"><i className="fas fa-check-circle"></i></div>
                 </div>
+                <div className='row'>
+                <div className="col-sm-6">
+                <div className="p-3">
+                  <b>Deadline:</b> end in 7days
+                </div>
+                </div>
+                <div className="col-sm-6">
                 {progressStepsNum <2 && d_id==user?.data._id ?
                 <div className="progress-btn">
                     <div href="#" className="btn" data-bs-toggle="modal"
@@ -190,6 +197,10 @@ function ProgressBar({status,p_id,c_id,d_id}) {
                         data-bs-target="#toggle_model_rate">Confirm & rate</div>
                 </div>
                 :""}
+                </div>
+
+                </div>
+                
                     
             </div>
             

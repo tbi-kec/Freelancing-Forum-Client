@@ -25,7 +25,7 @@ function ProjectCard({project,constant}) {
   }
 
   const request_filter=project.requested.some(r=>r._id==user.user._id)
-  console.log(request_filter);
+  
 
   return (
     <>
@@ -93,7 +93,7 @@ function ProjectCard({project,constant}) {
       </div>
 
       {/* card */}
-      <div className="card shadow my-4 pointer" onClick={show_modal}>
+      <div className="project-card-container card shadow my-4 pointer" onClick={show_modal}>
         <input type="button" hidden id={`toggle_model_${project._id}`} data-bs-toggle="modal" data-bs-target={`#toggle_model-${project._id}`} />
         <div className="card-body px-4">
           <div className="project-title fs-4 my-1">{project.title}</div>

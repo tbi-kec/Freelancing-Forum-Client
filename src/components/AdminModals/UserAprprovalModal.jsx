@@ -21,7 +21,7 @@ function UserAprprovalModal({id,name}) {
       <div className="modal fade " id={`toggle_model_user_approval-${id}`} tabIndex="-1" role='dialog' aria-labelledby="exampleModalLabel" >
         <div className="modal-dialog modal-dialog-centered modal-lg">
           <div className="modal-content p-5">
-            <label className="form-label">Reason for rejecting freelancer</label>
+           <h5>Reason for rejecting freelancer</h5>
              <textarea className='form-control'  onChange={e=>setMessage(e.target.value)} value={message}>
              </textarea>
             <button onClick={handleRejectUser} data-bs-dismiss="modal" aria-label="close" className="btn btn-danger my-3">Reject {name}</button>

@@ -1,39 +1,35 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 import UserAprprovalModal from "../../components/AdminModals/UserAprprovalModal";
-import RequestModal from "../../components/AdminModals/RequestModal";
+import { Link,useNavigate } from 'react-router-dom';
+import moment from 'moment';
+import { setAlert } from '../../actions/alert';
+import { acceptOrRejectUser } from '../../actions/admin';
+
 const FreeLancerApproval = () => {
   const [users, setUsers] = useState(null)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const freelancers = useSelector((state) => (state.userReducer))
   const setData = () => {
-    const data = freelancers.data.filter(f => f.admin_verify == 'false' && f.user_type == 'freelancer')
+    const data = freelancers.data.filter(f => f.admin_verify == false && f.user_type == 'freelancer')
     setUsers([...data])
   }
   useEffect(() => {
-    if (freelancers?.data != null) {
+    if (freelancers && freelancers?.data != null) {
       setData();
     }
   }, [freelancers])
-  if (users == null)
-    return <h1>Loading...</h1>
-  /*
-  name
-  department
-  created date
-  accept/reject
-   */
+
+ const handleAcceptUser = (e, id) => {
+    e.preventDefault();
+    dispatch(setAlert("Accepting freelancer","info"))
+    dispatch(acceptOrRejectUser({u_id:id,status:"accepted",message:"accepted"},navigate))
+  }
+
   return (
-    <>
-      {/* userApproval model */}
-      {
-        users?.map((p, i) => {
-          return (
-            <UserAprprovalModal id={p._id} name={`${p.first_name}-${p.last_name}`} />
-          )
-        })
-      }
-      <div className='container mt-5'>
-        <table class="table table-hover table-stripped">
+      <div className='container mt-5 text-center'>
+        <table class="table  table-stripped">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -44,22 +40,33 @@ const FreeLancerApproval = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((u, i) => (
-              <tr key={u._id}>
-                <th scope="row">{i + 1}</th>
-                <td>{u.first_name} {u.last_name}</td>
-                <td>{u.created_on}</td>
-                <td>
-                  <button className='btn btn-success'>Accept</button>
-                  <button className='btn btn-danger'>Reject</button>
-                </td>
-              </tr>
-            ))}
+            {users == null || users.length == 0 ?
+              <tr >
+                <td className='py-5 fw-bold' colSpan="6">No User Request Found</td>
+              </tr> : 
+              users.map((u, i) => (
+                <tr key={u._id}>
+                  <th scope="row">{i + 1}</th>
+                  <td><Link to={`/profile/${u._id}`}>{u.first_name} {u.last_name}</Link></td>
+                  <td>{u.department}</td>
+                  <td>{moment(u.created_on).calendar()}</td>
+                  <td>
+                    <button className='btn btn-success mx-3' onClick={e=>handleAcceptUser(e,u._id)}>Accept</button>
+                    <button className='btn btn-danger mx-3' data-bs-toggle="modal" data-bs-target={`#toggle_model_user_approval-${u._id}`}>Reject</button>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
-
+                  {
+        users?.map((p, i) => {
+          return (
+            <UserAprprovalModal id={p._id} name={`${p.first_name}-${p.last_name}`} />
+          )
+        })
+      }
       </div>
-    </>
+    
 
   )
 }

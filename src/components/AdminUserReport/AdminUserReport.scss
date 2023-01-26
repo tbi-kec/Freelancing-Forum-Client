@@ -1,0 +1,14 @@
+.admin-user-report{
+    .card{
+        .card-body{
+            p {
+                color: #405889 !important;
+                font-weight: bold;
+            }
+            input,
+            select {
+                background-color: #EFEFEF;
+            }
+        }
+    }
+}

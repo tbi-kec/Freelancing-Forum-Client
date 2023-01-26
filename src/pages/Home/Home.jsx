@@ -84,10 +84,10 @@ function Home() {
                   {(function () {
                     var rate = [];
                     for (let i = 0; i < myself.data?.rating; i++) {
-                      rate.push(<img src={starColor} alt="star" height="12px" />);
+                      rate.push(<img key={rate.length} src={starColor} alt="star" height="12px" />);
                     }
                     for (let j = 0; j < 5 - myself.data?.rating; j++) {
-                      rate.push(<img src={starDull} alt="star" height="10px" />);
+                      rate.push(<img key={rate.length} src={starDull} alt="star" height="10px" />);
                     }
                     return <div key={rate.length}>{rate}</div>;
                   })()}

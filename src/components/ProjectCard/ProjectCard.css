@@ -11,13 +11,12 @@
 .modal-dialog>.modal-content>.px-4>h5{
     font-weight: 600;
 }
-
-.skill .skill-beginner {
+.project-card-container .skill .skill-beginner {
     background: #81f664;
 }
- .skill .skill-intermediate {
+ .project-card-container .skill .skill-intermediate {
     background: #f5e878;
 }
-.skill .skill-expert {
+.project-card-container .skill .skill-expert {
     background-color: #64caf6;
 }

@@ -55,8 +55,8 @@ export const updateProfile = (profileData,navigate) => async(dispatch)=>{
         dispatch(getAllProjects())
         dispatch(getRequestedProjects())
         dispatch(setAlert("Profile created Successfully","success"))
-          //navigate(`/profile/${user._id}`)
-          navigate("/home")
+          navigate(`/profile/${user._id}`)
+          //navigate("/home")
     } catch (error) {
         console.log(error)
         dispatch(setAlert(error.response.data,'danger'))
