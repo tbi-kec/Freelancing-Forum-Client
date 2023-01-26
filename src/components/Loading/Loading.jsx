@@ -6,7 +6,7 @@ const Loading = () => {
   const loadingData = useSelector((state) => (state.loadingReducer));
   const { loading } = loadingData.initialState;
   useEffect(() => {
-    if (true) {
+    if (false) {
       document.getElementById('trigger_btn').click();
     } else {
       document.getElementById('modal_close').click();

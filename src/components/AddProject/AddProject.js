@@ -35,6 +35,7 @@ export default function AddProject() {
     console.log(id)
     dispatch(setAlert("Creating Study Project","info"))
     dispatch(newStudyProject({createdBy:id,title,date,link,technology,description},navigate))
+    document.getElementById("close_btn").click();
   }
 
   return (
@@ -49,6 +50,7 @@ export default function AddProject() {
                 </div>
 
                 <form onSubmit={handleSubmit} >
+                <input type="button" id="close_btn" data-bs-dismiss="modal" aria-label="Close" hidden/>
                 <input
                     type="text"
                     className="form-control my-3 project-add-form-input"
@@ -117,7 +119,7 @@ export default function AddProject() {
                 ></textarea>
                 <div className="text-end-profile">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal"  aria-label="Close">Close</button>
-                <button className='btn btn-md my-3 project-add-submit-btn' data-bs-dismiss="modal" aria-label="Close">Submit</button>
+                <button className='btn btn-md my-3 project-add-submit-btn' >Submit</button>
                 </div>
                 </form>
                 </div>
