@@ -31,7 +31,7 @@ export default function AddProject() {
   const handleSubmit = async(e)=>{
     e.preventDefault();
     if(technology.length==0){
-        setAlert("Skills is required","warning")
+        dispatch(setAlert("Skills is required","warning"));
         return;
     }
     const id =user?.user._id;
