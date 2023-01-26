@@ -6,7 +6,6 @@ import { getAllUsers } from './user';
 export const getRequestedProjects=()=>async(dispatch)=>{
     try {
         const {data}=await api.getProjectHistory();
-        console.log(data)
         dispatch({type:'GET_ALL_PROJECTS',payload:data})
     } catch (error) {
         dispatch(setAlert("Server Error","warning"))
@@ -30,7 +29,7 @@ export const acceptOrRejectUser = (userData,navigate) => async(dispatch)=>{
         const {data}=await api.acceptOrRejectUser(userData);
         dispatch(setAlert(`${userData.status} freelancer successfully`,"success"));
         dispatch(getAllUsers());
-        navigate("/admin")
+        navigate("/admin/approval")
     } catch (error) {
         dispatch(setAlert("Server Error","danger"))
     }

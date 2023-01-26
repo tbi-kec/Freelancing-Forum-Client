@@ -22,7 +22,8 @@ import FreeLancerApproval from './components/FreeLancerApproval/FreeLancerApprov
 import RequestedProjects from './components/RequestedProjects/RequestedProjects'
 import ProgressProjects from './components/PorgressProjects/ProgressProjects'
 import CompletedProjects from './components/CompletedProjects/CompletedProjects'
-import AdminReport from './components/AdminReport/AdminReport'
+import AdminUserReport from './components/AdminUserReport/AdminUserReport'
+import AdminProjectReport from './components/AdminProjectReport/AdminProjectReport'
 const AllRoutes = () => {
   return (
     <Routes>
@@ -42,10 +43,11 @@ const AllRoutes = () => {
                 <Route path='/admin/request' element={<RequestedProjects/>} />
                 <Route path='/admin/progress' element={<ProgressProjects/>}/>
                 <Route path='/admin/completed' element={<CompletedProjects />} />
-                <Route path='/admin/report' element={<AdminReport />} />
+                <Route path='/admin/project/report' element={<AdminProjectReport />} />
+                <Route path='/admin/user/report' element={<AdminUserReport />} />
               </Route >
           </Route>
-          
+
            <Route element={<ProtectedRoutes/>} >
               <Route path='/profile/create' element={<ProfileCreation/>} />
               <Route path='/profile/:id' element={<StudentProfile/>} />
