@@ -2,6 +2,8 @@ import React from "react";
 import "./ProjectShow.css";
 import bannerIcon from "../../assets/Maskgroup.png";
 import profile from "../../assets/profileicon2.png";
+import accept from "../../assets/accept.png";
+import decline from "../../assets/decline.png";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import { useParams, useNavigate } from "react-router-dom";
 import { setAlert } from "../../actions/alert";
@@ -68,7 +70,7 @@ function ProjectShow() {
                 <div className="p-3">{p.description}</div>
               </div>
             </div>
-            <div className="card">
+            <div className="card shadow">
               <div className="card-body me-3">
                 <div className="row">
                   <div className="col-md-9">
@@ -132,8 +134,18 @@ function ProjectShow() {
                                 </div>
                                 <div className="col-6">
                                   <div className="row">
-                                    <div className="col-6">accept</div>
-                                    <div className="col-6">reject</div>
+                                    <div className="col-6 ">
+                                    <span className="bg-success p-2 rounded">
+                                      <img src={accept} alt="" height="20px" />
+
+                                    </span>
+                                    </div>
+                                    <div className="col-6">
+                                    <span className="bg-danger p-2 rounded">
+                                      <img src={decline} alt="" height="20px" />
+
+                                    </span>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
@@ -172,8 +184,17 @@ function ProjectShow() {
                                 </div>
                                 <div className="col-6">
                                   <div className="row">
-                                    <div className="col-6"  onClick={(e) => handleAccept(e, u._id)}>accept</div>
-                                    <div className="col-6">reject</div>
+                                    <div className="col-6"  onClick={(e) => handleAccept(e, u._id)}>
+                                    <span className="bg-success p-2 rounded">
+                                      <img src={accept} alt="" height="20px" />
+                                    </span>
+                                    </div>
+                                    <div className="col-6">
+                                    <span className="bg-danger p-2 rounded">
+                                      <img src={decline} alt="" height="20px" />
+
+                                    </span>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
