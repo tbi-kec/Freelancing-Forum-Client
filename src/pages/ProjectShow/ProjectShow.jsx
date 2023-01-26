@@ -26,7 +26,7 @@ function ProjectShow() {
   };
 
   return (
-    <div>
+    <div className="my-3">
       {project && project?.data
         ?.filter((p) => p?._id == id)
         ?.map((p) => (
@@ -113,7 +113,7 @@ function ProjectShow() {
                   <div className="row">
                   {p.requested.map((u, i) => {
                     return (
-                      <div className="col-md-6">
+                      <div className="col-md-6" key={u._id}>
                       <div className="card m-3  applicant-card">
                         <div className="card-body">
                           <div className="row d-flex align-items-center">
@@ -166,13 +166,13 @@ function ProjectShow() {
               <div className="card mt-3 mb-5 shadow">
                 <div className="card-body">
               <div className="p-3">
-                <div className="fs-4 mt-4 fw-bold">Progress</div>
+                <div className="fs-4 my-4 fw-bold">Progress</div>
                 <ProgressBar
                   c_id={p?.createdBy._id}
                   d_id={p?.developer._id}
                   p_id={p?._id}
                   status={p?.project_status}
-                  key={project?._id}
+                  key={p?._id}
                   deadline={moment(p?.end_date).fromNow()}
                 />
 
