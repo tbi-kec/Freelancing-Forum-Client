@@ -12,11 +12,11 @@ import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
 import { Link } from "react-router-dom";
 function ProjectShow() {
+
   const { id } = useParams();
   const navigate = useNavigate();
   const project = useSelector((state) => state.projectReducer);
   const dispatch = useDispatch();
-  console.log(project);
   const user = useSelector((state) => state.myDetailsReducer);
 
   const handleAccept = (e, d_id) => {
@@ -27,22 +27,21 @@ function ProjectShow() {
 
   return (
     <div>
-      {project?.data
-        ?.filter((p) => p._id == id)
+      {project && project?.data
+        ?.filter((p) => p?._id == id)
         ?.map((p) => (
           <div className="container my-3 " key={p._id}>
             <div className="row mb-5 banner-project ">
               <div className="col-8 ps-4">
-                <h3 className="mt-3 mb-0 fw-bold mb-3">{p.title}</h3>
+                <h3 className="mt-3 mb-0 fw-bold mb-3">{p?.title}</h3>
                 <div className="fw-bold">
-                  <span>{p.createdBy.department}</span>
+                  <span>{p?.createdBy?.department}</span>
                   <span className=" mx-3">•</span>
                   <span>IT</span>
                 </div>
                 <div className=" mt-3 d-flex justify-content-start">
                   <h5 className="pt-2 ">
                     Posted By :{" "}
-              
                   </h5>
                   <div className=" mx-2 text-start">
                   <span
@@ -79,10 +78,8 @@ function ProjectShow() {
                       <div className="skill d-flex justify-content-start gap-4 ">
                         {p.skills.map((e, i) => {
                           return (
-                            <div
-                              className="skillset px
-                        -2 skill-beginner text-light"
-                            >
+                            <div key={i}
+                              className="skillset px-2 skill-beginner text-light">
                               {e}
                             </div>
                           );
@@ -169,11 +166,11 @@ function ProjectShow() {
               <div className="p-3">
                 <div className="fs-4 mt-4 fw-bold">Progress</div>
                 <ProgressBar
-                  c_id={p.createdBy._id}
-                  d_id={p.developer._id}
-                  p_id={p._id}
-                  status={p.project_status}
-                  key={project._id}
+                  c_id={p?.createdBy?._id}
+                  d_id={p?.developer?._id}
+                  p_id={p?._id}
+                  status={p?.project_status}
+                  key={p?._id}
                 />
               </div>
             )}
