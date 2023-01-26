@@ -25,7 +25,7 @@ import AdminReport from './components/AdminReport/AdminReport'
 const AllRoutes = () => {
   return (
     <Routes>
-        <Route path='/' element={<PreLoader /> } />
+             <Route path='/' element={<PreLoader /> } />
       
             <Route path='/login' element={<Login/>} />
             <Route path='/register' element={<Register/>} />
@@ -44,6 +44,7 @@ const AllRoutes = () => {
                 <Route path='/admin/report' element={<AdminReport />} />
               </Route >
           </Route>
+          
            <Route element={<ProtectedRoutes/>} >
               <Route path='/profile/create' element={<ProfileCreation/>} />
               <Route path='/profile/:id' element={<StudentProfile/>} />
