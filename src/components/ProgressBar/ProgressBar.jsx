@@ -8,7 +8,7 @@ import starDull from '../../assets/dull-star.png'
 import './ProgressBar.css'
 import { developerUpdateRating } from '../../actions/myDetails'
 
-function ProgressBar({status,p_id,c_id,d_id}) {
+function ProgressBar({status,p_id,c_id,d_id,deadline}) {
    const navigate = useNavigate();
    const dispatch = useDispatch();
    const [userRating,setUserRating]=useState(0)
@@ -180,11 +180,11 @@ function ProgressBar({status,p_id,c_id,d_id}) {
                 </div>
                 <div className='row'>
                 <div className="col-sm-6">
-                <div className="p-3">
-                  <b>Deadline:</b> end in 7days
+                <div className="text-start py-3">
+                  <b>Deadline:</b> {deadline}
                 </div>
                 </div>
-                <div className="col-sm-6">
+                <div className="col-sm-6 text-end">
                 {progressStepsNum <2 && d_id==user?.data._id ?
                 <div className="progress-btn">
                     <div href="#" className="btn" data-bs-toggle="modal"

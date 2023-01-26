@@ -26,7 +26,7 @@ function ProjectShow() {
   };
 
   return (
-    <div>
+    <div className="pb-5">
       {project?.data
         ?.filter((p) => p._id == id)
         ?.map((p) => (
@@ -39,12 +39,12 @@ function ProjectShow() {
                   <span className=" mx-3">•</span>
                   <span>IT</span>
                 </div>
-                <div className=" mt-3 d-flex justify-content-start">
+                <div className=" mt-3 d-flex justify-content-start align-items-center">
                   <h5 className="pt-2 ">
                     Posted By :{" "}
               
                   </h5>
-                  <div className=" mx-2 text-start">
+                  <div className=" mx-2 text-start d-flex align-items-center">
                   <span
                       data-bs-dismiss="modal"
                       aria-label="close"
@@ -52,7 +52,7 @@ function ProjectShow() {
                     >
                       <Link
                         to={`/profile/${p.createdBy._id}`}
-                        className="text-light fw-bold"
+                        className="text-light fw-bold pe-3"
                       >
                         {p.createdBy.first_name} - {p.createdBy.last_name}
                       </Link>
@@ -62,7 +62,7 @@ function ProjectShow() {
                 </div>
               </div>
               <div className="col-4">
-                <img src={bannerIcon} alt="" height="170px" width="200px" className="banner-profile"/>
+                <img src={bannerIcon} alt="" height="160px" width="190px" className="banner-profile"/>
               </div>
             </div>
             <div className="card shadow my-5">
@@ -166,6 +166,8 @@ function ProjectShow() {
                 </div>
               </div>
             ) : (
+              <div className="card mt-3 mb-5 shadow">
+                <div className="card-body">
               <div className="p-3">
                 <div className="fs-4 mt-4 fw-bold">Progress</div>
                 <ProgressBar
@@ -174,7 +176,11 @@ function ProjectShow() {
                   p_id={p._id}
                   status={p.project_status}
                   key={project._id}
+                  deadline={moment(p.end_date).fromNow()}
                 />
+
+                </div>
+              </div>
               </div>
             )}
           </div>
