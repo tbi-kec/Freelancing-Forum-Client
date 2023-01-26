@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Register.css";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/keclogo.png";
 import iiclogo from "../../assets/IIC_logo.png";
 import emdclogo from "../../assets/emdclogo22.png";
 import tbilogo from "../../assets/TBIlogo.png";
@@ -165,16 +165,16 @@ const Register = () => {
               </div>
               <div className="d-flex justify-content-center align-items-center mt-3 ">
                 <div className="login-logo-container">
-                  <img src={emdclogo} className="mx-4" alt="" width="50px" height="50px" />
+                  <img src={emdclogo} className="mx-5" alt="" width="50px" height="50px" />
                 </div>
                 <div className="login-logo-container">
-                  <img src={logo} alt="" className="mx-4"  width="50px" height="50px" />
+                  <img src={logo} alt="" className="mx-5"  width="75px" height="65px" />
                 </div>
                 <div className="login-logo-container">
                   <img src={tbilogo} alt="" className="mx-4"  width="100px" height="50px" />
                 </div>
                 <div className="login-logo-container">
-                  <img src={iiclogo} alt="" className="mx-4"  width="100px" height="50px" />
+                  <img src={iiclogo} alt="" className="mx-5"  width="100px" height="50px" />
                 </div>
               </div>
             

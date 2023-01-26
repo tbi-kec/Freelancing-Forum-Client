@@ -44,8 +44,8 @@ export default function AddProject() {
 
             <div className="container ">
                 <div className="project-add-form">
-                <div className="project-add-header my-4">
-                    Add Project
+                <div className="project-add-header d-flex flex-start">
+                    Add Your Project
                 </div>
 
                 <form onSubmit={handleSubmit} >
@@ -76,25 +76,28 @@ export default function AddProject() {
                     <div className="row mb-3 tech-add">
                         {technology.map((d, idx) => (
                         <div key={idx} className="width-tech">
-                            <div className="px-2 py-1 tech">{d} <i
-                                onClick={() => handleDeleteTechnology(idx)}
-                                className="text-danger fa-solid fa-xmark"
-                            ></i></div>
+                                <div>
+                                     {d}
+                                </div>
+                                <div>
+                                     <i onClick={() => handleDeleteTechnology(idx)} className="text-light fa-solid fa-xmark" />
+                                </div>
+                            
                             
                         </div>
                         ))}
                     </div>
                     <hr />
                     <div
-                        className="row"
-                        style={{ display: "flex", alignItems: "center" }}
+                        className="row d-flex align-items-center"
+    
                     >
-                        <div className="col-11">
-                        <div className="form-group">
-                            <input type="text" className="form-control" placeholder="Technologies used" onChange={(e)=>setCurrentTechnology(e.target.value)} value={currentTechnology} />
+                        <div className="col-sm-8 col-md-11">
+                            <div className="form-group">
+                                <input type="text" className="form-control" placeholder="Technologies used" onChange={(e)=>setCurrentTechnology(e.target.value)} value={currentTechnology} />
+                            </div>
                         </div>
-                        </div>
-                        <div className="col-1">
+                        <div className="col-sm-4 col-md-1">
                         <i
                             className="text-success fa-solid fa-plus "
                             onClick={handleTechnology}
@@ -105,7 +108,7 @@ export default function AddProject() {
                 </div>
                
                 <textarea
-                    placeholder="Description"
+                    placeholder="Tell us about your project"
                     className="form-control my-3 project-add-form-input"
                     cols="30"
                     rows="4"

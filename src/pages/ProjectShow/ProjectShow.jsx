@@ -61,32 +61,37 @@ function ProjectShow() {
             </div>
             <div className="card">
               <div className="card-body">
-              <div className="row">
-                <div className="col-md-6">
-                <div className="row px-3 pb-4">
-                  <div className="fs-5 fw-bold my-4">Skills Required</div>
-                  <div className="skill d-flex justify-content-start gap-4 ">
-                    {p.skills.map((e, i) => {
-                      return (
-                        <div className="skillset px-2 skill-beginner text-light">
-                          {e}
-                        </div>
-                      );
-                    })}
+                <div className="row">
+                  <div className="col-md-9">
+                    <div className="row px-3 pb-4">
+                      <div className="fs-5 fw-bold my-4">Skills Required</div>
+                      <div className="skill d-flex justify-content-start gap-4 ">
+                        {p.skills.map((e, i) => {
+                          return (
+                            <div
+                              className="skillset px
+                        -2 skill-beginner text-light"
+                            >
+                              {e}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-3">
+                    <div className="p-3">
+                      <b>Start date:</b> {moment(p.end_date).fromNow()}
+                    </div>
+                    <div className="p-3">
+                      <b>End date:</b> {moment(p.end_date).fromNow()}
+                    </div>
+                    <div className="p-3">
+                      <b>Total Stipend:</b><span className="text-success fw-bold"> ₹{p.stipend}</span>
+                    </div>
                   </div>
                 </div>
-                </div>
-                <div className="col-md-6"></div>
               </div>
-             
-              </div>
-            </div>
-
-            <div className="p-3">
-              <b>Deadline:</b> {moment(p.end_date).fromNow()}
-            </div>
-            <div className="p-3">
-              <b>Stipend:</b> ₹{p.stipend}
             </div>
 
             {p.project_status === "created" ? (
@@ -125,7 +130,12 @@ function ProjectShow() {
                   status={p.project_status}
                   key={project._id}
                 />
+                 <div className="p-3">
+                      <b>Deadline:</b> {moment(p.end_date).fromNow()}
+                    </div>
+               
               </div>
+
             )}
           </div>
         ))}

@@ -11,25 +11,16 @@ export default function StudentProject({ project, user }) {
 
   return (
     <div className="student-card stud-project">
-      <div className="title">
+      <div className="title d-flex align-items-center gap-3">
         <h2>Study-Projects</h2>
-      </div>
-      {project.length < 3 && current?.data?._id == user?._id ? (
-        <>
-          <div className="inner-card add-project">
-            <div className="content-add w-100">
-              ADD YOUR STUDY PROJECT
-            </div>
-            <div className="add-skill-div" onClick={handleClick}>
-              <div className="add-skill">
-                <i className="fa-solid fa-plus"></i>
-              </div>
-            </div>
+        {project.length < 3 && current?.data?._id == user?._id &&
+         <div className="add-skill" onClick={handleClick}>
+              <i className="fa-solid fa-plus"></i>
+          
           </div>
-        </>
-      ) : (
-        <></>
-      )}
+          }
+      </div>
+      
 
       {project.length ? (
         <div className=" student-projects mt-4">
@@ -59,7 +50,7 @@ export default function StudentProject({ project, user }) {
       ) : (
         <></>
       )}
-
+{/* modal */}
       <div
         className="modal fade "
         data-bs-backdrop="static"
@@ -68,7 +59,7 @@ export default function StudentProject({ project, user }) {
         role="dialog"
         aria-labelledby="exampleModalLabel"
       >
-        <div className="modal-dialog modal-dialog-centered modal-lg">
+        <div className="modal-dialog modal-dialog-centered modal-lg modal-md-xl">
           <div className="modal-content text-center">
             <AddProject />
             <input
@@ -81,6 +72,7 @@ export default function StudentProject({ project, user }) {
           </div>
         </div>
       </div>
+{/*  */}
     </div>
   );
 }

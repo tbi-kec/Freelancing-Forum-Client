@@ -18,11 +18,15 @@ import ResetPassword from './pages/ResetPassword/ResetPassword'
 import ProjectShow from './pages/ProjectShow/ProjectShow'
 import Department from './pages/Department/Department'
 import AdminProtected from './AdminProtected'
-
+import FreeLancerApproval from './components/FreeLancerApproval/FreeLancerApproval'
+import RequestedProjects from './components/RequestedProjects/RequestedProjects'
+import ProgressProjects from './components/PorgressProjects/ProgressProjects'
+import CompletedProjects from './components/CompletedProjects/CompletedProjects'
+import AdminReport from './components/AdminReport/AdminReport'
 const AllRoutes = () => {
   return (
     <Routes>
-        <Route path='/' element={<PreLoader /> } />
+             <Route path='/' element={<PreLoader /> } />
       
             <Route path='/login' element={<Login/>} />
             <Route path='/register' element={<Register/>} />
@@ -32,9 +36,16 @@ const AllRoutes = () => {
       
          
            
-          <Route element={<AdminProtected />}>
-            <Route path='/admin' element={<AdminPage /> } />
+         <Route element={<AdminProtected />}>
+             <Route path='/admin' element={<AdminPage /> }>
+                <Route path='/admin/approval' element={<FreeLancerApproval/>} />
+                <Route path='/admin/request' element={<RequestedProjects/>} />
+                <Route path='/admin/progress' element={<ProgressProjects/>}/>
+                <Route path='/admin/completed' element={<CompletedProjects />} />
+                <Route path='/admin/report' element={<AdminReport />} />
+              </Route >
           </Route>
+          
            <Route element={<ProtectedRoutes/>} >
               <Route path='/profile/create' element={<ProfileCreation/>} />
               <Route path='/profile/:id' element={<StudentProfile/>} />

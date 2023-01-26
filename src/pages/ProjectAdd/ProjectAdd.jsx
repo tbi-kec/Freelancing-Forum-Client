@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ProjectAdd.css";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { newProject } from "../../actions/project";
 import { setAlert } from "../../actions/alert";
@@ -17,14 +17,14 @@ function ProjectAdd() {
   const [description, setDescription] = useState("");
   const [currentSkill, setCurrentSkill] = useState("");
 
-  const myself = useSelector((state)=>(state.myDetailsReducer))
-  const user = useSelector((state) => (state.currentUserReducer))
-  const constants = useSelector((state) => (state.constantReducer));
+  const myself = useSelector((state) => state.myDetailsReducer);
+  const user = useSelector((state) => state.currentUserReducer);
+  const constants = useSelector((state) => state.constantReducer);
   const handleSkill = () => {
-    if(skills.length>4){
-            alert("Max of 5");
-            return ;
-        }
+    if (skills.length > 4) {
+      alert("Max of 5");
+      return;
+    }
     if (currentSkill !== "") {
       setSkill([...skills, currentSkill]);
       setCurrentSkill("");
@@ -38,15 +38,27 @@ function ProjectAdd() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(user);
-   
-    const id = user.user._id || myself.data._id;
-    dispatch(setAlert("Creating project", "info", 2500))
-    dispatch(newProject({ createdBy: id, title, category, stipend, skills, end_date, description }, navigate))
 
-  }
+    const id = user.user._id || myself.data._id;
+    dispatch(setAlert("Creating project", "info", 2500));
+    dispatch(
+      newProject(
+        {
+          createdBy: id,
+          title,
+          category,
+          stipend,
+          skills,
+          end_date,
+          description,
+        },
+        navigate
+      )
+    );
+  };
 
   return (
-    <div>
+    <div >
       <div className="project-add-back-btn">
         <Link to="/home">
           <div className="d-flex">
@@ -55,8 +67,9 @@ function ProjectAdd() {
         </Link>
       </div>
       <div className="container ">
-        <div className="project-add-form">
-          <div className="project-add-header my-4">
+        <div className="project-add-form my-3 card shadow">
+          <div className="card-body">
+          <div className="project-add-header my-4 ">
             Enter Your Project Details
           </div>
           <form onSubmit={handleSubmit}>
@@ -65,26 +78,30 @@ function ProjectAdd() {
               className="form-control my-3 project-add-form-input"
               placeholder="Project Title"
               value={title}
-              onChange={e => setTitle(e.target.value)}
+              onChange={(e) => setTitle(e.target.value)}
             />
             <select
               class="form-select my-3 project-add-form-input"
               aria-label="Default select example"
               defaultValue={category}
-
-              onChange={e => setCategory(e.target.value)}
+              onChange={(e) => setCategory(e.target.value)}
             >
-              <option disabled hidden selected >Category</option>
-              {constants.data && constants.data[0]?.domain?.map((d, i) => (
-                <option value={d} key={i}>{d}</option>
-              ))}
+              <option disabled hidden selected>
+                Category Your Project Come Under
+              </option>
+              {constants.data &&
+                constants.data[0]?.domain?.map((d, i) => (
+                  <option value={d} key={i}>
+                    {d}
+                  </option>
+                ))}
             </select>
             <input
               type="number"
               className="form-control my-3 project-add-form-input"
-              placeholder="Stipend"
+              placeholder="₹ Stipend (if not availabe enter 0)"
               value={stipend}
-              onChange={e => setBudget(e.target.value)}
+              onChange={(e) => setBudget(e.target.value)}
             />
             <div className="card project-add-form-input">
               <div className="card-body">
@@ -108,7 +125,13 @@ function ProjectAdd() {
                 >
                   <div className="col-11">
                     <div className="form-group">
-                      <input type="text" className="form-control" placeholder="Skill" onChange={(e) => setCurrentSkill(e.target.value)} value={currentSkill} />
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Skill (Eg:C,React,Any Development Framework)"
+                        onChange={(e) => setCurrentSkill(e.target.value)}
+                        value={currentSkill}
+                      />
                     </div>
                   </div>
                   <div className="col-1">
@@ -120,26 +143,35 @@ function ProjectAdd() {
                 </div>
               </div>
             </div>
-            <input
-              type="date"
-              className="form-control my-3 project-add-form-input"
-              placeholder="Date"
-              value={end_date}
-              onChange={e => setDate(e.target.value)}
-            />
+            <div className="form-group my-3">
+              <label className="form-label">End Date:</label>
+              
+                <input
+                  type="date"
+                  className="form-control project-add-form-input"
+                  placeholder="Date"
+                  value={end_date}
+                  onChange={(e) => setDate(e.target.value)}
+                />
+              
+            </div>
             <textarea
-              placeholder="Description"
+              placeholder="Give a detailed description about your project and try to describe within 200 words"
               className="form-control my-3 project-add-form-input"
               cols="30"
               rows="4"
-              onChange={e => setDescription(e.target.value)}
-            >{description}</textarea>
+              onChange={(e) => setDescription(e.target.value)}
+            >
+              {description}
+            </textarea>
             <div className="text-end">
-              <button className='btn btn-md my-3 project-add-create-btn'>Create</button>
+              <button className="btn btn-md my-3 project-add-create-btn">
+                Create
+              </button>
             </div>
           </form>
         </div>
-
+      </div>
       </div>
     </div>
   );

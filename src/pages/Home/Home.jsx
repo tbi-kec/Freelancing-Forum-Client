@@ -10,6 +10,8 @@ import {Link,useNavigate} from 'react-router-dom'
 import { useSelector,useDispatch } from "react-redux";
 import { useEffect } from "react"
 import moment from "moment";
+import starColor from "../../assets/Color-star.png";
+import starDull from "../../assets/dull-star.png";
 import Footer from "../../components/Footer/Footer";
 import { setAlert } from "../../actions/alert";
 
@@ -62,95 +64,94 @@ function Home() {
 //     }
 //  },[myself])
   return (
-    <div>
+    <div className="home-page-container">
       <Navbar />
       <div className="container mt-3">
-        <div className='row dashboard-content' >
-          <div className="col-lg-8 all-dept-container pt-4 pb-4 px-4">
-            <div className="row">
-              {constants.data && constants.data[0]?.dept_short?.map((d)=>(
-                 <div className="col-sm-6 mt-2 " key={d._id}>
-                    <Link to={`/user/${d.dept}`}>
-                      <DeptTitleCard title={d.short} />
-                    </Link>
-              </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="col-lg-4 profile-right ">
-            <div className="">
-              <div className="col p-card p-3">
-               <div className="row">
-                  <div className="col-4 px-0 p-img">
-                    <img src={profile} className='p-2' alt="img" height='100%' width='100%' onClick={handleNavigate} />
-                  </div>
-                  <div className="col-8 p-name pt-4 px-0">
-                    <h3>{myself.data?.first_name}-{myself.data?.last_name}</h3>
-                    <p>{myself.data?.domain[0]}</p>
-                  </div>
+        <div className="d-flex dashboard">
+          {/* Profile */}
+          <div className="d-flex flex-column flex-grow-1 profile-section my-4">
+            <div className="d-flex flex-row my-3">
+              <div className="profile-img-div">
+                <div className="home-profile-img mr-3">
+                  <img src={profile} alt="img" height='100%' width='100%' onClick={handleNavigate} />
                 </div>
-                <div className="row">
-                  <div className="skill d-flex justify-content-around">
-                    {myself.data?.skills.map(s=>(
-                      <div className={`skillset px-2  mt-2 skill-${s.level}`} key={s._id} >
-                          <p>{s.name}</p>
-                    </div>
-                    ))}
-          
-                  </div>
+              </div>
+              <div className="p-name pt-2 px-0 d-flex flex-column">
+                <h3 className="name fs-3 font-weight-bold">{myself.data?.first_name} {myself.data?.last_name}</h3>
+                <h3 className="domain fs-4 fs-md-5 my-2">{myself.data?.domain[0]}</h3>
+
+                <div className="rating">
+                  {(function () {
+                    var rate = [];
+                    for (let i = 0; i < myself.data?.rating; i++) {
+                      rate.push(<img src={starColor} alt="star" height="12px" />);
+                    }
+                    for (let j = 0; j < 5 - myself.data?.rating; j++) {
+                      rate.push(<img src={starDull} alt="star" height="10px" />);
+                    }
+                    return <div key={rate.length}>{rate}</div>;
+                  })()}
                 </div>
-
-              </div>
-              <div className="current-project my-2">
-                 {onbord_project.length!==0 ?
-                <>
-                <div className="current-project-header my-2">
-                     <h4 className='mb-0 ms-2 '>Current Project</h4>
-                       <hr className='mt-1 ms-2' />
-                    </div>
-                  {onbord_project.map(p=>(
-                  <div className="current-project-title my-2 me-4" key={p._id}>
-                     <p className="mb-0 ms-2"><Link to={`/project/show/${p._id}`}>{p.title}</Link></p>
-                     <div className="d-flex justify-content-between">
-                      <p className="mb-0 ms-2">{p.createdBy==myself.data?._id?('Provided '):(`End on: ${moment(p.end_date).fromNow()}`)}</p>
-                      <p className="mb-0 ms-2">Status : {p.project_status}</p>
-                     </div>
-                       <hr className='mt-1 ms-2' />
-                    </div>
-                    ))}
-                     </>
-                    
-                 :<h5 className="text-center  py-5 mt-2">No Projects</h5>
-              } 
-              
-              </div>
-              <div className="notification py-2 px-1">
-
-              {notification.length!==0 ?
-                <>
-                      {notification.map(n=>(
-                          <Notification notification={n} key={n._id} />
-                    ))}
-                     </>
-                    
-                 :<h5 className="text-center  py-5 ">No Notifications</h5>
-              } 
-
               </div>
             </div>
 
-          </div>
+            <div className="d-flex flex-row my-3 home-profile-bottom">
+              {/* Skills */}
+                <div className="skill">
+                  {myself.data?.skills.map(s=>(
+                    <div className={`skillset px-2  my-3 skill-${s.level}`} key={s._id} >
+                      <p>{s.name}</p>
+                    </div>
+                  ))}
+              </div>
+              {/* Projects */}
+              <div className="flex-grow-1 current-project my-2">
+                {onbord_project.length!==0 ?
+                  <>
+                    <div className="current-project-header my-2">
+                      <h4 className='mb-0 ms-2 '>Current Project</h4>
+                      <hr className='mt-1 ms-2' />
+                    </div>
+                    {onbord_project.map(p=>(
+                      <div className="current-project-title my-2 me-4" key={p._id}>
+                        <p className="mb-0 ms-2"><Link to={`/project/show/${p._id}`}>{p.title}</Link></p>
+                        <div className="d-flex justify-content-between">
+                          <p className="mb-0 ms-2">{p.createdBy==myself.data?._id?('Provided '):(`End on: ${moment(p.end_date).fromNow()}`)}</p>
+                          <p className="mb-0 ms-2">Status : {p.project_status}</p>
+                        </div>
+                        <hr className='mt-1 ms-2' />
+                      </div>
+                    ))}
+                  </>
 
+                  :<h5 className="text-center  py-5 mt-2">No Projects</h5>
+                } 
+              </div>
+            </div>
+          </div>
+          {/* Notification */}
+          <div className="notification flex-grow-1  my-4">
+            <div className="notifications-header">Notifications</div>
+            {notification.length!==0 ?
+              <>
+                {notification.map(n=>(
+                  <Notification notification={n} key={n._id} />
+                ))}
+              </>
+
+              :<h5 className="text-center py-5">No Notifications</h5>
+            } 
+          </div>
         </div>
       </div>
+
       <div className="container pb-5">
         {/* nav */}
         <div className="card shadow my-4">
           <div className="card-body">
             <div className="d-flex fs-6 fw-bold">
-              <div className="mx-4 fs-5 active-toggle pointer" id="project" onClick={handleToggle}>Projects</div>
-              <div className="mx-4 fs-5 pointer" id="talent" onClick={handleToggle}>Talents</div>
+              <div className="mx-4 fs-5 active-toggle pointer" id="project" onClick={handleToggle}>Recent Projects</div>
+              <div className="mx-4 fs-5 pointer" id="talent" onClick={handleToggle}>Top Talents</div>
             </div>
           </div>
         </div>
@@ -170,7 +171,7 @@ function Home() {
             users.data != null &&
               users.data
               .sort((a,b) => {return a.rating >b.rating ? -1 : 1})
-              .slice(0,users.data.length > 10 ? 10 : users.data.length)?.map(u=>(
+              .slice(0,users.data.length > 10 ? 10 : users.data.length)?.filter(u=> u.admin_verify==true).map(u=>(
                 <ProfileCard user={u} key={u._id} constant={constants?.data[0]}/>
               ))
           }
