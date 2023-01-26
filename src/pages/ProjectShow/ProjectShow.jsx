@@ -114,50 +114,6 @@ function ProjectShow() {
                 <div className="fs-4 mt-4 fw-bold">Applicant</div>
                 <div>
                   <div className="row">
-                    <div className="col-md-6">
-                      <div className="card m-3  applicant-card">
-                        <div className="card-body">
-                          <div className="row d-flex align-items-center">
-                            <div className="col-3">
-                              <img
-                                src={profile}
-                                alt="img"
-                                height="70px"
-                                width="70px"
-                              />
-                            </div>
-                            <div className="col-9">
-                              <div className="row">
-                                <div className="col-6">
-                                  <div className="fw-bold">KARTHIKEYAN R</div>
-                                  <div>IT</div>
-                                </div>
-                                <div className="col-6">
-                                  <div className="row">
-                                    <div className="col-6 ">
-                                    <span className="bg-success p-2 rounded">
-                                      <img src={accept} alt="" height="20px" />
-
-                                    </span>
-                                    </div>
-                                    <div className="col-6">
-                                    <span className="bg-danger p-2 rounded">
-                                      <img src={decline} alt="" height="20px" />
-
-                                    </span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-            
-                  </div>
-                </div>
-                <div className="container my-3">
                   {p.requested.map((u, i) => {
                     return (
                       <div className="col-md-6">
@@ -205,6 +161,8 @@ function ProjectShow() {
                     </div>
                     );
                   })}
+            
+                  </div>
                 </div>
               </div>
             ) : (
