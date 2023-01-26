@@ -1,0 +1,34 @@
+
+.domain {
+    flex-wrap: wrap;
+}
+
+.student-domains h2 {
+    color: rgba(22, 51, 109, 0.88);
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.student-card .row {
+    display: flex;
+}
+
+.student-card .row {
+    width: 100% !important;
+
+}
+
+.student-card .row .domain {
+    justify-content: start;
+    gap: 10px;
+
+}
+
+.domain-container{
+    background:rgba(22, 51, 109, 0.88);
+    color: var(--main-white);
+}
+
+
+
+

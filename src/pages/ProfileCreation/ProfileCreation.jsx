@@ -141,7 +141,7 @@ const ProfileCreation = () => {
                                 <div className="row" style={{display:"flex",alignItems:"center"}}>
                                     <div className="col-6">
                                              <div className="form-group ">
-                                                <input type="text" value={name} onChange={e=>setName(e.target.value)} placeholder='Skill' className='form-control' />
+                                                <input type="text" value={name} onChange={e=>setName(e.target.value)} placeholder='Skill (Eg : C,React,CAD)' className='form-control' />
                                             </div>
                                     </div>
                                     <div className="col-5">
@@ -192,7 +192,7 @@ const ProfileCreation = () => {
                                     </div>
                                      <div className="col-4">
                                             <div className="form-group">
-                                                <input type="text" value={domain_name} onChange={e=>setDomainName(e.target.value)} placeholder='Other Domain' className='form-control' />
+                                                <input type="text" value={domain_name} onChange={e=>setDomainName(e.target.value)} placeholder='Other Domain(if not in the list)' className='form-control' />
                                             </div>
                                     </div>
                                     <div className="col-2">
@@ -204,7 +204,7 @@ const ProfileCreation = () => {
                         
                          <div className="form-group">
                             <select name="payment-types" defaultValue={payment_type} onChange={e=>setPaymentType(e.target.value)}   className="form-select" required>
-                                <option value="" diabled hidden selected>Paymen Type</option>
+                                <option value="" diabled hidden selected>Payment Type</option>
                                 {paymentTypes.map((d,idx)=>(
                                     <option key={idx} value={d}>{d}</option>
                                 ))}
@@ -213,7 +213,7 @@ const ProfileCreation = () => {
                             </>
 }    
                         <div className="form-group">
-                            <textarea value={description} onChange={e=>setDescription(e.target.value)} className='form-control' placeholder='Description' cols="10" rows="3" required>
+                            <textarea value={description} onChange={e=>setDescription(e.target.value)} className='form-control' placeholder='Tell us about yourself,"First Impression is the best impression"' cols="10" rows="3" required>
                                
                             </textarea>
                         </div>

@@ -1,25 +1,106 @@
-.right-side-container>div ,.left-side-container>div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+.page-404 {
+  height: calc(100vh - 65px);
+}
+.page-404-no{
+  font-size: 200px;
+  font-weight: 900;
+  color: var(--main-orange);
+  margin: 0px !important;
+  /* -webkit-text-stroke: 10px var(--main-white); */
+  /* -webkit-text-fill-color: var(--main-orange); */
+}
+
+.page-404-outer{
+  font-size: 2.5rem;
+  height: 100vh;
+  width: 100wh;
+}
+
+.page-404-sub {
+  font-size: 1rem;
+}
+
+.page-404-container {
+  height: 100vh;
+  overflow: hidden !important;
+  position: relative;
+}
+
+.blob1 {
+  height: 600px;
+  width: 700px;
+  z-index: -1;
+  position: absolute;
+  top: -180px;
+  left: -150px;
+}
+
+.blob2 {
+  height: 600px;
+  width: 700px;
+  z-index: -1;
+  position: absolute;
+  top: 0px;
+  right: -200px;
+}
+
+.blob3 {
+  height: 600px;
+  width: 700px;
+  z-index: -1;
+  position: absolute;
+  bottom: 0px;
+  left: -200px;
+}
+.blob4 {
+  height: 600px;
+  width: 700px;
+  z-index: -1;
+  position: absolute;
+  bottom: -300px;
+  right: -200px;
+  object-fit: contain;
+}
+
+@media (min-width: 992px) {
+  .blob2{
+    height: 400px;
+    width: 700px;
+    top: 0px;
+    right: 200px;
+  }
+  .blob3{
+    height: 300px;
+    width: 700px;
+    bottom: 200px;
+    left: 400px;
+  }
 
 }
 
-.right-side-container {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    filter: drop-shadow(5px 5px 5px #222);
+@media (max-width: 575.98px) {
+  .page-404-no {
+    font-size: 180px;
+  }
+  .blob1{
+    height: 100px;
+    width: 500px;
+  }
+  .blob2{
+    height: 400px;
+    width: 700px;
+    top: 0px;
+    right: -400px;
+  }
+  .blob3{
+    height: 300px;
+    width: 700px;
+    bottom: 200px;
+    left: -400px;
+  }
+  .blob4{
+    height: 450px;
+    width: 1000px;
+    left: -10px;
+  }
 }
-
-.left-side-container {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    filter: drop-shadow(5px 5px 5px #222);
-}
-
-
-
-

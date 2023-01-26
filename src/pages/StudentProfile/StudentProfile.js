@@ -8,6 +8,7 @@ import ProjectHistory from '../../components/ProjectHistory/ProjectHistory';
 import Skills from '../../components/Skills/Skills'
 import StudentProject from '../../components/StudentProject/StudentProject';
 import WorkHistory from '../../components/WorkHistory/WorkHistory';
+import Domain from '../../components/Domain/Domain';
 import './StudentProfile.css'
 
 export default function StudentProfile() {
@@ -72,6 +73,9 @@ export default function StudentProfile() {
         {user?.user_type=='freelancer' &&
             <Skills skills={user?.skills}/>
         }
+         {user?.user_type=='freelancer' &&
+            <Domain domain={user?.domain}/>
+        }
 
         {user?.admin_verify==false  &&
             work_history.length!=0 && user?.admin_verify==true &&
@@ -91,8 +95,8 @@ export default function StudentProfile() {
             </div>
         </div>
         }
-     
-                <StudentProject project={studyProject} user={user}/>
+     {user?.admin_verify==true &&
+                <StudentProject project={studyProject} user={user}/> }
                 {project_given.length!=0 &&
                     <ProjectHistory project={project_given} />
                 }

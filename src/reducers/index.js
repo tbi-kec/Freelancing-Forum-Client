@@ -15,5 +15,6 @@ export default combineReducers({
         userReducer,
         constantReducer,
         myDetailsReducer,
-        adminReducer
+        adminReducer,
+       
 });

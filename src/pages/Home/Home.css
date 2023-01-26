@@ -1,44 +1,5 @@
-.all-dept-container {
-    border-radius: 20px;
-    box-shadow: rgba(16, 147, 208, 0.50) 0px 0px 15px;
-    height:525px;
-    overflow-y: scroll;
-}
-
-
-.p-card {
-    background-color: rgba(83, 120, 248, 13%);
-    border-radius: 12px;
-}
-
-.p-card > .row > .p-name > p {
-    color: black;
-    font-size: 12px;
-    font-weight: bold;
-    text-align: start;
-}
-
-.p-card > .row > .p-name > h3 {
-    font-weight: bold;
-    padding: 0%;
-    margin: 0%;
-}
-
-.skill>.skillset{
-    font-weight: bold;
-    width: min-content;
-    border-radius: 15px;
-    margin: 0%;
-}
-.skill>.skillset>p{
-    margin: 0%;
-}
-.skill{
-    flex-wrap: wrap;
-}
-
 .current-project{
-    background-color: rgba(83, 120, 248, 13%);
+    /* background-color: rgba(83, 120, 248, 13%); */
     border-radius: 12px;
     height: 154px;
     overflow-y: scroll;
@@ -61,25 +22,6 @@
     color: black;
 }
 
-.notification{
-    background-color: rgba(83, 120, 248, 13%);
-    border-radius: 12px;
-    height: 126px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-
-@media (min-width: 0px) and (max-width: 992px) {
-    .container>.dashboard-content{
-        flex-direction: column-reverse;
-    }
-    .all-dept-container{
-        height: 450px;
-        margin-top: 20px;
-        margin-left: 5px;
-        margin-right: 5px;
-    }
-  }
 .project-title{
     color: var(--main-blue);
     font-weight: bolder;
@@ -95,12 +37,142 @@
 }
 
 
-.profile-right div .col .row .skill .skill-beginner {
+.skill-beginner {
     background: #81f664;
 }
-.profile-right div .col .row .skill .skill-intermediate {
+.skill-intermediate {
     background: #f5e878;
 }
-.profile-right div .col .row .skill .skill-expert {
+.skill-expert {
     background-color: #64caf6;
+}
+
+.profile-section {
+    background-color: rgba(83, 120, 248, 13%);
+    border-radius: 12px;
+}
+
+.home-profile-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 30px solid white;
+    position: absolute;
+    top: -32px;
+    left: -32px;
+}
+
+.profile-img-div {
+    position: relative;
+    width: 180px;
+}
+
+.home-page-container .skill {
+    flex-direction: row;
+    min-width: 250px;
+}
+
+.home-page-container .skill>.skillset{
+    font-weight: bold;
+    width: 160px !important;
+    border-radius: 0px 10px 10px 0px !important;
+    margin: 0%;
+}
+.home-page-container .skill>.skillset>p{
+    margin: 0%;
+}
+.home-page-container .skill{
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.name {
+    color: var(--main-blue);
+}
+.domain {
+    color: var(--main-grey);
+}
+
+.rating>div>img{
+    width: 40px;
+    height: 30px;
+}
+
+.notification{
+    box-shadow: inset 0px 0px 22px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    border-radius: 12px;
+    scroll-behavior: auto;
+    /* overflow-y: hidden; */
+    overflow-x: hidden;
+}
+.notifications-header{
+    height: 40px;
+    background-color: var(--main-blue);
+    color: var(--main-white);
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    
+}
+.dashboard {
+    flex-direction: row;
+}
+
+@media (max-width: 991.98px) {
+    .dashboard {
+        flex-direction: column;
+    }
+    .notification{
+        max-height: 350px;
+    }
+    .home-profile-img {
+        top: -40px;
+        left: -35px;
+        border: 30px solid white;
+    }
+}
+@media (min-width: 991.98px) {
+    .profile-section {
+        margin-right: 30px;
+    }
+    .notification{
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .name {
+        font-size: 1.5rem !important;
+    }
+    .domain {
+        font-size: 1.5rem !important;
+    }
+    .rating>div>img{
+        width: 30px;
+        height: 25px;
+    }
+    .home-profile-img {
+        width: 150px;
+        height: 150px;
+        top: -30px;
+        left: -25px;
+        border: 20px solid white;
+    }
+    .home-profile-bottom {
+        flex-direction: column !important;
+    }
+    .skill{
+        flex-grow: 1;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        border-radius: 10px !important;
+    }
+    .skill>.skillset {
+        width: fit-content !important;
+        margin: 5px !important;
+        border-radius: 10px !important;
+    }
 }

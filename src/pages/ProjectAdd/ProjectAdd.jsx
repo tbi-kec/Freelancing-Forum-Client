@@ -58,7 +58,7 @@ function ProjectAdd() {
   };
 
   return (
-    <div>
+    <div >
       <div className="project-add-back-btn">
         <Link to="/home">
           <div className="d-flex">
@@ -67,8 +67,9 @@ function ProjectAdd() {
         </Link>
       </div>
       <div className="container ">
-        <div className="project-add-form">
-          <div className="project-add-header my-4">
+        <div className="project-add-form my-3 card shadow">
+          <div className="card-body">
+          <div className="project-add-header my-4 ">
             Enter Your Project Details
           </div>
           <form onSubmit={handleSubmit}>
@@ -86,7 +87,7 @@ function ProjectAdd() {
               onChange={(e) => setCategory(e.target.value)}
             >
               <option disabled hidden selected>
-                Category
+                Category Your Project Come Under
               </option>
               {constants.data &&
                 constants.data[0]?.domain?.map((d, i) => (
@@ -98,7 +99,7 @@ function ProjectAdd() {
             <input
               type="number"
               className="form-control my-3 project-add-form-input"
-              placeholder="Stipend"
+              placeholder="₹ Stipend (if not availabe enter 0)"
               value={stipend}
               onChange={(e) => setBudget(e.target.value)}
             />
@@ -127,7 +128,7 @@ function ProjectAdd() {
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="Skill"
+                        placeholder="Skill (Eg:C,React,Any Development Framework)"
                         onChange={(e) => setCurrentSkill(e.target.value)}
                         value={currentSkill}
                       />
@@ -142,20 +143,20 @@ function ProjectAdd() {
                 </div>
               </div>
             </div>
-            <div className="row d-flex align-items-center my-2">
-              <div className="col-md-2 fw-bold">End Date:</div>
-              <div className="col-md-10">
+            <div className="form-group my-3">
+              <label className="form-label">End Date:</label>
+              
                 <input
                   type="date"
-                  className="form-control my-3 project-add-form-input"
+                  className="form-control project-add-form-input"
                   placeholder="Date"
                   value={end_date}
                   onChange={(e) => setDate(e.target.value)}
                 />
-              </div>
+              
             </div>
             <textarea
-              placeholder="Description"
+              placeholder="Give a detailed description about your project and try to describe within 200 words"
               className="form-control my-3 project-add-form-input"
               cols="30"
               rows="4"
@@ -170,6 +171,7 @@ function ProjectAdd() {
             </div>
           </form>
         </div>
+      </div>
       </div>
     </div>
   );

@@ -1,0 +1,59 @@
+.dept-card {
+  max-width: 520px;
+  background: linear-gradient(90.02deg, #16336D 0.02%, #0B1E43 113.01%);
+  border-radius: 15px;
+}
+.dept-card > div > .dept-name {
+  color: var(--main-white);
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.dept-card > div > .dept-icon {
+  color: var(--main-white) !important;
+}
+
+.dept-card > .dept-details {
+  padding-right: 4rem;
+}
+.dept-card > .dept-details > div > p {
+  color: var(--main-white);
+  margin: 0px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.dept-card {
+  position: relative;
+}
+
+.icon-div {
+  position: absolute;
+  padding: 15px 15px 0px 0px;
+  top: 0px;
+  right: 0px;
+}
+
+@media (max-width: 575.98px) {
+  .dept-card > .dept-details > div > p {
+    font-size: 1.0rem !important;
+    font-weight: bold;
+  }
+  .dept-card {
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+    margin-top: .5rem !important;
+    margin-bottom: .5rem !important;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .dept-card {
+    max-width: 360px;
+  }
+  .dept-card > .dept-details > div > p {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+}
+
