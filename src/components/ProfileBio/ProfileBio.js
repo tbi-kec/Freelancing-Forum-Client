@@ -181,7 +181,6 @@ export default function ProfileBio({user}) {
                   </div>
                 )}
               </div>
-
               <div className="rating">
                 {(function () {
                   var rate = [];
@@ -197,6 +196,8 @@ export default function ProfileBio({user}) {
             </div>
           }
         </div>
+        {
+          user?.admin_verify &&
         <div className="student-dept d-flex flex-wrap justify-content-between">
           <h4 className="mb-2">
             <i class="fa-solid fa-location-dot"></i>
@@ -229,9 +230,10 @@ export default function ProfileBio({user}) {
             </div>
           )}
         </div>
+        }
         {user?.user_type == 'freelancer' && user?.admin_verify == false ? <p className="text-start  text-success fs-5 text-bold">Waiting for Admin Approval *</p> : " "}
         <div className="student-about">
-          <h2 className="mb-3">About </h2>
+          <h2 className="my-3">About </h2>
           <div> {user?.description} </div>
         </div>
         <div className="d-flex my-3 mt-4">

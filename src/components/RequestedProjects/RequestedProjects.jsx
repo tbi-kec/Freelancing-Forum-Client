@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import {Link} from 'react-router-dom'
 import './RequestedProjects.scss'
 import RequestModal from "../../components/AdminModals/RequestModal";
 
 const RequestedProjects = () => {
   const project = useSelector((state) => (state.adminReducer))
   const [projects, setProjects] = useState(null)
+  const [responded, setResponded] = useState(false)
   const setData = () => {
     const data = project.data.filter(p => p.project_status == 'pending-admin');
     setProjects([...data])
@@ -20,6 +22,13 @@ const RequestedProjects = () => {
   if (projects == null) {
     return <h1>Loading ...</h1>
   }
+
+  const acceptRequest = (e)=>{
+    setResponded(true);
+    e.preventDefault();
+  
+
+  }
   /*
   project name
   client
@@ -27,6 +36,7 @@ const RequestedProjects = () => {
   admin requested date
   accept/reject
   */
+ console.log(projects);
   return (
     <>
       {/* request model */}
@@ -56,12 +66,14 @@ const RequestedProjects = () => {
               projects.map((p, i) => (
                 <tr key={p._id}>
                   <th scope="row">{i + 1}</th>
-                  <td>{p.title}</td>
-                  <td>{p.createdBy.first_name} {p.createdBy.last_name}</td>
-                  <td>{p.developer.first_name} {p.developer.last_name}</td>
+                  <td><Link to={`/project/show/${p._id}`}  className="text-dark ">{p.title}</Link></td>
+                  <td><Link to={`/profile/${p.createdBy._id}`} className="text-dark ">{p.createdBy.first_name} {p.createdBy.last_name}</Link></td>
+                  <td><Link to={`/profile/${p.developer._id}`} className="text-dark ">{p.developer.first_name} {p.developer.last_name}</Link></td>
                   <td>Need to change backend</td>
                   <td>
-                    <button className='btn btn-success'>Accept</button>
+                  {!responded &&
+                    <button className='btn btn-success' onClick={acceptRequest}>Accept</button>
+                  }
                     <button className='btn btn-danger' data-bs-toggle="modal" data-bs-target={`#toggle_model_project_request-${p._id}`}>Reject</button>
                   </td>
                 </tr>

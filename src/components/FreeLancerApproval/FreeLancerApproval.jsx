@@ -8,6 +8,7 @@ import { acceptOrRejectUser } from '../../actions/admin';
 
 const FreeLancerApproval = () => {
   const [users, setUsers] = useState(null)
+  const [responded, setResponded] = useState(false)
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const freelancers = useSelector((state) => (state.userReducer))
@@ -22,6 +23,7 @@ const FreeLancerApproval = () => {
   }, [freelancers])
 
  const handleAcceptUser = (e, id) => {
+  setResponded(true)
     e.preventDefault();
     dispatch(setAlert("Accepting freelancer","info"))
     dispatch(acceptOrRejectUser({u_id:id,status:"accepted",message:"accepted"},navigate))
@@ -51,7 +53,9 @@ const FreeLancerApproval = () => {
                   <td>{u.department}</td>
                   <td>{moment(u.created_on).calendar()}</td>
                   <td>
+                  {!responded &&
                     <button className='btn btn-success mx-3' onClick={e=>handleAcceptUser(e,u._id)}>Accept</button>
+                   }
                     <button className='btn btn-danger mx-3' data-bs-toggle="modal" data-bs-target={`#toggle_model_user_approval-${u._id}`}>Reject</button>
                   </td>
                 </tr>
