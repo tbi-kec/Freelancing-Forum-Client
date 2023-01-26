@@ -1,8 +1,9 @@
 import React, {useState} from "react"
 import './Footer.css';
-import logo from '../../assets/logo.png'
-import iiclogo from '../../assets/IIC_logo.png'
-import emdclogo from '../../assets/emdclogo22.png'
+import logo from "../../assets/keclogo.png";
+import iiclogo from "../../assets/IIC_logo.png";
+import emdclogo from "../../assets/emdclogo22.png";
+import tbilogo from "../../assets/TBIlogo.png";
 
 function Footer(){
   let date = new Date();
@@ -14,14 +15,14 @@ function Footer(){
           <footer className="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 row-cols-1 py-5 my-5 justify-content-center align-items-center text-center">
             <div className="col my-4">
               <div className="flogo-container">
-                <div className="footer-logo-container ">
-                  <img src={iiclogo} alt="" />
+                <div className="m-1">
+                <img src={logo} alt="" width="100px" height="100px" />
                 </div>
-                <div className="footer-logo-container ">
-                  <img src={logo} alt="" />
+                <div className="m-2">
+                <img src={iiclogo} alt="" width="150px" height="75px" />
                 </div>
-                <div className="footer-logo-container ">
-                  <img src={emdclogo} alt="" />
+                <div className="m-1">
+                <img src={emdclogo} alt="" width="100px" height="100px" />
                 </div>
               </div>
             </div>
@@ -51,8 +52,8 @@ function Footer(){
                   <p className="feedback-text my-2 fs-6 text-light">Hello, users Our goal is to Find the perfect freelance services for your projects</p>
 
                 </div>
-                <div className="footer-logo-container shadow p-2 mx-2">
-                  <img src={iiclogo} alt="" />
+                <div className="m-2">
+                <img src={tbilogo} alt="" width="150px" height="75px" />
                 </div>
               </div>
             </div>

@@ -26,7 +26,7 @@ const AdminProjectReport = () => {
 
 
  
-  const [projects,setProjects]=useState()
+  const [projects,setProjects]=useState([])
   const project = useSelector((state)=>(state.adminReducer))
   const getReport=async(e)=>{
     e.preventDefault();

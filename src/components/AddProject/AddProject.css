@@ -37,11 +37,9 @@
     border-radius: 14px;
     color: #fff;
     gap: 6px;
+    
 }
 
-.tech{
-   
-}
 
 .project-add-submit-btn,.project-add-submit-btn:hover{
     background-color: #37FB06;
