@@ -26,9 +26,11 @@ export const respondToRequest =(responseData,navigate)=>async(dispatch)=>{
 
 export const acceptOrRejectUser = (userData,navigate) => async(dispatch)=>{
     try {
+       
         const {data}=await api.acceptOrRejectUser(userData);
         dispatch(setAlert(`${userData.status} freelancer successfully`,"success"));
         dispatch(getAllUsers());
+      
         navigate("/admin/approval")
     } catch (error) {
         dispatch(setAlert("Server Error","danger"))

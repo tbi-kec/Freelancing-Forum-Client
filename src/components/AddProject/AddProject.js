@@ -29,8 +29,11 @@ export default function AddProject() {
     setTechnologies([...newTechnology]);
   };
   const handleSubmit = async(e)=>{
-   
     e.preventDefault();
+    if(technology.length==0){
+        setAlert("Skills is required","warning")
+        return;
+    }
     const id =user?.user._id;
     console.log(id)
     dispatch(setAlert("Creating Study Project","info"))
@@ -55,6 +58,7 @@ export default function AddProject() {
                     placeholder="Project Title"
                     value={title}
                     onChange={(e)=>setTitle(e.target.value)}
+                    required
                 />
                  <input
                     type="date"
@@ -62,6 +66,7 @@ export default function AddProject() {
                     placeholder="Date"
                     value={date}
                     onChange={(e)=>setDate(e.target.value)}
+                    required
                 />
                 
                 <input
@@ -70,12 +75,13 @@ export default function AddProject() {
                     placeholder="Github or Drive Link"
                     value={link}
                     onChange={(e)=>setLink(e.target.value)}
+                    required
                 />
                 <div className="card project-add-form-input">
                     <div className="card-body">
                     <div className="row mb-3 tech-add">
                         {technology.map((d, idx) => (
-                        <div key={idx} className="width-tech">
+                        <div key={idx} className="width-tech mx-2">
                                 <div>
                                      {d}
                                 </div>
@@ -114,6 +120,8 @@ export default function AddProject() {
                     rows="4"
                     value={description}
                     onChange={(e)=>setDescription(e.target.value)}
+                    required
+                    minLength={10}
                 ></textarea>
                 <div className="text-end-profile">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal"  aria-label="Close">Close</button>
