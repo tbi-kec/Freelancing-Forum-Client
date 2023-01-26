@@ -32,8 +32,14 @@ const AdminSideBar = ({handleToggle}) => {
                         </Link>
                     </li>
                     <li onClick={handleToggle}>
-                        <Link to='/admin/report'>
-                            Report
+                        <Link to='/admin/project/report'>
+                            Project Report
+                        </Link>
+                    </li>
+
+                    <li onClick={handleToggle}>
+                        <Link to='/admin/user/report'>
+                            User Report
                         </Link>
                     </li>
             </ul>

@@ -18,7 +18,7 @@
     align-items: center;
 }
 
-.login-left-side-container > h1,p{
+.login-left-side-container > h1, .login-left-side-container>p{
     color: var(--main-white);
     text-align: center;
 }
