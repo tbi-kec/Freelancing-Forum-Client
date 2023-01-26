@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navbar.css";
-import logo from "../../assets/keclogo.png";
+import logo from "../../assets/logo.png";
 import profile from "../../assets/profileicon2.png";
 import {Link} from 'react-router-dom';
 import { useSelector } from "react-redux";
@@ -60,32 +60,21 @@ const Navbar = () => {
                 <button className="btn nav-btn-1">All Project</button>
               </Link>
             </li>
-            {admin ?
-            <li>
-            <Link to="/admin" className="nav-link">
-                <button className="btn nav-btn-2 px-3">Report</button>
-              </Link>
-            </li>:
+            
             <li className="nav-item mx-4">
               <Link to="/project/add" className="nav-link">
                 <button className="btn nav-btn-2">Add Project</button>
               </Link>
             </li> 
             
-            }
-            {admin ? 
-              <li className="d-flex align-items-center mx-3">
-              <div className=' text-end '>
-        <button className="btn logout text-light" onClick={handleLogout}>Log Out</button>
-      </div>
-    
-              </li>:
+            
+
             <li className="nav-item mx-4">
               <Link to={`/profile/${user?.user._id}`} className="nav-link">
                 <img src={profile} height="40px" alt="" />
               </Link>
             </li>
-            }
+            
           </ul>
         </div>
       </div>

@@ -17,7 +17,11 @@ import Page404 from './pages/Page404/Page404'
 import ResetPassword from './pages/ResetPassword/ResetPassword'
 import ProjectShow from './pages/ProjectShow/ProjectShow'
 import AdminProtected from './AdminProtected'
-
+import FreeLancerApproval from './components/FreeLancerApproval/FreeLancerApproval'
+import RequestedProjects from './components/RequestedProjects/RequestedProjects'
+import ProgressProjects from './components/PorgressProjects/ProgressProjects'
+import CompletedProjects from './components/CompletedProjects/CompletedProjects'
+import AdminReport from './components/AdminReport/AdminReport'
 const AllRoutes = () => {
   return (
     <Routes>
@@ -31,8 +35,14 @@ const AllRoutes = () => {
       
          
            
-          <Route element={<AdminProtected />}>
-            <Route path='/admin' element={<AdminPage /> } />
+         <Route element={<AdminProtected />}>
+             <Route path='/admin' element={<AdminPage /> }>
+                <Route path='/admin/approval' element={<FreeLancerApproval/>} />
+                <Route path='/admin/request' element={<RequestedProjects/>} />
+                <Route path='/admin/progress' element={<ProgressProjects/>}/>
+                <Route path='/admin/completed' element={<CompletedProjects />} />
+                <Route path='/admin/report' element={<AdminReport />} />
+              </Route >
           </Route>
            <Route element={<ProtectedRoutes/>} >
               <Route path='/profile/create' element={<ProfileCreation/>} />
