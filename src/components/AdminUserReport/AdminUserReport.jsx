@@ -66,7 +66,9 @@ const getReport = (e)=>{
     setTable(true)
 }
   const user_roles = ['all','client','freelancer']
-
+const styles = {
+    display:!table?'none':"block",
+  }
   return (
     <div className="admin-user-report">
         <div className="container">
@@ -105,8 +107,8 @@ const getReport = (e)=>{
                 </div>
             </div>
         </div>
-        {table &&
-        <>
+       
+        <div style={styles}>
         <div className="container text-end">
         <DownloadTableExcel
                     filename="Freelancing Forum Report"
@@ -145,7 +147,7 @@ const getReport = (e)=>{
           </tbody>
         </table>
       </div>
-</>}
+</div>
     </div>
               
   )
