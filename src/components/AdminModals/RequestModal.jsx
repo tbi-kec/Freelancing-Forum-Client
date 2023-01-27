@@ -23,7 +23,7 @@ const RequestModal=(props) =>{
           <div className="modal-content p-5">
             <label className="form-label">Reason for rejection</label>
             <textarea name="" value={reason} className="form-control my-3" onChange={e=>setReason(e.target.value)}></textarea>
-            <button onClick={e=>handleReject(e,props.id)} className="btn btn-danger">Reject</button>
+            <button onClick={e=>handleReject(e,props.id)} data-bs-dismiss="modal" aria-label="Close" className="btn btn-danger">Reject</button>
           </div>
         </div>
       </div>

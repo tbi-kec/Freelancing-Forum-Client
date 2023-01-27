@@ -167,6 +167,7 @@ function ProjectShow() {
           p?.createdBy?._id==user?.data?._id || p.developer?._id==user?.data?._id &&
               <div className="card mt-3 mb-5 shadow">
                 <div className="card-body">
+<<<<<<< HEAD
                   <div className="p-3">
                     <div className="fs-4 my-4 fw-bold">Progress</div>
                     <ProgressBar
@@ -180,6 +181,19 @@ function ProjectShow() {
 
                     </div>
                   </div>
+=======
+              <div className="p-3">
+                <div className="fs-4 my-4 fw-bold">Progress</div>
+                <ProgressBar
+                  c_id={p?.createdBy._id}
+                  d_id={p?.developer._id}
+                  p_id={p?._id}
+                  status={p?.project_status}
+                  key={p?._id}
+                  deadline={moment(p?.end_date).fromNow()}
+                />
+                </div>
+>>>>>>> 00841f22c43c1508157e06a0b0f2dbffbb13a128
               </div>
             }
           
