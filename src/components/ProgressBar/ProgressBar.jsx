@@ -185,7 +185,7 @@ function ProgressBar({status,p_id,c_id,d_id,deadline}) {
                 </div>
                 </div>
                 <div className="col-sm-6 text-end">
-                {progressStepsNum <2 && d_id==user?.data._id ?
+                {progressStepsNum <2 && d_id==user?.data?._id ?
                 <div className="progress-btn">
                     <div href="#" className="btn" data-bs-toggle="modal"
                         data-bs-target="#toggle_model_request">Next</div>
