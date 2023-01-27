@@ -26,7 +26,7 @@
 }
 
 .skill-card{
-    justify-content: start;
+    justify-content: flex-start;
     align-items: flex-start;
 }
 
@@ -41,7 +41,7 @@
 }           
 
 .student-card .row .skill{
-    justify-content:start;
+    justify-content:flex-start;
     gap: 10px;
     
 }
@@ -72,7 +72,7 @@
 .add-skill-div{
     display: flex;
     align-items: flex-end;
-    justify-content: end;
+    justify-content:flex-end;
     width: 100%;
 }
 

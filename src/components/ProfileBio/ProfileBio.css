@@ -4,7 +4,7 @@
     top: -5vh ;
     display: flex;
     flex-direction: column;
-    justify-content:start;
+    justify-content:flex-start;
     background-color: white;
     border-radius: 20px;
     padding: 30px;
@@ -83,7 +83,7 @@ h2,h3,h4{
 .profile-head .options{
     display: flex;
     gap: 10px;
-    justify-content: end;
+    justify-content:flex-end;
 }
 
 .profile-head .options .edit {
@@ -127,7 +127,7 @@ h2,h3,h4{
 
 .student-dept{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     font-size: 20px;
     margin: 20px auto;
 

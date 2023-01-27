@@ -17,7 +17,7 @@ export const respondToRequest =(responseData,navigate)=>async(dispatch)=>{
         const {data}=await api.responseRequest(responseData);
         dispatch(getRequestedProjects());
         dispatch(setAlert("Responded Successfully","success"))
-        navigate('/admin')
+        navigate('/admin/request')
     } catch (error) {
         dispatch(setAlert("Server Error","danger"))
     }

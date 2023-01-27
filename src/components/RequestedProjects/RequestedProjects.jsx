@@ -10,7 +10,7 @@ const RequestedProjects = () => {
   const navigate = useNavigate();
   const dispatch=useDispatch()
   const project = useSelector((state) => (state.adminReducer))
-  const [projects, setProjects] = useState(null)
+  const [projects, setProjects] = useState([])
   const [responded, setResponded] = useState(false)
 
   const setData = () => {
@@ -33,18 +33,18 @@ const RequestedProjects = () => {
     setResponded(true)
     dispatch(setAlert("Accepting Project", "info", 2000))
     dispatch(respondToRequest({ status: "accepted", p_id: id }, navigate))
-    setResponded(false)
+    
   }
   const handleResponse= ()=>{
     setResponded(false)
   }
-
- 
-  
+  if(responded){
+    return <h1>Loading</h1>
+  }
 
   return (
       <div className='container mt-5 text-center'>
-        <table class="table table-stripped">
+        <table className="table table-stripped">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -56,7 +56,7 @@ const RequestedProjects = () => {
             </tr>
           </thead>
           <tbody>
-            {projects == null || projects.length == 0 ?
+            {projects == null || projects?.length == 0 ?
               <tr >
                 <td className='py-5 fw-bold' colSpan="6">No Projects Request Found</td>
               </tr> : 
@@ -65,12 +65,10 @@ const RequestedProjects = () => {
                   <th scope="row">{i + 1}</th>
                   <td><Link to={`/project/show/${p._id}`}  className="text-dark ">{p.title}</Link></td>
                   <td><Link to={`/profile/${p.createdBy._id}`} className="text-dark ">{p.createdBy.first_name} {p.createdBy.last_name}</Link></td>
-                  <td><Link to={`/profile/${p.developer._id}`} className="text-dark ">{p.developer.first_name} {p.developer.last_name}</Link></td>
+                  <td><Link to={`/profile/${p.developer._id}`} className="text-dark ">{p.developer.first_name} {p.developer.last_name}<span className="badge bg-primary mx-3">{p.developer?.onbord_project?.length}</span></Link></td>
                   <td>Need to change backend</td>
                   <td>
-                 
                     <button className='btn btn-success mx-3'disabled={responded} onClick={e=>handleAccpet(e,p._id)}>Accept</button>
-                  
                     <button className='btn btn-danger mx-3' disabled={responded} onClick={()=>setResponded(true)}  data-bs-toggle="modal" data-bs-target={`#toggle_model_project_request-${p._id}`}>Reject</button>
                   </td>
                 </tr>

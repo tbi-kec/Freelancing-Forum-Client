@@ -1,7 +1,9 @@
-import React,{useState} from 'react'
-import { useEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
+import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import './AdminProjectReport.scss'
+import {Link} from 'react-router-dom'
+import { DownloadTableExcel } from "react-export-table-to-excel";
 
 const AdminProjectReport = () => {
   const [fromdate,setFromDate]=useState()
@@ -13,6 +15,9 @@ const AdminProjectReport = () => {
   const [freelance,setFreelance]=useState(true)
   const constants = useSelector((state)=>(state.constantReducer))
   const [depts,setDepts]=useState([]);
+  const [table,setTable]=useState(false)
+  const tableRef = useRef(null)
+  const navigate = useNavigate()
   const setDeptData = ()=>{
     const dept = constants.data[0].dept_short;
     setDepts([...dept])
@@ -30,6 +35,7 @@ const AdminProjectReport = () => {
   const project = useSelector((state)=>(state.adminReducer))
   const getReport=async(e)=>{
     e.preventDefault();
+    setTable(true)
   }
   const filterByFromDate=()=>{
       const data=projects.filter(p => p.created_on >= fromdate )
@@ -48,7 +54,7 @@ const AdminProjectReport = () => {
     setProjects([...data])
   }
   const filterByFreelanceDept = () =>{
-      const data = projects.filter(p => p.developer.department==freelancerDept)
+      const data = projects.filter(p => p?.developer?.department==freelancerDept)
       setProjects([...data])
   }
   useEffect(()=>{
@@ -64,20 +70,31 @@ const AdminProjectReport = () => {
   useEffect(()=>{
       if(status=='created'){
         setFreelance(false);
+        setClient(true)
+      }else{
+        
+        setFreelance(true)
       }
       if(status!='all')
+
         filterByStatus();
   },[status])
 
   useEffect(()=>{
       if(clientDept!=null && clientDept!='all'){
+        setFreelance(false)
         filterByClientDept();
+      }else{
+        setFreelance(true)
       }
   },[clientDept])
 
   useEffect(()=>{
-      if(freelancerDept!=null && clientDept!='all'){
+      if(freelancerDept!=null && freelancerDept!='all'){
+        setClient(false)
         filterByFreelanceDept();
+      }else{
+        setClient(true)
       }
   },[freelancerDept])
 
@@ -87,10 +104,10 @@ const AdminProjectReport = () => {
     }
   },[project])
 
-
+  
   const project_status = ['all','created','pending-admin','pending-user','assigned','partial','testing','completed']
   return (
-    <div className='admin-project-report-container'>
+    <div className='admin-project-report-container pb-5'>
       <div className="container">
         <div className="row">
             <div className="col-12 card shadow my-5">
@@ -137,6 +154,7 @@ const AdminProjectReport = () => {
                     </div>
                     }
                     <div className="d-flex justify-content-end">
+                      <button onClick={()=>navigate('/admin/project/report')} className='btn btn-primary mx-3'>Reset</button>
                       <button onClick={getReport} className='btn btn-success btn-md'>Get Report</button>
                     </div>
                   </form>
@@ -144,6 +162,50 @@ const AdminProjectReport = () => {
             </div>
         </div>
       </div>
+      {table && <>
+      <div className="container text-end">
+        <DownloadTableExcel
+                    filename="Freelancing Forum Report"
+                    sheet="Report"
+                    currentTableRef={tableRef.current} >
+                    <button className="btn download-excel"> Export Excel </button>
+        </DownloadTableExcel>
+        </div>
+        <div className='container mt-5 text-center'>
+        <table class="table table-stripped" ref={tableRef}>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Project</th>
+              <th scope="col">Freelancer</th>
+              <th scope="col">Client</th>
+              <th scope="col">Stipend(₹)</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {projects == null || projects.length == 0 ?
+              <tr >
+                <td className='py-5 fw-bold' colSpan="6">No User Found</td>
+              </tr> : 
+              projects.map((p, i) => (
+                <tr key={p._id}>
+                  <th scope="row">{i + 1}</th>
+                  <td><Link to={`/project/show/${p._id}`}  className="text-dark ">{p.title}</Link></td>
+                  {p.developer==null ?
+                    <td> - </td> :
+                    <td><Link to={`/profile/${p.developer._id}`}  className="text-dark">{p.developer.first_name} {p.developer.last_name}</Link></td>
+                  }
+                  <td><Link to={`/profile/${p.createdBy._id}`}  className="text-dark">{p.createdBy.first_name} {p.createdBy.last_name}</Link></td>
+                  <td>{p.stipend}</td>
+                  <td>{p.project_status}</td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
+      </>
+}
     </div>
   )
 }
