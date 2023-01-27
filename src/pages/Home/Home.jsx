@@ -120,6 +120,7 @@ function Home() {
           {/* Notification */}
           <div className="notification flex-grow-1  my-4">
             <div className="notifications-header">Notifications</div>
+            <Notification />
             {notification.length!==0 ?
               <>
                 {notification.map(n=>(
