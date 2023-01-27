@@ -27,9 +27,9 @@ const Register = () => {
   const [user_type, setUserType] = useState("");
   const handleOtp = (e) => {
     e.preventDefault();
-    let femail_pattern = /^([a-z]+)\.([a-z]{2,5})\@([a-z]+)\.([a-z]{2,5})$/;
+    let femail_pattern = /^([a-z]+).([a-z]{2,5})@([a-z]+).([a-z]{2,5})$/;
     let email_pattern =
-      /^([a-z]+)\.([0-9]{2})([a-z]{2,5})\@([a-z]+)\.([a-z]{2,5})$/;
+      /^([a-z]+).([0-9]{2})([a-z]{2,5})@([a-z]+).([a-z]{2,5})$/;
     if (
       (!femail_pattern.test(kongu_email) &&
         !kongu_email.endsWith("kongu.edu")) ||
@@ -44,7 +44,7 @@ const Register = () => {
       );
       return;
     }
-    if (confirm != password) {
+    if (confirm !== password) {
       dispatch(setAlert("Password dont match", "warning", 3000));
       return;
     }
@@ -59,7 +59,7 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const modal = document.getElementById("modal_button");
-    if (otp != gotp) {
+    if (otp !== gotp) {
       dispatch(setAlert("Otp Not Match", "danger", 4000));
       return;
     }
@@ -81,15 +81,16 @@ const Register = () => {
     );
   };
   const user_types = ["client", "freelancer"];
+
   useEffect(() => {
     dispatch(
       setAlert(
         "You must have Github and Linkedin account to create a profile",
         "info",
-        3000
+        5000
       )
     );
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="register-container">
@@ -165,16 +166,16 @@ const Register = () => {
               </div>
               <div className="d-flex justify-content-center align-items-center mt-3 ">
                 <div className="login-logo-container">
-                  <img src={emdclogo} className="mx-5" alt="" width="50px" height="50px" />
+                  <img src={emdclogo} className="mx-5" alt="emdc-logo" width="50px" height="50px" />
                 </div>
                 <div className="login-logo-container">
-                  <img src={logo} alt="" className="mx-5"  width="75px" height="65px" />
+                  <img src={logo}  className="mx-5" alt="kec-logo"  width="75px" height="65px" />
                 </div>
                 <div className="login-logo-container">
-                  <img src={tbilogo} alt="" className="mx-4"  width="100px" height="50px" />
+                  <img src={tbilogo} alt="tbilogo" className="mx-4"  width="100px" height="50px" />
                 </div>
                 <div className="login-logo-container">
-                  <img src={iiclogo} alt="" className="mx-5"  width="100px" height="50px" />
+                  <img src={iiclogo} alt="iiclogo" className="mx-5"  width="100px" height="50px" />
                 </div>
               </div>
             
@@ -276,7 +277,7 @@ const Register = () => {
         </div>
       </div>
       <div className="image-container">
-        <img src={human} alt="human.image" />
+        <img src={human} alt="human" />
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
-import React,{useEffect,useLayoutEffect, useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { useSelector } from 'react-redux';
-import { Link, useParams,useNavigate } from "react-router-dom";
-import AddProject from '../../components/AddProject/AddProject';
+import { useParams,useNavigate } from "react-router-dom";
 import Banner from '../../components/Banner/Banner'
 import ProfileBio from '../../components/ProfileBio/ProfileBio'
 import ProjectHistory from '../../components/ProjectHistory/ProjectHistory';
@@ -20,15 +19,16 @@ export default function StudentProfile() {
     const [user,setUser]=useState(null);
     const current = useSelector((state)=>(state.currentUserReducer))
     const users=useSelector((state)=>(state.userReducer))
-    const filterUser =  async()=>{
-        let newUser = users.data.filter(u=>u._id === id);
-        setUser(newUser[0])
-    }
-    useLayoutEffect(()=>{
+   
+    useEffect(()=>{
         if(users.data){
+             const filterUser =  ()=>{
+             let newUser = users.data.filter(u=>u._id === id);
+             setUser(newUser[0])
+        }
             filterUser();
         }   
-    },[users])
+    },[users.data,id])
 
     useEffect(()=>{
         // console.log(user._id, id);
@@ -49,9 +49,6 @@ export default function StudentProfile() {
         localStorage.removeItem('freelance');
         navigate('/');
     }
-
-    
-
 
   return (
     <div className='student-profile'>
@@ -89,9 +86,7 @@ export default function StudentProfile() {
                         
                         {work_history?.map(w=>(
                                 <WorkHistory work={w} key={w._id} />
-                        ))}
-
-            
+                        ))}            
             </div>
         </div>
         }

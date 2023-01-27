@@ -37,16 +37,16 @@ const deleteNotificationButton=(e)=>{
             </div>
             <div className="col">
                 {notification.notify_type==1?
-                <div className='d-flex justify-content-end'>
-                    <button className='btn success px-2 py-1 me-2' onClick={handleAccept} >Accept</button>
-                    <button className='btn danger px-2 py-0 ' onClick={handleReject}>Reject</button>
-                </div>
-                :<div className='d-flex justify-content-end  text-white' >
-                <button onClick={deleteNotificationButton} className="btn btn-light">
-                <i className="fa-sharp fa-solid fa-xmark "></i>
-                </button>
-            </div>
-}
+                    <div className='d-flex justify-content-end'>
+                        <button className='btn success px-2 py-1 me-2' onClick={handleAccept} >Accept</button>
+                        <button className='btn danger px-2 py-0 ' onClick={handleReject}>Reject</button>
+                    </div>
+                    :<div className='d-flex justify-content-end  text-white' >
+                    <button onClick={deleteNotificationButton} className="btn btn-light">
+                    <i className="fa-sharp fa-solid fa-xmark "></i>
+                    </button>
+                </div>  
+            }
 
             </div>
         </div>
