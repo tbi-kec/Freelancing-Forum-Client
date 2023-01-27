@@ -14,6 +14,8 @@ function UserAprprovalModal({id,name}) {
     dispatch(acceptOrRejectUser({u_id:id,status:"rejected",message},navigate))
 
   }
+
+  
   
   return (
     <>

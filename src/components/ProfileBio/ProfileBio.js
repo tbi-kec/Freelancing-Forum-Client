@@ -185,12 +185,12 @@ export default function ProfileBio({user}) {
                 {(function () {
                   var rate = [];
                   for (let i = 0; i < user?.rating; i++) {
-                    rate.push(<img src={starColor} alt="star" height="30px" />);
+                    rate.push(<img key={i} src={starColor} alt="star" height="30px" />);
                   }
                   for (let j = 0; j < 5 - user?.rating; j++) {
-                    rate.push(<img src={starDull} alt="star" height="25px" />);
+                    rate.push(<img key={j} src={starDull} alt="star" height="25px" />);
                   }
-                  return <div>{rate}</div>;
+                  return <div key={rate.length}>{rate}</div>;
                 })()}
               </div>
             </div>
@@ -200,7 +200,7 @@ export default function ProfileBio({user}) {
           user?.admin_verify &&
         <div className="student-dept d-flex flex-wrap justify-content-between">
           <h4 className="mb-2">
-            <i class="fa-solid fa-location-dot"></i>
+            <i class="fa-solid fa-location-dot px-3" ></i>
             {user?.department}
           </h4>
           {projectGiven.length != 0 && current?.data?._id != user?._id && (

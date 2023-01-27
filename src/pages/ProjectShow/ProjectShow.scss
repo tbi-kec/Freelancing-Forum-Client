@@ -1,4 +1,5 @@
-.banner-project{
+.project-show-container{
+    .banner-project{
     background-color: #566E7A;
     padding: 20px;
     border-radius: 10px;
@@ -20,7 +21,7 @@
 .banner-profile-1{
     height: 50px !important;
 }
-
+}
 @media (max-width: 766px)  {
     .banner-profile{
         display: none;

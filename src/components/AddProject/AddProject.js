@@ -35,7 +35,7 @@ export default function AddProject() {
         return;
     }
     const id =user?.user._id;
-    console.log(id)
+  
     dispatch(setAlert("Creating Study Project","info"))
     dispatch(newStudyProject({createdBy:id,title,date,link,technology,description},navigate))
     document.getElementById("close_btn").click();
@@ -62,6 +62,7 @@ export default function AddProject() {
                     onChange={(e)=>setTitle(e.target.value)}
                     required
                 />
+               
                  <input
                     type="date"
                     className="form-control my-3 project-add-form-input"
@@ -72,7 +73,7 @@ export default function AddProject() {
                 />
                 
                 <input
-                    type="text"
+                    type="url"
                     className="form-control my-3 project-add-form-input"
                     placeholder="Github or Drive Link"
                     value={link}

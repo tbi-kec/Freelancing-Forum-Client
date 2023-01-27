@@ -12,6 +12,7 @@ const RequestedProjects = () => {
   const project = useSelector((state) => (state.adminReducer))
   const [projects, setProjects] = useState(null)
   const [responded, setResponded] = useState(false)
+
   const setData = () => {
     const data = project.data.filter(p => p.project_status == 'pending-admin');
     setProjects([...data])
@@ -34,14 +35,11 @@ const RequestedProjects = () => {
     dispatch(respondToRequest({ status: "accepted", p_id: id }, navigate))
     setResponded(false)
   }
-
-  const handleReject = (e, id) => {
-    e.preventDefault();
-    setResponded(true)
-    dispatch(setAlert("Rejecting Project", "info", 2000))
-    dispatch(respondToRequest({ status: "created", p_id: id }, navigate))
+  const handleResponse= ()=>{
     setResponded(false)
   }
+
+ 
   
 
   return (
@@ -73,7 +71,7 @@ const RequestedProjects = () => {
                  
                     <button className='btn btn-success mx-3'disabled={responded} onClick={e=>handleAccpet(e,p._id)}>Accept</button>
                   
-                    <button className='btn btn-danger mx-3' disabled={responded} onClick={e=>handleReject(e,p._id)} data-bs-toggle="modal" data-bs-target={`#toggle_model_project_request-${p._id}`}>Reject</button>
+                    <button className='btn btn-danger mx-3' disabled={responded} onClick={()=>setResponded(true)}  data-bs-toggle="modal" data-bs-target={`#toggle_model_project_request-${p._id}`}>Reject</button>
                   </td>
                 </tr>
               ))}
@@ -82,7 +80,7 @@ const RequestedProjects = () => {
          {
         projects.map((p, i) => {
           return (
-            <RequestModal id={p._id} />
+            <RequestModal handleResponse={handleResponse} key={p._id} id={p._id} />
           )
         })}
       </div>

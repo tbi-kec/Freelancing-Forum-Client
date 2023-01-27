@@ -1,6 +1,6 @@
 .alert-wrapper {
     display: flex;
-    z-index: 101;
+    z-index: 1001;
     position: fixed;
     top: 1rem;
     right: 1rem;

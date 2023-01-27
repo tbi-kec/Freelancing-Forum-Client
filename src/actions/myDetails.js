@@ -19,9 +19,9 @@ export const getMyDetails=()=>async(dispatch)=>{
 export const newStudyProject = (projectData,navigate)=>async(dispatch)=>{
     try {
         const {data}=await api.newStudyProject(projectData)
-        dispatch(getMyDetails())
         dispatch(setAlert("Added new Study Project","success"))
-         navigate('/home')
+        dispatch(getMyDetails())
+         navigate(`/profile/${projectData.createdBy}`)
     } catch (error) {
         dispatch(setAlert("Server error while creating project","danger"))
     }

@@ -1,5 +1,5 @@
 import React from "react";
-import "./ProjectShow.css";
+import "./ProjectShow.scss";
 import bannerIcon from "../../assets/Maskgroup.png";
 import profile from "../../assets/profileicon2.png";
 import accept from "../../assets/accept.png";
@@ -26,7 +26,7 @@ function ProjectShow() {
   };
 
   return (
-    <div className="my-3">
+    <div className="my-5 project-show-container container">
       {project && project?.data
         ?.filter((p) => p?._id == id)
         ?.map((p) => (
@@ -89,7 +89,7 @@ function ProjectShow() {
                   </div>
                   <div className="col-md-3 notification flex-grow-1">
                     <div className="p-3">
-                      <b>Start date:</b> {moment(p.end_date).fromNow()}
+                      <b>Start date:</b> {moment(p.created_on).fromNow()}
                     </div>
                     <div className="p-3">
                       <b>End date:</b> {moment(p.end_date).fromNow()}
@@ -106,14 +106,14 @@ function ProjectShow() {
               </div>
             </div>
 
-            {p.project_status === "created" ? (
+            {p.createdBy._id ==user?.data?._id && p.project_status === "created" && 
               <div className="p-3">
                 <div className="fs-4 mt-4 fw-bold">Applicant</div>
                 <div>
                   <div className="row">
-                  {p.requested.map((u, i) => {
-                    return (
-                      <div className="col-md-6" key={u._id}>
+                  {p.requested.map((u, i) => (
+                  
+                    <div className="col-md-6" key={u._id}>
                       <div className="card m-3  applicant-card">
                         <div className="card-body">
                           <div className="row d-flex align-items-center">
@@ -156,30 +156,34 @@ function ProjectShow() {
                         </div>
                       </div>
                     </div>
-                    );
-                  })}
+                    
+                  ))}
             
                   </div>
                 </div>
               </div>
-            ) : (
+          }
+          {p?.project_status!='created' || p?.project_status=='pending-admin' || p?.project_status!="pending-user" || p?.project_status!="completed" && 
+          p?.createdBy?._id==user?.data?._id || p.developer?._id==user?.data?._id &&
               <div className="card mt-3 mb-5 shadow">
                 <div className="card-body">
-              <div className="p-3">
-                <div className="fs-4 my-4 fw-bold">Progress</div>
-                <ProgressBar
-                  c_id={p?.createdBy._id}
-                  d_id={p?.developer._id}
-                  p_id={p?._id}
-                  status={p?.project_status}
-                  key={p?._id}
-                  deadline={moment(p?.end_date).fromNow()}
-                />
+                  <div className="p-3">
+                    <div className="fs-4 my-4 fw-bold">Progress</div>
+                    <ProgressBar
+                      c_id={p?.createdBy?._id}
+                      d_id={p?.developer?._id}
+                      p_id={p?._id}
+                      status={p?.project_status}
+                      key={p?._id}
+                      deadline={moment(p?.end_date).fromNow()}
+                    />
 
-                </div>
+                    </div>
+                  </div>
               </div>
-              </div>
-            )}
+            }
+          
+            
           </div>
         ))}
     </div>

@@ -33,7 +33,7 @@ function EditProfile({handleClick}) {
               dispatch(setAlert("Please select level","warning"));
               return;
           }
-          if(skills.length>5){
+          if(skills.length>4){
            dispatch(setAlert("Only 5 skills can be given","warning"))
             return ;
         }
@@ -47,7 +47,7 @@ function EditProfile({handleClick}) {
           setskills([...newSkills])
       }
       const handleDomain = ()=>{
-        if(domain.length>3){
+        if(domain.length>2){
             dispatch(setAlert("Only 3 domains can be given","warning"))
             return ;
         }
@@ -91,9 +91,9 @@ function EditProfile({handleClick}) {
     }
 
   return (
-    <div className='edit-profile-container'>
+    <div className='edit-profile-container card'>
                 <h2 className='my-3'>Edit Profile</h2>
-                <div className='d-flex justify-content-center'>
+                <div className='d-flex justify-content-center card-body'>
 
                 <form className='row g-2' onSubmit={handleSubmit}>
                             <div className="form-group col-md-12 col-lg-6">
@@ -133,7 +133,7 @@ function EditProfile({handleClick}) {
                                     </div>
                                     <div className="col-5">
                                          <div className="form-group">
-                                            <select name="skills-level"  className="form-select" onChange={e=>setLevel(e.target.value)}>
+                                            <select defaultValue={level} name="skills-level"  className="form-select" onChange={e=>setLevel(e.target.value)}>
                                                 <option value="" disabled hidden selected>Level</option>
                                                 <option value="beginner" style={{background:"#81F664",color:"white"}} className='form-option' >Beginner</option>
                                                 <option value="intermediate" style={{background:"#F5E878",color:"white"}} className=' py-3 form-option' >Intermediate</option>
