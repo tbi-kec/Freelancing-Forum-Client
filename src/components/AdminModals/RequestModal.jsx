@@ -9,7 +9,7 @@ function RequestModal(props) {
           <div className="modal-content p-5">
             <label className="form-label">Reason for rejection</label>
             <input type="text" className="form-control" />
-            <button className="btn btn-danger">Reject</button>
+            <button className="btn btn-danger" data-bs-dismiss="modal" aria-label="Close" >Reject</button>
           </div>
         </div>
       </div>
