@@ -5,7 +5,7 @@ import { useDispatch,useSelector } from 'react-redux';
 import { responseToNotification } from '../../actions/myDetails';
 import { deleteNotification } from '../../actions/myDetails';
 import MaterialIcon from 'material-icons-react';
-
+import moment from "moment"
 export default function Notification({notification}) {
   
     const navigate =useNavigate()
@@ -31,37 +31,41 @@ const deleteNotificationButton=(e)=>{
 
   return (
     <div className='notification-container m-2 pb-4'>
-        <div className="row d-flex align-items-center">
+        {notification?.map(n=>(
+            <div className="row d-flex align-items-center" key={n._id}>
             <div className="col-3 d-flex justify-content-center">
-            {/* <MaterialIcon icon="sms" size="56px" color='#5378F8'/> */}
-            <MaterialIcon icon="work" size="56px" color='#5378F8'/>
+            {n.notify_type===0 && <MaterialIcon icon="sms" size="56px" color='#5378F8'/>}
+            {n.notify_type==1 && <MaterialIcon icon="work" size="56px" color='#5378F8'/> }
             </div>
             <div className="col-9">
                 <div className="row d-flex align-items-center">
                     <div className="col-10">
-                        <div className='fw-bold'>From Sujit</div>
+                        <div className='fw-bold'>From {n.name}</div>
                     </div>
                     <div className="col-2">
                         <button onClick={deleteNotificationButton} className="btn">
                         <i className="fa-sharp fa-solid fa-xmark text-danger "></i>
                         </button>
-
                     </div>
                 </div>
                 <div className='' style={{fontSize:"12px"}}>( Aug 1 - July 2 )</div>
-                <div className='fw-bold'>Driver Drowsiness Project</div>
-                <div style={{fontSize:"14px"}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, quo voluptate dolorum error voluptatem nihil, omnis esse reprehenderit iusto unde suscipit commodi rem, quae fugit impedit maxime repellat eius quaerat?</div>
+                <div className='fw-bold'>{n.p._id.title}</div>
+                <div style={{fontSize:"14px"}}>{n.message}</div>
                 <div className="row my-2">
-                    <div className="col-6">
-                    <button className='btn btn-success px-2 py-0 me-2' onClick={handleAccept} >Accept</button>
-                    <button className='btn btn-danger px-2 py-0 ' onClick={handleReject}>Reject</button>
-                    </div>
-                    <div className="col-6 text-end px-4">
-                        <span className='' style={{fontSize:"12px"}} >3 minutes ago</span>
-                    </div>
+                    {n.notify_type==1 &&<div className="col-6">
+                        <button className='btn btn-success px-2 py-0 me-2' onClick={handleAccept} >Accept</button>
+                        <button className='btn btn-danger px-2 py-0 ' onClick={handleReject}>Reject</button>
+                        </div>
+                     }
+                    {/* <div className="col-6 text-end px-4">
+                        <span className='' style={{fontSize:"12px"}} >{moment(n.createdOn).fromNow()}</span>
+                    </div> */}
                 </div>
+    
             </div>
         </div>
+        ))}
+        
         {/* <div className="row p-2 ">
             <div className="col-8">
                 <h6 className='mt-1 text-light fw-bold'>{notification.p_id.title}</h6>
