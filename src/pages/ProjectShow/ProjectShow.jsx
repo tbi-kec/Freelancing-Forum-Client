@@ -17,6 +17,7 @@ function ProjectShow() {
   const project = useSelector((state) => state.projectReducer);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.myDetailsReducer);
+  const constants=useSelector((state)=>(state.constantReducer));
 
   const handleAccept = (e, d_id) => {
     e.preventDefault();
@@ -35,7 +36,6 @@ function ProjectShow() {
                 <h3 className="mt-3 mb-0 fw-bold mb-3">{p?.title}</h3>
                 <div className="fw-bold">
                   <span>{p?.createdBy?.department}</span>
-                  
                 </div>
                 <div className=" mt-3 d-flex justify-content-start align-items-center">
                   <h5 className="pt-2 ">
