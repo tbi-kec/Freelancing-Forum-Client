@@ -20,6 +20,7 @@ const handleReject =(e)=>{
   e.preventDefault()
   dispatch(responseToNotification({status:"rejected",p_id:notification.p_id._id,n_id:notification._id},navigate))
 }
+
 const deleteNotificationButton=(e)=>{
     e.preventDefault();
     console.log("clicked");
