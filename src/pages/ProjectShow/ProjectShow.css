@@ -14,7 +14,8 @@
     border-radius: 10px;
 }
 .banner-profile{
-    height: 170px !important;
+    height: 160px !important;
+    width:240px !important;
 }
 .banner-profile-1{
     height: 50px !important;

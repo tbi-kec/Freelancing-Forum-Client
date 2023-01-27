@@ -37,6 +37,10 @@ function ProjectAdd() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if(skills.length==0){
+      dispatch(setAlert("Please provide skills","warning"))
+      return
+    }
     console.log(user);
 
     const id = user.user._id || myself.data._id;
@@ -79,12 +83,14 @@ function ProjectAdd() {
               placeholder="Project Title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
+              required
             />
             <select
               class="form-select my-3 project-add-form-input"
               aria-label="Default select example"
               defaultValue={category}
               onChange={(e) => setCategory(e.target.value)}
+              required
             >
               <option disabled hidden selected>
                 Category Your Project Come Under
@@ -102,6 +108,7 @@ function ProjectAdd() {
               placeholder="₹ Stipend (if not availabe enter 0)"
               value={stipend}
               onChange={(e) => setBudget(e.target.value)}
+              required
             />
             <div className="card project-add-form-input">
               <div className="card-body">
@@ -152,6 +159,7 @@ function ProjectAdd() {
                   placeholder="Date"
                   value={end_date}
                   onChange={(e) => setDate(e.target.value)}
+                  required
                 />
               
             </div>
@@ -161,7 +169,9 @@ function ProjectAdd() {
               cols="30"
               rows="4"
               onChange={(e) => setDescription(e.target.value)}
+              required
             >
+
               {description}
             </textarea>
             <div className="text-end">

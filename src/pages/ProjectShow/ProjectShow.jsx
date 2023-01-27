@@ -12,11 +12,11 @@ import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
 import { Link } from "react-router-dom";
 function ProjectShow() {
+
   const { id } = useParams();
   const navigate = useNavigate();
   const project = useSelector((state) => state.projectReducer);
   const dispatch = useDispatch();
-  console.log(project);
   const user = useSelector((state) => state.myDetailsReducer);
 
   const handleAccept = (e, d_id) => {
@@ -26,25 +26,24 @@ function ProjectShow() {
   };
 
   return (
-    <div>
-      {project?.data
-        ?.filter((p) => p._id == id)
+    <div className="my-3">
+      {project && project?.data
+        ?.filter((p) => p?._id == id)
         ?.map((p) => (
           <div className="container my-3 " key={p._id}>
             <div className="row mb-5 banner-project ">
               <div className="col-8 ps-4">
-                <h3 className="mt-3 mb-0 fw-bold mb-3">{p.title}</h3>
+                <h3 className="mt-3 mb-0 fw-bold mb-3">{p?.title}</h3>
                 <div className="fw-bold">
-                  <span>{p.createdBy.department}</span>
+                  <span>{p?.createdBy?.department}</span>
                   <span className=" mx-3">•</span>
                   <span>IT</span>
                 </div>
-                <div className=" mt-3 d-flex justify-content-start">
+                <div className=" mt-3 d-flex justify-content-start align-items-center">
                   <h5 className="pt-2 ">
                     Posted By :{" "}
-              
                   </h5>
-                  <div className=" mx-2 text-start">
+                  <div className=" mx-2 text-start d-flex align-items-center">
                   <span
                       data-bs-dismiss="modal"
                       aria-label="close"
@@ -52,7 +51,7 @@ function ProjectShow() {
                     >
                       <Link
                         to={`/profile/${p.createdBy._id}`}
-                        className="text-light fw-bold"
+                        className="text-light fw-bold pe-3"
                       >
                         {p.createdBy.first_name} - {p.createdBy.last_name}
                       </Link>
@@ -62,7 +61,7 @@ function ProjectShow() {
                 </div>
               </div>
               <div className="col-4">
-                <img src={bannerIcon} alt="" height="170px" width="200px" className="banner-profile"/>
+                <img src={bannerIcon} alt="" height="160px" width="190px" className="banner-profile"/>
               </div>
             </div>
             <div className="card shadow my-5">
@@ -79,10 +78,8 @@ function ProjectShow() {
                       <div className="skill d-flex justify-content-start gap-4 ">
                         {p.skills.map((e, i) => {
                           return (
-                            <div
-                              className="skillset px
-                        -2 skill-beginner text-light"
-                            >
+                            <div key={i}
+                              className="skillset px-2 skill-beginner text-light">
                               {e}
                             </div>
                           );
@@ -116,7 +113,7 @@ function ProjectShow() {
                   <div className="row">
                   {p.requested.map((u, i) => {
                     return (
-                      <div className="col-md-6">
+                      <div className="col-md-6" key={u._id}>
                       <div className="card m-3  applicant-card">
                         <div className="card-body">
                           <div className="row d-flex align-items-center">
@@ -166,15 +163,21 @@ function ProjectShow() {
                 </div>
               </div>
             ) : (
+              <div className="card mt-3 mb-5 shadow">
+                <div className="card-body">
               <div className="p-3">
-                <div className="fs-4 mt-4 fw-bold">Progress</div>
+                <div className="fs-4 my-4 fw-bold">Progress</div>
                 <ProgressBar
-                  c_id={p.createdBy._id}
-                  d_id={p.developer._id}
-                  p_id={p._id}
-                  status={p.project_status}
-                  key={project._id}
+                  c_id={p?.createdBy._id}
+                  d_id={p?.developer._id}
+                  p_id={p?._id}
+                  status={p?.project_status}
+                  key={p?._id}
+                  deadline={moment(p?.end_date).fromNow()}
                 />
+
+                </div>
+              </div>
               </div>
             )}
           </div>

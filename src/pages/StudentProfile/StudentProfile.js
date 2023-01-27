@@ -62,10 +62,10 @@ export default function StudentProfile() {
       </div>
     
     }
-        <div className="back" onClick={()=>navigate("/home")}>
-        <Link>
+        <div className="back" onClick={()=> user.isAdmin ? navigate("/admin") : navigate("/home")}>
+        
             <i className="fa-sharp fa-solid fa-arrow-left"></i>
-        </Link>
+        
         </div>
         <Banner/>
         

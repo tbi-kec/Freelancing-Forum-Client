@@ -8,14 +8,14 @@ import starDull from '../../assets/dull-star.png'
 import './ProgressBar.css'
 import { developerUpdateRating } from '../../actions/myDetails'
 
-function ProgressBar({status,p_id,c_id,d_id}) {
+function ProgressBar({status,p_id,c_id,d_id,deadline}) {
    const navigate = useNavigate();
    const dispatch = useDispatch();
    const [userRating,setUserRating]=useState(0)
-   console.log(userRating);
+  
     const [progressStepsNum, setprogressStepsNum] = useState(0);
   const user = useSelector((state)=>(state.myDetailsReducer))
-  console.log(user)
+ 
     const nextprogress = () => {
         setprogressStepsNum(prevprogressStep=>prevprogressStep+1);
                     dispatch(updateStatus({p_id,status:progressStepsNum+1},navigate))
@@ -79,7 +79,7 @@ function ProgressBar({status,p_id,c_id,d_id}) {
                 className="modal fade "
                 data-bs-backdrop="static"
                 id="toggle_model_request"
-                tabindex="-1"
+                tabIndex="-1"
                 role="dialog"
                 aria-labelledby="exampleModalLabel"
             >
@@ -92,7 +92,7 @@ function ProgressBar({status,p_id,c_id,d_id}) {
                             </div>
                             <div className="d-flex justify-content-around">
                                 <button
-                                    class="btn btn-danger my-3"
+                                    className="btn btn-danger my-3"
                                     data-bs-dismiss="modal"
                                     aria-label="Close"
                                 >
@@ -116,7 +116,7 @@ function ProgressBar({status,p_id,c_id,d_id}) {
                 className="modal fade "
                 data-bs-backdrop="static"
                 id="toggle_model_rate"
-                tabindex="-1"
+                tabIndex="-1"
                 role="dialog"
                 aria-labelledby="exampleModalLabel"
             >
@@ -130,13 +130,13 @@ function ProgressBar({status,p_id,c_id,d_id}) {
       function () {
         var rate=[]
         for(var i=0;i<userRating;i++){
-          rate.push(<img src={starColor} id={i+1} alt='star' height='30px' onClick={(e)=>setUserRating(e.target.id)} />)
+          rate.push(<img key={i} src={starColor} id={i+1} alt='star' height='30px' onClick={(e)=>setUserRating(e.target.id)} />)
         }
         for(let j=0;j<5-userRating;j++){
-          rate.push(<img src={starDull} alt='star' id={i+j+1} height='25px' onClick={(e)=>setUserRating(e.target.id)} />)
+          rate.push(<img key={j} src={starDull} alt='star' id={i+j+1} height='25px' onClick={(e)=>setUserRating(e.target.id)} />)
         }
         return(
-          <div>
+          <div key={rate.length}>
           {rate}
           </div>
         )
@@ -145,7 +145,7 @@ function ProgressBar({status,p_id,c_id,d_id}) {
                             </div>
                             <div className="d-flex justify-content-around">
                                 <button
-                                    class="btn btn-danger my-3"
+                                    className="btn btn-danger my-3"
                                     data-bs-dismiss="modal"
                                     aria-label="Close"
                                 >
@@ -175,23 +175,23 @@ function ProgressBar({status,p_id,c_id,d_id}) {
                         className="progress-step progress-step"
                         data-title="Assign"><i className="fas fa-hands-helping"></i></div>
                     <div className="progress-step" data-title="OnProgress"><i className="fas fa-toolbox"></i></div>
-                    <div className="progress-step" data-title="Testing"><i class="fa-sharp fa-solid fa-vial"></i></div>
+                    <div className="progress-step" data-title="Testing"><i className="fa-sharp fa-solid fa-vial"></i></div>
                     <div className="progress-step" data-title="Completed"><i className="fas fa-check-circle"></i></div>
                 </div>
                 <div className='row'>
                 <div className="col-sm-6">
-                <div className="p-3">
-                  <b>Deadline:</b> end in 7days
+                <div className="text-start py-3">
+                  <b>Deadline:</b> {deadline}
                 </div>
                 </div>
-                <div className="col-sm-6">
-                {progressStepsNum <2 && d_id==user?.data._id ?
+                <div className="col-sm-6 text-end">
+                {progressStepsNum <2 && d_id==user?.data?._id ?
                 <div className="progress-btn">
                     <div href="#" className="btn" data-bs-toggle="modal"
                         data-bs-target="#toggle_model_request">Next</div>
                 </div>
                 :""}
-                {progressStepsNum >=2 && c_id==user?.data._id   ?
+                {progressStepsNum >=2 && c_id==user?.data?._id   ?
                 <div className="progress-btn">
                     <div href="#" className="btn" data-bs-toggle="modal"
                         data-bs-target="#toggle_model_rate">Confirm & rate</div>

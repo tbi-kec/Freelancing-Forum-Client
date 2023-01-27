@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import moment from 'moment';
 const ProgressProjects = () => {
@@ -16,17 +17,11 @@ const ProgressProjects = () => {
   if (projects == null) {
     return <h1>Loading...</h1>
   }
-  /*
-  title
-  client
-  freelancing
-  current status
-  end date
-   */
+  
   return (
     <div>
       <div className='container mt-5 text-center'>
-        <table class="table table-hover table-stripped">
+        <table class="table  table-stripped">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -45,9 +40,9 @@ const ProgressProjects = () => {
               projects.map((p, i) => (
                 <tr key={p._id}>
                   <th scope="row">{i + 1}</th>
-                  <td>{p.title}</td>
-                  <td>{p.createdBy.first_name} {p.createdBy.last_name}</td>
-                  <td>{p.developer.first_name} {p.developer.last_name}</td>
+                  <td><Link to={`/project/show/${p._id}`} >{p.title}</Link></td>
+                  <td><Link to={`/profile/${p.createdBy._id}`}>{p.createdBy.first_name} {p.createdBy.last_name}</Link></td>
+                  <td><Link to={`/profile/${p.developer._id}`}>{p.developer.first_name} {p.developer.last_name}</Link></td>
                   <td>{p.project_status}</td>
                   <td>{moment(p.end_date).calendar()}</td>
                 </tr>
