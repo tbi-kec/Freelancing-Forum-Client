@@ -65,7 +65,6 @@ const getReport = (e)=>{
     e.preventDefault();
     setTable(true)
 }
-console.log(users);
   const user_roles = ['all','client','freelancer']
   return (
     <div className="admin-user-report">

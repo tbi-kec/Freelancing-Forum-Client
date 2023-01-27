@@ -1,7 +1,8 @@
-import React,{useState} from 'react'
-import { useEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { useSelector } from 'react-redux'
 import './AdminProjectReport.scss'
+import {Link} from 'react-router-dom'
+import { DownloadTableExcel } from "react-export-table-to-excel";
 
 const AdminProjectReport = () => {
   const [fromdate,setFromDate]=useState()
@@ -13,6 +14,7 @@ const AdminProjectReport = () => {
   const [freelance,setFreelance]=useState(true)
   const constants = useSelector((state)=>(state.constantReducer))
   const [depts,setDepts]=useState([]);
+  const tableRef = useRef(null)
   const setDeptData = ()=>{
     const dept = constants.data[0].dept_short;
     setDepts([...dept])
@@ -48,7 +50,7 @@ const AdminProjectReport = () => {
     setProjects([...data])
   }
   const filterByFreelanceDept = () =>{
-      const data = projects.filter(p => p.developer.department==freelancerDept)
+      const data = projects.filter(p => p.developer.department == freelancerDept)
       setProjects([...data])
   }
   useEffect(()=>{
@@ -87,10 +89,10 @@ const AdminProjectReport = () => {
     }
   },[project])
 
-
+  console.log(projects);
   const project_status = ['all','created','pending-admin','pending-user','assigned','partial','testing','completed']
   return (
-    <div className='admin-project-report-container'>
+    <div className='admin-project-report-container pb-5'>
       <div className="container">
         <div className="row">
             <div className="col-12 card shadow my-5">
@@ -143,6 +145,47 @@ const AdminProjectReport = () => {
                 </div>
             </div>
         </div>
+      </div>
+      <div className="container text-end">
+        <DownloadTableExcel
+                    filename="Freelancing Forum Report"
+                    sheet="Report"
+                    currentTableRef={tableRef.current} >
+                    <button className="btn download-excel"> Export Excel </button>
+        </DownloadTableExcel>
+        </div>
+        <div className='container mt-5 text-center'>
+        <table class="table table-stripped" ref={tableRef}>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Project</th>
+              <th scope="col">Freelancer</th>
+              <th scope="col">Client</th>
+              <th scope="col">Amount(₹)</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {projects == null || projects.length == 0 ?
+              <tr >
+                <td className='py-5 fw-bold' colSpan="6">No User Found</td>
+              </tr> : 
+              projects.map((p, i) => (
+                <tr key={p._id}>
+                  <th scope="row">{i + 1}</th>
+                  <td><Link to={`/project/show/${p._id}`}  className="text-dark ">{p.title}</Link></td>
+                  {p.developer==null ?
+                    <td> - </td> :
+                    <td><Link to={`/profile/${p.developer._id}`}  className="text-dark ">{p.developer.first_name} {p.developer.last_name}</Link></td>
+                  }
+                  <td><Link to={`/profile/${p.createdBy._id}`}  className="text-dark ">{p.createdBy.first_name} {p.createdBy.last_name}</Link></td>
+                  <td>{p.stipend}</td>
+                  <td>{p.project_status}</td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
       </div>
     </div>
   )
