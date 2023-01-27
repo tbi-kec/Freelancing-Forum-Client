@@ -2,7 +2,6 @@ import React,{useState} from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import './Home.css'
 import profile from '../../assets/profileicon2.png'
-import DeptTitleCard from '../../components/homepage/DeptTitleCard'
 import Notification from '../../components/homepage/Notification'
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
@@ -23,11 +22,6 @@ function Home() {
   const users = useSelector((state)=>(state.userReducer))
   const myself=useSelector((state)=>(state.myDetailsReducer))
   const constants=useSelector((state)=>(state.constantReducer));
- const dispatch=useDispatch()
-  // const [projects,setProjects]=useState()
-  // useEffect(()=>{
-  //     setProjects(project?.data)
-  // },[project])
 
   const [onbord_project,setOnBoardProject] = useState([]);
   const [notification,setNotification]=useState([]);
@@ -56,13 +50,7 @@ function Home() {
   const handleNavigate = ()=>{
       navigate(`/profile/${myself.data._id}`)
   }
-//  useEffect(()=>{
-//     if(myself.data){
-//       if(myself?.data?.admin_verify==false){
-//         dispatch(setAlert("Wait untill Admin has verfie your account","info"))
-//       }
-//     }
-//  },[myself])
+
   return (
     <div className="home-page-container">
       <Navbar />
@@ -160,7 +148,7 @@ function Home() {
         {navToggler ?
         <div>
           {
-            project.data != null &&
+            project.data !== null &&
               project.data
               .slice(project.data.length-10,project.data.length)?.map(p=>(
                 <ProjectCard project={p} constant={constants?.data[0]} key={p._id}/>
@@ -169,7 +157,7 @@ function Home() {
         </div>  :
         <div className="my-5">
           {
-            users.data != null &&
+            users.data !== null &&
               users.data
               .sort((a,b) => {return a.rating >b.rating ? -1 : 1})
               .slice(0,users.data.length > 10 ? 10 : users.data.length)?.filter(u=> u.admin_verify==true).map(u=>(

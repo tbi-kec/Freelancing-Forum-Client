@@ -5,14 +5,15 @@ import moment from 'moment';
 const ProgressProjects = () => {
   const project = useSelector((state) => (state.projectReducer));
   const [projects, setProjects] = useState(null);
-  const status = ['created', 'pending-user', 'pending-admin', 'completed']
-  const getData = () => {
-    const data = project.data.filter(p => p.project_status === 'assigned' || p.project_status === 'partial' || p.project_status === 'testing')
-    setProjects([...data])
-  }
+ 
   useEffect(() => {
-    if (project && project.data != null)
-      getData();
+    if (project && project.data !== null){
+        const getData = () => {
+          const data = project.data.filter(p => p.project_status === 'assigned' || p.project_status === 'partial' || p.project_status === 'testing')
+            setProjects([...data])
+     }
+          getData();
+    }
   }, [project])
   if (projects == null) {
     return <h1>Loading...</h1>
@@ -33,7 +34,7 @@ const ProgressProjects = () => {
             </tr>
           </thead>
           <tbody>
-            {projects == null || projects.length == 0 ?
+            {projects === null || projects.length === 0 ?
               <tr >
                 <td className='py-5 fw-bold' colSpan="6">No Projects is On Progress </td>
               </tr> : 

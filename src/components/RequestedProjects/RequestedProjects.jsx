@@ -33,10 +33,13 @@ const RequestedProjects = () => {
     setResponded(true)
     dispatch(setAlert("Accepting Project", "info", 2000))
     dispatch(respondToRequest({ status: "accepted", p_id: id }, navigate))
-    setResponded(false)
+    
   }
   const handleResponse= ()=>{
     setResponded(false)
+  }
+  if(responded){
+    return <h1>Loading</h1>
   }
 
   return (
@@ -65,9 +68,7 @@ const RequestedProjects = () => {
                   <td><Link to={`/profile/${p.developer._id}`} className="text-dark ">{p.developer.first_name} {p.developer.last_name}<span className="badge bg-primary mx-3">{p.developer?.onbord_project?.length}</span></Link></td>
                   <td>Need to change backend</td>
                   <td>
-                 
                     <button className='btn btn-success mx-3'disabled={responded} onClick={e=>handleAccpet(e,p._id)}>Accept</button>
-        
                     <button className='btn btn-danger mx-3' disabled={responded} onClick={()=>setResponded(true)}  data-bs-toggle="modal" data-bs-target={`#toggle_model_project_request-${p._id}`}>Reject</button>
                   </td>
                 </tr>

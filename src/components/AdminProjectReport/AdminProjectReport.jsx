@@ -15,6 +15,7 @@ const AdminProjectReport = () => {
   const [freelance,setFreelance]=useState(true)
   const constants = useSelector((state)=>(state.constantReducer))
   const [depts,setDepts]=useState([]);
+  const [table,setTable]=useState(false)
   const tableRef = useRef(null)
   const navigate = useNavigate()
   const setDeptData = ()=>{
@@ -34,6 +35,7 @@ const AdminProjectReport = () => {
   const project = useSelector((state)=>(state.adminReducer))
   const getReport=async(e)=>{
     e.preventDefault();
+    setTable(true)
   }
   const filterByFromDate=()=>{
       const data=projects.filter(p => p.created_on >= fromdate )
@@ -102,7 +104,7 @@ const AdminProjectReport = () => {
     }
   },[project])
 
-  console.log(projects);
+  
   const project_status = ['all','created','pending-admin','pending-user','assigned','partial','testing','completed']
   return (
     <div className='admin-project-report-container pb-5'>
@@ -160,6 +162,7 @@ const AdminProjectReport = () => {
             </div>
         </div>
       </div>
+      {table && <>
       <div className="container text-end">
         <DownloadTableExcel
                     filename="Freelancing Forum Report"
@@ -176,7 +179,7 @@ const AdminProjectReport = () => {
               <th scope="col">Project</th>
               <th scope="col">Freelancer</th>
               <th scope="col">Client</th>
-              <th scope="col">Amount(₹)</th>
+              <th scope="col">Stipend(₹)</th>
               <th scope="col">Status</th>
             </tr>
           </thead>
@@ -191,9 +194,9 @@ const AdminProjectReport = () => {
                   <td><Link to={`/project/show/${p._id}`}  className="text-dark ">{p.title}</Link></td>
                   {p.developer==null ?
                     <td> - </td> :
-                    <td><Link to={`/profile/${p.developer._id}`}  className="text-dark ">{p.developer.first_name} {p.developer.last_name}</Link></td>
+                    <td><Link to={`/profile/${p.developer._id}`}  className="text-dark">{p.developer.first_name} {p.developer.last_name}</Link></td>
                   }
-                  <td><Link to={`/profile/${p.createdBy._id}`}  className="text-dark ">{p.createdBy.first_name} {p.createdBy.last_name}</Link></td>
+                  <td><Link to={`/profile/${p.createdBy._id}`}  className="text-dark">{p.createdBy.first_name} {p.createdBy.last_name}</Link></td>
                   <td>{p.stipend}</td>
                   <td>{p.project_status}</td>
                 </tr>
@@ -201,6 +204,8 @@ const AdminProjectReport = () => {
           </tbody>
         </table>
       </div>
+      </>
+}
     </div>
   )
 }
