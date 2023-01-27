@@ -175,7 +175,6 @@ function ProjectShow() {
                   key={p?._id}
                   deadline={moment(p?.end_date).fromNow()}
                 />
-
                 </div>
               </div>
               </div>
