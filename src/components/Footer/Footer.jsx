@@ -15,10 +15,10 @@ function Footer(){
           <footer className="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 row-cols-1 py-5 my-5 justify-content-center align-items-center text-center">
             <div className="col my-4">
               <div className="flogo-container">
-                <div className="m-1">
-                <img src={logo} alt="" width="100px" height="100px" />
+                <div className="m-1 mb-3">
+                <img src={tbilogo} alt="" width="150px" height="75px" />
                 </div>
-                <div className="m-2">
+                <div className="m-2 mb-3">
                 <img src={iiclogo} alt="" width="150px" height="75px" />
                 </div>
                 <div className="m-1">
@@ -53,7 +53,7 @@ function Footer(){
 
                 </div>
                 <div className="m-2">
-                <img src={tbilogo} alt="" width="150px" height="75px" />
+                <img src={logo} alt="" width="100px" height="100px" />
                 </div>
               </div>
             </div>
