@@ -1,6 +1,8 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { useSelector } from 'react-redux'
 import './AdminUserReport.scss'
+import {Link} from 'react-router-dom'
+import { DownloadTableExcel } from "react-export-table-to-excel";
 
 const AdminUserReport = () => {
  const [depts,setDepts]=useState([]);
@@ -10,6 +12,7 @@ const AdminUserReport = () => {
  const user = useSelector((state)=>(state.userReducer))
  const [users,setUser] = useState([])
  const [table,setTable]=useState(false)
+ const tableRef = useRef(null)
  useEffect(()=>{
     if(user!=null && user.data!=null){
         setUser(user.data)
@@ -62,6 +65,7 @@ const getReport = (e)=>{
     e.preventDefault();
     setTable(true)
 }
+console.log(users);
   const user_roles = ['all','client','freelancer']
   return (
     <div className="admin-user-report">
@@ -101,6 +105,44 @@ const getReport = (e)=>{
                 </div>
             </div>
         </div>
+        <div className="container text-end">
+        <DownloadTableExcel
+                    filename="Freelancing Forum Report"
+                    sheet="Report"
+                    currentTableRef={tableRef.current} >
+                    <button className="btn download-excel"> Export Excel </button>
+        </DownloadTableExcel>
+        </div>
+        <div className='container mt-5 text-center'>
+        <table class="table table-stripped" ref={tableRef}>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">User</th>
+              <th scope="col">Type</th>
+              <th scope="col">Department</th>
+              <th scope="col">Mobile</th>
+              <th scope="col">Rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users == null || users.length == 0 ?
+              <tr >
+                <td className='py-5 fw-bold' colSpan="6">No User Found</td>
+              </tr> : 
+              users.map((u, i) => (
+                <tr key={u._id}>
+                  <th scope="row">{i + 1}</th>
+                  <td><Link to={`/profile/${u._id}`}  className="text-dark ">{u.first_name} {u.last_name}</Link></td>
+                  <td>{u.user_type}</td>
+                  <td>{u.department}</td>
+                  <td>{u.mobile}</td>
+                  <td>{u.rating}</td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }
