@@ -8,7 +8,7 @@ const AdminUserReport = () => {
  const [depts,setDepts]=useState([]);
  const [role,setRole]=useState("")
  const [department,setDepartment]=useState("");
- const [rating,setRating]=useState(0)
+ const [rating,setRating]=useState("")
  const user = useSelector((state)=>(state.userReducer))
  const [users,setUser] = useState([])
  const [table,setTable]=useState(false)
@@ -65,8 +65,8 @@ const getReport = (e)=>{
     e.preventDefault();
     setTable(true)
 }
-console.log(users);
   const user_roles = ['all','client','freelancer']
+
   return (
     <div className="admin-user-report">
         <div className="container">
@@ -105,6 +105,8 @@ console.log(users);
                 </div>
             </div>
         </div>
+        {table &&
+        <>
         <div className="container text-end">
         <DownloadTableExcel
                     filename="Freelancing Forum Report"
@@ -143,7 +145,9 @@ console.log(users);
           </tbody>
         </table>
       </div>
+</>}
     </div>
+              
   )
 }
 

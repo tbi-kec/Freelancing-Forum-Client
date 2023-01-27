@@ -3,7 +3,7 @@ import AdminNavbar from '../../components/AdminNavbar/AdminNavbar'
 import AdminSideBar from '../../components/AdminSideBar/AdminSideBar'
 import { Outlet } from 'react-router-dom'
 const AdminPage = () => {
- const [toggle,setToggle]=useState(true)
+ const [toggle,setToggle]=useState(false)
  const handleToggle = ()=>{
   setToggle(!toggle)
  }

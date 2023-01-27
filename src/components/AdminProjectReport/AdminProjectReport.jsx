@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import './AdminProjectReport.scss'
 
@@ -13,6 +14,7 @@ const AdminProjectReport = () => {
   const [freelance,setFreelance]=useState(true)
   const constants = useSelector((state)=>(state.constantReducer))
   const [depts,setDepts]=useState([]);
+  const navigate = useNavigate()
   const setDeptData = ()=>{
     const dept = constants.data[0].dept_short;
     setDepts([...dept])
@@ -48,7 +50,7 @@ const AdminProjectReport = () => {
     setProjects([...data])
   }
   const filterByFreelanceDept = () =>{
-      const data = projects.filter(p => p.developer.department==freelancerDept)
+      const data = projects.filter(p => p?.developer?.department==freelancerDept)
       setProjects([...data])
   }
   useEffect(()=>{
@@ -64,20 +66,31 @@ const AdminProjectReport = () => {
   useEffect(()=>{
       if(status=='created'){
         setFreelance(false);
+        setClient(true)
+      }else{
+        
+        setFreelance(true)
       }
       if(status!='all')
+
         filterByStatus();
   },[status])
 
   useEffect(()=>{
       if(clientDept!=null && clientDept!='all'){
+        setFreelance(false)
         filterByClientDept();
+      }else{
+        setFreelance(true)
       }
   },[clientDept])
 
   useEffect(()=>{
-      if(freelancerDept!=null && clientDept!='all'){
+      if(freelancerDept!=null && freelancerDept!='all'){
+        setClient(false)
         filterByFreelanceDept();
+      }else{
+        setClient(true)
       }
   },[freelancerDept])
 
@@ -137,6 +150,7 @@ const AdminProjectReport = () => {
                     </div>
                     }
                     <div className="d-flex justify-content-end">
+                      <button onClick={()=>navigate('/admin/project/report')} className='btn btn-primary mx-3'>Reset</button>
                       <button onClick={getReport} className='btn btn-success btn-md'>Get Report</button>
                     </div>
                   </form>
