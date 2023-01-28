@@ -1,6 +1,4 @@
-import React, {useState} from "react"
-import Navbar from '../../components/Navbar/Navbar';
-import Footer from '../../components/Footer/Footer';
+import React from "react"
 import DeveloperCard from '../../components/DeveloperCard/DeveloperCard';
 import janarathanan from '../../assets/jana.png';
 import karthikeyan from '../../assets/karthikeyan.png';
@@ -12,9 +10,8 @@ import './DeveloperCommunity.css'
 function DeveloperCommunity(){
   return(
     <div className="dev-community-bg">
-      <Navbar/>
-        <div className="container dev-community-container text-white my-5">
-          <h3>Version 1.0</h3>
+        <div className="container dev-community-container text-white ">
+          <h3 className="p-3">Version 1.0</h3>
           <div className="d-flex flex-column dev-community">
             <DeveloperCard 
               Name="JANARATHANAN T" 
@@ -68,7 +65,7 @@ function DeveloperCommunity(){
             />
           </div>
         </div>
-      <Footer />
+    
     </div>
     )
 }

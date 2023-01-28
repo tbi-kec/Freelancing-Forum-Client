@@ -2,9 +2,7 @@ import React, {useState} from "react"
 import './DeveloperCard.css'
 
 function DeveloperCard({Name,Icon,Dept,LinkedinName,LinkedinLink,GithubName,GithubLink,Align}){
-  console.log(Align);
   return(
-    
     <div className={
       Align == "right" ?
         "d-flex flex-row-reverse align-items-center developer-profile-div my-2":
@@ -18,10 +16,10 @@ function DeveloperCard({Name,Icon,Dept,LinkedinName,LinkedinLink,GithubName,Gith
         <h1 className="fw-bold dept">{Dept}</h1>
         <div className="d-flex flex-row developer-links">
           <div className="">
-            <a href={GithubLink} className="d-flex flex-row fw-bold"><i class="fa-brands fa-github github-icon"></i>/{GithubName}</a>
+            <a href={GithubLink} target="_blank" className="d-flex flex-row fw-bold"><i class="fa-brands fa-github github-icon"></i>/{GithubName}</a>
           </div>
           <div className="mx-3">
-            <a href={LinkedinLink} className="d-flex flex-row fw-bold"><i class="fa-brands fa-linkedin-in linkedin-icon"></i>/{LinkedinName}</a>
+            <a href={LinkedinLink} target="_blank" className="d-flex flex-row fw-bold"><i class="fa-brands fa-linkedin-in linkedin-icon"></i>/{LinkedinName}</a>
           </div>
         </div>
       </div>
