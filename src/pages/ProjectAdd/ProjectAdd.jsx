@@ -37,7 +37,7 @@ function ProjectAdd() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(skills.length==0){
+    if(skills.length===0){
       dispatch(setAlert("Please provide skills","warning"))
       return
     }

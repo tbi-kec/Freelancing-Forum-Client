@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from 'react-redux'
 import './AdminUserReport.scss'
 import {Link} from 'react-router-dom'
@@ -14,46 +14,53 @@ const AdminUserReport = () => {
  const [table,setTable]=useState(false)
  const tableRef = useRef(null)
  useEffect(()=>{
-    if(user!=null && user.data!=null){
+    if(user!==null && user.data!==null){
         setUser(user.data)
     }
   },[user])
 
  const constants = useSelector((state)=>(state.constantReducer))
-  const setDeptData = ()=>{
-    const dept = constants.data[0].dept_short;
-    setDepts([...dept])
-  }
-  const filterByRole = ()=>{
-        const data= users.filter(u => u.user_type==role)
-        setUser([...data])
-  }
-  const filterByDepartment = ()=>{
-        const data = users.filter(u=> u.department==department)
-        setUser([...data])
-  }
-  const filterByRating =()=>{
-        const data = users.filter(u=> u.rating>= rating)
-        setUser([...data])
-  }
+ 
+ 
+ 
+ 
   useEffect(()=>{
     if(constants && constants.data ){
+       const setDeptData = ()=>{
+        const dept = constants.data[0].dept_short;
+        setDepts([...dept])
+      }
       setDeptData();
     }
-  },[constants])
+  },[constants,constants.data])
   useEffect(()=>{
-    if(role!="" && role!='all')
+    if(role!=="" && role!=='all'){
+       const filterByRole = ()=>{
+          const data= users.filter(u => u.user_type===role)
+          setUser([...data])
+    }
         filterByRole()
-  },[role])
+    }
+  },[role,users])
   useEffect(()=>{
-        if(department!="" && department!="all")
+        if(department!=="" && department!=="all"){
+            const filterByDepartment = ()=>{
+                const data = users.filter(u=> u.department===department)
+              setUser([...data])
+      }
             filterByDepartment()
-  },[department])
+        
+    }
+  },[department,users])
   useEffect(()=>{
-        if(rating!=0){
+        if(rating!==0){
+           const filterByRating =()=>{
+            const data = users.filter(u=> u.rating>= rating)
+           setUser([...data])
+        }
             filterByRating()
         }
-  },[rating])
+  },[rating,users])
   const resetData=()=>{
     setUser([...user.data])
     setRole("")
@@ -130,7 +137,7 @@ const styles = {
             </tr>
           </thead>
           <tbody>
-            {users == null || users.length == 0 ?
+            {users === null || users.length === 0 ?
               <tr >
                 <td className='py-5 fw-bold' colSpan="6">No User Found</td>
               </tr> : 

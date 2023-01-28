@@ -5,7 +5,7 @@ import profile from "../../assets/profileicon2.png";
 import accept from "../../assets/accept.png";
 import decline from "../../assets/decline.png";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { setAlert } from "../../actions/alert";
 import { requestAdmin } from "../../actions/myDetails";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,11 +13,11 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 function ProjectShow() {
     const { id } = useParams();
-  const navigate = useNavigate();
+ 
   const project = useSelector((state) => state.projectReducer);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.myDetailsReducer);
-  const constants=useSelector((state)=>(state.constantReducer));
+
 
   const handleAccept = (e, d_id) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ function ProjectShow() {
   return (
     <div className="my-5 project-show-container container">
       {project && project?.data
-        ?.filter((p) => p?._id == id)
+        ?.filter((p) => p?._id === id)
         ?.map((p) => (
           <div className="container my-3 " key={p._id}>
             <div className="row mb-5 banner-project ">
@@ -104,7 +104,7 @@ function ProjectShow() {
               </div>
             </div>
 
-            {p.createdBy._id ==user?.data?._id && p.project_status !== "created" && 
+            {p.createdBy._id ===user?.data?._id && p.project_status !== "created" && 
               <div className="p-3">
                 <div className="fs-4 mt-4 fw-bold">Applicant</div>
                 <div>
@@ -159,7 +159,7 @@ function ProjectShow() {
               </div>
           }
           {(p?.project_status==='assigned' || p?.project_status==='partial' || p.project_status==='testing') && 
-          (p?.createdBy?._id==user?.data?._id || p.developer?._id==user?.data?._id )&&
+          (p?.createdBy?._id===user?.data?._id || p.developer?._id===user?.data?._id )&&
               <div className="card mt-3 mb-5 shadow">
                 <div className="card-body">
                   <div className="p-3">
