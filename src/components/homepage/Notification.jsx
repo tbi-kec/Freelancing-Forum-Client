@@ -7,7 +7,7 @@ export default function Notification({notification}) {
 
   return (
     <div className='notification-container  '>
-       {notification.notify_type==1 ? <Type1 notification={notification} /> : <Type0 notification={notification}/>}
+       {notification.notify_type===1 ? <Type1 notification={notification} /> : <Type0 notification={notification}/>}
        
     </div>
   )

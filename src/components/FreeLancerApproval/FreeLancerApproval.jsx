@@ -5,7 +5,7 @@ import { Link,useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import { setAlert } from '../../actions/alert';
 import { acceptOrRejectUser } from '../../actions/admin';
-
+import Loading from '../Loading/Loading';
 const FreeLancerApproval = () => {
   const [users, setUsers] = useState(null)
   const [responded, setResponded] = useState(false)
@@ -29,6 +29,8 @@ const FreeLancerApproval = () => {
     dispatch(acceptOrRejectUser({u_id:id,status:"accepted",message:"accepted"},navigate))
     setResponded(false);
   }
+  if(responded===true)
+    return <Loading />
 
   return (
       <div className='container mt-5 text-center'>

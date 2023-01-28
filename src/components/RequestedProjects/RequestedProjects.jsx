@@ -14,12 +14,13 @@ const RequestedProjects = () => {
   const [projects, setProjects] = useState([])
   const [responded, setResponded] = useState(false)
 
-  const setData = () => {
-    const data = project.data.filter(p => p.project_status == 'pending-admin');
-    setProjects([...data])
-  }
+ 
   useEffect(() => {
-    if (project && project.data != null) {
+    if (project && project.data !== null) {
+       const setData = () => {
+         const data = project.data.filter(p => p.project_status === 'pending-admin');
+       setProjects([...data])
+      }
       setData();
     }
   }, [project])
@@ -58,7 +59,7 @@ const RequestedProjects = () => {
             </tr>
           </thead>
           <tbody>
-            {projects == null || projects?.length == 0 ?
+            {projects === null || projects?.length === 0 ?
               <tr >
                 <td className='py-5 fw-bold' colSpan="6">No Projects Request Found</td>
               </tr> : 
