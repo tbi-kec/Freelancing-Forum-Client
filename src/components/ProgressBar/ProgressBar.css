@@ -6,6 +6,7 @@
     display: flex;
     justify-content: space-between;
     counter-reset: step;
+    z-index: 2;
     margin: 2rem 0 4rem;
   }
   
