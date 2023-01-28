@@ -103,7 +103,9 @@ const AdminProjectReport = () => {
       setProjects([...project.data])
     }
   },[project])
-
+  const styles = {
+    display:!table?'none':"block",
+  }
   
   const project_status = ['all','created','pending-admin','pending-user','assigned','partial','testing','completed']
   return (
@@ -162,8 +164,8 @@ const AdminProjectReport = () => {
             </div>
         </div>
       </div>
-      {table && <>
-      <div className="container text-end">
+      <div style={styles}>
+      <div className="container text-end" >
         <DownloadTableExcel
                     filename="Freelancing Forum Report"
                     sheet="Report"
@@ -204,9 +206,10 @@ const AdminProjectReport = () => {
           </tbody>
         </table>
       </div>
-      </>
-}
-    </div>
+      </div>
+      </div>
+
+  
   )
 }
 
