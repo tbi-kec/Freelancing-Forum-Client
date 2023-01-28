@@ -30,8 +30,17 @@ export const acceptOrRejectUser = (userData,navigate) => async(dispatch)=>{
        await api.acceptOrRejectUser(userData);
         dispatch(setAlert(`${userData.status} freelancer successfully`,"success"));
         dispatch(getAllUsers());
-      
         navigate("/admin/approval")
+    } catch (error) {
+        dispatch(setAlert("Server Error","danger"))
+    }
+}
+
+export const createAdmin = (userData,navigate)=>async(dispatch)=>{
+    try {
+        await api.createAdmin(userData);
+        dispatch(setAlert("Admin created successfully","success"))
+        navigate('/admin')
     } catch (error) {
         dispatch(setAlert("Server Error","danger"))
     }

@@ -31,7 +31,9 @@ export const updateStatus = (status,navigate)=>async(dispatch)=>{
         await api.updateStatus(status);
         dispatch(getAllProjects());
         dispatch(setAlert("Progress updated","success"))
-        navigate(`/project/show/${status.p_id}`)
+        if(status.status==='completed')
+            navigate('/admin')
+        else navigate(`/project/show/${status.p_id}`)
         } catch (error) {
         dispatch(setAlert("Progress not updates","danger"))
     }

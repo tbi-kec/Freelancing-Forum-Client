@@ -11,6 +11,7 @@ const AdminSideBar = ({handleToggle}) => {
                     {link:'/admin/completed',text:"Completed Projects"},
                     {link:'/admin/project/report',text:" Project Report"},
                     {link:'/admin/user/report',text:"User Report"},
+                    {link:"/admin/create",text:"Create Admin"}
                 ]
   return (
     <div className='admin-side-bar shadow'>

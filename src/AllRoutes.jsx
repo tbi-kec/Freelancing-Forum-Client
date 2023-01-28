@@ -5,6 +5,7 @@ import Register from './pages/Register/Register'
 import ProfileCreation from './pages/ProfileCreation/ProfileCreation'
 import ProfileEdit from './pages/ProfileEdit/ProfileEdit'
 import Home from './pages/Home/Home'
+import CreateAdmin from './components/CreateAdmin/CreateAdmin'
 import ProjectView from './pages/ProjectView/ProjectView'
 import DepartmentUsers from './pages/DepartmentUsers/DepartmentUsers'
 import ProjectAdd from './pages/ProjectAdd/ProjectAdd'
@@ -44,6 +45,7 @@ const AllRoutes = () => {
                 <Route path='/admin/request' element={<RequestedProjects/>} />
                 <Route path='/admin/progress' element={<ProgressProjects/>}/>
                 <Route path='/admin/verify' element={<VerifyProjects />} />
+                <Route path='/admin/create' element={<CreateAdmin />} />
                 <Route path='/admin/completed' element={<CompletedProjects />} />
                 <Route path='/admin/project/report' element={<AdminProjectReport />} />
                 <Route path='/admin/user/report' element={<AdminUserReport />} />
