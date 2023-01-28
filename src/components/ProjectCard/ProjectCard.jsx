@@ -76,7 +76,7 @@ function ProjectCard({project,constant}) {
               </div>
             </div>
             <div className=" px-4 mt-3 d-flex justify-content-start">
-              <h5 className=" text-end pt-2 ">Posted By : <span data-bs-dismiss="modal" aria-label="close" className="fs-3 " onClick={handleNavigate}>{project.createdBy.first_name} {project.createdBy.last_name} </span></h5>
+              <h5 className=" text-end pt-2 pointer">Posted By : <span data-bs-dismiss="modal" aria-label="close" className="fs-3 " onClick={handleNavigate}>{project.createdBy.first_name} {project.createdBy.last_name} </span></h5>
               <div className="mx-2 text-start">
                 <img src={profile} height="50px" width='50px' alt="" />
               </div>

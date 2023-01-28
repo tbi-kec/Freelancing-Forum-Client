@@ -59,7 +59,7 @@ export default function StudentProfile() {
       </div>
     
     }
-        <div className="back" onClick={()=> user?.isAdmin==true ? navigate("/admin") : navigate("/home")}>
+        <div className="back pointer" onClick={()=> user?.isAdmin==true ? navigate("/admin") : navigate("/home")}>
         
             <i className="text light fa-sharp fa-solid fa-arrow-left"></i>
         
