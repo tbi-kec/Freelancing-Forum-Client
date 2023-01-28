@@ -5,6 +5,7 @@ import Register from './pages/Register/Register'
 import ProfileCreation from './pages/ProfileCreation/ProfileCreation'
 import ProfileEdit from './pages/ProfileEdit/ProfileEdit'
 import Home from './pages/Home/Home'
+import CreateAdmin from './components/CreateAdmin/CreateAdmin'
 import ProjectView from './pages/ProjectView/ProjectView'
 import DepartmentUsers from './pages/DepartmentUsers/DepartmentUsers'
 import ProjectAdd from './pages/ProjectAdd/ProjectAdd'
@@ -12,7 +13,7 @@ import PreLoader from './components/PreLoader/PreLoader'
 import StudentProfile from './pages/StudentProfile/StudentProfile'
 import AdminPage from './pages/AdminPage/AdminPage'
 import ProtectedRoutes from './ProtectedRoutes'
-import UnProtectedRoutes from './UnProtectedRoutes'
+import VerifyProjects from './components/VerifyProjects/VerifyProjects'
 import Page404 from './pages/Page404/Page404'
 import ResetPassword from './pages/ResetPassword/ResetPassword'
 import ProjectShow from './pages/ProjectShow/ProjectShow'
@@ -44,6 +45,8 @@ const AllRoutes = () => {
                 <Route path='/admin/approval' element={<FreeLancerApproval/>} />
                 <Route path='/admin/request' element={<RequestedProjects/>} />
                 <Route path='/admin/progress' element={<ProgressProjects/>}/>
+                <Route path='/admin/verify' element={<VerifyProjects />} />
+                <Route path='/admin/create' element={<CreateAdmin />} />
                 <Route path='/admin/completed' element={<CompletedProjects />} />
                 <Route path='/admin/project/report' element={<AdminProjectReport />} />
                 <Route path='/admin/user/report' element={<AdminUserReport />} />

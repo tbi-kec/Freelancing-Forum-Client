@@ -31,7 +31,6 @@ export default function StudentProfile() {
     },[users.data,id])
 
     useEffect(()=>{
-        // console.log(user._id, id);
          if(user&& user?.work_history && user.work_history?.length){
                 setWorkHistory(user.work_history)
         }
@@ -39,7 +38,6 @@ export default function StudentProfile() {
                 setStudyProject(user.study_project)
         }
         if(user&& user?.projects_given && user.projects_given?.length){
-                console.log(user.project_given)
                 setProjectGiven(user.projects_given)
         }
 
@@ -53,30 +51,28 @@ export default function StudentProfile() {
   return (
     <div className='student-profile'>
     {/* logout */}
-    {user?._id== current?.user?._id  &&
+    {user?._id=== current?.user?._id  &&
     <div className='logout-btn text-end '>
         <button className="btn logout text-light" onClick={handleLogout}>Log Out</button>
       </div>
     
     }
-        <div className="back" onClick={()=> user?.isAdmin==true ? navigate("/admin") : navigate("/home")}>
-        
+        <div className="back pointer" onClick={()=> current.user?.isAdmin ? navigate('/admin') : navigate('/home')  }>
             <i className="text light fa-sharp fa-solid fa-arrow-left"></i>
-        
         </div>
         <Banner/>
         
         <ProfileBio  user={user} />
-        {user?.user_type=='freelancer' &&
+        {user?.user_type==='freelancer' &&
             <Skills skills={user?.skills}/>
         }
-         {user?.user_type=='freelancer' &&
+         {user?.user_type==='freelancer' &&
             <Domain domain={user?.domain}/>
         }
 
         {
-            work_history.length!=0 && user?.admin_verify==true &&
-                <div className="student-card work-history">
+            work_history.length!==0 && user?.admin_verify===true &&
+                <div className="student-card work-history" key={user._id}>
                     <div className="title">
                         <h2>
                         Work - History
@@ -90,10 +86,10 @@ export default function StudentProfile() {
             </div>
         </div>
         }
-     {user?.admin_verify==true &&
+     {user?.admin_verify===true &&
                 <StudentProject project={studyProject} user={user}/> }
     
-         {project_given.length!=0 &&
+         {project_given.length!==0 &&
                     <ProjectHistory project={project_given} />
                 }
 

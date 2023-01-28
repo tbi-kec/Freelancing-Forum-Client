@@ -11,8 +11,9 @@ export default function WorkHistory({work}) {
                         <p>{work.description}</p>
                     </div>
                     <div className="posted-by">
-                        Posted by {work.createdBy.first_name}
+                        Posted by {work.createdBy.first_name}.{work.createdBy.last_name}
                     </div>
         </div>
   )
 }
+

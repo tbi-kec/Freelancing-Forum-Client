@@ -1,5 +1,5 @@
 import axios from 'axios'
-import App from '../App'
+
 
 const API = axios.create({baseURL:'http://localhost:8080/'})
 
@@ -63,3 +63,6 @@ export const developerRequestProject =(requestData)=>API.post('/project/develope
 export const developerUpdateRating =(ratingData)=>API.post('/user/rating',ratingData)
 
 export const acceptOrRejectUser=(requestData)=>API.post('/admin/profile/verification',requestData)
+
+//createAdmin
+export const createAdmin = (createData)=>API.post('/admin/newadmin',createData)

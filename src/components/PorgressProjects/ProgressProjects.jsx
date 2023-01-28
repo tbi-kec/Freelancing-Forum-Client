@@ -22,7 +22,7 @@ const ProgressProjects = () => {
   return (
     <div>
       <div className='container mt-5 text-center'>
-        <table class="table  table-stripped">
+        <table className="table  table-stripped">
           <thead>
             <tr>
               <th scope="col">#</th>

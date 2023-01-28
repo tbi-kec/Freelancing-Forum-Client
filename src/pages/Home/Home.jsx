@@ -21,7 +21,8 @@ function Home() {
   const users = useSelector((state)=>(state.userReducer))
   const myself=useSelector((state)=>(state.myDetailsReducer))
   const constants=useSelector((state)=>(state.constantReducer));
-
+  const user= useSelector((state)=>(state.currentUserReducer))
+  console.log(user);
   const [onbord_project,setOnBoardProject] = useState([]);
   const [notification,setNotification]=useState([]);
   
@@ -59,7 +60,7 @@ function Home() {
           <div className="d-flex flex-column flex-grow-1 profile-section my-4">
             <div className="d-flex flex-row my-3">
               <div className="profile-img-div">
-                <div className="home-profile-img mr-3">
+                <div className="home-profile-img mr-3 pointer">
                   <img src={profile} alt="img" height='100%' width='100%' onClick={handleNavigate} />
                 </div>
               </div>
