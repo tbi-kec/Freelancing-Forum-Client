@@ -9,10 +9,12 @@ import moment from 'moment';
 import './ProgressBar.css'
 import { developerUpdateRating } from '../../actions/myDetails'
 
-function ProgressBar({status,p_id,c_id,d_id,deadline}) {
+function ProgressBar({status,p_id,c_id,d_id,deadline,pay}) {
    const navigate = useNavigate();
-   const dispatch = useDispatch();
+   const dispatch = useDispatch();  
    const [userRating,setUserRating]=useState(0)
+   const [driveLink,setDriveLink]=useState()
+   const [amount,setAmount]=useState(pay)
   
     const [progressStepsNum, setprogressStepsNum] = useState(0);
   const user = useSelector((state)=>(state.myDetailsReducer))
@@ -75,6 +77,13 @@ function ProgressBar({status,p_id,c_id,d_id,deadline}) {
                 dispatch(developerUpdateRating({rating:parseInt(userRating),u_id:d_id,p_id}))
             }, 2000);
     }
+    const veriyHandle = (e) =>{
+            e.preventDefault();
+         nextprogress();
+            setTimeout(() => {
+                dispatch(developerUpdateRating({rating:parseInt(userRating),u_id:d_id,p_id}))
+            }, 2000);
+    }
 
     return (
     <div>
@@ -107,6 +116,53 @@ function ProgressBar({status,p_id,c_id,d_id,deadline}) {
                                     data-bs-dismiss="modal"
                                     aria-label="Close"
                                     onClick={nextprogress}
+                                >
+                                    Confirm
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* modal - verify */}
+            <div
+                className="modal fade "
+                data-bs-backdrop="static"
+                id="toggle_model_verify"
+                tabIndex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalLabel"
+            >
+                <div className="modal-dialog modal-dialog-centered modal-lg">
+                    <div className="modal-content text-center">
+
+                        <div>
+                            <div className="fs-4 m-5">
+                                Please provide the recorded video of your project prototype and share via drive link with public accessiblity.
+                            </div>
+                            <div className='mx-5 mb-4'>
+                            <input type="text" className='form-control' placeholder='Drive Link of your project prototype' value={driveLink} onChange={(e)=>setDriveLink(e.target.value)} style={{backgroundColor:'#EFEFEF'}} />
+                            </div>
+                            <div className="fs-4 m-5">
+                                Confirm the amount you have paid for this project.
+                            </div>
+                            <div className='mx-5 mb-4'>
+                            <input type="text" className='form-control' placeholder='Project payment' style={{backgroundColor:'#EFEFEF'}} value={amount} onChange={(e)=>setAmount(e.target.value)}  />
+                            </div>
+                            <div className="d-flex justify-content-around">
+                                <button
+                                    className="btn btn-danger my-3"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    className="btn btn-md my-3 project-add-submit-btn text-light"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                    onClick={veriyHandle}
                                 >
                                     Confirm
                                 </button>
@@ -194,7 +250,13 @@ function ProgressBar({status,p_id,c_id,d_id,deadline}) {
                         data-bs-target="#toggle_model_request">Next</div>
                 </div>
                 :""}
-                {progressStepsNum >=2 && c_id===user?.data?._id   ?
+                {progressStepsNum ==2 && c_id===user?.data?._id   ?
+                <div className="progress-btn">
+                    <div href="#" className="btn" data-bs-toggle="modal"
+                        data-bs-target="#toggle_model_verify">Verify</div>
+                </div>
+                :""}
+                {progressStepsNum >2 && c_id===user?.data?._id   ?
                 <div className="progress-btn">
                     <div href="#" className="btn" data-bs-toggle="modal"
                         data-bs-target="#toggle_model_rate">Confirm & rate</div>

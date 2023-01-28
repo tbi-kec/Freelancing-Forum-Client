@@ -171,6 +171,7 @@ function ProjectShow() {
                       status={p?.project_status}
                       key={p?._id}
                       deadline={p?.end_date}
+                      pay={p.stipend}
                     />
                     </div>
                   </div>
