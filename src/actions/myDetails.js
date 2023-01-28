@@ -6,9 +6,9 @@ import { useNavigate } from 'react-router-dom';
 export const getMyDetails=()=>async(dispatch)=>{
     try {
         const user =await JSON.parse(localStorage.getItem('freelance'));
-        if(user!=null){
+        if(user!==null){
             const {data}=await api.getDetails(user.user._id)
-            if(data===null){
+            if(data===null && user?.user?.isAdmin!==true){
                 dispatch(setAlert("sorry we cant find the user","warning"));
                 localStorage.clear();
                 const navigate = useNavigate();
@@ -61,7 +61,7 @@ export const responseToNotification= (responseData,navigate)=>async(dispatch)=>{
 
 export const deleteNotification =(deleteData,navigate)=>async(dispatch)=>{
     try {
-       await api.deleteNotification(deleteData);
+        await api.deleteNotification(deleteData);
         dispatch(getMyDetails());
         dispatch(getAllProject());
         dispatch(setAlert("Deleted notification","success"))
@@ -90,7 +90,6 @@ export const developerRequestProject =(requestData,navigate)=>async(dispatch)=>{
         dispatch(getMyDetails());
         navigate("/home")
     } catch (error) {
-        alert(error.message)
         dispatch(setAlert("Request Error","danger"))
     }
 }
@@ -100,7 +99,6 @@ export const developerUpdateRating =(ratingData)=>async(dispatch)=>{
         await api.developerUpdateRating(ratingData);
         dispatch(setAlert("You have rated the project","success"));
     }catch(error){
-       // alert(error.message)
         dispatch(setAlert("Request Error","danger"))
     }
 } 

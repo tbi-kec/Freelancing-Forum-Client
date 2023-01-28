@@ -12,7 +12,7 @@ import {requestAdmin} from "../../actions/myDetails";
 export default function ProfileBio({user}) {
   const current = useSelector((state) => state.myDetailsReducer);
   const [projectGiven, setProjectGiven] = useState([]);
-  const [selectedProject, setSelectedProject] = useState({});
+  const [selectedProject, setSelectedProject] = useState(null);
   const dispatch = useDispatch()
   const show_modal = () => {
     const modal = document.getElementById("toggle_model_button");
@@ -36,7 +36,7 @@ export default function ProfileBio({user}) {
 
   }
   useEffect(() => {
-    if (selectedProject._id !== null) {
+    if (selectedProject!== null) {
       dispatch(setAlert(`Selected Project-${selectedProject.title}`, "info", 1500))
     }
   }, [selectedProject,dispatch])
@@ -87,7 +87,7 @@ export default function ProfileBio({user}) {
       >
         <div className="modal-dialog modal-dialog-centered modal-lg">
           <div className="modal-content text-center">
-            {selectedProject._id !== null ? (
+            {selectedProject!== null ? (
               <div>
                 <div className="fs-4 m-5">
                   You are assigning <b>{selectedProject?.title}</b> project to{" "}
