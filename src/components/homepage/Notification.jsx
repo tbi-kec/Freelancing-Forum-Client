@@ -35,7 +35,7 @@ export default function Notification({notification}) {
 
   return (
     <div className='notification-container  '>
-        <Type0 />
+        <Type1 />
        
     </div>
   )
