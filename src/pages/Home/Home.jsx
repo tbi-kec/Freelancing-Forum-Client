@@ -63,7 +63,7 @@ function Home() {
                   <img src={profile} alt="img" height='100%' width='100%' onClick={handleNavigate} />
                 </div>
               </div>
-              <div className="p-name pt-2 px-0 d-flex flex-column">
+              <div className="p-name pt-2  px-3 d-flex flex-column">
                 <h3 className="name fs-3 font-weight-bold">{myself.data?.first_name} {myself.data?.last_name}</h3>
                 <h3 className="domain fs-4 fs-md-5 my-2">{myself.data?.domain[0]}</h3>
 
@@ -92,7 +92,7 @@ function Home() {
                   ))}
               </div>
               {/* Projects */}
-              <div className="flex-grow-1 current-project my-2">
+              <div className="w-100 h-100 current-project my-2">
                 {onbord_project.length!==0 ?
                   <>
                     <div className="current-project-header my-2">

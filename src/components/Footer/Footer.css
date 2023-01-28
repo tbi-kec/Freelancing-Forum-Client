@@ -7,16 +7,15 @@
   border-radius: 40px 40px 0px 0px ;
 }
 
-.footer::after {
+.footer::before {
     content:"";
     position: absolute;
     top: -30px;
     bottom: 0px;
     left: 0px;
     right: 0px;
-    z-index: -1;
     background: var(--main-blue);
-  border-radius: 40px 40px 0px 0px ;
+    border-radius: 40px 40px 0px 0px ;
 }
 
 .logo-header {

@@ -12,7 +12,7 @@ function Footer(){
     <div className="footer">
       <div className="footer-content">
         <div className="container w-100">
-          <footer className="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 row-cols-1 py-5 my-5 justify-content-center align-items-center text-center">
+          <footer className="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 row-cols-1 justify-content-center align-items-center text-center">
             <div className="col my-4">
               <div className="flogo-container">
                 <div className="m-2 mb-3">
