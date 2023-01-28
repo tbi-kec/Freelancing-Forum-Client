@@ -33,14 +33,14 @@ function ProgressBar({status,p_id,c_id,d_id,deadline}) {
             if (status === "assigned") { 
                 setprogressStepsNum(0);
             }
-            else if (status === "partial") { 
-            
+            else if (status === "partial") {
                 setprogressStepsNum(1) }
             else if(status==="testing")
                 setprogressStepsNum(2)
-            else { 
-            
+            else if(status==="verify"){ 
                 setprogressStepsNum(3); 
+            }else{
+                setprogressStepsNum(4);
             }
         }
  
@@ -169,8 +169,6 @@ function ProgressBar({status,p_id,c_id,d_id,deadline}) {
                 </div>
             </div>
 
-
-
             {/* progress container */}
            <div className='container text-center'>
                 <div className="progressbar">
@@ -180,6 +178,7 @@ function ProgressBar({status,p_id,c_id,d_id,deadline}) {
                         data-title="Assign"><i className="fas fa-hands-helping"></i></div>
                     <div className="progress-step" data-title="OnProgress"><i className="fas fa-toolbox"></i></div>
                     <div className="progress-step" data-title="Testing"><i className="fa-sharp fa-solid fa-vial"></i></div>
+                    <div className="progress-step" data-title="Verify"><i className="fa-sharp fa-solid fa-screwdriver-wrench"></i></div>
                     <div className="progress-step" data-title="Completed"><i className="fas fa-check-circle"></i></div>
                 </div>
                 <div className='row'>
