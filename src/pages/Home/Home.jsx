@@ -122,9 +122,9 @@ function Home() {
             {/* <Notification /> */}
             {notification.length!==0 ?
               <>
-                {[0,1,2].map(n=>(
-                  <div key={n} className="shadow m-3">
-                      <Notification notification={n} key={n} />
+                {notification.map(n=>(
+                  <div key={n._id} className="shadow m-3">
+                      <Notification notification={n} key={n._id} />
                   </div>  
                 ))}
               </>
