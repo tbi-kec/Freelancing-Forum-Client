@@ -12,7 +12,7 @@ import PreLoader from './components/PreLoader/PreLoader'
 import StudentProfile from './pages/StudentProfile/StudentProfile'
 import AdminPage from './pages/AdminPage/AdminPage'
 import ProtectedRoutes from './ProtectedRoutes'
-import UnProtectedRoutes from './UnProtectedRoutes'
+
 import Page404 from './pages/Page404/Page404'
 import ResetPassword from './pages/ResetPassword/ResetPassword'
 import ProjectShow from './pages/ProjectShow/ProjectShow'

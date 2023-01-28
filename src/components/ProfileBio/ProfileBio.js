@@ -7,24 +7,19 @@ import starColor from "../../assets/Color-star.png";
 import starDull from "../../assets/dull-star.png";
 import {setAlert} from "../../actions/alert";
 import {useDispatch} from "react-redux";
-import {useNavigate} from "react-router-dom";
 import EditProfile from "../EditProfile/EditProfile";
 import {requestAdmin} from "../../actions/myDetails";
 export default function ProfileBio({user}) {
   const current = useSelector((state) => state.myDetailsReducer);
   const [projectGiven, setProjectGiven] = useState([]);
   const [selectedProject, setSelectedProject] = useState({});
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
+  const dispatch = useDispatch()
   const show_modal = () => {
     const modal = document.getElementById("toggle_model_button");
     modal.click();
   };
-
   const filterData = (projects) => {
-    const data = projects.filter((p) => p.project_status == "created");
-
+    const data = projects.filter((p) => p.project_status === "created");
     setProjectGiven([...data]);
   };
   useEffect(() => {
@@ -34,19 +29,18 @@ export default function ProfileBio({user}) {
   }, [current]);
   const handleSelect = (e) => {
     const id = e.target.value;
-    const data = current?.data?.projects_given.filter((p) => p._id == id);
+    const data = current?.data?.projects_given.filter((p) => p._id === id);
 
     if (data)
       setSelectedProject({...data[0]})
 
   }
   useEffect(() => {
-    if (selectedProject._id != null) {
+    if (selectedProject._id !== null) {
       dispatch(setAlert(`Selected Project-${selectedProject.title}`, "info", 1500))
     }
-  }, [selectedProject])
+  }, [selectedProject,dispatch])
   const handleClick = () => {
-
     const model = document.getElementById("toggle_model_button");
     model.click();
   }
@@ -93,7 +87,7 @@ export default function ProfileBio({user}) {
       >
         <div className="modal-dialog modal-dialog-centered modal-lg">
           <div className="modal-content text-center">
-            {selectedProject._id != null ? (
+            {selectedProject._id !== null ? (
               <div>
                 <div className="fs-4 m-5">
                   You are assigning <b>{selectedProject?.title}</b> project to{" "}
@@ -168,7 +162,7 @@ export default function ProfileBio({user}) {
                 <div className="student-assured">
                   <img src={assured} alt="" />
                 </div>
-                {current?.data?._id == user?._id && (
+                {current?.data?._id === user?._id && (
                   <div className="edit pointer" onClick={show_modal}>
                     <i class="fa-solid fa-pencil fs-5"></i>
                     <input
@@ -203,7 +197,7 @@ export default function ProfileBio({user}) {
             <i class="fa-solid fa-location-dot px-3" ></i>
             {user?.department}
           </h4>
-          {projectGiven.length != 0 && current?.data?._id != user?._id && (
+          {projectGiven.length !== 0 && current?.data?._id !== user?._id && (
             <div className="d-flex">
               <select
                 className="form-select mx-3"
@@ -231,14 +225,14 @@ export default function ProfileBio({user}) {
           )}
         </div>
         }
-        {user?.user_type == 'freelancer' && user?.admin_verify == false ? <p className="text-start  text-success fs-5 text-bold">Waiting for Admin Approval *</p> : " "}
+        {user?.user_type === 'freelancer' && user?.admin_verify === false ? <p className="text-start  text-success fs-5 text-bold">Waiting for Admin Approval *</p> : " "}
         <div className="student-about">
           <h2 className="my-3">About </h2>
           <div> {user?.description} </div>
         </div>
         <div className="d-flex my-3 mt-4">
           <div className="me-3">
-            <a href={user?.linkedin} className="text-dark" target="_blank">
+            <a href={user?.linkedin}  rel="noreferrer noopener" className="text-dark" target="_blank">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
@@ -253,7 +247,7 @@ export default function ProfileBio({user}) {
             </a>
           </div>
           <div className="mx-3">
-            <a href={user?.github} className="text-dark" target="_blank">
+            <a href={user?.github} rel="noreferrer noopener" className="text-dark" target="_blank">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"

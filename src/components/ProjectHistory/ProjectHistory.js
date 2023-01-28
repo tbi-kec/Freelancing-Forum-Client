@@ -14,7 +14,7 @@ export default function ProjectHistory({project}) {
             </div>
             {project.map((p)=>(
                 
-            <div className="card-group" onClick={()=>handleNavigate(p._id)} key={p._id}>
+            <div className="card-group my-3" onClick={()=>handleNavigate(p._id)} key={p._id}>
                 <div className="inner-card">
                     <div className="inner-card-head">
                         <h2>{p.title}</h2>

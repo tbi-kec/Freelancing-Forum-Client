@@ -16,12 +16,12 @@ function DepartmentUsers() {
   useEffect(()=>{
     if(users.data){
       const getData=()=>{
-          const students = users.data.filter(u=> u.department===dept && u.admin_verify==true)
+          const students = users.data.filter(u=> u.department===dept && u.admin_verify===true)
           setStudents([...students])
       }
        getData();
     }
-  },[users])
+  },[users,dept])
 
 
   
@@ -41,7 +41,7 @@ function DepartmentUsers() {
         </div>
       </div>
       <div className="m-3 pb-5">
-        {students.length !=0 &&<>
+        {students.length !==0 &&<>
           {students?.map(s=>(
             <ProfileCard user={s} constant={constants?.data[0]} key={s._id}/>
           ))}

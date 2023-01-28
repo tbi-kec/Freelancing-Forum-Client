@@ -6,6 +6,7 @@ import { useSelector,useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { developerRequestProject } from "../../actions/myDetails";
 import { setAlert } from "../../actions/alert";
+
 function ProjectCard({project,constant}) {
   const dispatch = useDispatch()
   const shortname=constant.dept_short.find(item => item.dept=== project.createdBy.department)
@@ -24,7 +25,7 @@ function ProjectCard({project,constant}) {
    dispatch(developerRequestProject({p_id:project._id,d_id:user?.user._id},navigate))
   }
 
-  const request_filter=project.requested.some(r=>r._id==user.user._id)
+  const request_filter=project.requested.some(r=>r._id===user.user._id)
   
 
   return (
@@ -82,7 +83,7 @@ function ProjectCard({project,constant}) {
               </div>
             </div>
             <div className="ms-auto me-5 my-5">
-              {user?.user._id !==project.createdBy._id && project.project_status=="created" && !request_filter &&
+              {user?.user._id !==project.createdBy._id && project.project_status==="created" && !request_filter &&
               <div className="btn btn-success px-5 fw-bold" data-bs-toggle="modal"
               data-bs-target={`#toggle_model_request-${project._id}`} >REQUEST</div>
 }
