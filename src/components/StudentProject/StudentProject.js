@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import AddProject from "../AddProject/AddProject";
 import { useSelector } from "react-redux";
 
@@ -13,7 +13,7 @@ export default function StudentProject({ project, user }) {
     <div className="student-card stud-project">
       <div className="title d-flex align-items-center gap-3">
         <h2>Study-Projects</h2>
-        {project.length < 3 && current?.data?._id == user?._id &&
+        {project.length < 3 && current?.data?._id === user?._id &&
          <div className="add-skill pointer" onClick={handleClick}>
               <i className="fa-solid fa-plus"></i>
           
@@ -24,10 +24,9 @@ export default function StudentProject({ project, user }) {
 
       {project.length ? (
         <div className=" student-projects mt-4">
-
           <div className="card-group">
             {project.map((p) => (
-              <a href={p?.link} target="_blank">
+              <a href={p?.link} rel="noreferrer noopener" target="_blank" >
               <div className="inner-card" key={p._id}>
                 <div className="inner-card-head">
                   <h2>{p?.title}</h2>

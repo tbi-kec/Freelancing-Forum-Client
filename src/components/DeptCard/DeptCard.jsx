@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React from "react"
 import MaterialIcon from 'material-icons-react';
 import { Link } from "react-router-dom";
 import './DeptCard.css';
