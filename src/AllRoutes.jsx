@@ -25,6 +25,7 @@ import ProgressProjects from './components/PorgressProjects/ProgressProjects'
 import CompletedProjects from './components/CompletedProjects/CompletedProjects'
 import AdminUserReport from './components/AdminUserReport/AdminUserReport'
 import AdminProjectReport from './components/AdminProjectReport/AdminProjectReport'
+import Certificate from './components/Certificate/Certificate'
 const AllRoutes = () => {
   return (
     <Routes>
@@ -56,6 +57,7 @@ const AllRoutes = () => {
               <Route path='/home' element={<Home />} />
               <Route path='/department' element={<Department/>} />
               <Route path='/developer_community' element={<DeveloperCommunity />} />
+              <Route path='/certificate' element={<Certificate Name="Janarthanan T" ProjectName="FreeLance Forum" />} />
               <Route path='/project/view' element={<ProjectView/>} />
               <Route path='/project/show/:id' element={<ProjectShow/>} />
               <Route path='/user/:dept' element={<DepartmentUsers/>} />
