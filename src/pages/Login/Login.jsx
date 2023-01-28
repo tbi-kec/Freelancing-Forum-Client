@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "./Login.css";
 import { login } from "../../actions/auth";
@@ -9,7 +9,7 @@ import emdclogo from "../../assets/emdclogo22.png";
 import tbilogo from "../../assets/TBIlogo.png";
 import { setAlert } from "../../actions/alert";
 import { sendEmail } from "../../actions/auth";
-import Loading from "../../components/Loading/Loading";
+// import Loading from "../../components/Loading/Loading";
 
 
 const Login = () => {
@@ -20,9 +20,9 @@ const Login = () => {
   const [FPEmail, setFPEmail] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    let femail_pattern = /^([a-z]+)\.([a-z]{2,5})\@([a-z]+)\.([a-z]{2,5})$/;
+    let femail_pattern = /^([a-z]+).([a-z]{2,5})@([a-z]+).([a-z]{2,5})$/;
     let email_pattern =
-      /^([a-z]+)\.([0-9]{2})([a-z]{2,5})\@([a-z]+)\.([a-z]{2,5})$/;
+      /^([a-z]+).([0-9]{2})([a-z]{2,5})@([a-z]+).([a-z]{2,5})$/;
     if (
       (!femail_pattern.test(email) && !email.endsWith("kongu.edu")) ||
       (!email_pattern.test(email) && !email.endsWith("kongu.edu"))
@@ -46,9 +46,9 @@ const Login = () => {
   };
 
   const handleForgetPasswordSubmit = () => {
-    let femail_pattern = /^([a-z]+)\.([a-z]{2,5})\@([a-z]+)\.([a-z]{2,5})$/;
+    let femail_pattern = /^([a-z]+).([a-z]{2,5})@([a-z]+).([a-z]{2,5})$/;
     let email_pattern =
-      /^([a-z]+)\.([0-9]{2})([a-z]{2,5})\@([a-z]+)\.([a-z]{2,5})$/;
+      /^([a-z]+).([0-9]{2})([a-z]{2,5})@([a-z]+).([a-z]{2,5})$/;
     if (
       (!femail_pattern.test(FPEmail) && !FPEmail.endsWith("kongu.edu")) ||
       (!email_pattern.test(FPEmail) && !FPEmail.endsWith("kongu.edu"))
@@ -62,7 +62,7 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <Loading/>
+      {/* <Loading/> */}
       {/* modal */}
       <div
         className="modal fade"
