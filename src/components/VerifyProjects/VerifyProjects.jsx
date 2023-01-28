@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Loading from '../Loading/Loading'
 import moment from 'moment'
-import { useSelector,DispatchProp,navigate, useDispatch} from 'react-redux'
+import { useSelector, useDispatch} from 'react-redux'
 import './VerifyProjects.scss'
 import { updateStatus } from '../../actions/project'
 import { setAlert } from '../../actions/alert'
@@ -38,7 +38,7 @@ const VerifyProjects = () => {
               <th scope="col">Project Name</th>
               <th scope="col">Client</th>
               <th scope="col">Freelancer</th>
-              <th scope="col">Requested for Admin</th>
+              <th scope="col">Drive Link</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -52,7 +52,8 @@ const VerifyProjects = () => {
                   <th scope="row">{i + 1}</th>
                   <td><Link to={`/project/show/${p._id}`}  className="text-dark ">{p.title}</Link></td>
                   <td><Link to={`/profile/${p.createdBy._id}`} className="text-dark ">{p.createdBy.first_name} {p.createdBy.last_name}</Link></td>
-                  <td><Link to={`/profile/${p.developer._id}`} className="text-dark ">{p.developer.first_name} {p.developer.last_name}<span className="badge bg-primary mx-3">{p.developer?.onbord_project?.length}</span></Link></td>
+                  <td><Link to={`/profile/${p.developer._id}`} className="text-dark ">{p.developer.first_name} {p.developer.last_name}</Link></td>
+                  <td><a href={p.drive_link} target="_black" ref="noreferrer noopener">Click To Open</a></td>
                   <td>{moment(p.verify_on).calendar()}</td>
                   <td>
                     <button className='btn btn-success mx-3' disabled={responded} onClick={e=>handleAccept(e,p._id)}>Verify</button>
