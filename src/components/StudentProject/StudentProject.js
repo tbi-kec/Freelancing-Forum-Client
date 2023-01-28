@@ -14,7 +14,7 @@ export default function StudentProject({ project, user }) {
       <div className="title d-flex align-items-center gap-3">
         <h2>Study-Projects</h2>
         {project.length < 3 && current?.data?._id == user?._id &&
-         <div className="add-skill" onClick={handleClick}>
+         <div className="add-skill pointer" onClick={handleClick}>
               <i className="fa-solid fa-plus"></i>
           
           </div>

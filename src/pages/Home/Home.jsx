@@ -59,7 +59,7 @@ function Home() {
           <div className="d-flex flex-column flex-grow-1 profile-section my-4">
             <div className="d-flex flex-row my-3">
               <div className="profile-img-div">
-                <div className="home-profile-img mr-3">
+                <div className="home-profile-img mr-3 pointer">
                   <img src={profile} alt="img" height='100%' width='100%' onClick={handleNavigate} />
                 </div>
               </div>

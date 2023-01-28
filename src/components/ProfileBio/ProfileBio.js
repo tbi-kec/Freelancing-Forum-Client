@@ -169,7 +169,7 @@ export default function ProfileBio({user}) {
                   <img src={assured} alt="" />
                 </div>
                 {current?.data?._id == user?._id && (
-                  <div className="edit " onClick={show_modal}>
+                  <div className="edit pointer" onClick={show_modal}>
                     <i class="fa-solid fa-pencil fs-5"></i>
                     <input
                       type="button"
