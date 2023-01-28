@@ -6,6 +6,7 @@ import moment from 'moment';
 import { setAlert } from '../../actions/alert';
 import { acceptOrRejectUser } from '../../actions/admin';
 import Loading from '../Loading/Loading';
+
 const FreeLancerApproval = () => {
   const [users, setUsers] = useState(null)
   const [responded, setResponded] = useState(false)
@@ -26,20 +27,16 @@ const FreeLancerApproval = () => {
  const handleAcceptUser = (e, id) => {
   setResponded(true)
     e.preventDefault();
-    dispatch(setAlert("Accepting freelancer","info"))
+    dispatch(setAlert("Accepting freelancer","info",3400))
     dispatch(acceptOrRejectUser({u_id:id,status:"accepted",message:"accepted"},navigate))
-    setResponded(false);
-  }
-  useEffect(()=>{
-      if(responded)
-        return <Loading />
-  },[responded])
-  
- 
-  
 
+    setInterval(()=>setResponded(false),5000)
+    
+  }
+  
   return (
       <div className='container mt-5 text-center'>
+        {responded===true && <Loading />}
         <table className="table  table-stripped">
           <thead>
             <tr>
