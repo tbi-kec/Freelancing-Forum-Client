@@ -37,6 +37,32 @@ const deleteNotificationButton=(e)=>{
        
             <div className="row d-flex align-items-center" key={notification?._id}>
             <div className="col-3 d-flex justify-content-center">
+            <MaterialIcon icon="sms" size="56px" color='#5378F8'/>
+            </div>
+            <div className="col-9">
+                <div className="row d-flex align-items-center">
+                    <div className="col-10">
+                        <div className='fw-bold'>From {notification.notify_from}</div>
+                    </div>
+                    <div className="col-2">
+                        <button onClick={deleteNotificationButton} className="btn">
+                        <i className="fa-sharp fa-solid fa-xmark text-danger "></i>
+                        </button>
+                    </div>
+                </div>
+                <div className='fw-bold'>{notification?.p_id.title}</div>
+                <div style={{fontSize:"14px"}}>{notification?.message}</div>
+                <div className="row d-flex text-end">
+                        <span className='' style={{fontSize:"12px"}} >{moment(notification?.created_on).fromNow()}</span>
+                </div>
+    
+            </div>
+        </div>
+
+
+
+            <div className="row d-flex align-items-center" key={notification?._id}>
+            <div className="col-3 d-flex justify-content-center">
             {notification?.notify_type===0 && <MaterialIcon icon="sms" size="56px" color='#5378F8'/>}
             {notification?.notify_type==1 && <MaterialIcon icon="work" size="56px" color='#5378F8'/> }
             </div>
