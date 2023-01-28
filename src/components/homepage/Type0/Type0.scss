@@ -1,0 +1,27 @@
+.type0-container{
+   .top-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 6px;
+    .icon-container{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap:10px;
+    }
+    .delete-btn{
+        justify-self: flex-end;
+        align-self: flex-start;
+        i{
+            cursor: pointer;
+        }
+    }
+   }
+   .message-container{
+    display: flex;
+    justify-content: flex-start;
+    margin: 6px;
+   }
+   
+}

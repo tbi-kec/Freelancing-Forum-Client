@@ -6,7 +6,6 @@ import { setAlert } from '../../actions/alert'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { updateProfile } from '../../actions/auth'
-import { useEffect } from 'react'
 
 const ProfileCreation = () => {
     const navigate=useNavigate()
@@ -50,11 +49,11 @@ const ProfileCreation = () => {
     }   
 
     const handleDelete =(id)=>{
-        const newSkills = skills.filter((s,idx)=>idx!=id)
+        const newSkills = skills.filter((s,idx)=>idx!==id)
         setskills([...newSkills])
     }
     const handleDomain = ()=>{
-        if(currentDomain=="" && domain_name==""){
+        if(currentDomain==="" && domain_name===""){
             dispatch(setAlert("Please select or give your other domain","warning"))
             return;
         }
@@ -62,16 +61,16 @@ const ProfileCreation = () => {
             dispatch(setAlert("Only 3 domains can be given","warning"))
             return ;
         }
-        if(currentDomain!="")
+        if(currentDomain!=="")
             setDomain([...domain,currentDomain])
-        else if(domain_name!='')
+        else if(domain_name!=='')
             setDomain([...domain,domain_name])
         setCurrentDomain("")
         setDomainName("")
     }
 
     const handleDeleteDomain =(id)=>{
-        const newDomain = domain.filter((d,idx)=>idx!=id)
+        const newDomain = domain.filter((d,idx)=>idx!==id)
         setDomain([...newDomain])
     }
     const handleSubmit =async(e)=>{

@@ -1,0 +1,37 @@
+.type1-container {
+    .top-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      
+        .icon-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 10px;
+          i{
+            margin-top: 3px;
+            margin-left: 4px;
+          }
+        }
+
+        .delete-btn {
+            justify-self: flex-end;
+            align-self: flex-start;
+
+            i {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .message-container {
+        display: flex;
+        justify-content: flex-start;
+        margin: 6px;
+    }
+    .time-container{
+        display: flex;
+        justify-content: space-between;
+    }
+}

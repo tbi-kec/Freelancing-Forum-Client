@@ -18,7 +18,7 @@ function NotificationRejectionModal(props) {
           <div className="modal-content p-5">
             <label className="form-label">Reason for rejection</label>
             <textarea name="" value={message} className="form-control my-3" onChange={e=>setMessage(e.target.value)}></textarea>
-            <button onClick={e=>props.reject(e)} data-bs-dismiss="modal" aria-label="Close" className="btn btn-danger">Reject</button>
+            <button onClick={handleRejectUser} data-bs-dismiss="modal" aria-label="Close" className="btn btn-danger">Reject</button>
           </div>
         </div>
       </div>
