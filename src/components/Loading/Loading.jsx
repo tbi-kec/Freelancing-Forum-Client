@@ -4,11 +4,11 @@ import React, { useEffect } from 'react'
 const Loading = () => {
  
   useEffect(() => {
-    if (true) {
+   
       document.getElementById('trigger_btn').click();
-    } else {
-      document.getElementById('modal_close').click();
-    }
+    
+     setInterval(()=> document.getElementById('modal_close').click(),3500 );
+    
 
   }, []);
 

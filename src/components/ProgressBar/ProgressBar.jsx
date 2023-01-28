@@ -5,6 +5,7 @@ import { useDispatch,useSelector} from 'react-redux';
 import { updateStatus } from '../../actions/project';
 import starColor from '../../assets/Color-star.png'
 import starDull from '../../assets/dull-star.png'
+import moment from 'moment';
 import './ProgressBar.css'
 import { developerUpdateRating } from '../../actions/myDetails'
 
@@ -22,6 +23,7 @@ function ProgressBar({status,p_id,c_id,d_id,deadline}) {
     
       
     }
+    const date = new Date()
  
    
 
@@ -68,7 +70,7 @@ function ProgressBar({status,p_id,c_id,d_id,deadline}) {
 
     const handleRating = (e) =>{
             e.preventDefault();
-            console.log(parseInt(userRating));
+         nextprogress();
             setTimeout(() => {
                 dispatch(developerUpdateRating({rating:parseInt(userRating),u_id:d_id,p_id}))
             }, 2000);
@@ -182,8 +184,8 @@ function ProgressBar({status,p_id,c_id,d_id,deadline}) {
                 </div>
                 <div className='row'>
                 <div className="col-sm-6">
-                <div className="text-start py-3">
-                  <b>Deadline:</b> {deadline}
+                <div className="text-start py-3" >
+                  <b>Deadline:</b> <span className={date > deadline ? 'text-danger':'text-primary'} >{moment(deadline).fromNow()}</span> 
                 </div>
                 </div>
                 <div className="col-sm-6 text-end">

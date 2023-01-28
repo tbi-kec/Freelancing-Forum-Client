@@ -1,22 +1,26 @@
-import React from 'react'
+import React,{useState} from 'react'
 import MaterialIcon from 'material-icons-react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import { responseToNotification } from '../../../actions/myDetails';
 import NotificationRejectionModal from '../NotificationRejectionModal';
+import { setAlert } from '../../../actions/alert';
 import './Type1.scss'
 import moment from 'moment';
 const Type1 = ({notification}) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
   const handleAccept = (e)=>{
     e.preventDefault();
+    dispatch(setAlert("Responding to project request","info"))
     dispatch(responseToNotification({status:"accepted",p_id:notification.p_id._id,n_id:notification._id},navigate))
   }  
 
-
   return (
+      
        <div className="type1-container">
+        
         <NotificationRejectionModal notification={notification} />
       <div className='top-row'>
           <div className="icon-container">
@@ -27,7 +31,7 @@ const Type1 = ({notification}) => {
       </div>
       <div className="message-container">
           <p className='p-0 m-0 mx-5'>
-               {notification.p_id.title}
+             <Link to={`/project/show/${notification.p_id._id}`}>{notification.p_id.title}</Link>
           </p>
       </div>
       <div className="time-container">

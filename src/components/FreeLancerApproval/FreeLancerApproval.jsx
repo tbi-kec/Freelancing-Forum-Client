@@ -12,12 +12,13 @@ const FreeLancerApproval = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const freelancers = useSelector((state) => (state.userReducer))
-  const setData = () => {
-    const data = freelancers.data.filter(f => f.admin_verify == false && f.user_type == 'freelancer')
-    setUsers([...data])
-  }
+  
   useEffect(() => {
     if (freelancers && freelancers?.data != null) {
+      const setData = () => {
+        const data = freelancers.data.filter(f => f.admin_verify === false && f.user_type === 'freelancer')
+        setUsers([...data])
+      }
       setData();
     }
   }, [freelancers])
@@ -29,8 +30,13 @@ const FreeLancerApproval = () => {
     dispatch(acceptOrRejectUser({u_id:id,status:"accepted",message:"accepted"},navigate))
     setResponded(false);
   }
-  if(responded===true)
-    return <Loading />
+  useEffect(()=>{
+      if(responded)
+        return <Loading />
+  },[responded])
+  
+ 
+  
 
   return (
       <div className='container mt-5 text-center'>
@@ -45,7 +51,7 @@ const FreeLancerApproval = () => {
             </tr>
           </thead>
           <tbody>
-            {users == null || users.length == 0 ?
+            {users === null || users.length === 0 ?
               <tr >
                 <td className='py-5 fw-bold' colSpan="6">No User Request Found</td>
               </tr> : 

@@ -1,18 +1,17 @@
 import React from 'react'
-
-export default function WorkHistory() {
+import { Link } from 'react-router-dom'
+export default function WorkHistory({work}) {
   return (
          <div className="inner-card">
                     <div className="inner-card-head">
-                        <h2>Driver Drowsiness Project</h2>
+                        <h2><Link to={`/project/show/${work._id}`}>{work.title}</Link></h2>
                     </div>
                     <div className="domain">
-                       <span>Aritificial Inetlligence</span>
-                       <i class="fa-solid fa-C  "></i>
-                       <span>AI and ML</span>
+                       <span>{work.category}</span>
+                        <p>{work.description}</p>
                     </div>
                     <div className="posted-by">
-                        Posted by LingashKumar
+                        Posted by {work.createdBy.first_name}
                     </div>
         </div>
   )

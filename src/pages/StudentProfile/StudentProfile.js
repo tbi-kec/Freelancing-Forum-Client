@@ -74,7 +74,7 @@ export default function StudentProfile() {
             <Domain domain={user?.domain}/>
         }
 
-        {user?.admin_verify==false  &&
+        {
             work_history.length!=0 && user?.admin_verify==true &&
                 <div className="student-card work-history">
                     <div className="title">
@@ -92,10 +92,11 @@ export default function StudentProfile() {
         }
      {user?.admin_verify==true &&
                 <StudentProject project={studyProject} user={user}/> }
-                {project_given.length!=0 &&
+    
+         {project_given.length!=0 &&
                     <ProjectHistory project={project_given} />
                 }
-    
+
     </div>
   )
 }
