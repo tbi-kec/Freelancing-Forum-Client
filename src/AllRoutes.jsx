@@ -17,6 +17,7 @@ import Page404 from './pages/Page404/Page404'
 import ResetPassword from './pages/ResetPassword/ResetPassword'
 import ProjectShow from './pages/ProjectShow/ProjectShow'
 import Department from './pages/Department/Department'
+import DeveloperCommunity from './pages/DeveloperCommunity/DeveloperCommunity'
 import AdminProtected from './AdminProtected'
 import FreeLancerApproval from './components/FreeLancerApproval/FreeLancerApproval'
 import RequestedProjects from './components/RequestedProjects/RequestedProjects'
@@ -54,6 +55,7 @@ const AllRoutes = () => {
               <Route path='/profile/edit' element={<ProfileEdit/>} />
               <Route path='/home' element={<Home />} />
               <Route path='/department' element={<Department/>} />
+              <Route path='/developer_community' element={<DeveloperCommunity />} />
               <Route path='/project/view' element={<ProjectView/>} />
               <Route path='/project/show/:id' element={<ProjectShow/>} />
               <Route path='/user/:dept' element={<DepartmentUsers/>} />
