@@ -16,7 +16,7 @@ const AdminProjectReport = () => {
   const constants = useSelector((state)=>(state.constantReducer))
   const [depts,setDepts]=useState([]);
   const [table,setTable]=useState(false)
-  const tableRef = useRef(null)
+  const reportTableRef = useRef(null)
   const navigate = useNavigate()
   const setDeptData = ()=>{
     const dept = constants.data[0].dept_short;
@@ -167,12 +167,12 @@ const AdminProjectReport = () => {
         <DownloadTableExcel
                     filename="Freelancing Forum Report"
                     sheet="Report"
-                    currentTableRef={tableRef.current} >
+                    currentTableRef={reportTableRef.current} >
                     <button className="btn download-excel"> Export Excel </button>
         </DownloadTableExcel>
         </div>
         <div className='container mt-5 text-center'>
-        <table class="table table-stripped" ref={tableRef}>
+        <table class="table table-stripped" ref={reportTableRef}>
           <thead>
             <tr>
               <th scope="col">#</th>

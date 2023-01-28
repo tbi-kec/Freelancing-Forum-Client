@@ -15,24 +15,24 @@ function Footer(){
           <footer className="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 row-cols-1 py-5 my-5 justify-content-center align-items-center text-center">
             <div className="col my-4">
               <div className="flogo-container">
-                <div className="m-1 mb-3">
-                <img src={tbilogo} alt="" width="150px" height="75px" />
+                <div className="m-2 mb-3">
+                <img src={tbilogo} alt="" width="100px" height="50px" />
                 </div>
                 <div className="m-2 mb-3">
-                <img src={iiclogo} alt="" width="150px" height="75px" />
+                <img src={iiclogo} alt="" width="100px" height="50px" />
                 </div>
-                <div className="m-1">
-                <img src={emdclogo} alt="" width="100px" height="100px" />
+                <div className="m-2 my-3 ">
+                <img src={emdclogo} alt="" width="60px" height="60px" />
                 </div>
               </div>
             </div>
             <div className="col my-4">
               <h5>Contact Us</h5>
               <ul className="nav flex-column">
-                <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Name</a></li>
-                <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Phone no</a></li>
-                <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Name</a></li>
-                <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Phone no</a></li>
+                <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Dr. R. Rajadevi</a></li>
+                <li className="nav-item mb-4"><a href="#" className="nav-link p-0 text-muted">986508899</a></li>
+                <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Ms. T. E. Ramya</a></li>
+                <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">8883677334</a></li>
               </ul>
             </div>
 

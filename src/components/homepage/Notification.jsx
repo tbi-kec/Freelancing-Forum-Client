@@ -33,7 +33,7 @@ const deleteNotificationButton=(e)=>{
     <div className='notification-container m-2 pb-4'>
         <div className="row d-flex align-items-center">
             <div className="col-3 d-flex justify-content-center">
-            {/* <MaterialIcon icon="sms" size="56px" color='#5378F8'/> */}
+            <MaterialIcon icon="sms" size="56px" color='#5378F8'/>
             <MaterialIcon icon="work" size="56px" color='#5378F8'/>
             </div>
             <div className="col-9">
