@@ -15,15 +15,15 @@ function DeptCard({Deptname,dept,UsersCount,FreelancersCount,ProjectCount,IconNa
       <div className="d-flex flex-row justify-content-between dept-details">
         <div className="justify-content-center align-items-center text-center">
           <p>{UsersCount}</p>
-          <p>users</p>
+          <p className="fs-5">Users</p>
         </div>
         <div className="justify-content-center align-items-center text-center">
           <p>{FreelancersCount}</p>
-          <p>freelancers</p>
+          <p className="fs-5">Freelancers</p>
         </div>
         <div className="justify-content-center align-items-center text-center">
           <p>{ProjectCount}</p>
-          <p>projects</p>
+          <p className="fs-5">Projects</p>
         </div>
       </div>
     </div>
