@@ -59,7 +59,7 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const modal = document.getElementById("modal_button");
-    if (otp !== gotp) {
+    if (parseInt(otp) !== gotp) {
       dispatch(setAlert("Otp Not Match", "danger", 4000));
       return;
     }
@@ -112,7 +112,7 @@ const Register = () => {
             <form onSubmit={handleSubmit}>
               <div className="form-group ">
                 <input
-                  type="tel"
+                  type="number"
                   value={otp}
                   onChange={(e) => setOtp(e.target.value)}
                   placeholder="Enter the OTP"

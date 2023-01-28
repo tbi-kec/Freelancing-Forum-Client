@@ -7,6 +7,7 @@ import RequestModal from "../../components/AdminModals/RequestModal";
 import { setAlert } from '../../actions/alert'
 import { respondToRequest } from '../../actions/admin'
 import Loading from '../Loading/Loading'
+import moment from 'moment'
 const RequestedProjects = () => {
   const navigate = useNavigate();
   const dispatch=useDispatch()
@@ -14,12 +15,13 @@ const RequestedProjects = () => {
   const [projects, setProjects] = useState([])
   const [responded, setResponded] = useState(false)
 
-  const setData = () => {
-    const data = project.data.filter(p => p.project_status == 'pending-admin');
-    setProjects([...data])
-  }
+ 
   useEffect(() => {
-    if (project && project.data != null) {
+    if (project && project.data !== null) {
+       const setData = () => {
+         const data = project.data.filter(p => p.project_status === 'pending-admin');
+       setProjects([...data])
+      }
       setData();
     }
   }, [project])
@@ -32,19 +34,23 @@ const RequestedProjects = () => {
   const handleAccpet = (e, id) => {
     e.preventDefault();
     setResponded(true)
-    dispatch(setAlert("Accepting Project", "info", 2000))
+    dispatch(setAlert("Accepting Project", "info", 3400))
     dispatch(respondToRequest({ status: "accepted", p_id: id }, navigate))
-    handleResponse();
+    setTimeout(()=> handleResponse(),4000)
+  
     
   }
   const handleResponse= ()=>{
     setResponded(false)
   }
-  if(responded){
-    return <Loading />
-  }
+
+  
 
   return (
+    <div>
+     
+      {responded===true && <Loading />}
+   
       <div className='container mt-5 text-center'>
         <table className="table table-stripped">
           <thead>
@@ -58,7 +64,7 @@ const RequestedProjects = () => {
             </tr>
           </thead>
           <tbody>
-            {projects == null || projects?.length == 0 ?
+            {projects === null || projects?.length === 0 ?
               <tr >
                 <td className='py-5 fw-bold' colSpan="6">No Projects Request Found</td>
               </tr> : 
@@ -68,7 +74,7 @@ const RequestedProjects = () => {
                   <td><Link to={`/project/show/${p._id}`}  className="text-dark ">{p.title}</Link></td>
                   <td><Link to={`/profile/${p.createdBy._id}`} className="text-dark ">{p.createdBy.first_name} {p.createdBy.last_name}</Link></td>
                   <td><Link to={`/profile/${p.developer._id}`} className="text-dark ">{p.developer.first_name} {p.developer.last_name}<span className="badge bg-primary mx-3">{p.developer?.onbord_project?.length}</span></Link></td>
-                  <td>Need to change backend</td>
+                  <td>{moment(p.admin_requestedOn).calendar()}</td>
                   <td>
                     <button className='btn btn-success mx-3'disabled={responded} onClick={e=>handleAccpet(e,p._id)}>Accept</button>
                     <button className='btn btn-danger mx-3' disabled={responded} onClick={()=>setResponded(true)}  data-bs-toggle="modal" data-bs-target={`#toggle_model_project_request-${p._id}`}>Reject</button>
@@ -84,6 +90,7 @@ const RequestedProjects = () => {
           )
         })}
       </div>
+       </div>
    
   )
 }

@@ -1,7 +1,7 @@
 import * as api from '../api'
 import { setAlert } from './alert'
 import { getRequestedProjects } from './admin';
-
+import { getAllProject } from '../api';
 export const getMyDetails=()=>async(dispatch)=>{
     try {
         const user =await JSON.parse(localStorage.getItem('freelance'));
@@ -56,6 +56,7 @@ export const deleteNotification =(deleteData,navigate)=>async(dispatch)=>{
     try {
         const {data}=await api.deleteNotification(deleteData);
         dispatch(getMyDetails());
+        dispatch(getAllProject());
         dispatch(setAlert("Deleted notification","success"))
     } catch (error) {
         dispatch(setAlert("Server error","danger"))
@@ -79,6 +80,7 @@ export const developerRequestProject =(requestData,navigate)=>async(dispatch)=>{
     try {
         const {data}=await api.developerRequestProject(requestData);
         dispatch(setAlert("Requested Project","success"));
+        dispatch(getMyDetails());
         navigate("/home")
     } catch (error) {
         alert(error.message)

@@ -1,22 +1,18 @@
 import React from 'react'
 import './PreLoader.css'
 import KecLogo from '../../assets/logo.png'
-import WhiteImg from '../../assets/left_graph.png'
+
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+
 import decode from 'jwt-decode'
 import { useEffect } from 'react'
 function PreLoader() {
   const navigate = useNavigate();
-  const handleLogout = () => {
-    localStorage.removeItem("freelance")
-    setTimeout(() => {
-      navigate('/home')
-    }, 3000)
-  }
+ 
   useEffect(() => {
     const result = JSON.parse(localStorage.getItem("freelance"))
     const token = result?.token;
+   
 
     if (!result) {
       setTimeout(() => {
@@ -27,15 +23,23 @@ function PreLoader() {
       const decodedToken = decode(token)
 
       if (decodedToken.exp * 1000 < new Date().getTime()) {
+         const handleLogout = () => {
+            localStorage.removeItem("freelance")
+            setTimeout(() => {
+              navigate('/home')
+            }, 3000)
+        }
         handleLogout()
         return
       }
       setTimeout(() => {
-        navigate(`/home`)
+        if(result?.user?.isAdmin===true)
+          navigate('/admin')
+        else navigate(`/home`)
       }, 3000)
 
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <>

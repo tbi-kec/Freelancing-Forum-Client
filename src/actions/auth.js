@@ -20,7 +20,7 @@ export const login  = (authData,navigate) => async(dispatch) =>{
         dispatch(getConstants())
         dispatch(getAllProjects())
         dispatch(getRequestedProjects())
-        if(data?.user?.isAdmin){
+        if(data?.user?.isAdmin===true){
             navigate("/admin")
         }
         //else navigate(`/profile/${data.user._id}`)

@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React from "react"
 import './Footer.css';
 import logo from "../../assets/keclogo.png";
 import iiclogo from "../../assets/IIC_logo.png";
@@ -12,7 +12,7 @@ function Footer(){
     <div className="footer">
       <div className="footer-content">
         <div className="container w-100">
-          <footer className="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 row-cols-1 py-5 my-5 justify-content-center align-items-center text-center">
+          <footer className="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 row-cols-1 justify-content-center align-items-center text-center">
             <div className="col my-4">
               <div className="flogo-container">
                 <div className="m-2 mb-3">
@@ -68,13 +68,13 @@ function Footer(){
 
             <ul className="nav justify-ficon list-unstyled d-flex">
               <li className="ms-3 social-logo d-flex justify-content-center align-items-center">
-                <i class="fa-brands fa-linkedin-in social-font"></i>
+                <i className="fa-brands fa-linkedin-in social-font"></i>
               </li>
               <li className="ms-3 social-logo d-flex justify-content-center align-items-center">
-                <i class="fa-brands fa-twitter social-font"></i>
+                <i className="fa-brands fa-twitter social-font"></i>
               </li>
               <li className="ms-3 social-logo d-flex justify-content-center align-items-center">
-                <i class="fa-brands fa-facebook-f"></i>
+                <i className="fa-brands fa-facebook-f"></i>
               </li>
             </ul>
           </footer>

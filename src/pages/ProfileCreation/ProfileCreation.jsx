@@ -212,7 +212,7 @@ const ProfileCreation = () => {
                             </>
 }    
                         <div className="form-group">
-                            <textarea value={description} onChange={e=>setDescription(e.target.value)} className='form-control' placeholder='Tell us about yourself, "First Impression is the best impression"' cols="10" rows="3" required>
+                            <textarea value={description} onChange={e=>setDescription(e.target.value)} className='form-control' placeholder='Tell us about yourself, "First Impression is the best impression"' cols="10" rows="3" minlength="50" maxlength="301" required >
                                
                             </textarea>
                         </div>

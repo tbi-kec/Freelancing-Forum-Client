@@ -5,6 +5,7 @@ import { Link,useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import { setAlert } from '../../actions/alert';
 import { acceptOrRejectUser } from '../../actions/admin';
+import Loading from '../Loading/Loading';
 
 const FreeLancerApproval = () => {
   const [users, setUsers] = useState(null)
@@ -12,12 +13,13 @@ const FreeLancerApproval = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const freelancers = useSelector((state) => (state.userReducer))
-  const setData = () => {
-    const data = freelancers.data.filter(f => f.admin_verify == false && f.user_type == 'freelancer')
-    setUsers([...data])
-  }
+  
   useEffect(() => {
     if (freelancers && freelancers?.data != null) {
+      const setData = () => {
+        const data = freelancers.data.filter(f => f.admin_verify === false && f.user_type === 'freelancer')
+        setUsers([...data])
+      }
       setData();
     }
   }, [freelancers])
@@ -25,13 +27,16 @@ const FreeLancerApproval = () => {
  const handleAcceptUser = (e, id) => {
   setResponded(true)
     e.preventDefault();
-    dispatch(setAlert("Accepting freelancer","info"))
+    dispatch(setAlert("Accepting freelancer","info",3400))
     dispatch(acceptOrRejectUser({u_id:id,status:"accepted",message:"accepted"},navigate))
-    setResponded(false);
-  }
 
+    setInterval(()=>setResponded(false),5000)
+    
+  }
+  
   return (
       <div className='container mt-5 text-center'>
+        {responded===true && <Loading />}
         <table className="table  table-stripped">
           <thead>
             <tr>
@@ -43,7 +48,7 @@ const FreeLancerApproval = () => {
             </tr>
           </thead>
           <tbody>
-            {users == null || users.length == 0 ?
+            {users === null || users.length === 0 ?
               <tr >
                 <td className='py-5 fw-bold' colSpan="6">No User Request Found</td>
               </tr> : 

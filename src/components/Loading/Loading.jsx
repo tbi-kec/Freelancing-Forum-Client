@@ -1,20 +1,18 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+
 
 const Loading = () => {
-  // const loadingData = useSelector((state) => (state.loadingReducer));
-  // const { loading } = loadingData.initialState;
+ 
   useEffect(() => {
-    if (true) {
+   
       document.getElementById('trigger_btn').click();
-    } else {
-      document.getElementById('modal_close').click();
-    }
+    
+     setInterval(()=> document.getElementById('modal_close').click(),3500 );
+    
 
   }, []);
 
-  //        document.getElementById('modal_close').click(); close modal trigger button
-
+ 
   return (
     <>
       {/* Modal  */}
