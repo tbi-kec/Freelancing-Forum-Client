@@ -6,6 +6,7 @@ import './RequestedProjects.scss'
 import RequestModal from "../../components/AdminModals/RequestModal";
 import { setAlert } from '../../actions/alert'
 import { respondToRequest } from '../../actions/admin'
+import Loading from '../Loading/Loading'
 const RequestedProjects = () => {
   const navigate = useNavigate();
   const dispatch=useDispatch()
@@ -23,9 +24,9 @@ const RequestedProjects = () => {
     }
   }, [project])
 
-  if (projects == null) {
-    return <h1>Loading ...</h1>
-  }
+  // if (projects == null) {
+  //   return <h1>Loading ...</h1>
+  // }
 
 
   const handleAccpet = (e, id) => {
@@ -33,13 +34,14 @@ const RequestedProjects = () => {
     setResponded(true)
     dispatch(setAlert("Accepting Project", "info", 2000))
     dispatch(respondToRequest({ status: "accepted", p_id: id }, navigate))
+    handleResponse();
     
   }
   const handleResponse= ()=>{
     setResponded(false)
   }
   if(responded){
-    return <h1>Loading</h1>
+    return <Loading />
   }
 
   return (

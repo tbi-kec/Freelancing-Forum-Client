@@ -85,7 +85,7 @@ function ProjectShow() {
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-3 notification flex-grow-1">
+                  <div className="col-md-3 stipend-contaier flex-grow-1">
                     <div className="p-3">
                       <b>Start date:</b> {moment(p.created_on).fromNow()}
                     </div>
@@ -104,7 +104,7 @@ function ProjectShow() {
               </div>
             </div>
 
-            {p.createdBy._id ==user?.data?._id && p.project_status !== "created" && 
+            {p.createdBy._id ==user?.data?._id && p.project_status === "created" && 
               <div className="p-3">
                 <div className="fs-4 mt-4 fw-bold">Applicant</div>
                 <div>
