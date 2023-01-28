@@ -5,7 +5,7 @@ const Loading = () => {
   // const loadingData = useSelector((state) => (state.loadingReducer));
   // const { loading } = loadingData.initialState;
   useEffect(() => {
-    if (false) {
+    if (true) {
       document.getElementById('trigger_btn').click();
     } else {
       document.getElementById('modal_close').click();
@@ -24,34 +24,13 @@ const Loading = () => {
         <div className="modal-dialog modal-sm modal-dialog-centered" data-bs-focus="false">
           <div className="modal-content p-4" style={{backgroundColor:"rgba(245,246,256,0.4);"}}>
             <div className="modal-body">
-              <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
-              <div class="spinner-border text-secondary" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
+
               <div class="spinner-border text-success" role="status">
                 <span class="visually-hidden">Loading...</span>
               </div>
-              <div class="spinner-border text-danger" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
-              <div class="spinner-border text-warning" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
-              <div class="spinner-border text-info" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
-              <div class="spinner-border text-light" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
-              <div class="spinner-border text-dark" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
+
             </div>
-           
-                <p>Loading..............</p>
-           
+                <p>Please Wait...</p>
           </div>
         </div>
       </div>
