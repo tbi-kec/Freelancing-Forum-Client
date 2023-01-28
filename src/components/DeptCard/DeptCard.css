@@ -3,9 +3,9 @@
   background: linear-gradient(90.02deg, #16336D 0.02%, #0B1E43 113.01%);
   border-radius: 15px;
 }
-.dept-card > div > .dept-name {
-  color: var(--main-white);
-  font-size: 2rem;
+.dept-card > div > .dept-name>a {
+  color: var(--main-white) !important;
+  font-size: 25px;
   font-weight: bold;
 }
 

@@ -30,8 +30,10 @@ function Footer(){
               <h5>Contact Us</h5>
               <ul className="nav flex-column">
                 <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Dr. R. Rajadevi</a></li>
+                <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">AI</a></li>
                 <li className="nav-item mb-4"><a href="#" className="nav-link p-0 text-muted">986508899</a></li>
                 <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Ms. T. E. Ramya</a></li>
+                <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">CT - PG</a></li>
                 <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">8883677334</a></li>
               </ul>
             </div>
@@ -47,13 +49,13 @@ function Footer(){
             </div>
             <div className="col my-4">
               <div className="flogo-container">
+              <div className="m-2">
+                <img src={logo} alt="" width="100px" height="100px" />
+                </div>
                 <div className="row my-3 feedback feedback-btn p-3">
                   <button className="btn btn-primary font-weight-bold">Give Your feedback <i className="fa-solid fa-arrow-right fs-5 forward-btn"></i></button>
                   <p className="feedback-text my-2 fs-6 text-light">Hello, users Our goal is to Find the perfect freelance services for your projects</p>
 
-                </div>
-                <div className="m-2">
-                <img src={logo} alt="" width="100px" height="100px" />
                 </div>
               </div>
             </div>
