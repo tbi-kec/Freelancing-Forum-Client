@@ -24,7 +24,7 @@ function ProfileCard({user,constant}) {
       </div>
       </div>
       <div className="col-md-3 text-end">
-          <img src={profile} alt="profile-image" height='80px' width='80px' />
+          <img src={profile} alt="profile" height='80px' width='80px' />
       </div>
     </div>
     <div className="text-end project-post-time">
@@ -32,13 +32,13 @@ function ProfileCard({user,constant}) {
       function () {
         var rate=[]
         for(let i=0;i<user.rating;i++){
-          rate.push(<img src={starColor} alt='star' height='30px' />)
+          rate.push(<img key={i} src={starColor} alt='star' height='30px' />)
         }
         for(let j=0;j<5-user.rating;j++){
-          rate.push(<img src={starDull} alt='star' height='25px' />)
+          rate.push(<img key={j} src={starDull} alt='star' height='25px' />)
         }
         return(
-          <div>
+          <div key={rate.length}>
           {rate}
           </div>
         )

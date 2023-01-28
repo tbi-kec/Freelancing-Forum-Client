@@ -6,14 +6,13 @@ import { useEffect } from "react";
 function ProjectView() {
   const projects = useSelector((state)=>(state.projectReducer))
   const constants =useSelector((state)=>(state.constantReducer))
-  const [department,setDepartement]=useState([])
+ 
   const [domain,setDomain]=useState([])
   const [filteredProject,setFilteredProject]=useState([])
   const [search,setSearch]=useState('')
   const [currentCategory,setCurrentCategory]=useState('')
   useEffect(()=>{
     if(constants.data){
-      setDepartement([...constants.data[0].dept_short])
       setDomain([...constants.data[0].domain])
     }
   },[constants])
@@ -22,15 +21,15 @@ function ProjectView() {
      const Filtered=projects.data?.filter((p)=> (p.title.toLowerCase().includes(search?.toLowerCase()) ))
       setFilteredProject([...Filtered])
     
-  },[search])
+  },[search,projects.data])
 
   useEffect(()=>{
-    if(currentCategory!=''){
+    if(currentCategory!==''){
      const Filtered=projects.data?.filter((p)=> (p.category===currentCategory ))
       setFilteredProject([...Filtered])
     }
-  },[currentCategory])
-  console.log("projects",projects,currentCategory);
+  },[currentCategory,projects.data])
+
   
   return (
     <div>

@@ -1,4 +1,4 @@
-
+/* 
 .notification-container{
     background-color: #E9EDFE;
     border-radius:12px;
@@ -28,4 +28,8 @@
 .notification-msg{
   font-size:smaller ;
 }
+ */
 
+ .notification-container{
+  border-radius: 6px;
+ }

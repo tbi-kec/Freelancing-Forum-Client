@@ -22,43 +22,45 @@ function ProgressBar({status,p_id,c_id,d_id,deadline}) {
     
       
     }
-    const updateProgressbar = () => {
-    
-        const progressSteps = document.querySelectorAll(".progress-step");
-        const progress = document.getElementById("progress");
-        progressSteps.forEach((progressStep, idx) => {
-            return idx < progressStepsNum + 1 ?
-                progressStep.classList.add("progress-step-active")
-                :
-                progressStep.classList.remove("progress-step-active");
-        });
-        const progressActive = document.querySelectorAll(".progress-step-active");
-        progress.style.width = ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
-
-        
-    }
-   const setinital=async ()=>{
-    
-    if (status == "assigned") { 
-        setprogressStepsNum(0);
-     }
-    else if (status == "partial") { 
-       
-        setprogressStepsNum(1) }
-    else if(status=="testing")
-        setprogressStepsNum(2)
-    else { 
-      
-        setprogressStepsNum(3); 
-    }
  
-    }
+   
+
     useEffect(() => {
+        const setinital=async ()=>{
+            
+            if (status === "assigned") { 
+                setprogressStepsNum(0);
+            }
+            else if (status === "partial") { 
+            
+                setprogressStepsNum(1) }
+            else if(status==="testing")
+                setprogressStepsNum(2)
+            else { 
+            
+                setprogressStepsNum(3); 
+            }
+        }
+ 
         setinital();
     }, [status])
 
     useEffect(()=>{
         setTimeout(()=>{
+               const updateProgressbar = () => {
+    
+            const progressSteps = document.querySelectorAll(".progress-step");
+            const progress = document.getElementById("progress");
+            progressSteps.forEach((progressStep, idx) => {
+                return idx < progressStepsNum + 1 ?
+                    progressStep.classList.add("progress-step-active")
+                    :
+                    progressStep.classList.remove("progress-step-active");
+            });
+            const progressActive = document.querySelectorAll(".progress-step-active");
+            progress.style.width = ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
+        
+    }
                 updateProgressbar()
 
     },1000)
@@ -73,7 +75,7 @@ function ProgressBar({status,p_id,c_id,d_id,deadline}) {
     }
 
     return (
-        <>
+    <div>
             {/* modal - next progress */}
             <div
                 className="modal fade "
@@ -185,13 +187,13 @@ function ProgressBar({status,p_id,c_id,d_id,deadline}) {
                 </div>
                 </div>
                 <div className="col-sm-6 text-end">
-                {progressStepsNum <2 && d_id==user?.data?._id ?
+                {progressStepsNum <2 && d_id===user?.data?._id ?
                 <div className="progress-btn">
                     <div href="#" className="btn" data-bs-toggle="modal"
                         data-bs-target="#toggle_model_request">Next</div>
                 </div>
                 :""}
-                {progressStepsNum >=2 && c_id==user?.data?._id   ?
+                {progressStepsNum >=2 && c_id===user?.data?._id   ?
                 <div className="progress-btn">
                     <div href="#" className="btn" data-bs-toggle="modal"
                         data-bs-target="#toggle_model_rate">Confirm & rate</div>
@@ -204,7 +206,7 @@ function ProgressBar({status,p_id,c_id,d_id,deadline}) {
                     
             </div>
             
-        </>
+        </div>
 
     )
 }
