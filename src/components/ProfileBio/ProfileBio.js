@@ -155,6 +155,7 @@ export default function ProfileBio({user}) {
               </div>
             </div>
           </div>
+          
           {current?.data?.admin_verify &&
             <div className="profile-dept">
 

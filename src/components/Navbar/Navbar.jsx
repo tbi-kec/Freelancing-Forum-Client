@@ -4,16 +4,11 @@ import logo from "../../assets/logo.png";
 import profile from "../../assets/profileicon2.png";
 import {Link} from 'react-router-dom';
 import { useSelector } from "react-redux";
-import {useNavigate} from 'react-router-dom';
-const Navbar = () => {
-  const navigate = useNavigate()
-  const user= useSelector((state)=>(state.currentUserReducer));
-  const admin=user?.user?.isAdmin
 
-  const handleLogout = () =>{
-    localStorage.removeItem('freelance');
-    navigate('/');
-}
+const Navbar = () => {
+
+  const user= useSelector((state)=>(state.currentUserReducer));
+
 
   return (
     <nav className="navbar navbar-expand-lg">
