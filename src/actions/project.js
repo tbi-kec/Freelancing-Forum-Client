@@ -5,7 +5,6 @@ import { setAlert } from './alert'
 export const getAllProjects=()=>async(dispatch)=>{
     try {
         const {data}=await api.getAllProject();
-        
         dispatch({type:'GET_PROJECTS',payload:data})
     } catch (error) {
         dispatch(setAlert("Server Error","warning"))
@@ -14,7 +13,7 @@ export const getAllProjects=()=>async(dispatch)=>{
 
 export const newProject = (projectData,navigate) => async(dispatch) =>{
     try {
-        await api.newProject(projectData);
+        const {data} = await api.newProject(projectData);
         dispatch(getAllProjects());
         dispatch(setAlert("Successfully created project","success"))
         navigate("/Home")
@@ -28,7 +27,7 @@ export const newProject = (projectData,navigate) => async(dispatch) =>{
 
 export const updateStatus = (status,navigate)=>async(dispatch)=>{
     try {
-        await api.updateStatus(status);
+        const {data} = await api.updateStatus(status);
         dispatch(getAllProjects());
         dispatch(setAlert("Progress updated","success"))
         navigate(`/project/show/${status.p_id}`)
@@ -39,7 +38,7 @@ export const updateStatus = (status,navigate)=>async(dispatch)=>{
 
 export const updateStatusToVerify = (status,navigate)=>async(dispatch)=>{
     try {
-        await api.updateStatusToVerify(status);
+        const {data} = await api.updateStatusToVerify(status);
         dispatch(getAllProjects());
         dispatch(setAlert("Progress Updated","success"))
         navigate(`/project/show/${status.p_id}`)

@@ -10,12 +10,9 @@ export const login  = (authData,navigate) => async(dispatch) =>{
     try {
         const {data}=await api.login(authData)
         dispatch({type:"AUTH",payload:data})
-         
         dispatch(setCurrentUser(JSON.parse(localStorage.getItem("freelance"))))
         dispatch(getMyDetails())
-       
         dispatch(setAlert("Login Successfull","success"))
-       
         dispatch(getAllUsers())
         dispatch(getConstants())
         dispatch(getAllProjects())
@@ -47,7 +44,7 @@ export const signup = (authData,navigate) => async(dispatch) =>{
 
 export const updateProfile = (profileData,navigate) => async(dispatch)=>{
     try {
-       await api.createProfile(profileData)
+       const {data} = await api.createProfile(profileData)
         const {user}=await JSON.parse(localStorage.getItem("freelance"))
          dispatch(getMyDetails())
         dispatch(getAllUsers())
@@ -65,7 +62,7 @@ export const updateProfile = (profileData,navigate) => async(dispatch)=>{
 
 export const sendOtp = (otpData,navigate)=>async(dispatch)=>{
     try{
-        await api.sendOtp(otpData);
+        const {data} = await api.sendOtp(otpData);
         dispatch(setAlert("OTP send successfully to your kongu email","success"))
     }catch(err){
         dispatch(setAlert(err.response.data,"danger"))
@@ -74,7 +71,7 @@ export const sendOtp = (otpData,navigate)=>async(dispatch)=>{
 
 export const sendEmail = (email)=>async(dispatch) =>{
     try {
-       await api.sendEmail(email)
+       const {data} = await api.sendEmail(email)
         dispatch(setAlert("Email send to your mail","success"))
     } catch (error) {
         console.log(error.message)
@@ -84,7 +81,7 @@ export const sendEmail = (email)=>async(dispatch) =>{
 
 export const changePassword =(resetData,navigate)=>async(dispatch)=>{
     try {
-        await api.changePassword(resetData)
+        const {data} = await api.changePassword(resetData)
         dispatch(setAlert("Password changes","success"));
         navigate('/login')
     } catch (error) {

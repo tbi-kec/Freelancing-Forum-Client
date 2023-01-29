@@ -31,7 +31,6 @@ const App = () => {
   return (
     <div className='app-container'>
       <Router>
-        
         <Alert />
         <AllRoutes />
       </Router>

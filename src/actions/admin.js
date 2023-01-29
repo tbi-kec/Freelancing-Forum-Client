@@ -14,7 +14,7 @@ export const getRequestedProjects=()=>async(dispatch)=>{
 
 export const respondToRequest =(responseData,navigate)=>async(dispatch)=>{
     try {
-        await api.responseRequest(responseData);
+        const {data} = await api.responseRequest(responseData);
         dispatch(getRequestedProjects());
         dispatch(setAlert("Responded Successfully","success"))
         navigate('/admin/request')
@@ -26,8 +26,7 @@ export const respondToRequest =(responseData,navigate)=>async(dispatch)=>{
 
 export const acceptOrRejectUser = (userData,navigate) => async(dispatch)=>{
     try {
-       
-       await api.acceptOrRejectUser(userData);
+       const {data} = await api.acceptOrRejectUser(userData);
         dispatch(setAlert(`${userData.status} freelancer successfully`,"success"));
         dispatch(getAllUsers());
         navigate("/admin/approval")
@@ -38,7 +37,7 @@ export const acceptOrRejectUser = (userData,navigate) => async(dispatch)=>{
 
 export const createAdmin = (userData,navigate)=>async(dispatch)=>{
     try {
-        await api.createAdmin(userData);
+       const {data}= await api.createAdmin(userData);
         dispatch(setAlert("Admin created successfully","success"))
         navigate('/admin')
     } catch (error) {
