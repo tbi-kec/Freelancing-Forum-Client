@@ -30,12 +30,16 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav text-light ms-auto">
-            <li className="nav-item mx-4">
-              <Link to="/project/view" className="nav-link">
-                <button className="btn nav-btn-1">All Project</button>
+          <li className="nav-item mx-4">
+              <Link to="/department" className="nav-link">
+                <button className="btn nav-btn-1">Freelancers</button>
               </Link>
             </li>
-            
+            <li className="nav-item mx-4">
+              <Link to="/project/view" className="nav-link">
+                <button className="btn nav-btn-1">All Projects</button>
+              </Link>
+            </li>        
             <li className="nav-item mx-4">
               <Link to="/project/add" className="nav-link">
                 <button className="btn nav-btn-2">Add Project</button>

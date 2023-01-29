@@ -94,10 +94,10 @@ function ProjectShow() {
                   </div>
                   <div className="col-md-3 stipend-contaier flex-grow-1">
                     <div className="p-3">
-                      <b>Start date:</b> {moment(p.created_on).fromNow()}
+                      <b>Start date:</b> {moment(p.created_on).format('DD-MM-YYYY')}
                     </div>
                     <div className="p-3">
-                      <b>End date:</b> {moment(p.end_date).fromNow()}
+                      <b>End date:</b> {moment(p.end_date).format('DD-MM-YYYY')}
                     </div>
                     <div className="p-3">
                       <b>Total Stipend:</b>
