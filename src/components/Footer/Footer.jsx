@@ -75,7 +75,7 @@ function Footer(){
             <ul className="nav justify-ficon list-unstyled d-flex">
               <li className="ms-3 social-logo d-flex justify-content-center align-items-center">
               <a href="https://instagram.com/iic_kec?igshid=YmMyMTA2M2Y=" target="_blank">
-                <i className="fa-brands fa-linkedin-in social-font"></i>
+                <i className="fa-brands fa-instagram social-font"></i>
               </a>
               </li>
               <li className="ms-3 social-logo d-flex justify-content-center align-items-center">
