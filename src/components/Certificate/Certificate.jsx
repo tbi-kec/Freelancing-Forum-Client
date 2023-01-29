@@ -27,10 +27,10 @@ function Certificate({Name,ProjectName}){
           <h1 className="certificate-projectname m-3">{ProjectName}</h1>
         </div>
         <div className="d-flex flex-row bottom-img-div justify-content-center">
-          <img src={logo} alt="" width="100" height="100"/>
-          <img src={iiclogo} alt="" width="200" height="100"/>
-          <img src={emdclogo} alt="" width="100" height="100"/>
-          <img src={tbilogo} alt="" width="200" height="100"/>
+          <img src={logo} alt="" width="80" height="90"/>
+          <img src={iiclogo} alt="" width="150" height="70"/>
+          <img src={emdclogo} alt="" width="70" height="70"/>
+          <img src={tbilogo} alt="" width="150" height="70"/>
         </div>
         <div className="d-flex flex-row certificate-bottom justify-content-between my-5">
           <h1>DATE</h1>
