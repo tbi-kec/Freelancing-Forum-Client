@@ -16,7 +16,7 @@ const AdminNavbar = ({handleToggle,toggle}) => {
    
   return (
    <div className='admin-navbar' >
-    <div onClick={handleToggle}>
+    <div type="button" onClick={handleToggle} data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions">
         <i  className="fa-solid fa-bars"></i>
     </div>
     <div className='logo'>

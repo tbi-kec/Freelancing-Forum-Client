@@ -9,7 +9,7 @@ const AdminPage = () => {
  }
   return (
     <div>
-      {toggle &&<AdminSideBar handleToggle={handleToggle} />}
+      <AdminSideBar handleToggle={handleToggle} />
       <AdminNavbar toggle={toggle} handleToggle={handleToggle} />
       <Outlet />
     </div>
