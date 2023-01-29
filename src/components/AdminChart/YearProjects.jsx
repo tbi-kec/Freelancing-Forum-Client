@@ -7,10 +7,10 @@ const YearProjects = () => {
             animationEnabled: true,
             exportEnabled: true,
             title: {
-                text: "Number of User "
+                text: "Number of Projects "
             },
             axisY: {
-                title: "Number of User"
+                title: "Number of Projects"
             },
             data: [
             {
