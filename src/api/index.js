@@ -9,18 +9,18 @@ export const signup = (authData) => API.post('/user/signup',authData)
 
 //profile-create
 export const createProfile = (profileData) => API.post('/user/update/profile',profileData)
- 
+
+//send-Otp
 export const sendOtp =(otpData)=>API.post('/user/otp',otpData)
 
-
-//project-create
+//project-created
 export const newProject = (projectData)=>API.post('/project',projectData)
+
 //getAllproject
 export const getAllProject =()=>API.get('/project/all')
 
 //getALLUser
 export const getAllUser = ()=>API.get('/user')
-
 
 //constants
 export const getConstants = ()=>API.get('/constants/domain')
@@ -30,7 +30,6 @@ export const getDetails = (id)=>API.get(`/user/${id}`)
 
 //new-study-project
 export const newStudyProject = (projectData)=>API.post('/study',projectData)
-
 
 //forget-password
 export const sendEmail = (email)=>API.post('/user/forgotten-password',email)
@@ -42,10 +41,10 @@ export const requestProjectToAdmin = (projectData)=>API.post(`/project/provider/
 //admin-get-projects
 export const getProjectHistory= ()=>API.get('/admin/requested_project');
 
+//responseRequest
 export const responseRequest = (responseData)=>API.post('/admin/admin_response',responseData)
 
 //developer-acceptOrReject
-
 export const developerResponse =(responseData)=>API.post('/project/provider/request/status',responseData)
 
 export const deleteNotification =(deleteId)=>API.post('/user/notification/delete',deleteId)
@@ -62,7 +61,11 @@ export const developerRequestProject =(requestData)=>API.post('/project/develope
 //develper-rating
 export const developerUpdateRating =(ratingData)=>API.post('/user/rating',ratingData)
 
+//acceptOrRejectUser
 export const acceptOrRejectUser=(requestData)=>API.post('/admin/profile/verification',requestData)
 
 //createAdmin
 export const createAdmin = (createData)=>API.post('/admin/newadmin',createData)
+
+//update-status-to-verify
+export const updateStatusToVerify=(verifyData)=>API.post('/project/update/drivelink',verifyData)

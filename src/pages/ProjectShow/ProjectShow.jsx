@@ -104,7 +104,7 @@ function ProjectShow() {
               </div>
             </div>
 
-            {p.createdBy._id ==user?.data?._id && p.project_status === "created" && 
+            {p.createdBy._id ===user?.data?._id && p.project_status === "created" && 
               <div className="p-3">
                 <div className="fs-4 mt-4 fw-bold">Applicant</div>
                 <div>

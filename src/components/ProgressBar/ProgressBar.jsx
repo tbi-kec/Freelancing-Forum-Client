@@ -21,9 +21,7 @@ function ProgressBar({status,p_id,c_id,d_id,deadline,pay}) {
  
     const nextprogress = () => {
         setprogressStepsNum(prevprogressStep=>prevprogressStep+1);
-                    dispatch(updateStatus({p_id,status:progressStepsNum+1},navigate))
-    
-      
+                    dispatch(updateStatus({p_id,status:progressStepsNum+1},navigate))  
     }
     const date = new Date()
  
@@ -78,7 +76,7 @@ function ProgressBar({status,p_id,c_id,d_id,deadline,pay}) {
             }, 2000);
     }
     const veriyHandle = (e) =>{
-            e.preventDefault();
+         e.preventDefault();
          nextprogress();
             setTimeout(() => {
                 dispatch(developerUpdateRating({rating:parseInt(userRating),u_id:d_id,p_id}))
@@ -250,7 +248,7 @@ function ProgressBar({status,p_id,c_id,d_id,deadline,pay}) {
                         data-bs-target="#toggle_model_request">Next</div>
                 </div>
                 :""}
-                {progressStepsNum ==2 && c_id===user?.data?._id   ?
+                {progressStepsNum ===2 && c_id===user?.data?._id   ?
                 <div className="progress-btn">
                     <div href="#" className="btn" data-bs-toggle="modal"
                         data-bs-target="#toggle_model_verify">Verify</div>
@@ -266,9 +264,8 @@ function ProgressBar({status,p_id,c_id,d_id,deadline,pay}) {
 
                 </div>
                 
-                    
             </div>
-            
+    
         </div>
 
     )
