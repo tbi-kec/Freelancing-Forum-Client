@@ -13,7 +13,7 @@ export const getAllProjects=()=>async(dispatch)=>{
 
 export const newProject = (projectData,navigate) => async(dispatch) =>{
     try {
-        const {data} = await api.newProject(projectData);
+        await api.newProject(projectData);
         dispatch(getAllProjects());
         dispatch(setAlert("Successfully created project","success"))
         navigate("/Home")
@@ -27,7 +27,7 @@ export const newProject = (projectData,navigate) => async(dispatch) =>{
 
 export const updateStatus = (status,navigate)=>async(dispatch)=>{
     try {
-        const {data} = await api.updateStatus(status);
+         await api.updateStatus(status);
         dispatch(getAllProjects());
         dispatch(setAlert("Progress updated","success"))
         navigate(`/project/show/${status.p_id}`)
@@ -38,7 +38,7 @@ export const updateStatus = (status,navigate)=>async(dispatch)=>{
 
 export const updateStatusToVerify = (status,navigate)=>async(dispatch)=>{
     try {
-        const {data} = await api.updateStatusToVerify(status);
+         await api.updateStatusToVerify(status);
         dispatch(getAllProjects());
         dispatch(setAlert("Progress Updated","success"))
         navigate(`/project/show/${status.p_id}`)
