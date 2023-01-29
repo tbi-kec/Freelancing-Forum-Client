@@ -76,13 +76,19 @@ function Footer(){
 
             <ul className="nav justify-ficon list-unstyled d-flex">
               <li className="ms-3 social-logo d-flex justify-content-center align-items-center">
+              <a href="https://instagram.com/iic_kec?igshid=YmMyMTA2M2Y=" target="_blank">
                 <i className="fa-brands fa-linkedin-in social-font"></i>
+              </a>
               </li>
               <li className="ms-3 social-logo d-flex justify-content-center align-items-center">
+              <a href="https://twitter.com/iickongu" target="_blank">
                 <i className="fa-brands fa-twitter social-font"></i>
+              </a>
               </li>
               <li className="ms-3 social-logo d-flex justify-content-center align-items-center">
+              <a href="https://www.facebook.com/iickec?mibextid=ZbWKwL" target="_blank">
                 <i className="fa-brands fa-facebook-f"></i>
+              </a>
               </li>
             </ul>
           </footer>

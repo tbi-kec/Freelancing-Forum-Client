@@ -35,26 +35,6 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav text-light ms-auto">
-            {/* <li className="nav-item mx-4">
-              <span className="nav-link">
-                <div className="input-group">
-                  <input
-                    type="text"
-                    className="form-control search-bar"
-                    placeholder="&#128269; search"
-                    aria-label="Recipient's username"
-                    aria-describedby="button-addon2"
-                  />
-                  <button
-                    className="btn text-light search-bar search-btn"
-                    type="button"
-                    id="button-addon2"
-                  >
-                    Talent
-                  </button>
-                </div>
-              </span>
-            </li> */}
             <li className="nav-item mx-4">
               <Link to="/project/view" className="nav-link">
                 <button className="btn nav-btn-1">All Project</button>
@@ -66,15 +46,11 @@ const Navbar = () => {
                 <button className="btn nav-btn-2">Add Project</button>
               </Link>
             </li> 
-            
-            
-
             <li className="nav-item mx-4">
               <Link to={`/profile/${user?.user._id}`} className="nav-link">
                 <img src={profile} height="40px" alt="" />
               </Link>
-            </li>
-            
+            </li>           
           </ul>
         </div>
       </div>
