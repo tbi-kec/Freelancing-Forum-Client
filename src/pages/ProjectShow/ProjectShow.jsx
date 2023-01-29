@@ -19,7 +19,6 @@ function ProjectShow() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.myDetailsReducer);
 
-
   const handleAccept = (e, d_id) => {
     e.preventDefault();
     setAlert("Accepting User and Sending Request to Admin", "info", 3000);

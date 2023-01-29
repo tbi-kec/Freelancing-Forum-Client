@@ -1,8 +1,9 @@
 import * as api from '../api'
 import { setAlert } from './alert'
 import { getRequestedProjects } from './admin';
-import { getAllProject } from '../api';
+
 import { useNavigate } from 'react-router-dom';
+import { getAllProjects } from './project';
 export const getMyDetails=()=>async(dispatch)=>{
     try {
         const user =await JSON.parse(localStorage.getItem('freelance'));
@@ -25,7 +26,7 @@ export const getMyDetails=()=>async(dispatch)=>{
 
 export const newStudyProject = (projectData,navigate)=>async(dispatch)=>{
     try {
-        await api.newStudyProject(projectData)
+        const {data} = await api.newStudyProject(projectData)
         dispatch(setAlert("Added new Study Project","success"))
         dispatch(getMyDetails())
          navigate(`/profile/${projectData.createdBy}`)
@@ -37,7 +38,7 @@ export const newStudyProject = (projectData,navigate)=>async(dispatch)=>{
 export const requestAdmin = (projectData)=>async(dispatch)=>{
     try {
        
-        await api.requestProjectToAdmin(projectData);
+        const {data}= await api.requestProjectToAdmin(projectData);
         dispatch(getMyDetails());
         dispatch(getRequestedProjects())
         dispatch(setAlert("Request Send to Admin","success",3000))
@@ -49,7 +50,7 @@ export const requestAdmin = (projectData)=>async(dispatch)=>{
 
 export const responseToNotification= (responseData,navigate)=>async(dispatch)=>{
     try {
-        await api.developerResponse(responseData)
+        const {data} = await api.developerResponse(responseData)
         dispatch(getMyDetails());
         dispatch(setAlert("Responded to notification successfully","success"))
         navigate("/home")
@@ -61,20 +62,20 @@ export const responseToNotification= (responseData,navigate)=>async(dispatch)=>{
 
 export const deleteNotification =(deleteData,navigate)=>async(dispatch)=>{
     try {
-        await api.deleteNotification(deleteData);
+        const {data}=await api.deleteNotification(deleteData);
         dispatch(getMyDetails());
-        dispatch(getAllProject());
         dispatch(setAlert("Deleted notification","success"))
+        navigate('/home');
     } catch (error) {
+        console.log(error)
         dispatch(setAlert("Server error","danger"))
     }
 }
 
-
 export const editProfile = (editData,navigate)=>async(dispatch)=>{
     try {
         
-       await api.editProfile(editData);
+       const {data} = await api.editProfile(editData);
         dispatch(getMyDetails());
         dispatch(setAlert("Edited Succesfully","info"));
         navigate(`/profile/${editData.id}`)
@@ -105,17 +106,18 @@ export const developerUpdateRating =(ratingData)=>async(dispatch)=>{
 
 export const clientRejectDeveloper = (rejectData,navigate)=>async(dispatch)=>{
     try {
-        await api.clientRejectDeveloper(rejectData);
-        dispatch(getAllProject());
+       const {data}= await api.clientRejectDeveloper(rejectData);
+        dispatch(getAllProjects());
         navigate(`/project/${rejectData.p_id}`)
     } catch (error) {
+        console.log(error.message)
         dispatch(setAlert("Reject Error","danger"))
     }
 }
 export const clientAcceptDeveloper = (acceptData,navigate)=>async(dispatch)=>{
     try {
         await api.clinetAcceptDeveloper(acceptData);
-        dispatch(getAllProject());
+        dispatch(getAllProjects());
         navigate(`/project/${acceptData.p_id}`)
     } catch (error) {
         dispatch(setAlert("Accept Error","danger"))
