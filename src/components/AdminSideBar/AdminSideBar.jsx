@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 
 const AdminSideBar = ({handleToggle}) => {
     const bars = [
+                    {link:'/admin/',text:"Dashboard"},
                     {link:'/admin/approval',text:"Freelancer Approval"},
                     {link:'/admin/request',text:"Requested Projects"},
-                    {link:'/admin/progress',text:"Porgress Projects"},
+                    {link:'/admin/progress',text:"Progress Projects"},
                     {link:'/admin/verify',text:"Verify Projects"},
                     {link:'/admin/completed',text:"Completed Projects"},
                     {link:'/admin/project/report',text:" Project Report"},
