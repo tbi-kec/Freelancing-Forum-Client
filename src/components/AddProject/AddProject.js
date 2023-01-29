@@ -127,7 +127,7 @@ export default function AddProject() {
                     minLength={10}
                 ></textarea>
                 <div className="text-end-profile">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"  aria-label="Close">Close</button>
+                <button type="button" className="btn btn-danger" data-bs-dismiss="modal"  aria-label="Close">Close</button>
                 <button className='btn btn-md my-3 project-add-submit-btn' >Submit</button>
                 </div>
                 </form>

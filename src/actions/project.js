@@ -1,6 +1,6 @@
 import * as api from '../api'
 import { setAlert } from './alert'
-
+import { getLoading } from './loading';
 
 export const getAllProjects=()=>async(dispatch)=>{
     try {
@@ -27,9 +27,11 @@ export const newProject = (projectData,navigate) => async(dispatch) =>{
 
 export const updateStatus = (status,navigate)=>async(dispatch)=>{
     try {
+        dispatch(getLoading(true))
          await api.updateStatus(status);
         dispatch(getAllProjects());
         dispatch(setAlert("Progress updated","success"))
+        dispatch(getLoading(false))
         navigate(`/project/show/${status.p_id}`)
         } catch (error) {
         dispatch(setAlert("Progress not updates","danger"))

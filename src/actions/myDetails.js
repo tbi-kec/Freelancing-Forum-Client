@@ -1,7 +1,7 @@
 import * as api from '../api'
 import { setAlert } from './alert'
 import { getRequestedProjects } from './admin';
-
+import { getLoading } from './loading';
 import { useNavigate } from 'react-router-dom';
 import { getAllProjects } from './project';
 export const getMyDetails=()=>async(dispatch)=>{
@@ -50,8 +50,10 @@ export const requestAdmin = (projectData)=>async(dispatch)=>{
 
 export const responseToNotification= (responseData,navigate)=>async(dispatch)=>{
     try {
+        dispatch(getLoading(true))
         const {data} = await api.developerResponse(responseData)
         dispatch(getMyDetails());
+        dispatch(getLoading(false))
         dispatch(setAlert("Responded to notification successfully","success"))
         navigate("/home")
     } catch (error) {
@@ -62,9 +64,12 @@ export const responseToNotification= (responseData,navigate)=>async(dispatch)=>{
 
 export const deleteNotification =(deleteData,navigate)=>async(dispatch)=>{
     try {
+        dispatch(getLoading(true))
         const {data}=await api.deleteNotification(deleteData);
         dispatch(getMyDetails());
+        getLoading(false)
         dispatch(setAlert("Deleted notification","success"))
+        dispatch(getLoading(false))
         navigate('/home');
     } catch (error) {
         console.log(error)
@@ -106,7 +111,7 @@ export const developerUpdateRating =(ratingData)=>async(dispatch)=>{
 
 export const clientRejectDeveloper = (rejectData,navigate)=>async(dispatch)=>{
     try {
-       const {data}= await api.clientRejectDeveloper(rejectData);
+        await api.clientRejectDeveloper(rejectData);
         dispatch(getAllProjects());
         navigate(`/project/${rejectData.p_id}`)
     } catch (error) {

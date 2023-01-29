@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 export default function WorkHistory({work}) {
   return (
-         <div className="inner-card">
+         <div className="inner-card" key={work._id}>
                     <div className="inner-card-head">
                         <h2><Link to={`/project/show/${work._id}`}>{work.title}</Link></h2>
                     </div>

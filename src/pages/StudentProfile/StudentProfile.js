@@ -71,7 +71,7 @@ export default function StudentProfile() {
 
         {
             work_history.length!==0 && user?.admin_verify===true &&
-                <div className="student-card work-history" key={user._id}>
+                <div className="student-card work-history" >
                     <div className="title">
                         <h2>
                         Work - History

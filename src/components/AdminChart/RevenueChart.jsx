@@ -1,9 +1,47 @@
-import React from 'react'
+import Reac,{useEffect,useLayoutEffect,useState} from 'react'
+import { useSelector } from 'react-redux';
 import CanvasJSReact from './canvasjs.react';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 const RevenueChart = () => {
-    const options = {
-            animationEnabled: true,
+     const projects = useSelector((state)=>(state.projectReducer));
+        const [count,setCount]=useState();
+        const [dis,setDis]=useState(false);
+        const [options,setOptions]=useState({})
+        
+        useLayoutEffect(()=>{
+            if(projects!==null && projects.data!==null){
+                let map = new Map();
+                for(let i=0;i<projects.data.length;i++){
+                    let status =  projects.data[i].project_status
+                    let d = new Date(projects.data[i].completed_on);
+                    let amount = projects.data[i].stipend
+                    let date =  d.getFullYear();
+                    if(status==="completed"){
+                        if(map.has(date)){
+                        let temp = map.get(date)+amount;
+                        map.delete(date);
+                        map.set(date,temp);
+                    }else{
+                        map.set(date,amount);
+                    }
+                }
+                }
+                let arr=[]
+                for(let [key,value] of map){
+                    let obj = {
+                        y:value,
+                        label:key,
+                    }
+                    arr.push(obj);
+                }
+                setCount(arr);
+                setDis(true)
+            }
+        },[projects])
+        useEffect(()=>{
+            if(dis && count.length){
+                setOptions({
+                    animationEnabled: true,
             exportEnabled: true,
             theme: "light2", //"light1", "dark1", "dark2"
             title:{
@@ -17,19 +55,13 @@ const RevenueChart = () => {
                 indexLabelFontColor: "#5A5757",
                 indexLabelPlacement: "outside",
                 xValueFormatString: "YYYY",
-                dataPoints: [
-                    { x: new Date(2011, 0), y: 71 },
-                    { x: new Date(2012, 1), y: 55 },
-                    { x: new Date(2013, 0), y: 50 },
-                    { x: new Date(2014, 0), y: 65 },
-                    { x: new Date(2015, 0), y: 71 },
-                    { x: new Date(2016, 0), y: 68 },
-                    { x: new Date(2017, 0), y: 92, indexLabel: "Highest" },
-                ]
+                dataPoints: count
             }]
-        }
+                })
+            }
+        },[dis])
   return (
-    <CanvasJSChart options={options} />
+   <> {dis && <CanvasJSChart options={options} /> }</>
   )
 }
 

@@ -1,9 +1,43 @@
-import React from 'react'
+import React,{useLayoutEffect, useState} from 'react'
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import CanvasJSReact from './canvasjs.react';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 const CategoryProjects = () => {
-       const options = {
-            exportEnabled: true,
+        const projects = useSelector((state)=>(state.projectReducer));
+        const [count,setCount]=useState();
+        const [dis,setDis]=useState(false);
+        const [options,setOptions]=useState({})
+
+        useLayoutEffect(()=>{
+            if(projects!==null && projects.data!==null){
+                let map = new Map();
+                for(let i=0;i<projects.data.length;i++){
+                    let category = projects.data[i].category;
+                    if(map.has(category)){
+                        let temp = map.get(category)+1;
+                        map.delete(category);
+                        map.set(category,temp);
+                    }else{
+                        map.set(category,1);
+                    }
+                }
+                let arr=[]
+                for(let [key,value] of map){
+                    let obj = {
+                        y:value,
+                        label:key,
+                    }
+                    arr.push(obj);
+                }
+                setCount(arr);
+                setDis(true)
+            }
+        },[projects])
+        useEffect(()=>{
+            if(dis && count.length){
+                setOptions({
+                     exportEnabled: true,
             animationEnabled: true,
             title: {
                 text: "Projects"
@@ -16,20 +50,14 @@ const CategoryProjects = () => {
                 legendText: "{label}",
                 indexLabelFontSize: 16,
                 indexLabel: "{label} - {y}%",
-                dataPoints: [
-                    { y: 18, label: "Mechanical CAD" },
-                    { y: 49, label: "3D printing and design" },
-                    { y: 9, label: "Mechanical Fabrication work" },
-                    { y: 5, label: "IoT" },
-                    { y: 19, label: "Circuit design and fabrication" },
-                    { y: 53, label: "Embedded Systems Simulation and Fabrication" },
-                    { y: 25, label: "Application creation using python" },
-
-                ]
+                dataPoints: count
             }]
-        }
+                })
+            }
+        },[dis])
+      
   return (
-   <CanvasJSChart options = {options}/>
+     <>{dis && <CanvasJSChart options = {options}/> }</> 
   )
 }
 

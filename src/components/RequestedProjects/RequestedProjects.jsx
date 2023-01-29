@@ -6,7 +6,7 @@ import './RequestedProjects.scss'
 import RequestModal from "../../components/AdminModals/RequestModal";
 import { setAlert } from '../../actions/alert'
 import { respondToRequest } from '../../actions/admin'
-import Loading from '../Loading/Loading'
+
 import moment from 'moment'
 const RequestedProjects = () => {
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ const RequestedProjects = () => {
     setResponded(true)
     dispatch(setAlert("Accepting Project", "info", 3400))
     dispatch(respondToRequest({ status: "accepted", p_id: id }, navigate))
-    setTimeout(()=> handleResponse(),4000)
+    
   
     
   }
@@ -48,8 +48,7 @@ const RequestedProjects = () => {
 
   return (
     <div>
-     
-      {responded===true && <Loading />}
+    
    
       <div className='container mt-5 text-center'>
         <table className="table table-stripped">

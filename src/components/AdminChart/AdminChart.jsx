@@ -6,21 +6,22 @@ import YearProjects from './YearProjects';
 
 const Adminchart = () =>{
         return (
-        <div className='container'>
-            <div className="row p-5">
+        <div className='container my-5'>
+            <div className="row my-5">
                     <DepartmentUsersChart />
             </div>
 
-            <div className="row">
-                <div className="col-md-6 p-3">
+            <div className="row my-5">
+                <div className="col-md-6 offset-md-4">
                     <CategoryProjects />
                 </div>
-                <div className="col-md-6 p-3">
+            </div>
+            <div className='row my-5'>
+                <div className="col-md-6 offset-md-1 my-3">
                     <YearProjects />
                 </div>
             </div>
-
-           <div className="row p-5">
+           <div className="row my-5">
                 <RevenueChart />
            </div>
         </div>

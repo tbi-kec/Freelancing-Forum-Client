@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import AllRoutes from './AllRoutes'
 import {BrowserRouter as Router} from 'react-router-dom'
 import Alert from './components/Alert/Alert'
+import Loading from './components/Loading/Loading'
 import './App.css'
 
 import {setCurrentUser} from './actions/currentUser'
@@ -31,6 +32,7 @@ const App = () => {
   return (
     <div className='app-container'>
       <Router>
+        <Loading />
         <Alert />
         <AllRoutes />
       </Router>

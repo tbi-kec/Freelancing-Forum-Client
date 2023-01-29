@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import profile from "../../assets/profileicon2.png";
 import assured from "../../assets/verified.png";
 import "./ProfileBio.css";
+import { v4 as uuidv4 } from 'uuid';
 import {useSelector} from "react-redux";
 import starColor from "../../assets/Color-star.png";
 import starDull from "../../assets/dull-star.png";
@@ -95,7 +96,7 @@ export default function ProfileBio({user}) {
                 </div>
                 <div className="d-flex justify-content-around">
                   <button
-                    class="btn btn-danger my-3"
+                    className="btn btn-danger my-3"
                     data-bs-dismiss="modal"
                     aria-label="Close"
                   >
@@ -165,7 +166,7 @@ export default function ProfileBio({user}) {
                 </div>
                 {current?.data?._id === user?._id && (
                   <div className="edit pointer" onClick={show_modal}>
-                    <i class="fa-solid fa-pencil fs-5"></i>
+                    <i className="fa-solid fa-pencil fs-5"></i>
                     <input
                       type="button"
                       hidden
@@ -180,12 +181,12 @@ export default function ProfileBio({user}) {
                 {(function () {
                   var rate = [];
                   for (let i = 0; i < user?.rating; i++) {
-                    rate.push(<img key={i} src={starColor} alt="star" height="30px" />);
+                    rate.push(<img key={uuidv4()} src={starColor} alt="star" height="30px" />);
                   }
                   for (let j = 0; j < 5 - user?.rating; j++) {
-                    rate.push(<img key={j} src={starDull} alt="star" height="25px" />);
+                    rate.push(<img key={uuidv4()} src={starDull} alt="star" height="25px" />);
                   }
-                  return <div key={rate.length}>{rate}</div>;
+                  return <div key={uuidv4()}>{rate}</div>;
                 })()}
               </div>
             </div>
@@ -195,7 +196,7 @@ export default function ProfileBio({user}) {
           user?.admin_verify &&
         <div className="student-dept d-flex flex-wrap justify-content-between">
           <h4 className="mb-2">
-            <i class="fa-solid fa-location-dot px-3" ></i>
+            <i className="fa-solid fa-location-dot px-3" ></i>
             {user?.department}
           </h4>
           {projectGiven.length !== 0 && current?.data?._id !== user?._id && (
@@ -215,7 +216,7 @@ export default function ProfileBio({user}) {
               </select>
 
               <button
-                class="btn"
+                className="btn"
                 style={{backgroundColor: "#16226D", color: "white"}}
                 data-bs-toggle="modal"
                 data-bs-target="#toggle_model_request"
@@ -239,7 +240,7 @@ export default function ProfileBio({user}) {
                 width="30"
                 height="30"
                 fill="currentColor"
-                class="bi bi-linkedin"
+                className="bi bi-linkedin"
                 viewBox="0 0 16 16"
                 color="#0a65c0"
               >
@@ -254,7 +255,7 @@ export default function ProfileBio({user}) {
                 width="30"
                 height="30"
                 fill="currentColor"
-                class="bi bi-github"
+                className="bi bi-github"
                 viewBox="0 0 16 16"
               >
                 <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />

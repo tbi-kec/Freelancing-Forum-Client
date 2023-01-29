@@ -19,7 +19,8 @@ const DepartmentUsersChart = () => {
     const users = useSelector((state)=>(state.userReducer))
     const[count,setCount]=useState([]); 
     const [dis,setDis]=useState(false);
-      useLayoutEffect(()=>{
+
+    useLayoutEffect(()=>{
       if(users!==null && users.data!=null){ 
         let freelancerMap = new Map();
         for(let i=0;i<users.data.length;i++){
@@ -33,18 +34,17 @@ const DepartmentUsersChart = () => {
                     freelancerMap.set(dept,1);
                 }
                 }
-       let arr=[]
-        for(let [key,value] of freelancerMap){
-           
-            let obj = {
-                y:value ,
-                label:key
-            }
-            arr.push(obj);
+            let arr=[]
+            for(let [key,value] of freelancerMap){
+                let obj = {
+                    y:value ,
+                    label:key
+                }
+                arr.push(obj);
+              }
+            setCount(arr)
+            setDis(true)
         }
-        setCount(arr)
-        setDis(true)
-      }
   },[users])
 
   useEffect(()=>{
@@ -72,26 +72,6 @@ const DepartmentUsersChart = () => {
         }
   },[dis,count])
   
-    //  const options = {
-    //         animationEnabled: true,
-    //         theme: "light2",
-    //         title:{
-    //             text: "Total Number of Freelancer on departments"
-    //         },
-    //         axisX: {
-    //             title: "Departments",
-    //             reversed: true,
-    //         },
-    //         axisY: {
-    //             title: "Number of user",
-    //             includeZero: true,
-    //             labelFormatter: addSymbols
-    //         },
-    //         data: [{
-    //             type: "bar",
-    //             dataPoints: dis && count
-    //         }]
-    //     }
   return (
     <> {dis &&<CanvasJSChart options = {options}/>}  </>
   )
