@@ -102,3 +102,23 @@ export const developerUpdateRating =(ratingData)=>async(dispatch)=>{
         dispatch(setAlert("Request Error","danger"))
     }
 } 
+
+export const clientRejectDeveloper = (rejectData,navigate)=>async(dispatch)=>{
+    try {
+        await api.clientRejectDeveloper(rejectData);
+        dispatch(getAllProject());
+        navigate(`/project/${rejectData.p_id}`)
+    } catch (error) {
+        dispatch(setAlert("Reject Error","danger"))
+    }
+}
+export const clientAcceptDeveloper = (acceptData,navigate)=>async(dispatch)=>{
+    try {
+        await api.clinetAcceptDeveloper(acceptData);
+        dispatch(getAllProject());
+        navigate(`/project/${acceptData.p_id}`)
+    } catch (error) {
+        dispatch(setAlert("Accept Error","danger"))
+    }
+}
+

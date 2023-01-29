@@ -55,7 +55,6 @@ export default function StudentProfile() {
     <div className='logout-btn text-end '>
         <button className="btn logout text-light" onClick={handleLogout}>Log Out</button>
       </div>
-    
     }
         <div className="back pointer" onClick={()=> current.user?.isAdmin ? navigate('/admin') : navigate('/home')  }>
             <i className="text light fa-sharp fa-solid fa-arrow-left"></i>

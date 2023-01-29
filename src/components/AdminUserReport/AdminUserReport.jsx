@@ -8,7 +8,7 @@ const AdminUserReport = () => {
  const [depts,setDepts]=useState([]);
  const [role,setRole]=useState("")
  const [department,setDepartment]=useState("");
- const [rating,setRating]=useState("")
+ const [rating,setRating]=useState(null)
  const user = useSelector((state)=>(state.userReducer))
  const [users,setUser] = useState([])
  const [table,setTable]=useState(false)
@@ -21,18 +21,15 @@ const AdminUserReport = () => {
 
  const constants = useSelector((state)=>(state.constantReducer))
  
- 
- 
- 
   useEffect(()=>{
-    if(constants && constants.data ){
+    if(constants && constants.data && depts.length!==0 ){
        const setDeptData = ()=>{
         const dept = constants.data[0].dept_short;
         setDepts([...dept])
       }
       setDeptData();
     }
-  },[constants,constants.data])
+  },[constants,constants.data,depts])
   useEffect(()=>{
     if(role!=="" && role!=='all'){
        const filterByRole = ()=>{
@@ -53,7 +50,7 @@ const AdminUserReport = () => {
     }
   },[department,users])
   useEffect(()=>{
-        if(rating!==0){
+        if(rating!==null){
            const filterByRating =()=>{
             const data = users.filter(u=> u.rating>= rating)
            setUser([...data])
@@ -73,6 +70,7 @@ const getReport = (e)=>{
     setTable(true)
 }
   const user_roles = ['all','client','freelancer']
+
 const styles = {
     display:!table?'none':"block",
   }
@@ -94,8 +92,8 @@ const styles = {
                             </div>
 
                             <div className="col-4 form-group mb-3">
-                                <select onChange={e=>setDepartment(e.target.value)} className="form-select">
-                                    <option value="" hidden selected disabled>Select Department</option>
+                                <select defaultValue={""} onChange={e=>setDepartment(e.target.value)} className="form-select">
+                                    <option value="" hidden  disabled>Select Department</option>
                                     <option value="all">All</option>
                                     {depts.map((d,i)=>(
                                         <option value={d.dept} key={d._id}>{d.dept}</option>
@@ -125,7 +123,7 @@ const styles = {
         </DownloadTableExcel>
         </div>
         <div className='container mt-5 text-center'>
-        <table class="table table-stripped" ref={tableRef}>
+        <table className="table table-stripped" ref={tableRef}>
           <thead>
             <tr>
               <th scope="col">#</th>

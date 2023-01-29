@@ -5,15 +5,16 @@ import profile from "../../assets/profileicon2.png";
 import accept from "../../assets/accept.png";
 import decline from "../../assets/decline.png";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import { setAlert } from "../../actions/alert";
-import { requestAdmin } from "../../actions/myDetails";
+import { clientAcceptDeveloper } from "../../actions/myDetails";
+import { clientRejectDeveloper } from "../../actions/myDetails";
 import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
 import { Link } from "react-router-dom";
 function ProjectShow() {
     const { id } = useParams();
- 
+  const navigate = useNavigate()
   const project = useSelector((state) => state.projectReducer);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.myDetailsReducer);
@@ -21,9 +22,16 @@ function ProjectShow() {
 
   const handleAccept = (e, d_id) => {
     e.preventDefault();
-    setAlert("Requesting Admin", "info", 3000);
-    dispatch(requestAdmin({ d_id, p_id: id }));
+    setAlert("Accepting User and Sending Request to Admin", "info", 3000);
+    dispatch(clientAcceptDeveloper({ d_id, p_id: id },navigate));
   };
+
+  const handleReject = (e,d_id)=>{
+    e.preventDefault();
+    dispatch(setAlert("Rejecting a developer request","info"))
+    dispatch(clientRejectDeveloper({d_id,p_id:id},navigate))
+  }
+
 
   return (
     <div className="my-5 project-show-container container">
@@ -104,7 +112,7 @@ function ProjectShow() {
               </div>
             </div>
 
-            {p.createdBy._id ==user?.data?._id && p.project_status === "created" && 
+            {p.createdBy._id ===user?.data?._id && p.project_status === "created" && 
               <div className="p-3">
                 <div className="fs-4 mt-4 fw-bold">Applicant</div>
                 <div>
@@ -135,14 +143,14 @@ function ProjectShow() {
                                 </div>
                                 <div className="col-6">
                                   <div className="row">
-                                    <div className="col-6"  onClick={(e) => handleAccept(e, u._id)}>
+                                    <div className="col-6"  onClick={(e) => handleAccept(e,u._id)}>
                                     <span className="bg-success p-2 rounded">
                                       <img src={accept} alt="" height="20px" />
                                     </span>
                                     </div>
                                     <div className="col-6">
                                     <span className="bg-danger p-2 rounded">
-                                      <img src={decline} alt="" height="20px" />
+                                      <img src={decline} alt="" height="20px" onClick={e=>handleReject(e,u._id)}/>
                                     </span>
                                     </div>
                                   </div>

@@ -56,7 +56,7 @@ function Footer(){
             <div className="col my-4">
               <div className="flogo-container">
               <div className="m-2">
-                {/* <img src={logo} alt="" width="100px" height="100px" /> */}
+                <img src={logo} alt="" width="100px" height="100px" />
                 </div>
                 <div className="row my-3 feedback feedback-btn p-3">
                   <button className="btn btn-primary font-weight-bold">Give Your feedback <i className="fa-solid fa-arrow-right fs-5 forward-btn"></i></button>

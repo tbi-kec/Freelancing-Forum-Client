@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import {useSelector} from 'react-redux'
 import { useEffect } from "react";
+
 function ProjectView() {
   const projects = useSelector((state)=>(state.projectReducer))
   const constants =useSelector((state)=>(state.constantReducer))
- 
+  const current = useSelector((state)=>(state.currentUserReducer))
   const [domain,setDomain]=useState([])
   const [filteredProject,setFilteredProject]=useState([])
   const [search,setSearch]=useState('')
@@ -35,7 +36,7 @@ function ProjectView() {
     <div>
       <div className="row d-flex align-items-center">
         <div className="col-md-1">
-        <Link to='/Home'>
+        <Link to={current.user?.isAdmin ?'/admin' : '/home'  }>
           <div className=" d-flex m-3">
             <i className="fa-solid fa-arrow-left back-btn"></i>
           </div>

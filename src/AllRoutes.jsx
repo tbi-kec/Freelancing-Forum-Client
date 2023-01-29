@@ -30,16 +30,11 @@ import Certificate from './components/Certificate/Certificate'
 const AllRoutes = () => {
   return (
     <Routes>
-             <Route path='/' element={<PreLoader /> } />
-      
+            <Route path='/' element={<PreLoader /> } />
             <Route path='/login' element={<Login/>} />
             <Route path='/register' element={<Register/>} />
             <Route path='/project/add' element={<ProjectAdd /> } />
             <Route path='/forgotten-password/:uid/:token' element={<ResetPassword/>} />
-          
-      
-         
-           
          <Route element={<AdminProtected />}>
              <Route path='/admin' element={<AdminPage /> }>
                 <Route path='/admin/approval' element={<FreeLancerApproval/>} />
@@ -52,7 +47,6 @@ const AllRoutes = () => {
                 <Route path='/admin/user/report' element={<AdminUserReport />} />
               </Route >
           </Route>
-
            <Route element={<ProtectedRoutes/>} >
               <Route path='/profile/create' element={<ProfileCreation/>} />
               <Route path='/profile/:id' element={<StudentProfile/>} />
@@ -65,8 +59,6 @@ const AllRoutes = () => {
               <Route path='/project/show/:id' element={<ProjectShow/>} />
               <Route path='/user/:dept' element={<DepartmentUsers/>} />
             </Route>
-            
-          
           <Route path="*"  element={<Page404/>}/>
    
     </Routes>

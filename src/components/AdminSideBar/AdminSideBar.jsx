@@ -30,7 +30,7 @@ const AdminSideBar = ({ handleToggle }) => {
 
         // </div>
         <>
-            <div className="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+            <div className="offcanvas offcanvas-start" data-bs-scroll="true" tabIndex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
                 <div className="offcanvas-header">
                     <h5 className="offcanvas-title" id="offcanvasWithBothOptionsLabel"><b>Admin Panel</b></h5>
                     <div type="button" className="cross-logo " data-bs-dismiss="offcanvas" aria-label="Close"><i className="fa-solid fa-xmark" /></div>
