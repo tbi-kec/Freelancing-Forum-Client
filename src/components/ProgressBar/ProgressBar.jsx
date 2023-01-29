@@ -21,9 +21,7 @@ function ProgressBar({status,p_id,c_id,d_id,deadline,pay}) {
  
     const nextprogress = () => {
         setprogressStepsNum(prevprogressStep=>prevprogressStep+1);
-                    dispatch(updateStatus({p_id,status:progressStepsNum+1},navigate))
-    
-      
+                    dispatch(updateStatus({p_id,status:progressStepsNum+1},navigate))  
     }
     const date = new Date()
  
@@ -224,9 +222,8 @@ function ProgressBar({status,p_id,c_id,d_id,deadline,pay}) {
 
                 </div>
                 
-                    
             </div>
-            
+    
         </div>
 
     )

@@ -1,5 +1,6 @@
 import React from "react"
 import './Footer.css';
+import {Link} from 'react-router-dom'
 import logo from "../../assets/keclogo.png";
 import iiclogo from "../../assets/IIC_logo.png";
 import emdclogo from "../../assets/emdclogo22.png";
@@ -26,35 +27,40 @@ function Footer(){
                 </div>
               </div>
             </div>
-            <div className="col my-4">
+            <div className="col my-5">
               <h5>Contact Us</h5>
               <ul className="nav flex-column">
-                <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Dr. R. Rajadevi</a></li>
-                <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">AI</a></li>
+                <li className="nav-item"><a href="#" className="nav-link p-0 text-muted">Dr. R. Rajadevi</a></li>
+                <li className="nav-item"><a href="#" className="nav-link p-0 text-muted">AI</a></li>
                 <li className="nav-item mb-4"><a href="#" className="nav-link p-0 text-muted">986508899</a></li>
-                <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Ms. T. E. Ramya</a></li>
-                <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">CT - PG</a></li>
-                <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">8883677334</a></li>
+                <li className="nav-item"><a href="#" className="nav-link p-0 text-muted">Ms. T. E. Ramya</a></li>
+                <li className="nav-item"><a href="#" className="nav-link p-0 text-muted">CT - PG</a></li>
+                <li className="nav-item mb-4"><a href="#" className="nav-link p-0 text-muted">8883677334</a></li>
               </ul>
             </div>
 
             <div className="col my-4">
-              <h5>Community Page</h5>
+            <div className="card me-5 shadow" style={{backgroundColor:"#647BAA"}} >
+              <div className="card-body">
+              <h5 className="mb-3 fw-bold " >Community Page</h5>
               <ul className="nav flex-column">
-                <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">About Us</a></li>
-                <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Career</a></li>
-                <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Contact Us</a></li>
-                <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Lift Media</a></li>
+                <li className="nav-item mb-3"><Link to="/developer_community" className="nav-link p-0 text-white">Developer Community</Link></li>
+                <li className="nav-item mb-3"><a href="#" className="nav-link p-0 text-white">Website Flow</a></li>
+                <li className="nav-item mb-3"><a href="#" className="nav-link p-0 text-white">Video Reference</a></li>
               </ul>
+              </div>
+            </div>
+
+            
             </div>
             <div className="col my-4">
               <div className="flogo-container">
               <div className="m-2">
-                <img src={logo} alt="" width="100px" height="100px" />
+                {/* <img src={logo} alt="" width="100px" height="100px" /> */}
                 </div>
                 <div className="row my-3 feedback feedback-btn p-3">
                   <button className="btn btn-primary font-weight-bold">Give Your feedback <i className="fa-solid fa-arrow-right fs-5 forward-btn"></i></button>
-                  <p className="feedback-text my-2 fs-6 text-light">Hello, users Our goal is to Find the perfect freelance services for your projects</p>
+                  <p className="feedback-text my-2 fs-6 text-dark">Hello users, Our goal is to Find the perfect freelance services for your projects</p>
 
                 </div>
               </div>
