@@ -1,11 +1,11 @@
-import React, { useEffect, useLayoutEffect,useState } from 'react'
+import React, { useLayoutEffect,useState } from 'react'
+import { useEffect } from 'react';
 
 import { useSelector } from 'react-redux';
 
 import CanvasJSReact from './canvasjs.react';
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
-
 const DepartmentUsersChart = () => {
       const addSymbols=(e)=>{
         var suffixes = ["", "K", "M", "B"];
@@ -15,35 +15,42 @@ const DepartmentUsersChart = () => {
         var suffix = suffixes[order];
         return CanvasJS.formatNumber(e.value / Math.pow(1000, order)) + suffix;
     }
+    const [options,setOptions]=useState({})
     const users = useSelector((state)=>(state.userReducer))
     const[count,setCount]=useState([]); 
-      useEffect(()=>{
+    const [dis,setDis]=useState(false);
+      useLayoutEffect(()=>{
       if(users!==null && users.data!=null){ 
-        let freelacerMap = new Map();
+        let freelancerMap = new Map();
         for(let i=0;i<users.data.length;i++){
             let dept = users.data[i].department;
             if(users.data[i].user_type==='freelancer')
-                if(freelacerMap.has(dept)){
-                    let temp=freelacerMap.get(dept);
-                    freelacerMap.delete(dept);
-                    freelacerMap.set(dept,temp+1)
+                if(freelancerMap.has(dept)){
+                    let temp=freelancerMap.get(dept);
+                    freelancerMap.delete(dept);
+                    freelancerMap.set(dept,temp+1)
                 }else{
-                    freelacerMap.set(dept,1);
+                    freelancerMap.set(dept,1);
                 }
                 }
-        console.log(freelacerMap)
-        for(let [key,value] of freelacerMap){
+       let arr=[]
+        for(let [key,value] of freelancerMap){
+           
             let obj = {
                 y:value ,
                 label:key
             }
-            setCount([...count,obj])
+            arr.push(obj);
         }
+        setCount(arr)
+        setDis(true)
       }
   },[users])
-  console.log(count)
-     const options = {
-            animationEnabled: true,
+
+  useEffect(()=>{
+        if(dis && count.length!==0 ){
+            setOptions({
+                     animationEnabled: true,
             theme: "light2",
             title:{
                 text: "Total Number of Freelancer on departments"
@@ -59,11 +66,34 @@ const DepartmentUsersChart = () => {
             },
             data: [{
                 type: "bar",
-                dataPoints: count
+                dataPoints: dis && count
             }]
+            })
         }
+  },[dis,count])
+  
+    //  const options = {
+    //         animationEnabled: true,
+    //         theme: "light2",
+    //         title:{
+    //             text: "Total Number of Freelancer on departments"
+    //         },
+    //         axisX: {
+    //             title: "Departments",
+    //             reversed: true,
+    //         },
+    //         axisY: {
+    //             title: "Number of user",
+    //             includeZero: true,
+    //             labelFormatter: addSymbols
+    //         },
+    //         data: [{
+    //             type: "bar",
+    //             dataPoints: dis && count
+    //         }]
+    //     }
   return (
-    <> {count.length!==0 &&<CanvasJSChart options = {options}/>}  </>
+    <> {dis &&<CanvasJSChart options = {options}/>}  </>
   )
 }
 

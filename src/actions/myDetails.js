@@ -118,7 +118,7 @@ export const clientAcceptDeveloper = (acceptData,navigate)=>async(dispatch)=>{
     try {
         await api.clinetAcceptDeveloper(acceptData);
         dispatch(getAllProjects());
-        navigate(`/project/${acceptData.p_id}`)
+        navigate(`/project/show/${acceptData.p_id}`)
     } catch (error) {
         dispatch(setAlert("Accept Error","danger"))
     }
