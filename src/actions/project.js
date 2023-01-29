@@ -31,10 +31,19 @@ export const updateStatus = (status,navigate)=>async(dispatch)=>{
         await api.updateStatus(status);
         dispatch(getAllProjects());
         dispatch(setAlert("Progress updated","success"))
-        if(status.status==='completed')
-            navigate('/admin')
-        else navigate(`/project/show/${status.p_id}`)
+        navigate(`/project/show/${status.p_id}`)
         } catch (error) {
         dispatch(setAlert("Progress not updates","danger"))
+    }
+}
+
+export const updateStatusToVerify = (status,navigate)=>async(dispatch)=>{
+    try {
+        await api.updateStatusToVerify(status);
+        dispatch(getAllProjects());
+        dispatch(setAlert("Progress Updated","success"))
+        navigate(`/project/show/${status.p_id}`)
+    } catch (error) {
+        dispatch(setAlert("Progress not update","danger"))
     }
 }

@@ -8,7 +8,7 @@ import starDull from '../../assets/dull-star.png'
 import moment from 'moment';
 import './ProgressBar.css'
 import { developerUpdateRating } from '../../actions/myDetails'
-
+import { updateStatusToVerify } from '../../actions/project';
 function ProgressBar({status,p_id,c_id,d_id,deadline,pay}) {
    const navigate = useNavigate();
    const dispatch = useDispatch();  
@@ -71,6 +71,7 @@ function ProgressBar({status,p_id,c_id,d_id,deadline,pay}) {
     const handleRating = (e) =>{
             e.preventDefault();
          nextprogress();
+         dispatch(updateStatusToVerify({drive_link:driveLink,amount,p_id},navigate))
             setTimeout(() => {
                 dispatch(developerUpdateRating({rating:parseInt(userRating),u_id:d_id,p_id}))
             }, 2000);
