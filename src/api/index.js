@@ -69,3 +69,8 @@ export const createAdmin = (createData)=>API.post('/admin/newadmin',createData)
 
 //update-status-to-verify
 export const updateStatusToVerify=(verifyData)=>API.post('/project/update/drivelink',verifyData)
+
+//clientAcceptDeveloper
+export const clinetAcceptDeveloper=(acceptData)=>API.post('/project/provider/applicant/accept',acceptData)
+//clientRejectDeveloper
+export const clientRejectDeveloper = (rejectData)=>API.post('/project/developer/reject',rejectData)
