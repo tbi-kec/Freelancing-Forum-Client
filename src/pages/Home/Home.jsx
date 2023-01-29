@@ -21,8 +21,7 @@ function Home() {
   const users = useSelector((state)=>(state.userReducer))
   const myself=useSelector((state)=>(state.myDetailsReducer))
   const constants=useSelector((state)=>(state.constantReducer));
-  const user= useSelector((state)=>(state.currentUserReducer))
-  console.log(user);
+ 
   const [onbord_project,setOnBoardProject] = useState([]);
   const [notification,setNotification]=useState([]);
   

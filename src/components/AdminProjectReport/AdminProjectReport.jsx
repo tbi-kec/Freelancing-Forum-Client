@@ -6,10 +6,10 @@ import {Link} from 'react-router-dom'
 import { DownloadTableExcel } from "react-export-table-to-excel";
 
 const AdminProjectReport = () => {
-  const [fromdate,setFromDate]=useState()
-  const [endDate,setEndDate]=useState()
-  const [clientDept,setClientDept]=useState()
-  const [freelancerDept,setFreelancerDept]=useState()
+  const [fromdate,setFromDate]=useState(null)
+  const [endDate,setEndDate]=useState(null)
+  const [clientDept,setClientDept]=useState(null)
+  const [freelancerDept,setFreelancerDept]=useState(null)
   const [status,setStatus]=useState("");
   const [client,setClient]=useState(true)
   const [freelance,setFreelance]=useState(true)
@@ -21,14 +21,14 @@ const AdminProjectReport = () => {
  
 
   useEffect(()=>{
-    if(constants && constants.data){
+    if(constants && constants.data && depts.length!==0){
        const setDeptData = ()=>{
         const dept = constants.data[0].dept_short;
         setDepts([...dept])
       }
       setDeptData();
     }
-  },[constants])
+  },[constants,depts])
 
 
  
@@ -66,7 +66,6 @@ const AdminProjectReport = () => {
         setFreelance(false);
         setClient(true)
       }else{
-        
         setFreelance(true)
       }
       if(status!=='all'){
@@ -74,7 +73,8 @@ const AdminProjectReport = () => {
           const data = projects.filter(p=>p.project_status===status)
             setProjects([...data])
        }
-        filterByStatus();
+        if(status!=="")
+          filterByStatus();
       }
   },[status,projects])
 
@@ -182,7 +182,7 @@ const AdminProjectReport = () => {
         </DownloadTableExcel>
         </div>
         <div className='container mt-5 text-center'>
-        <table class="table table-stripped" ref={reportTableRef}>
+        <table className="table table-stripped" ref={reportTableRef}>
           <thead>
             <tr>
               <th scope="col">#</th>

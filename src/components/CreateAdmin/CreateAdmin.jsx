@@ -7,9 +7,9 @@ import './CreateAdmin.scss'
 const CreateAdmin = () => {
   const [first_name,setFirstName]=useState('')
   const [last_name,setLastName]=useState('')
-  const [mobile_number,setMobile]=useState()
-  const [password,setPassword]=useState()
-  const [kongu_email,setKongu]=useState()
+  const [mobile_number,setMobile]=useState("")
+  const [password,setPassword]=useState("")
+  const [kongu_email,setKongu]=useState("")
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleSubmit = (e)=>{
@@ -25,7 +25,7 @@ const CreateAdmin = () => {
               <div className="card">
                 <div className="card-body">
                   <h3 className="text-center my-5">Create Admin</h3>
-                  <form className='row' onSubmit={handleSubmit}>
+                  <form className='row' onSubmit={handleSubmit} autoComplete="false">
                       <div className="form-group mb-3 col-6">
                         <input type="text" className="form-control"  placeholder='First name' value={first_name} onChange={e=>setFirstName(e.target.value)}/>
                       </div>

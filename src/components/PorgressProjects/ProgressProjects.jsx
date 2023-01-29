@@ -15,9 +15,6 @@ const ProgressProjects = () => {
           getData();
     }
   }, [project])
-  if (projects == null) {
-    return <h1>Loading...</h1>
-  }
   
   return (
     <div>
