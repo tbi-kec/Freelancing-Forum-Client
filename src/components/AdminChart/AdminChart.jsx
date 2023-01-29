@@ -25,7 +25,6 @@ const Adminchart = () =>{
            </div>
         </div>
         );
-  
 }
 
 export default  Adminchart;  

@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useEffect, useLayoutEffect,useState } from 'react'
+
+import { useSelector } from 'react-redux';
+
 import CanvasJSReact from './canvasjs.react';
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+
 const DepartmentUsersChart = () => {
       const addSymbols=(e)=>{
         var suffixes = ["", "K", "M", "B"];
@@ -11,6 +15,33 @@ const DepartmentUsersChart = () => {
         var suffix = suffixes[order];
         return CanvasJS.formatNumber(e.value / Math.pow(1000, order)) + suffix;
     }
+    const users = useSelector((state)=>(state.userReducer))
+    const[count,setCount]=useState([]); 
+      useEffect(()=>{
+      if(users!==null && users.data!=null){ 
+        let freelacerMap = new Map();
+        for(let i=0;i<users.data.length;i++){
+            let dept = users.data[i].department;
+            if(users.data[i].user_type==='freelancer')
+                if(freelacerMap.has(dept)){
+                    let temp=freelacerMap.get(dept);
+                    freelacerMap.delete(dept);
+                    freelacerMap.set(dept,temp+1)
+                }else{
+                    freelacerMap.set(dept,1);
+                }
+                }
+        console.log(freelacerMap)
+        for(let [key,value] of freelacerMap){
+            let obj = {
+                y:value ,
+                label:key
+            }
+            setCount([...count,obj])
+        }
+      }
+  },[users])
+  console.log(count)
      const options = {
             animationEnabled: true,
             theme: "light2",
@@ -28,20 +59,13 @@ const DepartmentUsersChart = () => {
             },
             data: [{
                 type: "bar",
-                dataPoints: [
-                    { y:  2200000000, label: "IT" },
-                    { y:  1800000000, label: "AI&DS" },
-                    { y:  800000000, label: "AI&ML" },
-                    { y:  563000000, label: "CSD" },
-                    { y:  376000000, label: "Mech" },
-                    { y:  336000000, label: "ESE" },
-                    { y:  330000000, label: "EEE" }
-                ]
+                dataPoints: count
             }]
         }
   return (
-    <CanvasJSChart options = {options} />
+    <> {count.length!==0 &&<CanvasJSChart options = {options}/>}  </>
   )
 }
 
 export default DepartmentUsersChart
+
