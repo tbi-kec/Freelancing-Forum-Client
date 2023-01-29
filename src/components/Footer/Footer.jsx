@@ -30,23 +30,22 @@ function Footer(){
             <div className="col my-5">
               <h5>Contact Us</h5>
               <ul className="nav flex-column">
-                <li className="nav-item"><a href="#" className="nav-link p-0 text-muted">Dr. R. Rajadevi</a></li>
-                <li className="nav-item"><a href="#" className="nav-link p-0 text-muted">AI</a></li>
-                <li className="nav-item mb-4"><a href="#" className="nav-link p-0 text-muted">986508899</a></li>
-                <li className="nav-item"><a href="#" className="nav-link p-0 text-muted">Ms. T. E. Ramya</a></li>
-                <li className="nav-item"><a href="#" className="nav-link p-0 text-muted">CT - PG</a></li>
-                <li className="nav-item mb-4"><a href="#" className="nav-link p-0 text-muted">8883677334</a></li>
+                <li className="nav-item"><span href="#" className="nav-link p-0 text-muted">Dr. R. Rajadevi</span></li>
+                <li className="nav-item"><span href="#" className="nav-link p-0 text-muted">AI</span></li>
+                <li className="nav-item mb-4"><span href="#" className="nav-link p-0 text-muted">986508899</span></li>
+                <li className="nav-item"><span href="#" className="nav-link p-0 text-muted">Ms. T. E. Ramya</span></li>
+                <li className="nav-item"><span className="nav-link p-0 text-muted">CT - PG</span></li>
+                <li className="nav-item mb-4"><span className="nav-link p-0 text-muted">8883677334</span></li>
               </ul>
             </div>
-
             <div className="col my-4">
             <div className="card me-5 shadow" style={{backgroundColor:"#647BAA"}} >
               <div className="card-body">
               <h5 className="mb-3 fw-bold " >Community Page</h5>
               <ul className="nav flex-column">
                 <li className="nav-item mb-3"><Link to="/developer_community" className="nav-link p-0 text-white">Developer Community</Link></li>
-                <li className="nav-item mb-3"><a href="#" className="nav-link p-0 text-white">Website Flow</a></li>
-                <li className="nav-item mb-3"><a href="#" className="nav-link p-0 text-white">Video Reference</a></li>
+                <li className="nav-item mb-3"><a href="#"rel="noreferrer noopener" className="nav-link p-0 text-white">Website Flow</a></li>
+                <li className="nav-item mb-3"><a href="#"rel="noreferrer noopener" className="nav-link p-0 text-white">Video Reference</a></li>
               </ul>
               </div>
             </div>
@@ -61,7 +60,6 @@ function Footer(){
                 <div className="row my-3 feedback feedback-btn p-3">
                   <button className="btn btn-primary font-weight-bold">Give Your feedback <i className="fa-solid fa-arrow-right fs-5 forward-btn"></i></button>
                   <p className="feedback-text my-2 fs-6 text-dark">Hello users, Our goal is to Find the perfect freelance services for your projects</p>
-
                 </div>
               </div>
             </div>
