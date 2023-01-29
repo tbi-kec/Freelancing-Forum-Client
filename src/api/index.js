@@ -73,4 +73,4 @@ export const updateStatusToVerify=(verifyData)=>API.post('/project/update/drivel
 //clientAcceptDeveloper
 export const clinetAcceptDeveloper=(acceptData)=>API.post('/project/provider/applicant/accept',acceptData)
 //clientRejectDeveloper
-export const clientRejectDeveloper = (rejectData)=>API.post('/project/developer/reject',rejectData)
+export const clientRejectDeveloper = (rejectData)=>API.post('/project/developer/request/rejected',rejectData)

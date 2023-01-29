@@ -105,10 +105,11 @@ export const developerUpdateRating =(ratingData)=>async(dispatch)=>{
 
 export const clientRejectDeveloper = (rejectData,navigate)=>async(dispatch)=>{
     try {
-        await api.clientRejectDeveloper(rejectData);
+       const {data}= await api.clientRejectDeveloper(rejectData);
         dispatch(getAllProject());
         navigate(`/project/${rejectData.p_id}`)
     } catch (error) {
+        console.log(error.message)
         dispatch(setAlert("Reject Error","danger"))
     }
 }

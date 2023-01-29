@@ -90,7 +90,6 @@ function ProgressBar({status,p_id,c_id,d_id,deadline,pay}) {
             >
                 <div className="modal-dialog modal-dialog-centered modal-lg">
                     <div className="modal-content text-center">
-
                         <div>
                             <div className="fs-4 m-5">
                                 Please Confirm that your Project is moved to next level.You can't Reverse your Progress!
