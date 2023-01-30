@@ -2,7 +2,7 @@ import React from 'react';
 import DepartmentUsersChart from './DepartmentUsersChart';
 import CategoryProjects from './CategoryProjects';
 import RevenueChart from './RevenueChart';
-import YearProjects from './YearProjects';
+
 
 const Adminchart = () =>{
         return (

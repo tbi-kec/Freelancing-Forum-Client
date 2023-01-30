@@ -6,7 +6,7 @@ const Loading = () => {
 
  
 return (
-    <div className={!oading.loading ?'loading-container':""}>
+    <div className={loading.loading ?'loading-container':""}>
       {loading.loading && 
               <div className="row">
                 <div className="col-6">
