@@ -1,6 +1,6 @@
 import axios from 'axios'
-import env from "react-dotenv";
-const API = axios.create({baseURL: env?.URL || 'http://localhost:8080/api/'})
+
+const API = axios.create({baseURL: process.env?.URL || '/api/'})
 
 //authentication
 export const login = (authData) => API.post('/user/login',authData)
