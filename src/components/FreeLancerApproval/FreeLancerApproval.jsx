@@ -5,11 +5,11 @@ import { Link,useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import { setAlert } from '../../actions/alert';
 import { acceptOrRejectUser } from '../../actions/admin';
-import Loading from '../Loading/Loading';
+
 
 const FreeLancerApproval = () => {
   const [users, setUsers] = useState(null)
-  const [responded, setResponded] = useState(false)
+ 
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const freelancers = useSelector((state) => (state.userReducer))
