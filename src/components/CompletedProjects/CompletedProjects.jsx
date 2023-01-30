@@ -5,25 +5,19 @@ import { Link } from 'react-router-dom';
 const CompletedProjects = () => {
   const project = useSelector((state) => (state.adminReducer));
   const [projects, setProjects] = useState(null);
-  const getData = () => {
-    const data = project.data.filter(p => p.project_status === 'completed');
-    setProjects([...data]);
-  }
+ 
   useEffect(() => {
     if (project && project.data)
+    {
+       const getData = () => {
+        const data = project.data.filter(p => p.project_status === 'completed');
+        setProjects([...data]);
+      }
       getData();
+    }
   }, [project])
 
-  // if (projects == null || projects.length==0)
-  //   return <h1>Loading ...</h1>
-
-  /*
-    title
-    client
-    freelancer name
-    end date
-    completed on
-   */
+  
   return (
     <div className='container mt-5 text-center'>
       <table class="table table-hover table-stripped">
@@ -45,7 +39,7 @@ const CompletedProjects = () => {
         </tr>:
             projects.map((p, i) => (
             <tr key={p._id}>
-              <td scope="row">{i + 1}</td>
+              <th scope="row">{i + 1}</th>
               <td><Link to={`/project/show/${p._id}`}>{p.title}</Link></td>
               <td><Link to={`/profile/${p.createdBy._id}`}>{p.createdBy.first_name} {p.createdBy.last_name}</Link></td>
               <td><Link to={`/profile/${p.developer._id}`}>{p.developer.first_name} {p.developer.last_name}</Link></td>

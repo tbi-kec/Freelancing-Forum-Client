@@ -1,5 +1,5 @@
-import React, {useState} from "react"
-import Navbar from '../../components/Navbar/Navbar'
+import React from "react"
+
 import './Page404.css'
 
 function Page404(){

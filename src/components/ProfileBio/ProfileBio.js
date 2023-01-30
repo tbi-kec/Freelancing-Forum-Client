@@ -42,7 +42,8 @@ export default function ProfileBio({user}) {
     }
   }, [selectedProject,dispatch])
   const handleClick = () => {
-    const model = document.getElementById("toggle_model_button");
+    console.log("Clicked")
+    const model = document.getElementById("toggle_model_button_close");
     model.click();
   }
 
@@ -64,13 +65,20 @@ export default function ProfileBio({user}) {
       >
         <div className="modal-dialog modal-dialog-centered modal-xl">
           <div className="modal-content text-center ">
-            <EditProfile handleClick={() => handleClick()} />
+            <EditProfile handleClick={handleClick} />
             <input
               type="button"
               id="toggle_model_button"
               hidden
               data-bs-toggle="modal"
               data-bs-target="#toggle_model"
+            />
+            <input
+              type="button"
+              id="toggle_model_button_close"
+              hidden
+              data-bs-dismiss="modal"
+              aria-label="Close"
             />
           </div>
         </div>

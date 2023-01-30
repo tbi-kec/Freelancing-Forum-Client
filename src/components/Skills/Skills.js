@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Skills.css";
 
 export default function Skills({skills}) {

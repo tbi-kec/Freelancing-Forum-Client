@@ -53,7 +53,7 @@ export const requestAdmin = (projectData)=>async(dispatch)=>{
 export const responseToNotification= (responseData,navigate)=>async(dispatch)=>{
     try {
         dispatch(getLoading(true))
-        const {data} = await api.developerResponse(responseData)
+        await api.developerResponse(responseData)
         dispatch(getMyDetails());
         dispatch(getLoading(false))
         dispatch(setAlert("Responded to notification successfully","success"))

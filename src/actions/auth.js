@@ -86,7 +86,7 @@ export const changePassword =(resetData,navigate)=>async(dispatch)=>{
         dispatch(getLoading(true))
          await api.changePassword(resetData)
          dispatch(getLoading(false))
-        dispatch(setAlert("Password changes","success"));
+        dispatch(setAlert("Password changed","success"));
         navigate('/login')
     } catch (error) {
         dispatch(setAlert("Password can't be changes","danger"))

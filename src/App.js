@@ -15,14 +15,15 @@ import {getRequestedProjects} from './actions/admin'
 
 const App = () => {
   const dispatch = useDispatch();
-  const getData = async () => {
-    const token = await localStorage.getItem("freelance");
-    if (token) {
-      dispatch(setCurrentUser(JSON.parse(token)))
-    }
-  }
+ 
   useEffect(() => {
-    getData();
+     const getData = async () => {
+        const token = await localStorage.getItem("freelance");
+        if (token) {
+          dispatch(setCurrentUser(JSON.parse(token)))
+        }
+      }
+  getData()
     dispatch(getAllProjects())
     dispatch(getAllUsers())
     dispatch(getConstants())
