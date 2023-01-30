@@ -10,11 +10,13 @@ import tbilogo from "../../assets/TBIlogo.png";
 import { setAlert } from "../../actions/alert";
 import { sendEmail } from "../../actions/auth";
 // import Loading from "../../components/Loading/Loading";
+import Launch from "../../components/Launch/Launch";
 
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  
   const [email, setEmail] = useState(".20it@kongu.edu");
   const [password, setPassword] = useState("123456");
   const [FPEmail, setFPEmail] = useState("");
@@ -60,10 +62,19 @@ const Login = () => {
     dispatch(sendEmail({ kongu_email: FPEmail }));
   };
 
+  const [style, setStyle] = React.useState({transform: `translateY(0vh)`,transition: 'transform 1000ms'});
+  const onClick_function = () => {
+    setStyle({transform: `translateY(-100vh)`,transition: 'transform 1000ms'});
+  }
+
   return (
     <div className="login-container">
-      {/* <Loading/> */}
-      {/* modal */}
+
+          <div className="launch" style={style} >
+        <Launch onClickbtn={onClick_function}/>
+      </div>
+      
+      
       <div
         className="modal fade"
         id="toggle_model"
@@ -71,7 +82,7 @@ const Login = () => {
         role="dialog"
         aria-labelledby="exampleModalLabel"
       >
-        <div className="modal-dialog modal-dialog-centered modal-lg">
+        <div className="modal-dialog modal-dialog-centered modal-lg" >
           <div className="modal-content text-center">
             <h3 className="my-3">Forgetten My Password</h3>
             <div className="container px-5 my-5 d-flex justify-content-center">
@@ -178,7 +189,9 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    
+   
   );
 };
 
