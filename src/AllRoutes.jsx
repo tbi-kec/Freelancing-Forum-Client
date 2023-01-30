@@ -53,9 +53,9 @@ const AllRoutes = () => {
               </Route >
           </Route>
            <Route element={<ProtectedRoutes/>} >
-              <Route element={<VerifyRoutes/>} >
+              {/* <Route element={<VerifyRoutes/>} > */}
                 <Route path='/home' element={<Home />} />
-              </Route>
+              {/* </Route> */}
               <Route path='/profile/create' element={<ProfileCreation/>} />
               <Route path='/profile/:id' element={<StudentProfile/>} />
               <Route path='/profile/edit' element={<ProfileEdit/>} />

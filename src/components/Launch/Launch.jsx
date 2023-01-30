@@ -15,7 +15,7 @@ function Launch({ onClickbtn }) {
         <div className="launch-nav-img">
           <img src={kec_cicle} alt="kec-circle" />
         </div>
-        <h1 className="fw-bold">KEC and EMDC FREELANCING FORUM</h1>
+        <h1 className="fw-bold fs-3 text-center">KEC-EMDC'S FREELANERS FORUM</h1>
       </div>
       <div className="d-flex flex-column justify-content-center align-items-center flex-grow-1 launch-quote">
         <h1 className="launch-header fs-2 fw-bold text-center">
@@ -30,10 +30,10 @@ function Launch({ onClickbtn }) {
           Launch
         </button>
       </div>
-      <div className="d-flex flex-row logo-div justify-content-center">
+      <div className="d-flex flex-row logo-div justify-content-center align-items-center">
         <img src={emdclogo} width="100"  alt="launch-logo" height="100" className="m-5" />
-        <img src={iiclogo} width="200" alt="launch-logo" height="100" className="m-5" />
-        <img src={tbilogo} width="200" alt="launch-logo" height="100" className="m-5" />
+        <img src={iiclogo} width="200" alt="launch-logo" height="80" className="m-5" />
+        <img src={tbilogo} width="200" alt="launch-logo" height="70" className="m-5" />
       </div>
       <div className="left-img">
         <img src={left} alt="" />

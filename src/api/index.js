@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const API = axios.create({baseURL: process.env?.URL || '/api/'})
-
+// const API = axios.create({baseURL: process.env?.URL || '/api/'})
+const API = axios.create({baseURL: 'http://localhost:8080/api/'})
 //authentication
 export const login = (authData) => API.post('/user/login',authData)
 export const signup = (authData) => API.post('/user/signup',authData)

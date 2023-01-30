@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from "../../assets/logo.png";
+import logo from "../../assets/kec_circle.png";
 import { Link ,useNavigate} from 'react-router-dom';
 
 
@@ -20,8 +20,8 @@ const AdminNavbar = ({handleToggle,toggle}) => {
         <i  className="fa-solid fa-bars"></i>
     </div>
     <div className='logo'>
-        <img src={logo} height="35px" className="mx-4" alt="kec-logo" />
-          Freelancing Forum
+        <img src={logo} height="50px" className="mx-4" alt="kec-logo" />
+          Freelancers Forum
     </div>
     <div>
         <ul >
