@@ -1,9 +1,9 @@
-.banner-profile{
-    height: 45vh !important;
+.profile-top{
+    height: 45vh ;
     width: 100%;
 }
 
-.banner-profile img{
+.profile-top img{
     object-fit: cover;
     /* height: 200px !important;
     width: 100vw; */
@@ -11,8 +11,8 @@
     height: 100%;
 }
 
-@media only screen and (max-width: 600px){
-    .banner-profile{
+@media only screen and (max-width: 700px){
+    .profile-top{
         height: 20vh !important;
         width: 100%;
     }

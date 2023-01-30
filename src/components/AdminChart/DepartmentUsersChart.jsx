@@ -53,7 +53,7 @@ const DepartmentUsersChart = () => {
                      animationEnabled: true,
             theme: "light2",
             title:{
-                text: "Total Number of Freelancer on departments"
+                text: "No.of Freelancers per department"
             },
             axisX: {
                 title: "Departments",

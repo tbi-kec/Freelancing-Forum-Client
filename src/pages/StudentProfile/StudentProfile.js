@@ -56,10 +56,10 @@ export default function StudentProfile() {
         <button className="btn logout text-light" onClick={handleLogout}>Log Out</button>
       </div>
     }
-        <div className="back pointer" onClick={()=> current.user?.isAdmin ? navigate('/admin') : navigate('/home')  }>
+        <div className="back pointer " onClick={()=> current.user?.isAdmin ? navigate('/admin') : navigate('/home')  }>
             <i className="text light fa-sharp fa-solid fa-arrow-left"></i>
         </div>
-        <Banner/>
+        <Banner />
         
         <ProfileBio  user={user} />
         {user?.user_type==='freelancer' &&

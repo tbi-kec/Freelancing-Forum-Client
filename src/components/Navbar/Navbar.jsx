@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navbar.css";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/kec_circle.png";
 import profile from "../../assets/profileicon2.png";
 import {Link} from 'react-router-dom';
 import { useSelector } from "react-redux";
@@ -14,8 +14,8 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
         <span className="navbar-brand text-light fw-bold">
-          <img src={logo} height="35px" className="mx-4" alt="kec-logo" />
-          Freelancing Forum
+          <img src={logo} height="50px" className="mx-4" alt="kec-logo" />
+          Freelancers Forum
         </span>
         <button
           className="navbar-toggler"

@@ -50,11 +50,11 @@ const AllRoutes = () => {
                 <Route path='/admin/user/report' element={<AdminUserReport />} />
               </Route >
           </Route>
-              <Route path='/profile/create' element={<ProfileCreation/>} />
            <Route element={<ProtectedRoutes/>} >
                 <Route path='/home' element={<Home />} />
               <Route path='/profile/:id' element={<StudentProfile/>} />
               <Route path='/profile/edit' element={<ProfileEdit/>} />
+              <Route path='/profile/create' element={<ProfileCreation/>} />
               <Route path='/department' element={<Department/>} />
               <Route path='/developer_community' element={<DeveloperCommunity />} />
               <Route path='/certificate' element={<Certificate Name="Janarthanan T" ProjectName="FreeLance Forum" />} />
