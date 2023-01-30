@@ -25,18 +25,18 @@ const FreeLancerApproval = () => {
   }, [freelancers])
 
  const handleAcceptUser = (e, id) => {
-  setResponded(true)
+  
     e.preventDefault();
     dispatch(setAlert("Accepting freelancer","info",3400))
     dispatch(acceptOrRejectUser({u_id:id,status:"accepted",message:"accepted"},navigate))
 
-    setInterval(()=>setResponded(false),5000)
+   
     
   }
   
   return (
       <div className='container mt-5 text-center'>
-        {responded===true && <Loading />}
+       
         <table className="table  table-stripped">
           <thead>
             <tr>

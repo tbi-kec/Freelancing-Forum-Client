@@ -21,6 +21,7 @@ export const respondToRequest =(responseData,navigate)=>async(dispatch)=>{
         dispatch(setAlert("Responded Successfully","success"))
         navigate('/admin/request')
     } catch (error) {
+         dispatch(getLoading(false))
         dispatch(setAlert("Server Error","danger"))
     }
 }
@@ -35,6 +36,7 @@ export const acceptOrRejectUser = (userData,navigate) => async(dispatch)=>{
         dispatch(setAlert(`${userData.status} freelancer successfully`,"success"));
         navigate("/admin/approval")
     } catch (error) {
+         dispatch(getLoading(false))
         dispatch(setAlert("Server Error","danger"))
     }
 }
@@ -47,6 +49,7 @@ export const createAdmin = (userData,navigate)=>async(dispatch)=>{
         dispatch(setAlert("Admin created successfully","success"))
         navigate('/admin')
     } catch (error) {
+         dispatch(getLoading(false))
         dispatch(setAlert("Server Error","danger"))
     }
 }

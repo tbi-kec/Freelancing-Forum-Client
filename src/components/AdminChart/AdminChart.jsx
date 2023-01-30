@@ -12,15 +12,14 @@ const Adminchart = () =>{
             </div>
 
             <div className="row my-5">
-                <div className="col-md-6 offset-md-4">
+                <div className="col-md-6">
                     <CategoryProjects />
                 </div>
-            </div>
-            <div className='row my-5'>
-                <div className="col-md-6 offset-md-1 my-3">
+                <div className="col-md-6 ">
                     <YearProjects />
                 </div>
             </div>
+            
            <div className="row my-5">
                 <RevenueChart />
            </div>

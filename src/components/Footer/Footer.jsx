@@ -44,8 +44,8 @@ function Footer(){
               <h5 className="mb-3 fw-bold " >Community Page</h5>
               <ul className="nav flex-column">
                 <li className="nav-item mb-3"><Link to="/developer_community" className="nav-link p-0 text-white">Developer Community</Link></li>
-                <li className="nav-item mb-3"><a href="#" rel="noreferrer noopener" className="nav-link p-0 text-white">Website Flow</a></li>
-                <li className="nav-item mb-3"><a href="#" rel="noreferrer noopener" className="nav-link p-0 text-white">Video Reference</a></li>
+                <li className="nav-item mb-3"><a href="/developer_community" rel="noreferrer noopener" className="nav-link p-0 text-white">Website Flow</a></li>
+                <li className="nav-item mb-3"><a href="/developer_community" rel="noreferrer noopener" className="nav-link p-0 text-white">Video Reference</a></li>
               </ul>
               </div>
             </div>

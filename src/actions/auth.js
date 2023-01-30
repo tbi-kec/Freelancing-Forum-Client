@@ -24,6 +24,7 @@ export const login  = (authData,navigate) => async(dispatch) =>{
         else if(data?.user?.admin_verify===false) navigate(`/profile/${data.user._id}`)
         else navigate("/home")
     } catch (error) {
+        dispatch(getLoading(false))
       dispatch(setAlert(error.response.data,'danger'))
     }
 }
@@ -40,6 +41,7 @@ export const signup = (authData,navigate) => async(dispatch) =>{
         dispatch(setAlert("User Created successfully","success"))
         navigate("/profile/create")
     } catch (error) {
+         dispatch(getLoading(false))
         dispatch(setAlert(error.response.data,'danger'))
     }
 }
@@ -59,6 +61,7 @@ export const updateProfile = (profileData,navigate) => async(dispatch)=>{
         navigate(`/profile/${user._id}`)
           //navigate("/home")
     } catch (error) {
+         dispatch(getLoading(false))
         dispatch(setAlert(error.response.data,'danger'))
     }
 }
@@ -89,6 +92,7 @@ export const changePassword =(resetData,navigate)=>async(dispatch)=>{
         dispatch(setAlert("Password changed","success"));
         navigate('/login')
     } catch (error) {
+         dispatch(getLoading(false))
         dispatch(setAlert("Password can't be changes","danger"))
     }
 }

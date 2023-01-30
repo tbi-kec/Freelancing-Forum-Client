@@ -35,6 +35,8 @@ function PreLoader() {
       setTimeout(() => {
         if(result?.user?.isAdmin===true)
           navigate('/admin')
+        else if(result?.user?.admin_verify===false)
+          navigate(`/profile/${result?.user?._id}`)
         else navigate(`/home`)
       }, 3000)
 

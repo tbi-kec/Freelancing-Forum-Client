@@ -20,6 +20,7 @@ export const newProject = (projectData,navigate) => async(dispatch) =>{
         dispatch(setAlert("Successfully created project","success"))
         navigate("/Home")
     } catch (error) {
+         dispatch(getLoading(false))
         dispatch(setAlert(error.response.data.message,"danger"))
     }
 }
@@ -35,6 +36,7 @@ export const updateStatus = (status,navigate)=>async(dispatch)=>{
         dispatch(setAlert("Progress updated","success"))
         navigate(`/project/show/${status.p_id}`)
         } catch (error) {
+             dispatch(getLoading(false))
         dispatch(setAlert("Progress not updates","danger"))
     }
 }
@@ -48,6 +50,7 @@ export const updateStatusToVerify = (status,navigate)=>async(dispatch)=>{
         dispatch(setAlert("Progress Updated","success"))
         navigate(`/project/show/${status.p_id}`)
     } catch (error) {
+         dispatch(getLoading(false))
         dispatch(setAlert("Progress not updated","danger"))
     }
 }
