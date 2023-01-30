@@ -12,12 +12,12 @@ const Adminchart = () =>{
             </div>
 
             <div className="row my-5">
-                <div className="col-md-6">
+                <div className="col-md-12">
                     <CategoryProjects />
                 </div>
-                <div className="col-md-6 ">
+                {/* <div className="col-md-6 ">
                     <YearProjects />
-                </div>
+                </div> */}
             </div>
             
            <div className="row my-5">

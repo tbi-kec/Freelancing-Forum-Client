@@ -106,7 +106,7 @@ const Login = () => {
         </div>
       </div>
 
-      <div className="container mt-5">
+      <div className="container-fluid mt-5">
         <div className="row p-5">
           <div className="login-left-side-container shadow col-sm-12  col-lg-6">
             <div className="d-flex justify-content-around align-items-center mt-3 ">
@@ -169,7 +169,7 @@ const Login = () => {
                 />
               </div>
               <p className="text-end forget" onClick={handleOnClickForget}>
-                Forget Password
+                Forgot Password
               </p>
               <div className="d-grid gap-4">
                 <button className="btn">Login</button>

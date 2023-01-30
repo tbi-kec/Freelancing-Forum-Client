@@ -82,6 +82,7 @@
 .login-right-side-container > .header-container > .header {
   color: black;
   font-size: 24px;
+  font-weight: bold;
 }
 .login-right-side-container > form > .form-group {
   margin-bottom: 28px;
@@ -116,22 +117,27 @@
   color: var(--main-white);
 }
 
-.launchToLogin {
-  transition: ease-in 2s;
-}
+
 @media screen and (max-width: 480px) {
   .login-container {
     height: 100vh;
     width: 100%;
     overflow-x: hidden;
-    background: var(--main-blue);
     margin: auto;
-    background: linear-gradient(
-      180deg,
-      var(--main-blue) 0%,
-      var(--main-blue) 50%,
-      var(--main-lightwhite) 50%,
-      var(--main-lightwhite) 100%
-    );
+    background: var(--main-blue);
+    margin: 0;
+    padding: 0;
   }
+    .login-left-side-container{
+      border-radius: 20px 20px 0 0 ;
+    }
+    .login-right-side-container{
+      border-radius: 0 0 20px 20px;
+    background-color: var(--main-lightwhite);
+    }
+.login-right-side-container>.header-container>.header {
+  color: black;
+  font-size: 20px;
+margin-bottom: 6px;
+}
 }

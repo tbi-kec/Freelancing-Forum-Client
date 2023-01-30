@@ -118,3 +118,13 @@
     color: var(--main-white);
     width: 120px;
 }
+
+@media screen and (max-width: 480px) {
+    .profile-creation-container>.profile-form-container>.row>.image-container {
+           display: none;
+        }
+    .profile-creation-container>.profile-form-container>.row>.profile-form {
+            width: 100%;
+            margin: 20px auto;
+        }
+}

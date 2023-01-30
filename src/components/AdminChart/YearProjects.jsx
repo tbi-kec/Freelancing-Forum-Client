@@ -1,8 +1,8 @@
 import React, { useLayoutEffect } from 'react'
-import CanvasJSReact from './canvasjs.react';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import CanvasJSReact from './canvasjs.react';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 const YearProjects = () => {
         const projects = useSelector((state)=>(state.projectReducer));

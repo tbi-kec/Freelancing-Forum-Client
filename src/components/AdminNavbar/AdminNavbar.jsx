@@ -21,7 +21,7 @@ const AdminNavbar = ({handleToggle,toggle}) => {
     </div>
     <div className='logo'>
         <img src={logo} height="35px" className="mx-4" alt="kec-logo" />
-          Freelancing Forum
+          Freelancer Forum
     </div>
     <div>
         <ul >

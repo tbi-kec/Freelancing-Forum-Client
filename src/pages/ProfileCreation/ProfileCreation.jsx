@@ -98,10 +98,10 @@ const ProfileCreation = () => {
         </div>
         <div className="container profile-form-container my-3">
             <div className="row">
-                <div className="col-3 image-container">
+                <div className=" col-md-3  image-container">
                     <img src={profile} alt="profile" />
                 </div>
-                <div className="col-6 profile-form">
+                <div className="col-sm-12 col-md-6 profile-form">
                     <form onSubmit={handleSubmit} >
                         <div className="form-group">
                             <select name="Department"  onChange={e=>setDepartment(e.target.value)}  placeholder='Department' className="form-select" required>

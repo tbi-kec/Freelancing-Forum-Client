@@ -30,6 +30,7 @@ const App = () => {
     dispatch(getMyDetails())
     dispatch(getRequestedProjects())
   }, [dispatch])
+  
   return (
     <div className='app-container'>
       <Router>

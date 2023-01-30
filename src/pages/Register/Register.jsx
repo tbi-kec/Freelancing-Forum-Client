@@ -150,19 +150,19 @@ const Register = () => {
       </div>
 
       {/* content */}
-      <div className="container">
-        <div className="row p-5">
+      <div className="container-fluid">
+        <div className="row p-sm-0 p-lg-5">
           <div className="col-8 card-container shadow ">
             <div className="register-back-btn link">
               <Link to="/login" className="link">
                 <div className=" d-flex m-3 text-light">
                   <i className="fa-solid fa-arrow-left back-btn"></i>
-                </div>
+                </div> 
               </Link>
             </div>
             <div className="container m-4">
             <div className="header-container">
-              <p className="header text-dark fs-3 m-5">Register to KEC Freelancing Forum </p>
+              <p className="header text-dark fs-3 m-5 text-center">Register to KEC EMDC'S Freelancers Forum </p>
               </div>
               <div className="d-flex justify-content-center align-items-center mt-3 ">
                 <div className="login-logo-container">
@@ -180,7 +180,7 @@ const Register = () => {
               </div>
             
             </div>
-            <form className="row g-2" onSubmit={handleOtp}>
+            <form className="row" onSubmit={handleOtp}>
               <div className="form-group col-md-12 col-lg-6">
                 <input
                   type="text"
@@ -248,7 +248,7 @@ const Register = () => {
                   ))}
                 </select>
               </div>
-              <div className="form-group col-6">
+              <div className="form-group col-sm-12 col-md-6">
                 <input
                   type="password"
                   placeholder="Enter Password"
@@ -258,7 +258,7 @@ const Register = () => {
                   required
                 />
               </div>
-              <div className="form-group col-6">
+              <div className="form-group col-sm-12 col-md-6">
                 <input
                   type="password"
                   placeholder="Confirm Password"
