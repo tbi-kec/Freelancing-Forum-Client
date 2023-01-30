@@ -10,7 +10,7 @@ import tbilogo from "../../assets/TBIlogo.png";
 import { setAlert } from "../../actions/alert";
 import { sendEmail } from "../../actions/auth";
 // import Loading from "../../components/Loading/Loading";
-import Launch from "../../components/Launch/Launch";
+
 
 
 const Login = () => {
@@ -62,19 +62,8 @@ const Login = () => {
     dispatch(sendEmail({ kongu_email: FPEmail }));
   };
 
-  const [style, setStyle] = React.useState({transform: `translateY(0vh)`,transition: 'transform 1000ms'});
-  const onClick_function = () => {
-    setStyle({transform: `translateY(-100vh)`,transition: 'transform 1000ms'});
-  }
-
   return (
     <div className="login-container">
-
-          <div className="launch" style={style} >
-        <Launch onClickbtn={onClick_function}/>
-      </div>
-      
-      
       <div
         className="modal fade"
         id="toggle_model"

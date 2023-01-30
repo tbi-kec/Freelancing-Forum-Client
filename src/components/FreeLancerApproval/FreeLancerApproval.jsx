@@ -60,9 +60,9 @@ const FreeLancerApproval = () => {
                   <td>{moment(u.created_on).calendar()}</td>
                   <td>
                   
-                    <button disabled={responded} className='btn btn-success mx-3' onClick={e=>handleAcceptUser(e,u._id)}>Accept</button>
+                    <button  className='btn btn-success mx-3' onClick={e=>handleAcceptUser(e,u._id)}>Accept</button>
                    
-                    <button disabled={responded} className='btn btn-danger mx-3' data-bs-toggle="modal" data-bs-target={`#toggle_model_user_approval-${u._id}`}>Reject</button>
+                    <button  className='btn btn-danger mx-3' data-bs-toggle="modal" data-bs-target={`#toggle_model_user_approval-${u._id}`}>Reject</button>
                   </td>
                 </tr>
               ))}
