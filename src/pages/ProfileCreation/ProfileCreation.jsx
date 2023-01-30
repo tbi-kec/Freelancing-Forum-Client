@@ -77,11 +77,11 @@ const ProfileCreation = () => {
        
         console.log(user)
         e.preventDefault()
-        if(!skills.length && user.user_type=="freelancer"){
+        if(!skills.length && user.user_type==="freelancer"){
             dispatch(setAlert("Skills can't be empty","warning"))
             return
         }
-        if(!domain.length  && user.user_type=='freelancer'){
+        if(!domain.length  && user.user_type==='freelancer'){
             dispatch(setAlert("Domain's can't be empty","warning"))
             return
         }
@@ -93,13 +93,13 @@ const ProfileCreation = () => {
     <div className='profile-creation-container'>
         <div className="row">
             <div className="col-12 image-container">
-                <img src={profileTop} alt="image-top" />
+                <img src={profileTop} alt="profile-top" />
             </div>
         </div>
         <div className="container profile-form-container my-3">
             <div className="row">
                 <div className="col-3 image-container">
-                    <img src={profile} alt="profile-image" />
+                    <img src={profile} alt="profile" />
                 </div>
                 <div className="col-6 profile-form">
                     <form onSubmit={handleSubmit} >
@@ -117,7 +117,7 @@ const ProfileCreation = () => {
                         <div className="form-group ">
                             <input type="email" value={personal_email} onChange={e=>setPersonalMail(e.target.value)} placeholder='Pesonal Email Id' className='form-control' required />
                         </div>
-                        {user?.user_type=="freelancer" &&
+                        {user?.user_type==="freelancer" &&
                         <>
                        
                         <div className="card">

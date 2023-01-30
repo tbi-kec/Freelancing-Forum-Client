@@ -158,7 +158,7 @@ function Home() {
         </div>  :
         <div className="my-5">
           {
-            users.data !== null &&
+            users.data !== null && constants && constants.data!==null &&
               users.data
               .sort((a,b) => {return a.rating >b.rating ? -1 : 1})
               .slice(0,users.data.length > 10 ? 10 : users.data.length)?.filter(u=> u.admin_verify===true).map(u=>(
