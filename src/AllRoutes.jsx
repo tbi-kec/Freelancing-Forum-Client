@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route,Routes } from 'react-router-dom'
 import Login from './pages/Login/Login'
+import VerifyRoutes from './VerifyRoutes'
 import Register from './pages/Register/Register'
 import ProfileCreation from './pages/ProfileCreation/ProfileCreation'
 import ProfileEdit from './pages/ProfileEdit/ProfileEdit'
@@ -18,6 +19,7 @@ import Page404 from './pages/Page404/Page404'
 import ResetPassword from './pages/ResetPassword/ResetPassword'
 import ProjectShow from './pages/ProjectShow/ProjectShow'
 import Department from './pages/Department/Department'
+import UnProtectedRoutes from './UnProtectedRoutes'
 import DeveloperCommunity from './pages/DeveloperCommunity/DeveloperCommunity'
 import AdminProtected from './AdminProtected'
 import FreeLancerApproval from './components/FreeLancerApproval/FreeLancerApproval'
@@ -27,14 +29,17 @@ import CompletedProjects from './components/CompletedProjects/CompletedProjects'
 import AdminUserReport from './components/AdminUserReport/AdminUserReport'
 import AdminProjectReport from './components/AdminProjectReport/AdminProjectReport'
 import Certificate from './components/Certificate/Certificate'
+
 const AllRoutes = () => {
   return (
     <Routes>
             <Route path='/' element={<PreLoader /> } />
+      <Route element={<UnProtectedRoutes />} >
             <Route path='/login' element={<Login/>} />
             <Route path='/register' element={<Register/>} />
             <Route path='/project/add' element={<ProjectAdd /> } />
             <Route path='/forgotten-password/:uid/:token' element={<ResetPassword/>} />
+        </Route>
          <Route element={<AdminProtected />}>
              <Route path='/admin' element={<AdminPage /> }>
                 <Route path='/admin/approval' element={<FreeLancerApproval/>} />
@@ -48,10 +53,12 @@ const AllRoutes = () => {
               </Route >
           </Route>
            <Route element={<ProtectedRoutes/>} >
+              <Route element={<VerifyRoutes/>} >
+                <Route path='/home' element={<Home />} />
+              </Route>
               <Route path='/profile/create' element={<ProfileCreation/>} />
               <Route path='/profile/:id' element={<StudentProfile/>} />
               <Route path='/profile/edit' element={<ProfileEdit/>} />
-              <Route path='/home' element={<Home />} />
               <Route path='/department' element={<Department/>} />
               <Route path='/developer_community' element={<DeveloperCommunity />} />
               <Route path='/certificate' element={<Certificate Name="Janarthanan T" ProjectName="FreeLance Forum" />} />

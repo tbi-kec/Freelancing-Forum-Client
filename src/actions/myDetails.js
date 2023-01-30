@@ -33,6 +33,7 @@ export const newStudyProject = (projectData,navigate)=>async(dispatch)=>{
         dispatch(setAlert("Added new Study Project","success"))
          navigate(`/profile/${projectData.createdBy}`)
     } catch (error) {
+         dispatch(getLoading(false))
         dispatch(setAlert("Server error while creating project","danger"))
     }
 }
@@ -46,6 +47,7 @@ export const requestAdmin = (projectData)=>async(dispatch)=>{
         dispatch(getLoading(false))
         dispatch(setAlert("Request Send to Admin","success",3000))
     } catch (error) {
+         dispatch(getLoading(false))
         dispatch(setAlert("Server Busy try after some time","danger"))
     }
 }
@@ -59,7 +61,7 @@ export const responseToNotification= (responseData,navigate)=>async(dispatch)=>{
         dispatch(setAlert("Responded to notification successfully","success"))
         navigate("/home")
     } catch (error) {
-        
+         dispatch(getLoading(false))
         dispatch(setAlert("Server error","danger"))
     }
 }
@@ -74,6 +76,7 @@ export const deleteNotification =(deleteData,navigate)=>async(dispatch)=>{
         dispatch(getLoading(false))
         navigate('/home');
     } catch (error) {
+         dispatch(getLoading(false))
         dispatch(setAlert("Server error","danger"))
     }
 }
@@ -87,6 +90,7 @@ export const editProfile = (editData,navigate)=>async(dispatch)=>{
         dispatch(setAlert("Edited Succesfully","info"));
         navigate(`/profile/${editData.id}`)
     } catch (error) {
+         dispatch(getLoading(false))
         dispatch(setAlert("Error Occured","warning"))
     }
 }
@@ -100,6 +104,7 @@ export const developerRequestProject =(requestData,navigate)=>async(dispatch)=>{
         dispatch(setAlert("Requested Project","success"));
         navigate("/home")
     } catch (error) {
+         dispatch(getLoading(false))
         dispatch(setAlert("Request Error","danger"))
     }
 }
@@ -122,6 +127,7 @@ export const clientRejectDeveloper = (rejectData,navigate)=>async(dispatch)=>{
         dispatch(setAlert("Rejected the project Successfully","success"))
         navigate(`/project/show/${rejectData.p_id}`)
     } catch (error) {
+         dispatch(getLoading(false))
         dispatch(setAlert("Reject Error","danger"))
     }
 }
@@ -134,6 +140,7 @@ export const clientAcceptDeveloper = (acceptData,navigate)=>async(dispatch)=>{
         dispatch(setAlert("Successfully accepted the project","success"))
         navigate(`/project/show/${acceptData.p_id}`)
     } catch (error) {
+         dispatch(getLoading(false))
         dispatch(setAlert("Accept Error","danger"))
     }
 }

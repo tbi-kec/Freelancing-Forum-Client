@@ -6,11 +6,9 @@ import Adminchart from '../../components/AdminChart/AdminChart'
 const AdminPage = () => {
  const [toggle,setToggle]=useState(false)
  const url=useLocation().pathname
- console.log(url);
  const handleToggle = ()=>{
   setToggle(!toggle)
  }
- 
   return (
     <div>
       <AdminSideBar handleToggle={handleToggle} />
