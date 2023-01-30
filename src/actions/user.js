@@ -7,10 +7,9 @@ export const getAllUsers=()=>async(dispatch)=>{
         const {data}=await api.getAllUser();
         dispatch({type:'GET_ALL_USERS',payload:data})
     } catch (error) {
-        dispatch(setAlert("Server Error","warning"))
+        dispatch(setAlert("Can't Load data","warning"))
     }
 }
-
 
 
 

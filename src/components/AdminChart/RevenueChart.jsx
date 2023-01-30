@@ -1,4 +1,4 @@
-import Reac,{useEffect,useLayoutEffect,useState} from 'react'
+import React,{useEffect,useLayoutEffect,useState} from 'react'
 import { useSelector } from 'react-redux';
 import CanvasJSReact from './canvasjs.react';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;

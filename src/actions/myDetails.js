@@ -26,9 +26,11 @@ export const getMyDetails=()=>async(dispatch)=>{
 
 export const newStudyProject = (projectData,navigate)=>async(dispatch)=>{
     try {
-        const {data} = await api.newStudyProject(projectData)
-        dispatch(setAlert("Added new Study Project","success"))
+        dispatch(getLoading(true))
+        await api.newStudyProject(projectData)
         dispatch(getMyDetails())
+        dispatch(getLoading(false))
+        dispatch(setAlert("Added new Study Project","success"))
          navigate(`/profile/${projectData.createdBy}`)
     } catch (error) {
         dispatch(setAlert("Server error while creating project","danger"))
@@ -37,13 +39,13 @@ export const newStudyProject = (projectData,navigate)=>async(dispatch)=>{
 
 export const requestAdmin = (projectData)=>async(dispatch)=>{
     try {
-       
-        const {data}= await api.requestProjectToAdmin(projectData);
+        dispatch(getLoading(true))
+       await api.requestProjectToAdmin(projectData);
         dispatch(getMyDetails());
         dispatch(getRequestedProjects())
+        dispatch(getLoading(false))
         dispatch(setAlert("Request Send to Admin","success",3000))
     } catch (error) {
-        
         dispatch(setAlert("Server Busy try after some time","danger"))
     }
 }
@@ -65,23 +67,23 @@ export const responseToNotification= (responseData,navigate)=>async(dispatch)=>{
 export const deleteNotification =(deleteData,navigate)=>async(dispatch)=>{
     try {
         dispatch(getLoading(true))
-        const {data}=await api.deleteNotification(deleteData);
+        await api.deleteNotification(deleteData);
         dispatch(getMyDetails());
         getLoading(false)
         dispatch(setAlert("Deleted notification","success"))
         dispatch(getLoading(false))
         navigate('/home');
     } catch (error) {
-        console.log(error)
         dispatch(setAlert("Server error","danger"))
     }
 }
 
 export const editProfile = (editData,navigate)=>async(dispatch)=>{
     try {
-        
-       const {data} = await api.editProfile(editData);
+        dispatch(getLoading(true))
+        await api.editProfile(editData);
         dispatch(getMyDetails());
+        dispatch(getLoading(false))
         dispatch(setAlert("Edited Succesfully","info"));
         navigate(`/profile/${editData.id}`)
     } catch (error) {
@@ -91,9 +93,11 @@ export const editProfile = (editData,navigate)=>async(dispatch)=>{
 
 export const developerRequestProject =(requestData,navigate)=>async(dispatch)=>{
     try {
+        dispatch(getLoading(true))
         await api.developerRequestProject(requestData);
-        dispatch(setAlert("Requested Project","success"));
         dispatch(getMyDetails());
+        dispatch(getLoading(false))
+        dispatch(setAlert("Requested Project","success"));
         navigate("/home")
     } catch (error) {
         dispatch(setAlert("Request Error","danger"))
@@ -111,18 +115,23 @@ export const developerUpdateRating =(ratingData)=>async(dispatch)=>{
 
 export const clientRejectDeveloper = (rejectData,navigate)=>async(dispatch)=>{
     try {
+        dispatch(getLoading(true))
         await api.clientRejectDeveloper(rejectData);
         dispatch(getAllProjects());
-        navigate(`/project/${rejectData.p_id}`)
+        dispatch(getLoading(false));
+        dispatch(setAlert("Rejected the project Successfully","success"))
+        navigate(`/project/show/${rejectData.p_id}`)
     } catch (error) {
-        console.log(error.message)
         dispatch(setAlert("Reject Error","danger"))
     }
 }
 export const clientAcceptDeveloper = (acceptData,navigate)=>async(dispatch)=>{
     try {
+        dispatch(getLoading(true))
         await api.clinetAcceptDeveloper(acceptData);
         dispatch(getAllProjects());
+        dispatch(getLoading(false))
+        dispatch(setAlert("Successfully accepted the project","success"))
         navigate(`/project/show/${acceptData.p_id}`)
     } catch (error) {
         dispatch(setAlert("Accept Error","danger"))

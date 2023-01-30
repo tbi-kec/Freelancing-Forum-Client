@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React from "react"
 import './Certificate.css'
 import cert_left from '../../assets/certificate_left.png';
 import cert_right from '../../assets/certificate_right.png';

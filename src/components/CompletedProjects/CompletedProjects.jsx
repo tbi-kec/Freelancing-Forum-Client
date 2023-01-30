@@ -45,7 +45,7 @@ const CompletedProjects = () => {
         </tr>:
             projects.map((p, i) => (
             <tr key={p._id}>
-              <th scope="row">{i + 1}</th>
+              <td scope="row">{i + 1}</td>
               <td><Link to={`/project/show/${p._id}`}>{p.title}</Link></td>
               <td><Link to={`/profile/${p.createdBy._id}`}>{p.createdBy.first_name} {p.createdBy.last_name}</Link></td>
               <td><Link to={`/profile/${p.developer._id}`}>{p.developer.first_name} {p.developer.last_name}</Link></td>

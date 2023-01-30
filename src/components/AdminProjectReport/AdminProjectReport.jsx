@@ -196,7 +196,7 @@ const AdminProjectReport = () => {
           <tbody>
             {projects === null || projects.length === 0 ?
               <tr >
-                <td className='py-5 fw-bold' colSpan="6">No User Found</td>
+                <td className='py-5 fw-bold' colSpan="6">No Projects Found</td>
               </tr> : 
               projects.map((p, i) => (
                 <tr key={p._id}>

@@ -45,7 +45,7 @@ const ProfileCreation = () => {
         }
             setskills([...skills,{"name":name,"level":level}])
             setName("")
-            setLevel("beginner")
+            setLevel("")
     }   
 
     const handleDelete =(id)=>{
@@ -74,7 +74,7 @@ const ProfileCreation = () => {
         setDomain([...newDomain])
     }
     const handleSubmit =async(e)=>{
-        //const user =await JSON.parse( localStorage.getItem('freelance'))
+       
         console.log(user)
         e.preventDefault()
         if(!skills.length && user.user_type=="freelancer"){

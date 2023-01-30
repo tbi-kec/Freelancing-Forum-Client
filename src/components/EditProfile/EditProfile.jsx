@@ -84,10 +84,10 @@ function EditProfile({handleClick}) {
             dispatch(setAlert("Domain's can't be empty","warning"))
             return
         }
-        //dispatch(setAlert("Editing profile","info"))
+        dispatch(setAlert("Editing profile","info"))
        
         dispatch(editProfile({id:user.data?._id,first_name,last_name,mobile,personal_email,skills,domain,description,payment_type},navigate))
-        //handleClick();
+        handleClick();
     }
 
   return (

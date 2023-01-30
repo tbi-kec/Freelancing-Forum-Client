@@ -13,12 +13,13 @@ export const getAllProjects=()=>async(dispatch)=>{
 
 export const newProject = (projectData,navigate) => async(dispatch) =>{
     try {
+        dispatch(getLoading(true))
         await api.newProject(projectData);
         dispatch(getAllProjects());
+        dispatch(getLoading(false))
         dispatch(setAlert("Successfully created project","success"))
         navigate("/Home")
     } catch (error) {
-        console.log(error)
         dispatch(setAlert(error.response.data.message,"danger"))
     }
 }
@@ -30,8 +31,8 @@ export const updateStatus = (status,navigate)=>async(dispatch)=>{
         dispatch(getLoading(true))
          await api.updateStatus(status);
         dispatch(getAllProjects());
-        dispatch(setAlert("Progress updated","success"))
         dispatch(getLoading(false))
+        dispatch(setAlert("Progress updated","success"))
         navigate(`/project/show/${status.p_id}`)
         } catch (error) {
         dispatch(setAlert("Progress not updates","danger"))
@@ -40,11 +41,13 @@ export const updateStatus = (status,navigate)=>async(dispatch)=>{
 
 export const updateStatusToVerify = (status,navigate)=>async(dispatch)=>{
     try {
+        dispatch(getLoading(true))
          await api.updateStatusToVerify(status);
         dispatch(getAllProjects());
+        dispatch(getLoading(false))
         dispatch(setAlert("Progress Updated","success"))
         navigate(`/project/show/${status.p_id}`)
     } catch (error) {
-        dispatch(setAlert("Progress not update","danger"))
+        dispatch(setAlert("Progress not updated","danger"))
     }
 }

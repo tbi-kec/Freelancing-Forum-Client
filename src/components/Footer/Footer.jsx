@@ -30,10 +30,10 @@ function Footer(){
             <div className="col my-5">
               <h5>Contact Us</h5>
               <ul className="nav flex-column">
-                <li className="nav-item"><span href="#" className="nav-link p-0 text-muted">Dr. R. Rajadevi</span></li>
-                <li className="nav-item"><span href="#" className="nav-link p-0 text-muted">AI</span></li>
-                <li className="nav-item mb-4"><span href="#" className="nav-link p-0 text-muted">986508899</span></li>
-                <li className="nav-item"><span href="#" className="nav-link p-0 text-muted">Ms. T. E. Ramya</span></li>
+                <li className="nav-item"><span  className="nav-link p-0 text-muted">Dr. R. Rajadevi</span></li>
+                <li className="nav-item"><span className="nav-link p-0 text-muted">AI</span></li>
+                <li className="nav-item mb-4"><span  className="nav-link p-0 text-muted">986508899</span></li>
+                <li className="nav-item"><span className="nav-link p-0 text-muted">Ms. T. E. Ramya</span></li>
                 <li className="nav-item"><span className="nav-link p-0 text-muted">CT - PG</span></li>
                 <li className="nav-item mb-4"><span className="nav-link p-0 text-muted">8883677334</span></li>
               </ul>
@@ -58,7 +58,7 @@ function Footer(){
                 <img src={logo} alt="" width="100px" height="100px" />
                 </div>
                 <div className="row my-3 feedback feedback-btn p-3">
-                  <button className="btn btn-primary font-weight-bold">Give Your feedback <i className="fa-solid fa-arrow-right fs-5 forward-btn"></i></button>
+                  <a href="https://forms.gle/jchgyUMW4YpMYZfMA" target="_blank" className="btn btn-primary font-weight-bold">Give Your feedback <i className="fa-solid fa-arrow-right fs-5 forward-btn"></i></a>
                   <p className="feedback-text my-2 fs-6 text-dark">Hello users, Our goal is to Find the perfect freelance services for your projects</p>
                 </div>
               </div>
