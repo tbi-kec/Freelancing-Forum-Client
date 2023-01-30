@@ -9,7 +9,7 @@ import emdclogo from "../../assets/emdclogo22.png";
 import tbilogo from "../../assets/TBIlogo.png";
 import { setAlert } from "../../actions/alert";
 import { sendEmail } from "../../actions/auth";
-// import Loading from "../../components/Loading/Loading";
+
 
 
 
