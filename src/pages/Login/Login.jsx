@@ -17,8 +17,8 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   
-  const [email, setEmail] = useState(".20it@kongu.edu");
-  const [password, setPassword] = useState("123456");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [FPEmail, setFPEmail] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
