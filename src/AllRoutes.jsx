@@ -67,7 +67,7 @@ const AllRoutes = () => {
               <Route path='/user/:dept' element={<DepartmentUsers/>} />
             </Route>
           <Route path="*"  element={<Page404/>}/>
-   
+          
     </Routes>
   )
 }
