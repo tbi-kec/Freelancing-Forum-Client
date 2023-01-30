@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import kec_cicle from "../../assets/kec_circle.png";
 import iiclogo from "../../assets/IIC_logo.png";
 import emdclogo from "../../assets/emdclogo22.png";
@@ -13,7 +13,7 @@ function Launch({ onClickbtn }) {
     <div className="d-flex flex-column launch-page">
       <div className=" d-flex justify-content-center align-items-center launch-nav">
         <div className="launch-nav-img">
-          <img src={kec_cicle} />
+          <img src={kec_cicle} alt="kec-circle" />
         </div>
         <h1 className="fw-bold">KEC and EMDC FREELANCING FORUM</h1>
       </div>
@@ -31,9 +31,9 @@ function Launch({ onClickbtn }) {
         </button>
       </div>
       <div className="d-flex flex-row logo-div justify-content-center">
-        <img src={emdclogo} width="100" height="100" className="m-5" />
-        <img src={iiclogo} width="200" height="100" className="m-5" />
-        <img src={tbilogo} width="200" height="100" className="m-5" />
+        <img src={emdclogo} width="100"  alt="launch-logo" height="100" className="m-5" />
+        <img src={iiclogo} width="200" alt="launch-logo" height="100" className="m-5" />
+        <img src={tbilogo} width="200" alt="launch-logo" height="100" className="m-5" />
       </div>
       <div className="left-img">
         <img src={left} alt="" />
