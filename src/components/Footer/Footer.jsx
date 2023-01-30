@@ -44,7 +44,7 @@ function Footer(){
               <h5 className="mb-3 fw-bold " >Community Page</h5>
               <ul className="nav flex-column">
                 <li className="nav-item mb-3"><Link to="/developer_community" className="nav-link p-0 text-white">Developer Community</Link></li>
-                <li className="nav-item mb-3"><a href="/developer_community" rel="noreferrer noopener" className="nav-link p-0 text-white">Website Flow</a></li>
+                <li className="nav-item mb-3"><a href="https://drive.google.com/file/d/1cOV0RI5Nl7xDhBqGSDMs9pXY0h6DYck5/view?usp=sharing" rel="noreferrer noopener" className="nav-link p-0 text-white">Website Flow</a></li>
                 <li className="nav-item mb-3"><a href="/developer_community" rel="noreferrer noopener" className="nav-link p-0 text-white">Video Reference</a></li>
               </ul>
               </div>
@@ -58,7 +58,7 @@ function Footer(){
                 <img src={logo} alt="" width="100px" height="100px" />
                 </div>
                 <div className="row my-3 feedback feedback-btn p-3">
-                  <a href="https://forms.gle/jchgyUMW4YpMYZfMA" target="_blank" className="btn btn-primary font-weight-bold">Give Your feedback <i className="fa-solid fa-arrow-right fs-5 forward-btn"></i></a>
+                  <a href="https://forms.gle/jchgyUMW4YpMYZfMA" rel="noreferrer noopener" target="_blank" className="btn btn-primary font-weight-bold">Give Your feedback <i className="fa-solid fa-arrow-right fs-5 forward-btn"></i></a>
                   <p className="feedback-text my-2 fs-6 text-dark">Hello users, Our goal is to Find the perfect freelance services for your projects</p>
                 </div>
               </div>
