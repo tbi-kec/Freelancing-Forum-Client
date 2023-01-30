@@ -59,7 +59,7 @@ const RevenueChart = () => {
             }]
                 })
             }
-        },[dis])
+        },[dis,count])
   return (
    <> {dis && <CanvasJSChart options={options} /> }</>
   )

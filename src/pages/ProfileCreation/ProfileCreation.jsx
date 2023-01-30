@@ -115,7 +115,7 @@ const ProfileCreation = () => {
                             </select>
                         </div>
                         <div className="form-group ">
-                            <input type="email" value={personal_email} onChange={e=>setPersonalMail(e.target.value)} placeholder='Perosnal Email Id' className='form-control' required />
+                            <input type="email" value={personal_email} onChange={e=>setPersonalMail(e.target.value)} placeholder='Pesonal Email Id' className='form-control' required />
                         </div>
                         {user?.user_type=="freelancer" &&
                         <>
@@ -191,7 +191,7 @@ const ProfileCreation = () => {
                                     </div>
                                      <div className="col-4">
                                             <div className="form-group">
-                                                <input type="text" value={domain_name} onChange={e=>setDomainName(e.target.value)} placeholder='Other Domain(if not in the list)' className='form-control' />
+                                                <input type="text" value={domain_name} onChange={e=>setDomainName(e.target.value)} placeholder='Other Domain' className='form-control' />
                                             </div>
                                     </div>
                                     <div className="col-2">

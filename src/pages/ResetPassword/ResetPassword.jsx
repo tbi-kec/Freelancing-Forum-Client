@@ -3,7 +3,7 @@ import logo from '../../assets/logo.png'
 import human from '../../assets/human.png'
 import { useNavigate,useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { signup,sendOtp } from '../../actions/auth'
+
 import { Link } from 'react-router-dom'
 import { setAlert } from '../../actions/alert'
 import { changePassword } from '../../actions/auth'
@@ -19,7 +19,7 @@ const ResetPassword = () => {
             dispatch(setAlert("Password length must be greater than 6","warning",2500))
             return
         }
-         if(confirm!=password){
+         if(confirm!==password){
             dispatch(setAlert("Password dont match","warning",3000))
             return
         }
@@ -40,8 +40,8 @@ const ResetPassword = () => {
                             </Link>
                         </div>
                         <div className="header-container">
-                            <div className="login-logo-container shadow p-2">
-                                <img src={logo} alt="" />
+                            <div className="login-logo-container">
+                                <img src={logo} alt="logo" height="60px" width="60px" />
                             </div>
                             <p className='header my-2'>Reset Password</p>
                         </div>
@@ -61,7 +61,7 @@ const ResetPassword = () => {
                 </div>
             </div>
             <div className="image-container">
-                <img src={human} alt="human.image" />
+                <img src={human} alt="human" />
             </div>
         </div>
     )

@@ -1,5 +1,4 @@
 import React,{useState} from 'react';
-import { Link } from "react-router-dom";
 import { useSelector,useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import './AddProject.css'
@@ -19,18 +18,18 @@ export default function AddProject() {
 
 
   const handleTechnology = () => {
-    if(currentTechnology != ""){
+    if(currentTechnology !== ""){
         setTechnologies([...technology, currentTechnology]);
         setCurrentTechnology("");
     }
   };
   const handleDeleteTechnology = (id) => {
-    const newTechnology = technology.filter((d, idx) => idx != id);
+    const newTechnology = technology.filter((d, idx) => idx !== id);
     setTechnologies([...newTechnology]);
   };
   const handleSubmit = async(e)=>{
     e.preventDefault();
-    if(technology.length==0){
+    if(technology.length===0){
         dispatch(setAlert("Skills is required","warning"));
         return;
     }

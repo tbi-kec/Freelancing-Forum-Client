@@ -54,7 +54,7 @@ const CategoryProjects = () => {
             }]
                 })
             }
-        },[dis])
+        },[dis,count])
       
   return (
      <>{dis && <CanvasJSChart options = {options}/> }</> 

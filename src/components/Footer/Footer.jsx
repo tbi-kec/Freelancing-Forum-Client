@@ -44,8 +44,8 @@ function Footer(){
               <h5 className="mb-3 fw-bold " >Community Page</h5>
               <ul className="nav flex-column">
                 <li className="nav-item mb-3"><Link to="/developer_community" className="nav-link p-0 text-white">Developer Community</Link></li>
-                <li className="nav-item mb-3"><a href="#"rel="noreferrer noopener" className="nav-link p-0 text-white">Website Flow</a></li>
-                <li className="nav-item mb-3"><a href="#"rel="noreferrer noopener" className="nav-link p-0 text-white">Video Reference</a></li>
+                <li className="nav-item mb-3"><a href="#" rel="noreferrer noopener" className="nav-link p-0 text-white">Website Flow</a></li>
+                <li className="nav-item mb-3"><a href="#" rel="noreferrer noopener" className="nav-link p-0 text-white">Video Reference</a></li>
               </ul>
               </div>
             </div>
@@ -74,17 +74,17 @@ function Footer(){
 
             <ul className="nav justify-ficon list-unstyled d-flex">
               <li className="ms-3 social-logo d-flex justify-content-center align-items-center">
-              <a href="https://instagram.com/iic_kec?igshid=YmMyMTA2M2Y=" target="_blank">
+              <a href="https://instagram.com/iic_kec?igshid=YmMyMTA2M2Y="rel="noreferrer noopener" target="_blank">
                 <i className="fa-brands fa-instagram social-font"></i>
               </a>
               </li>
               <li className="ms-3 social-logo d-flex justify-content-center align-items-center">
-              <a href="https://twitter.com/iickongu" target="_blank">
+              <a href="https://twitter.com/iickongu"rel="noreferrer noopener" target="_blank">
                 <i className="fa-brands fa-twitter social-font"></i>
               </a>
               </li>
               <li className="ms-3 social-logo d-flex justify-content-center align-items-center">
-              <a href="https://www.facebook.com/iickec?mibextid=ZbWKwL" target="_blank">
+              <a href="https://www.facebook.com/iickec?mibextid=ZbWKwL"rel="noreferrer noopener" target="_blank">
                 <i className="fa-brands fa-facebook-f"></i>
               </a>
               </li>

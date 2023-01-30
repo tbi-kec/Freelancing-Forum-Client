@@ -43,7 +43,7 @@ function EditProfile({handleClick}) {
       }   
   
       const handleDelete =(id)=>{
-          const newSkills = skills.filter((s,idx)=>idx!=id)
+          const newSkills = skills.filter((s,idx)=>idx!==id)
           setskills([...newSkills])
       }
       const handleDomain = ()=>{
@@ -56,7 +56,7 @@ function EditProfile({handleClick}) {
       }
   
       const handleDeleteDomain =(id)=>{
-          const newDomain = domain.filter((d,idx)=>idx!=id)
+          const newDomain = domain.filter((d,idx)=>idx!==id)
           setDomain([...newDomain])
       }
       useEffect(()=>{
@@ -189,7 +189,7 @@ function EditProfile({handleClick}) {
                             <select name="payment-types"  onChange={e=>setPaymentType(e.target.value)}   className="form-select" required>
                                 <option value="" disabled hidden selected>Paymen Type</option>
                                 {paymentTypes.map((d,idx)=>(
-                                    <option key={idx} selected={payment_type==d} value={d}>{d}</option>
+                                    <option key={idx} selected={payment_type===d} value={d}>{d}</option>
                                 ))}
                             </select>
                         </div>
