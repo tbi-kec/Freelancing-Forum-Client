@@ -2,20 +2,32 @@
 
 .launch-nav {
     position: relative;
-    height: 4rem;
+    height: 6rem;
     background: #2d99fb;
     color: var(--main-white);
 }
 
 .launch-nav > .launch-nav-img {
     position: absolute;
-    left: -25px;
-    top: -25px;
-    width: 125px;
-    height: 125px;
+    right: -35px;
+    top: -30px;
+    width: 180px;
+    height: 180px;
+}
+.launch-nav > .launch-nav-old-img {
+    position: absolute;
+    left: -35px;
+    top: -30px;
+    width: 180px;
+    height: 180px;
 }
 
-.launch-nav > .launch-nav-img > img {
+.brand{
+    color:var(--main-blue);
+    font-size: 64px;
+    margin-bottom: 24px;
+}
+.launch-nav > .launch-nav-img > img , .launch-nav > .launch-nav-old-img > img {
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -46,7 +58,7 @@
 }
 
 .launch-header {
-    color: var(--main-blue);
+    color: var(--main-navy-blue);
 }
 
 .launch-button {

@@ -211,7 +211,7 @@ function Home() {
         {/* content  */}
         {navToggler ? (
           <div>
-            {project.data !== null &&
+            {project.data !== null && constants && constants.data &&
               project.data
                 .slice(project.data.length - 10, project.data.length)
                 ?.map((p) => (

@@ -45,7 +45,7 @@ function Footer(){
               <ul className="nav flex-column">
                 <li className="nav-item mb-3"><Link to="/developer_community" className="nav-link p-0 text-white">Developer Community</Link></li>
                 <li className="nav-item mb-3"><a href="https://drive.google.com/file/d/1cOV0RI5Nl7xDhBqGSDMs9pXY0h6DYck5/view?usp=sharing" rel="noreferrer noopener" target="_blank" className="nav-link p-0 text-white">Website Flow</a></li>
-                <li className="nav-item mb-3"><a href="/https://drive.google.com/drive/folders/183gGnMprBbXtYBmdte6-Nn5wcQV8iOzK?usp=sharing " rel="noreferrer noopener" className="nav-link p-0 text-white">Video Reference</a></li>
+                <li className="nav-item mb-3"><a href="/https://drive.google.com/drive/folders/183gGnMprBbXtYBmdte6-Nn5wcQV8iOzK?usp=sharing " rel="noreferrer noopener" target="_blank" className="nav-link p-0 text-white">Video Reference</a></li>
               </ul>
               </div>
             </div>

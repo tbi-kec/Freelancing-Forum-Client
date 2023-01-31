@@ -7,17 +7,20 @@ import "./Launch.css";
 import left from "../../assets/left.png";
 import right from "../../assets/right.png";
 import background from "../../assets/background.png";
-
+import kecOld from "../../assets/kec-old-circle.png"
 function Launch({ onClickbtn }) {
   return (
     <div className="d-flex flex-column launch-page">
       <div className=" d-flex justify-content-center align-items-center launch-nav">
+      <div className="launch-nav-old-img">
+          <img src={kecOld} alt="kec-circle-old" />
+        </div>
         <div className="launch-nav-img">
           <img src={kec_cicle} alt="kec-circle" />
         </div>
-        <h1 className="fw-bold fs-3 text-center">KEC-EMDC'S FREELANERS FORUM</h1>
       </div>
       <div className="d-flex flex-column justify-content-center align-items-center flex-grow-1 launch-quote">
+        <h1 className="fw-bold brand text-center">KEC-EMDC'S FREELANCERS FORUM</h1>
         <h1 className="launch-header fs-2 fw-bold text-center">
           If you're working on something that you really care about,
           <br />
