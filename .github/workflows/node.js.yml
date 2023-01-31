@@ -9,6 +9,8 @@ jobs:
   build:
 
     runs-on: self-hosted
+    env:
+        GENERATE_SOURCEMAP: false
 
     strategy:
       matrix:
