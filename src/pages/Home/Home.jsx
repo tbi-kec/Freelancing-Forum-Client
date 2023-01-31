@@ -12,7 +12,6 @@ import moment from "moment";
 import starColor from "../../assets/Color-star.png";
 import starDull from "../../assets/dull-star.png";
 import Footer from "../../components/Footer/Footer";
-import Launch from "../../components/Launch/Launch";
 
 function Home() {
   const [navToggler, setNavToggler] = useState(true);
@@ -49,22 +48,19 @@ function Home() {
     navigate(`/profile/${myself.data._id}`);
   };
 
-  const [style, setStyle] = React.useState({
-    transform: `translateY(0vh)`,
-    transition: "transform 1000ms",
-  });
-  const onClick_function = () => {
-    setStyle({
-      transform: `translateY(-100vh)`,
-      transition: "transform 1000ms",
-    });
-  };
+  // const [style, setStyle] = React.useState({
+  //   transform: `translateY(0vh)`,
+  //   transition: "transform 1000ms",
+  // });
+  // const onClick_function = () => {
+  //   setStyle({
+  //     transform: `translateY(-100vh)`,
+  //     transition: "transform 1000ms",
+  //   });
+  // };
 
   return (
     <div className="home-page-container">
-      <div className="launch" style={style}>
-        <Launch onClickbtn={onClick_function} />
-      </div>
       <Navbar />
       <div className="container mt-3">
         <div className="d-flex dashboard">
